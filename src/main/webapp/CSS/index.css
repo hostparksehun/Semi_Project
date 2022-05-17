@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+/*Font*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600;700&family=Roboto+Slab:wght@700&display=swap');
+
+
+* {
+    box-sizing: border-box;
+}

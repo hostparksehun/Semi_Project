@@ -94,7 +94,7 @@
 
 
 
-        <!----------------------------------- Search-Bar ----------------------------------->
+        <!----------------------------------- Search-Bar form-Tag 작업 아직 안함---------------------------------->
 
         <div class="container px-5 mt-4" id="search_box">
 
@@ -258,7 +258,8 @@
                                 </div>
 
                                 <div class="input-group" style="padding-left: 1%;">
-                                    <input type="text" class="form-control" placeholder="입력값 이상" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control" placeholder="입력값 이상"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
                                     <span class="input-group-text" id="basic-addon2">% AVB</span>
                                 </div>
                             </div>
@@ -269,7 +270,176 @@
             </div>
         </div>
 
-        <!----------------------------------- Detail-Search  ----------------------------------->
+
+
+        <!----------------------------------- Search-Result  ----------------------------------->
+
+
+        <hr>
+
+        <div class="container px-5 mt-4" id="Result_box">
+
+            <div class="row">
+                <div class="col-1 "></div>
+                <div class="col-10">
+                    <div class="col-12">
+                        <p class="m-auto Result_banner">총 {}건이 검색되었습니다.</p>
+                    </div>
+
+                    <!----------------------------------- Result  ----------------------------------->
+
+                    <div class="row m-auto">
+
+                        <div class="col-4">
+                            <a href="#">
+                                <div class="Result_img">
+                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
+                                </div>
+                                <div class="Result_txt">
+                                    <div class="review"></div>
+                                    <p class="Result_name">술이름</p>
+                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-4">
+                            <a href="#">
+                                <div class="Result_img">
+                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
+                                </div>
+                                <div class="Result_txt">
+                                    <div class="review"></div>
+                                    <p class="Result_name">술이름</p>
+                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
+                                </div>
+                            </a>
+                        </div>
+
+
+                        <div class="col-4">
+                            <a href="#">
+                                <div class="Result_img">
+                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
+                                </div>
+                                <div class="Result_txt">
+                                    <div class="review"></div>
+                                    <p class="Result_name">술이름</p>
+                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-12 w-100 mb-2"></div>
+                        
+                        <div class="col-4">
+                            <a href="#">
+                                <div class="Result_img">
+                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
+                                </div>
+                                <div class="Result_txt">
+                                    <div class="review"></div>
+                                    <p class="Result_name">술이름</p>
+                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-4">
+                            <a href="#">
+                                <div class="Result_img">
+                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
+                                </div>
+                                <div class="Result_txt">
+                                    <div class="review"></div>
+                                    <p class="Result_name">술이름</p>
+                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
+                                </div>
+                            </a>
+                        </div>
+
+
+                        <div class="col-4">
+                            <a href="#">
+                                <div class="Result_img">
+                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
+                                </div>
+                                <div class="Result_txt">
+                                    <div class="review"></div>
+                                    <p class="Result_name">술이름</p>
+                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-12 w-100"></div>
+
+                        <div class="col-4">
+                            <a href="#">
+                                <div class="Result_img">
+                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
+                                </div>
+                                <div class="Result_txt">
+                                    <div class="review"></div>
+                                    <p class="Result_name">술이름</p>
+                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-4">
+                            <a href="#">
+                                <div class="Result_img">
+                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
+                                </div>
+                                <div class="Result_txt">
+                                    <div class="review"></div>
+                                    <p class="Result_name">술이름</p>
+                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
+                                </div>
+                            </a>
+                        </div>
+
+
+                        <div class="col-4">
+                            <a href="#">
+                                <div class="Result_img">
+                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
+                                </div>
+                                <div class="Result_txt">
+                                    <div class="review"></div>
+                                    <p class="Result_name">술이름</p>
+                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-12 w-100 mb-2"></div>
+                        
+                        <div class="col-12 w-100 mb-2 mt-3" id="pagination">
+                            <nav aria-label="...">
+                                <ul class="pagination pagination-sm justify-content-center m-auto">
+                                  <li class="page-item active" aria-current="page">
+                                    <span class="page-link">1</span>
+                                  </li>
+                                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                </ul>
+                              </nav>
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
 
 
         <!----------------------------------- footer ----------------------------------->
@@ -286,6 +456,7 @@
             <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
         </footer>
     </div>
+
 
 </body>
 

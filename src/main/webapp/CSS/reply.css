@@ -1,0 +1,189 @@
+@charset "utf-8";
+
+/* 
+
+* {
+    box-sizing: border-box;
+} */
+
+
+#logo {
+    width: 150px;
+    height: auto;
+}
+
+#content2 {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Reply */
+
+#container {
+    width: 100%;
+    border: none;
+}
+
+#top_line{
+    margin-top: 3px;
+    margin-bottom: 3px;
+    border-top: 2px solid gray;
+}
+
+#reply_box{
+    background-color: lightgray;
+    border-radius: 5px;
+    height: 100%;
+    padding: 1%;
+    margin-bottom: 1%;
+    position: relative;
+}
+
+#reply_box >textarea {
+margin: 10px;
+padding: 1%;
+line-height: 150%;
+width: 90%;
+border: 1px solid gray;
+border-radius: 5px;
+resize: none;
+text-align: left;
+}
+
+.reply_btn{
+    position: absolute;
+    left: 92%;
+    top: 22%;
+    text-align: center;
+    width: 5%;
+    height: 50%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.title_num{
+    float:left;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width: 50%;
+    height:100%;
+    text-align: left;
+}
+
+.board_like{
+    float:left;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width:50%;
+    height:100%;
+    text-align: right;
+}
+
+.board_title{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width:50%;
+    height:100%;
+}
+
+.board_writer{
+    float:left;
+    width: 30%;
+    height:100%;
+    text-align: left;
+}
+
+.board_date{
+    float:left;
+    width:70%;
+    height:100%;
+}
+
+#head3{
+    width: 100%;
+    height: 100%;
+}
+
+.board_contents{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width: 100%;
+    height: 300px;
+}
+
+#head4{
+    margin-bottom: 3%;
+    width:100%;
+    height:100%;
+    
+}
+
+#head4>.hd4{
+    float: left;
+    width:13%;
+    height:100%;
+}
+
+.board_select{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#head5{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width:100%;
+    height:100%;
+}
+
+.reply_cont{
+    float: left;
+    width: 10%;
+    height: 100%;
+}
+
+.like_cont{
+    float: left;
+    width: 10%;
+    height: 100%;
+}
+
+.reply_view{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#head6{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width:100%;
+    height:100%;
+}
+
+.reply_contents{
+    width: 50%;
+    height: 100%;   
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.head6_btn{
+    margin-top: 1%;
+    margin-right: 1%;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 5%;
+}
+
+
+
+.like_btn{
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+

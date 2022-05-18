@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+div {
+    border: 1px solid black;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#logo {
+    width: 150px;
+    height: auto;
+}
+
+#content {
+    width: 100%;
+    height: 600px;
+}
+
+/* 이미지 CSS */
+
+  .section_s01{
+    background-color: rgb(235, 228, 228);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    
+}
+
+.img_box{
+  
+    float: left;
+    width: 487px;
+}
+.img_drink{
+  position: relative;
+    width: 486px;
+    height: 486px;
+    border-radius: 50%;
+    background-color: white;
+    
+}
+#main_img{
+  width: 100%;
+    /* max-width: 486px;
+    max-height: 486px; */
+   
+}
+
+/* txt랑 표 CSS */
+
+.txt_box{
+  padding-left:30px;
+  /*margin-left: 30px;*/
+  width: 55%;
+  float: left;
+  overflow: hidden;}
+h2 {
+  margin-bottom: 70px;
+  font-size: 30px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+  font-weight: 400px;
+}
+h3{
+  margin-bottom: 10px;
+    font-size: 36px;
+    font-weight: 700;
+}
+.ingredient{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.rating{
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+.tbl{
+     text-align: center;
+     width: 100%;
+     margin-top: 40px;
+  }
+
+
+/* 술 설명과 판매처 정보 */
+
+
+.seciton_s02{
+    margin-top: 30px;
+    width: 100%;
+    /* min-width: 1200px; */
+}
+.drink_description_box{
+  width: 100%;
+}
+.description{    
+     padding-left:0px;
+     padding-bottom: 50px;
+    }   
+.descr_2{margin-top: 60px;}

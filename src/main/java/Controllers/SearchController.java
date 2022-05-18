@@ -15,6 +15,29 @@ public class SearchController extends HttpServlet {
 		
 		
 		
+		String uri =  request.getRequestURI();
+		
+		try {
+			if (uri.equals("/search.search")) {
+				
+				request.setCharacterEncoding("utf-8");
+				
+				String search_text = request.getParameter("search_text");
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			response.sendRedirect("error.html");
+		}
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

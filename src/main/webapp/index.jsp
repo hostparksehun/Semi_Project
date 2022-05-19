@@ -86,8 +86,8 @@
               </button>
             </form>
 
-            <button type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-            <button type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+            <input type="submit" class="mx-1 btn btn-warning navbar-btn" value="로그인">
+            <button type="button" id="join" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
           </div>
         </div>
       </nav>
@@ -179,6 +179,13 @@
     </footer>
 
   </div>
+  
+  <script>
+  	$("#join").on("click", function() {
+		location.href = "/Member/joinView.jsp";
+	})
+
+  </script>
   
 </body>
 </html>

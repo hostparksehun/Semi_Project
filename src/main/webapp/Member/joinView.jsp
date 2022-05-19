@@ -23,6 +23,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
+    
+<!-- 주소 API -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
   <title>우리술夜</title>
 </head>
@@ -97,48 +100,52 @@
 
     <!----------------------------------- Content ----------------------------------->
 
+	<form method="post" action="/account.member" id="frm">
 		<div class="container" style="width: 360px;">
       <div style="text-align: center;"><h3>회원정보 입력</h3></div>
         <div class="join-box">
           <div class="title">이름<br></div>
           <div><input type="text" id="name" name="name" placeholder="2~6자" class="join-input"></div>
-          <div class="check" id="nameinfo">확인용</div>
+          <div class="check" id="nameinfo"></div>
         </div>	
         <div class="join-box">
           <div class="title">아이디<br></div>
           <div><input type="text" id="id" name="id" placeholder="영문(소문자), 숫자 8~13자" class="join-input"></div>
-          <div class="check" id="idinfo">확인용</div>
+          <div class="check" id="idinfo"></div>
         </div>
       <div class="join-box">
         <div class="title">비밀번호<br></div>
         <input type="password" id="pw" name="pw" placeholder="숫자, 영문 조합 최소 8자" class="join-input">
+        <div class="check" id="pwinfo"></div>
       </div>
       <div class="join-box">
         <input type="password" id="pwcheck" name="pwcheck" placeholder="비밀번호 재입력" class="join-input">
-        <div class="check" id="pwCheckinfo">확인용</div>
+        <div class="check" id="pwcheckinfo"></div>
       </div>
       <div class="join-box">
         <div class="title">생년월일<br></div>
         <div><input type="text" id="birthday" name="birthday" placeholder="ex)990322" class="join-input"></div>
-        <div class="check" id="birthdayCheckinfo">확인용</div>
+        <div class="check" id="birthdayinfo"></div>
       </div>
       <div class="join-box">
         <div class="title">이메일<br></div>
         <div>
           <input type="text" id="email" name="email" class="join-input">
-          <button type="button" class="btn btn-secondary" id="emailCheck">인증</button>
+          <button type="button" class="btn btn-secondary" id="emailAuth">인증</button>
+          <div class="check" id="emailinfo"></div>
         </div>
       </div>
       <div class="join-box">
         <div class="title">휴대폰번호<br></div>
         <div><input type="text" id="phone" name="phone" placeholder="ex)01012349876" class="join-input"></div>
-        <div class="check" id="phoneCheckinfo">확인용</div>
+        <div class="check" id="phoneinfo"></div>
       </div>
       <div class="join-box">
         <div class="title">우편번호<br></div>
         <div>
-          <input type="text" name="zipcode" id="zipcode" class="join-input">
-          <button type="button" class="btn btn-secondary" id="zipcode_find">찾기</button>
+          <input type="text" name="zipcode" id="zipcode" class="join-input"/>
+          <button type="button" onclick="execDaumPostcode()"
+          class="btn btn-secondary" id="zipcode_find">찾기</button>
         </div>
       </div>
       <div class="join-box">
@@ -153,8 +160,10 @@
           <input type="text" name="address2" id="address2" class="join-input">
         </div>
       </div>
-      <button type="button" class="btn btn-outline-primary" id="join">가입하기</button>
+      <input type="submit" class="btn btn-outline-primary" id="join" value="가입하기">
     </div>
+    </form>
+    
     <!----------------------------------- footer ----------------------------------->
 
 
@@ -170,6 +179,155 @@
     </footer>
   </div>
 
+
+
+	<script>
+	
+	//이름 유효성 검사
+	$("#name").on("keyup",function(){
+		let name = $("#name").val();
+		let nameRegex = /^[가-힣]{2,6}$/;//2~6글자 한글
+		let nameResult = nameRegex.test(name);
+		
+		if(!nameResult){
+			$("#nameinfo").css("color", "red");
+			$("#nameinfo").text("2~6자 한글을 입력해주세요.");
+		} else{
+			$("#nameinfo").text("");
+		}
+	})
+	//아이디 유효성 검사
+	$("#id").on("keyup",function(){
+		let id = $("#id").val();
+		let idRegex = /^[\da-z_]{8,13}$/; //영어 소문자, 숫자, 언더바 8~13글자
+		let idResult = idRegex.test(id);
+		
+		if(!idResult){
+			$("#idinfo").css("color", "red");
+			$("#idinfo").text("8~13자(영문 소문자,숫자,_)를 입력하세요.");
+			//$("#id").val("");
+			$("#id").focus();
+		} else{
+			$.ajax({
+				url:"/duplCheck.member",
+				type:"post",
+				data:{id:id}
+			}).done(function(resp){
+				let result = JSON.parse(resp);
+				if(result == true){
+					$("#idinfo").text("이미 사용중인 아이디입니다.");
+					$("#idinfo").css("color", "red");
+				}else{
+					$("#idinfo").text("사용가능한 아이디입니다.");
+					$("#idinfo").css("color", "dodgerblue");
+				}
+			});
+		}
+	})
+	//비번 유효성 검사
+	$("#pw").on("keyup",function(){
+		let pw = $("#pw").val();
+		let pwRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/; //영문, 숫자를 하나 이상 포함한 8~16자
+		let pwResult = pwRegex.test(pw);
+		
+		if(!pwResult){
+			$("#pwinfo").css("color", "red");
+			$("#pwinfo").text("영문, 숫자를 하나 이상 포함한 8~16자");
+		} else{
+			$("#pwinfo").text("");
+		}
+	})
+	//비번재확인 유효성 검사
+	$("#pwcheck").on("keyup",function(){
+		let pw = $("#pw").val();
+		let pwcheck = $("#pwcheck").val();
+		
+		if(pw == pwcheck){
+			$("#pwcheckinfo").css("color", "dodgerblue");
+			$("#pwcheckinfo").text("비밀번호가 일치합니다.");
+		} else {
+			$("#pwcheckinfo").css("color", "red");
+			$("#pwcheckinfo").text("비밀번호가 일치하지 않습니다.");
+		}
+	})
+	//생일 유효성 검사(030101 이후 출생부터)
+	$("#birthday").on("keyup",function(){
+		let birthday = $("#birthday").val();
+		let birthdayRegex = /^([0][0-3](0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1]))|([3-9][0-9](0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1]))/; //생일 6자리
+		let birthdayResult = birthdayRegex.test(birthday);
+		
+		if(!birthdayResult){
+			$("#birthdayinfo").css("color", "red");
+			$("#birthdayinfo").text("생일 6자리를 입력하세요. 미성년자 가입불가");
+		} else{
+			$("#birthdayinfo").text("");
+		}
+	})
+	//이메일 유효성 검사
+	$("#email").on("keyup",function(){
+		let email = $("#email").val();
+		let emailRegex = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/; //이메일
+		let emailResult = emailRegex.test(email);
+		
+		if(!emailResult){
+			$("#emailinfo").css("color", "red");
+			$("#emailinfo").text("이메일 형식에 맞게 작성해주세요.");
+		} else{
+			$("#emailinfo").text("");
+		}
+	})
+	//휴대폰번호 유효성 검사
+	$("#phone").on("keyup",function(){
+		let phone = $("#phone").val();
+	    let phoneRegex = /^010[0-9]{8}$/; //핸드폰 11자리
+		let phoneResult = phoneRegex.test(phone);
+		if(!phoneResult){
+			$("#phoneinfo").css("color", "red");
+			$("#phoneinfo").text("핸드폰번호 11자리를 작성해주세요.");
+		} else{
+			$("#phoneinfo").text("");
+		}
+	})		
+	
+	//회원가입 클릭시 비어있는 입력칸 alert
+	$("#join").on("click", function(){
+		if($("#name").val() == null){
+			alert("이름을 입력해주세요.");
+		} else if($("#id").val() == null){
+			alert("아이디를 입력해주세요.");
+		} else if($("#pw").val() == null){
+			alert("비밀번호를 입력해주세요.");
+		} else if($("#pwcheck").val() == null){
+			alert("비밀번호 확인을 입력해주세요.");
+		} else if($("#birthday").val() == null){
+			alert("생년월일을 입력해주세요.");
+		} else if($("#email").val() == null){
+			alert("이메일을 입력해주세요.");
+		} else if($("#phone").val() == null){
+			alert("휴대폰번호를 입력해주세요.");
+		}
+		
+		//수정해야함
+		
+	})
+	
+	//우편번호
+	function execDaumPostcode() {
+	new daum.Postcode({
+		oncomplete : function(data) {
+			var addr = "";
+
+			if (data.userSelectedType === "R") {
+				addr = data.roadAddress;
+			}
+
+			document.getElementById("zipcode").value = data.zonecode;
+			document.getElementById("address1").value = addr;
+			document.getElementById("address2").focus();
+			},
+		}).open();
+	}
+	</script>
 </body>
 
 </html>

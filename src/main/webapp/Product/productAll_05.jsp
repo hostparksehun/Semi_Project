@@ -85,7 +85,9 @@
             </nav>
         </header>
 
-        <!----------------------------------- MD의 추천! ----------------------------------->
+  
+
+        <!----------------------------------- Search-Result  ----------------------------------->
 
 
         <div class="container px-5 mt-4" id="search_box">
@@ -95,69 +97,25 @@
 
                 
                     <div class="col-12">
-                        <p class="m-auto banner_top">MD의 추천 술!</p>
+                        <p class="m-auto banner_top">술 종류</p>
                     </div>
 
-               
-               
-                    <div class="best">
-                        
-                        <ul class="best_list">
-                          <li class="best_item"><a href="#">
-                             <div>
-                              <img src="https://picsum.photos/id/1020/150/150" class="best_img">
-                             </div>
-                         <div class="txt_box">
-                             <div class="review"></div>
-                             <p class="bname_ellipsis" style="color: black;">녹파주</p>
-                             <p class="exple_box" style="color: black;">선비의 기품이 느껴지는 깔끔한 맛 </p>
-                         </div>
-                         </a></li>
-                          <li class="best_item"><a href="#">
-                             <div >
-                             <img src="https://picsum.photos/id/1020/150/150" class="best_img">
-                            </div>
-                         <div class="txt_box">
-                             <div class="review"></div>
-                             <p class="bname_ellipsis" style="color: black;">녹파주</p>
-                             <p class="exple_box" style="color: black;">선비의 기품이 느껴지는 깔끔한 맛</p>
-                         </div>
-                          </a></li>
-                          <li class="best_item"><a href="#"><div>
-                             <img src="https://picsum.photos/id/1020/150/150" class="best_img">
-                         </div>
-                         <div class="txt_box">
-                             <div class="review"></div>
-                             <p class="bname_ellipsis" style="color: black;">녹파주</p>
-                             <p class="exple_box" style="color: black;">선비의 기품이 느껴지는 깔끔한 맛 </p>
-                         </div>
-                         </a></li>
-                        </ul>
-                       
-                      </div>                  
-               
+
                     
-
-
-
-
-        <!----------------------------------- Search-Result  ----------------------------------->
-
-
-
-
         <div class="container px-5 mt-4" id="Result_box">
-        <hr>
+            <hr>
+    
+    
+                <div class="row">
+                    <div class="col-1 "></div>
+                    <div class="col-10">
+                        <div class="col-12">
+    
+                            <p class="m-auto Result_banner"></p>
+    
+                        </div>
 
 
-            <div class="row">
-                <div class="col-1 "></div>
-                <div class="col-10">
-                    <div class="col-12">
-
-                        <p class="m-auto Result_banner"></p>
-
-                    </div>
 
                     <!----------------------------------- Result  ----------------------------------->
 
@@ -207,7 +165,7 @@
 
                         <div class="col-12 w-100">
                             <div class="area_btn">
-                                <a href="/productAll_01.ProductController" class="h_btn">전체보기</a>
+                                <a href="#" class="h_btn">전체보기</a>
                                </div>
                             </div>
 
@@ -255,7 +213,7 @@
 
                         <div class="col-12 w-100">
                         <div class="area_btn">
-                            <a href=" /productAll_02.ProductController" class="h_btn">전체보기</a>
+                            <a href="#" class="h_btn">전체보기</a>
                            </div>
                         </div>
 
@@ -304,7 +262,7 @@
 
                         <div class="col-12 w-100">
                             <div class="area_btn">
-                                <a href="/productAll_03.ProductController" class="h_btn">전체보기</a>
+                                <a href="#" class="h_btn">전체보기</a>
                                </div>
                             </div>
 

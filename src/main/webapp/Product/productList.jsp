@@ -76,6 +76,7 @@
                             </li>
 
                         </ul>
+<<<<<<< HEAD
                         <!-- <form class="d-flex">
                             <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success me-1" type="submit" id="search_btn">
@@ -86,6 +87,9 @@
                                 </svg>
                             </button>
                         </form> -->
+=======
+
+>>>>>>> dbe5c5230363ca5943c266b50543376fb762d826
 
                         <button type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
                         <button type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
@@ -96,7 +100,11 @@
 
 
 
+<<<<<<< HEAD
         <!----------------------------------- Search-Bar ----------------------------------->
+=======
+        <!----------------------------------- MD의 추천! ----------------------------------->
+>>>>>>> dbe5c5230363ca5943c266b50543376fb762d826
 
         <div class="container px-5 mt-4" id="search_box">
 
@@ -145,6 +153,7 @@
                         </ul>
                        
                     
+<<<<<<< HEAD
                 <!--------------------------변경---------------------------->
                      </div>
                         <!----------------------------------- Detail-Search  ----------------------------------->
@@ -311,21 +320,35 @@
                 </div>
             </div>
         </div>
+=======
+                     </div>
+>>>>>>> dbe5c5230363ca5943c266b50543376fb762d826
 
 
 
         <!----------------------------------- Search-Result  ----------------------------------->
 
 
+<<<<<<< HEAD
         <hr>
 
         <div class="container px-5 mt-4" id="Result_box">
+=======
+
+        <div class="container px-5 mt-4" id="Result_box">
+        
+        <hr>
+>>>>>>> dbe5c5230363ca5943c266b50543376fb762d826
 
             <div class="row">
                 <div class="col-1 "></div>
                 <div class="col-10">
                     <div class="col-12">
+<<<<<<< HEAD
                         <p class="m-auto Result_banner">총 {}건이 검색되었습니다.</p>
+=======
+                        <p class="m-auto Result_banner"></p>
+>>>>>>> dbe5c5230363ca5943c266b50543376fb762d826
                     </div>
 
                     <!----------------------------------- Result  ----------------------------------->

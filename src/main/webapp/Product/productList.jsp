@@ -76,20 +76,7 @@
                             </li>
 
                         </ul>
-<<<<<<< HEAD
-                        <!-- <form class="d-flex">
-                            <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success me-1" type="submit" id="search_btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-search" viewBox="0 0 16 16">
-                                    <path
-                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                </svg>
-                            </button>
-                        </form> -->
-=======
 
->>>>>>> dbe5c5230363ca5943c266b50543376fb762d826
 
                         <button type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
                         <button type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
@@ -98,13 +85,8 @@
             </nav>
         </header>
 
-
-
-<<<<<<< HEAD
-        <!----------------------------------- Search-Bar ----------------------------------->
-=======
         <!----------------------------------- MD의 추천! ----------------------------------->
->>>>>>> dbe5c5230363ca5943c266b50543376fb762d826
+
 
         <div class="container px-5 mt-4" id="search_box">
 
@@ -152,10 +134,10 @@
                          </a></li>
                         </ul>
                        
-                    
-<<<<<<< HEAD
+                      </div>                  
                 <!--------------------------변경---------------------------->
-                     </div>
+                   
+                     
                         <!----------------------------------- Detail-Search  ----------------------------------->
                         <div class="col-12 mt-3 mb-1">
                             <p class="m-auto banner_bot">상세 검색 (항목 별 최대 2개)</p>
@@ -320,35 +302,28 @@
                 </div>
             </div>
         </div>
-=======
+
                      </div>
->>>>>>> dbe5c5230363ca5943c266b50543376fb762d826
+
 
 
 
         <!----------------------------------- Search-Result  ----------------------------------->
 
 
-<<<<<<< HEAD
-        <hr>
+
 
         <div class="container px-5 mt-4" id="Result_box">
-=======
-
-        <div class="container px-5 mt-4" id="Result_box">
-        
         <hr>
->>>>>>> dbe5c5230363ca5943c266b50543376fb762d826
+
 
             <div class="row">
                 <div class="col-1 "></div>
                 <div class="col-10">
                     <div class="col-12">
-<<<<<<< HEAD
-                        <p class="m-auto Result_banner">총 {}건이 검색되었습니다.</p>
-=======
+
                         <p class="m-auto Result_banner"></p>
->>>>>>> dbe5c5230363ca5943c266b50543376fb762d826
+
                     </div>
 
                     <!----------------------------------- Result  ----------------------------------->

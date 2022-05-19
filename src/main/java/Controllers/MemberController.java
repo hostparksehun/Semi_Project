@@ -59,7 +59,6 @@ public class MemberController extends HttpServlet {
 				String pw = request.getParameter("pw"); 
 				try {
 					boolean result = dao.login(id, pw); 
-					System.out.println(result);
 					if (result) {
 						HttpSession session = request.getSession(); 
 						session.setAttribute("id", id); 

@@ -34,7 +34,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/index.jsp">
               <img alt="" src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
             </a>
           </div>
@@ -87,21 +87,32 @@
               </button>
             </form>
 
-            <button type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-            <button type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+            <button id=login type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+            <button id=join type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
           </div>
         </div>
       </nav>
     </header>
+  <script>
+  $("#join").on("click",function(){
+		location.href="/Member/joinView.jsp";
+	})
+  $("#login").on("click",function(){
+	  location.href="/Member/loginView.jsp"
+  })
+  </script>
+    
+
 
 
 
     <!----------------------------------- Content ----------------------------------->
-
+<form action="/login.member" method=post>
     <div class="container" style="width: 360px;">
         <div style="text-align: center;"><h3>로그인</h3></div>
             <div class="idline">
                 <!-- <div><img src="/img/user_icon.png"></div> -->
+                
                 <div class="title">아이디</div>
                 <div><input type="text" class="textBox" id="id" name="id" placeholder="아이디를 입력하세요"></div>
             </div>
@@ -109,11 +120,12 @@
             <div class="pwline"></div>
             <div class="title">비밀번호</div>
             <div><input type="text" class="textBox" id="pw" name="pw" placeholder="비밀번호를 입력하세요"></div>
+            
             <div id="search">
             <span>아이디 찾기</span>
             <span>비밀번호 찾기</span>
              </div>
-            <div><button type="button" class="btn btn-outline-secondary" id="login">로그인하기</button></div>
+            <div><button  class="btn btn-outline-secondary" id="login">로그인하기</button></div>
             <hr>
             <div class="sns">
                 <div id="naver">
@@ -127,6 +139,7 @@
         <div>
         </div>
     </div>
+  </form>
     <!----------------------------------- footer ----------------------------------->
 
 

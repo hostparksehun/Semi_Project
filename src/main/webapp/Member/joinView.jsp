@@ -33,7 +33,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/index.jsp">
               <img alt="" src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
             </a>
           </div>
@@ -86,17 +86,27 @@
               </button>
             </form>
 
-            <button type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-            <button type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+             <button id=login type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+            <button id=join type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
           </div>
         </div>
       </nav>
     </header>
+  <script>
+  $("#join").on("click",function(){
+		location.href="/Member/joinView.jsp";
+	})
+  $("#login").on("click",function(){
+	  location.href="/Member/loginView.jsp"
+  })
+  </script>
+    
+
 
 
 
     <!----------------------------------- Content ----------------------------------->
-
+<form method="post" action="/add.member" id="loginFrm">
 		<div class="container" style="width: 360px;">
       <div style="text-align: center;"><h3>회원정보 입력</h3></div>
         <div class="join-box">
@@ -155,6 +165,7 @@
       </div>
       <button type="button" class="btn btn-outline-primary" id="join">가입하기</button>
     </div>
+    </form>
     <!----------------------------------- footer ----------------------------------->
 
 

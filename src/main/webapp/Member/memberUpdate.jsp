@@ -103,7 +103,7 @@
         <div style="text-align: center;"><h3>회원정보 수정</h3></div>
           <div class="join-box">
             <div class="title">이름<br></div>
-            <div><input type="text" id="name" name="name" placeholder="2~6자" class="join-input"></div>
+            <div>{dto.name}</div>
             <div class="check" id="nameinfo">확인용</div>
           </div>   
           <div class="join-box">

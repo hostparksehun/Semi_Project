@@ -18,18 +18,22 @@ public class ProductController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String uri = request.getRequestURI();
-//		ProductDAO dao = new ProductDAO();
+		ProductDAO dao = new ProductDAO();
 
 		try {	
-			if(uri.equals("/info.ProductController")) {
+	     if(uri.equals("/list.ProductController")) {
 
-//				List<ProductDTO> list;
-//				list = dao.selectAll();
-				response.sendRedirect("/Product/productList.jsp");
-			}   
+				List<ProductDTO> list;
+				list = dao.selectAll();
+				request.setAttribute("list", list);
+				request.getRequestDispatcher("/Product/productList.jsp").forward(request, response);
+	    
+		}else if(uri.equals("/add.ProductController")) {
+		
+				
 		}catch(Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("error.html");
+			response.sendRedirect("error.jsp");
 		}
 
 	}

@@ -56,10 +56,11 @@ private static ProductDAO instance = null;
             	String adress2  = rs.getString("adress2");
             	int capacity=rs.getInt("capacity");
             	
-            ProductDTO dto = new ProductDTO(product_name,product_area,producer_name,0,file_index,product_code, kind, choose_count,price,abv,dealer_number,adress1,adress2,capacity);
+                ProductDTO dto = new ProductDTO(product_name,product_area,producer_name,0,file_index,product_code, kind, choose_count,price,abv,dealer_number,adress1,adress2,capacity);
             
             
-            list.add(dto);
+                list.add(dto);
+            
             }
           return list;
 		

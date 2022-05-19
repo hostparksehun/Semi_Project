@@ -61,7 +61,7 @@
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item" href="info.ProductController">전체보기</a></li>
+                  <li><a class="dropdown-item" href="list.ProductController">전체보기</a></li>
                 </ul>
               </li>
 

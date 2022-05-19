@@ -163,12 +163,6 @@
 
                         <div class="col-12 w-100 mb-2"></div>
 
-                        <div class="col-12 w-100">
-                            <div class="area_btn">
-                                <a href="#" class="h_btn">전체보기</a>
-                               </div>
-                            </div>
-
                         <div class="col-4">
                             <a href="#">
                                 <div class="Result_img">
@@ -211,11 +205,6 @@
 
                         <div class="col-12 w-100"></div>
 
-                        <div class="col-12 w-100">
-                        <div class="area_btn">
-                            <a href="#" class="h_btn">전체보기</a>
-                           </div>
-                        </div>
 
                         <div class="col-4">
                             <a href="#">
@@ -260,11 +249,7 @@
                         <div class="col-12 w-100 mb-2"></div>
 
 
-                        <div class="col-12 w-100">
-                            <div class="area_btn">
-                                <a href="#" class="h_btn">전체보기</a>
-                               </div>
-                            </div>
+                   
 
 
                         <div class="col-12 w-100 mb-2 mt-3" id="pagination">

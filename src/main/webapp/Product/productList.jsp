@@ -7,7 +7,7 @@
 
 <head>
     <!-- CSS -->
-    <link rel="stylesheet" href="/CSS/search.css"> <!-- 경로 수정 고려 -->
+    <link rel="stylesheet" href="/CSS/productList.css"> <!-- 경로 수정 고려 -->
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,6 +27,8 @@
     <script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
 
     <title>우리술 검색</title>
+
+
 
 </head>
 
@@ -101,23 +103,50 @@
             <div class="row">
                 <div class="col-1 "></div>
 
-                <div class="col-10">
+                
                     <div class="col-12">
-                        <p class="m-auto banner_top">요즘 핫한 우리 술을 검색하세요!</p>
+                        <p class="m-auto banner_top">MD의 추천 술!</p>
                     </div>
-                    <form action="/search.search" id="search">
-                        <div class="main_con_form col-12 mt-3">
-                            <div class="form_inner form_list_input">
-                                <input type="text" id="search_text" name="search_text" placeholder="입력하세요">
-                                <button type="submit" style="background-color: white; margin-left: 2%;">
-                                    <svg id="search_icon" xmlns="http://www.w3.org/2000/svg" width="50" height="50"
-                                        fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                        <path
-                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                    </svg>
-                                </button>
+
+                <!--------------------------변경---------------------------->
+               
+                    <div class="best">
+                        
+                        <ul class="best_list">
+                          <li class="best_item"><a href="#">
+                             <div>
+                              <img src="https://picsum.photos/id/1020/150/150" class="best_img">
+                             </div>
+                         <div class="txt_box">
+                             <div class="review"></div>
+                             <p class="bname_ellipsis" style="color: black;">녹파주</p>
+                             <p class="exple_box" style="color: black;">선비의 기품이 느껴지는 깔끔한 맛 </p>
+                         </div>
+                         </a></li>
+                          <li class="best_item"><a href="#">
+                             <div >
+                             <img src="https://picsum.photos/id/1020/150/150" class="best_img">
                             </div>
-                        </div>
+                         <div class="txt_box">
+                             <div class="review"></div>
+                             <p class="bname_ellipsis" style="color: black;">녹파주</p>
+                             <p class="exple_box" style="color: black;">선비의 기품이 느껴지는 깔끔한 맛</p>
+                         </div>
+                          </a></li>
+                          <li class="best_item"><a href="#"><div>
+                             <img src="https://picsum.photos/id/1020/150/150" class="best_img">
+                         </div>
+                         <div class="txt_box">
+                             <div class="review"></div>
+                             <p class="bname_ellipsis" style="color: black;">녹파주</p>
+                             <p class="exple_box" style="color: black;">선비의 기품이 느껴지는 깔끔한 맛 </p>
+                         </div>
+                         </a></li>
+                        </ul>
+                       
+                    
+                <!--------------------------변경---------------------------->
+                     </div>
                         <!----------------------------------- Detail-Search  ----------------------------------->
                         <div class="col-12 mt-3 mb-1">
                             <p class="m-auto banner_bot">상세 검색 (항목 별 최대 2개)</p>
@@ -345,6 +374,12 @@
 
                         <div class="col-12 w-100 mb-2"></div>
 
+                        <div class="col-12 w-100">
+                            <div class="area_btn">
+                                <a href="#" class="h_btn">전체보기</a>
+                               </div>
+                            </div>
+
                         <div class="col-4">
                             <a href="#">
                                 <div class="Result_img">
@@ -387,6 +422,12 @@
 
                         <div class="col-12 w-100"></div>
 
+                        <div class="col-12 w-100">
+                        <div class="area_btn">
+                            <a href="#" class="h_btn">전체보기</a>
+                           </div>
+                        </div>
+
                         <div class="col-4">
                             <a href="#">
                                 <div class="Result_img">
@@ -428,6 +469,14 @@
                         </div>
 
                         <div class="col-12 w-100 mb-2"></div>
+
+
+                        <div class="col-12 w-100">
+                            <div class="area_btn">
+                                <a href="#" class="h_btn">전체보기</a>
+                               </div>
+                            </div>
+
 
                         <div class="col-12 w-100 mb-2 mt-3" id="pagination">
                             <nav aria-label="...">

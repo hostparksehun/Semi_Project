@@ -55,20 +55,7 @@ public class MemberController extends HttpServlet {
 				
 			//로그인폼에서 로그인버튼 눌러서 왔다.아이디랑 비번 일치 확인
 			//로그인이 되면 메인화면. 안되면 비동기로 오류안내메세지...예정
-<<<<<<< HEAD
-			} else if (uri.equals("/login.member")) {
-				String id = request.getParameter("id"); 
-				String pw = request.getParameter("pw"); 
-				try {
-					boolean result = dao.login(id, pw); 
-					if (result) {
-						HttpSession session = request.getSession(); 
-						session.setAttribute("id", id); 
-					}
-					response.sendRedirect("index.jsp");	
-=======
->>>>>>> f40701aef485cf7403f70f5a073388cc30379f57
-			
+
 			
 //-------------------- 로그인-----------------------------
 		}else if (uri.equals("/login.member")) {

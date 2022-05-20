@@ -107,11 +107,7 @@
 			</c:otherwise>
 	</c:choose>
 
-<<<<<<< HEAD
-            <button type="button" id=login class="mx-1 btn btn-warning navbar-btn">로그인</button>
-            <button type="button" id="join" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
-=======
->>>>>>> f40701aef485cf7403f70f5a073388cc30379f57
+
           </div>
         </div>
       </nav>

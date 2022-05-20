@@ -215,9 +215,54 @@
 		
 		$(".modify").on("click", function(){
 			
-			$($this).parent().sibling().children()[1].attr("contente")
+			$($(this).parent().sibling().children()[1].attr("contenteditable","true");
 			
-		})
+			$($(this).praent().siblings().children()[1].focus();
+			
+			$(this).css("display", "none");
+			$(#"rDel").css("display", "none");
+			
+			let okBtn = $("<button>");
+			okBtn.tex("수정완료");
+			okBtn.attr("type","button");
+			okBtn.attr("class","head6_btn");
+			
+			let cancelBtn = $("<button>");
+			cancelBtn.attr("type","button");
+			cancelBtn.attr("class","head6_btn");
+			cancelBtn.text("취소");
+			
+			cancelBtn.on("click", function(){
+				location.reload();
+			})
+			
+			$(".reply_contents").append(okBtn);
+			$(".replt_contents").append(cencelBtn);
+			
+		});
+			
+			$(".delRbtn").on("click",function(){
+				
+				let result = confirm("댓글을 삭제하시겠습니까?");
+				let reply_seq = $(this).siblings(".reply_seq").val();
+				
+				if(result){
+					
+					$.ajax({
+						url: "/del.reply",	
+						data: {
+							seq: reply_seq,
+							pseq: ${dto.seq}
+						}
+					}).done(function(resp){
+						location.reload();
+					});
+					
+				} else{
+					
+				}
+				
+			});
 		
 		
 		

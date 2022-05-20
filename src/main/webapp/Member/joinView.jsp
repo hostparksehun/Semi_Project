@@ -89,7 +89,6 @@
               </button>
             </form>
 
-<<<<<<< HEAD
             <c:choose>
 	        	<c:when test="${loginID !=null}">
 					<div>${loginID }</div>
@@ -107,8 +106,8 @@
 		            
 				</c:when>
 				<c:otherwise>
-					<button id="login" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-					<button id="join" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+					<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+					<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
 				</c:otherwise>
 			</c:choose>
 			
@@ -117,10 +116,10 @@
       </nav>
     </header>
       <script>
-		  $("#join").on("click",function(){
+		  $("#joinBtn").on("click",function(){
 		      location.href="/Member/joinView.jsp";
 		   })
-		  $("#login").on("click",function(){
+		  $("#loginBtn").on("click",function(){
 		     location.href="/Member/loginView.jsp"
 		  })
 	  </script>

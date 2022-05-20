@@ -7,7 +7,7 @@
 
 <head>
   <!-- CSS -->
-  <link rel="stylesheet" href="/CSS/index.css"> <!-- 경로 수정 고려 -->
+  <link rel="stylesheet" href="/CSS/login.css"> <!-- 경로 수정 고려 -->
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,8 +27,9 @@
 
   <title>우리술夜</title>
 </head>
+
 <body>
-  <div class="container">
+  <div class="container m-auto">
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
@@ -50,7 +51,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle mx-0 mx-md-2 mx-xl-5" href="#" id="navbarDropdown" role="button" href=""
+                <a class="nav-link dropdown-toggle mx-0 mx-md-2 mx-xl-5" href="#" id="navbarDropdown" role="button"
                   data-bs-toggle="dropdown" aria-expanded="false">
                   우리술 정보
                 </a>
@@ -66,7 +67,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="/Search/search.jsp" class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">우리 술 검색</a>
+                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">우리 술 검색</a>
               </li>
 
 
@@ -89,21 +90,22 @@
 			<c:choose>
 	        	<c:when test="${loginID !=null}">
 					${loginID }
-		               <button type=button id="mypage">마이페이지</button>
-		               <button type=button id="logout">로그아웃</button>
+		               <button type="button" id="mypage">마이페이지</button>
+		               <button type="button" id="logout">로그아웃</button>
 	
 			        <script>
 			            $("#mypage").on("click",function(){
 			               location.href="/mypage.member";
 			            })
 			            $("#logout").on("click",function(){
-			               location.href="/logout.member"
+			               location.href="/logout.member";
 			            })
 		            </script>
+		            
 				</c:when>
 				<c:otherwise>
-					<button id=login type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-					<button id=join type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+					<button id="login" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+					<button id="join" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
 				</c:otherwise>
 			</c:choose>
 			
@@ -121,78 +123,66 @@
 		  })
 	  </script>
 
-    <div class="row" id="main">
-      <div class="col-12" id="contents" >
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="/img/indexFile/우리술.jpg" class="d-block w-100" alt="...">
+
+    <!----------------------------------- Content ----------------------------------->
+
+    <div class="container" style="width: 360px;">
+        <div style="text-align: center;"><h3>아이디 찾기</h3></div>
+             <div id="searchResult"></div>
+            <div class="idline">
+                <div><input type="text" class="textBox" id="name" name="name" placeholder="이름"></div>
             </div>
-            <div class="carousel-item">
-              <img src="/img/indexFile/토끼소주골드.png" class="d-block w-100" alt="...">
+            <div class="pwline"></div>
+				<div><input type="text" class="textBox" id="phone" name="phone" placeholder="휴대폰번호"></div>
+             <div>
+            <input type="button" class="btn btn-outline-secondary" id="search" value="찾기">
+            <input type="button" class="btn btn-outline-secondary" id="gologin" value="로그인" style="display:none;">
+            <input type="button" class="btn btn-outline-secondary" id="gomain" value="메인으로" style="display:none;">
             </div>
-            <div class="carousel-item">
-              <img src="/img/indexFile/원소주.png" class="d-block w-100" alt="...">
+            <hr>
+            <div class="sns">
+                <div id="naver">
+                    <img src="/img/loginFile/btnG_완성형.png">
+                </div>
+                <div id="kakao">
+                    <img src="/img/loginFile/kakao_login_medium_narrow.png">
+                </div>
             </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
+    	</div>
+    
+ 		<script>
+ 			$("#search").on("click",function(){
+				$.ajax({
+					url:"/searchId.member",
+					data:{name:$("#name").val(), phone:$("#phone").val()} 
+				}).done(function(resp){ 
+					let result = JSON.parse(resp);
+					console.log(result);
+					if(result == null){
+						alert("해당하는 정보가 없습니다. 다시 확인해주세요.");
+					}else{
+						$(".textBox").remove();
+						$("#searchResult").css("font-size", "15pt");
+						$("#searchResult").text("아이디는 "+result+"입니다.");
+						$("#search").hide();
+						$("#gomain").show();
+						$("#gologin").show();
+					}
+						
+						$("#gomain").on("click",function(){
+							location.href="/index.jsp";
+						}) 
+						$("#gologin").on("click",function(){
+							location.href="/Member/loginView.jsp";
+						})
+				});
+ 			})
+ 			
+ 		</script>
+    
+    <!----------------------------------- footer ----------------------------------->
 
 
-      <div class="row" id="popular text">
-        <div class="col-12" style="text-align: center;margin-top: 100px;">
-          <h3>인기상품</h3>
-        </div>
-      </div>
-
-      <div class="row" id="popular" style="text-align: center;">
-        <div class="col-12 col-md-4">
-          <img src="/img/indexFile/생동동주.png">
-        </div>
-        <div class="col-12 col-md-4">
-          <img src="/img/indexFile/대대포.png">
-        </div>
-        <div class="col-12 col-md-4">
-          <img src="/img/indexFile/생막걸리.png">
-        </div>
-      </div>
-
-
-      <div class="row" id="bti text">
-        <div class="col-12">
-          <a href="https://ktestone.com/kapable.github.io/dringkingHabit/" >
-          <img src="/img/indexFile/술BTI.png" style="width: 100%; height: 200px;">
-        </a>
-        </div>
-      </div>
-
-      <div class="row" id="video text">
-        <div class="col-12" style="text-align: center;margin-top: 100px;">
-          <h2>백종원의 술비책</h2>
-        </div>
-      </div>
-      <div class="row" id="video">
-        <div class="col-12" style="text-align: center;">
-          <video  controls style="width: 100%;margin-top: 50px;">
-            <source src="/img/indexFile/하면 할수록 빠져든다... 집에서 빚는 우리 술 우리 막걸리.mp4">
-          </video>
-        </div>
-      </div>
-      
-    </div>
     <footer class="py-3 my-4">
       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
@@ -203,8 +193,8 @@
       </ul>
       <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
     </footer>
-
   </div>
-  
+
 </body>
+
 </html>

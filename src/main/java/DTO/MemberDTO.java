@@ -20,6 +20,13 @@ public class MemberDTO {
 		this.phone = phone;
 	}
 
+	public MemberDTO(String id, String name, String phone) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.phone = phone;
+	}
+	
 	public MemberDTO(String id, String pw, String name, String birthday, String phone, String email, String zipcode,
 			String address1, String address2) {
 		this.id = id;

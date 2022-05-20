@@ -1,6 +1,7 @@
 package Controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import DAO.MemberDAO;
 import DTO.MemberDTO;
@@ -20,16 +23,16 @@ public class MemberController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf8");//post 한글깨짐 방지
-		
 		String uri = request.getRequestURI();
 		MemberDAO dao = new MemberDAO();
+		Gson g = new Gson();
 		
 		try {
-			//회원가입 키를 눌러서 왔다. 온 애들 조인폼으로 보낸다
+			//회원가입시 joinView.jsp이동
 			if (uri.equals("/join.member")){
-				response.sendRedirect("/joinform.jsp");
+				response.sendRedirect("/Member/joinView.jsp");
 				
-			//조인폼에서 폼액션 받고 loginView.jsp 이동
+				//계정 loginView.jsp 이동
 			} else if (uri.equals("/account.member")) {
 				String id = request.getParameter("id");
 				String pw = EncryptUtils.SHA256(request.getParameter("pw"));
@@ -52,22 +55,19 @@ public class MemberController extends HttpServlet {
 				response.getWriter().append(String.valueOf(result));
 				
 				
-			//로그인폼에서 로그인버튼 눌러서 왔다.아이디랑 비번 일치 확인
-			//로그인이 되면 메인화면. 안되면 비동기로 오류안내메세지...예정
+			//로그인 id, pw 검사
 			} else if (uri.equals("/login.member")) {
 				String id = request.getParameter("id"); 
-				String pw = request.getParameter("pw"); 
-				try {
-					boolean result = dao.login(id, pw); 
-					System.out.println(result);
-					if (result) {
-						HttpSession session = request.getSession(); 
-						session.setAttribute("id", id); 
-					}
+				String pw = EncryptUtils.SHA256(request.getParameter("pw"));
+				
+				boolean result = dao.login(id, pw); 
+				System.out.println(result);
+				if (result) {
+					HttpSession session = request.getSession(); 
+					session.setAttribute("loginID", id); 
 					response.sendRedirect("index.jsp");	
-			
-				} catch (Exception e) {
-					e.printStackTrace();
+				} else {
+					response.sendRedirect("/Member/loginView.jsp");
 				}
 				
 			//로그아웃	
@@ -76,26 +76,41 @@ public class MemberController extends HttpServlet {
 				response.sendRedirect("/index.jsp");
 				
 				
-			//아이디 찾기...예정
+			//아이디 찾기
 			} else if (uri.equals("/searchId.member")) {
-		         String name = request.getParameter("name");
-		         String phone = request.getParameter("phone");
-		         MemberDTO dto = new MemberDTO(name, phone);
-		         
-		         String id = dao.searchId(dto);
-		         
-		         if(id != null) {//정보가 맞다면
-		        	HttpSession session = request.getSession();
-		            request.getSession().setAttribute("id", id);
-		            response.sendRedirect("searchIdView.jsp");
-		         } else {//정보가 맞지 않으면
-		            response.sendRedirect("find_id.jsp?error");
-		         }
+				String name = request.getParameter("name");
+				String phone = request.getParameter("phone");
+				System.out.println(name+"<<이름 폰>>"+phone);
 				
-			//비번 찾기...예정
+				MemberDTO dto = new MemberDTO(name, phone);
+				String id = dao.searchId(dto);
+				PrintWriter pw = response.getWriter();
+				pw.append(g.toJson(id));
+
+				
+			//비번 재설정 위한 정보 확인
 			} else if (uri.equals("/searchPw.member")) {
-				response.sendRedirect("/member/searchPwView.jsp");
-			} else if(uri.equals("/")) {
+				String id = request.getParameter("id");
+				String name = request.getParameter("name");
+				String phone = request.getParameter("phone");
+				//System.out.println("아이디:"+id+" 이름:"+name+" 폰:"+phone);
+				
+				MemberDTO dto = new MemberDTO(id, name, phone);
+				String pwd = dao.searchPw(dto);
+				PrintWriter pw = response.getWriter();
+				pw.append(g.toJson(pwd));
+				//System.out.println("바뀌기 전: "+pwd);
+			
+			//비번 재설정
+			} else if (uri.equals("/updatePw.member")) {
+				String id = request.getParameter("id");
+				String pwd = EncryptUtils.SHA256(request.getParameter("pw"));
+				PrintWriter pw = response.getWriter();
+				//System.out.println("바뀐거: "+pwd);
+				pw.append(g.toJson(pwd));
+				dao.updatePw(new MemberDTO(id, pwd, null, null,null, null, null, null, null));
+				//System.out.println("변경 성공");
+				
 			}
 				
 			

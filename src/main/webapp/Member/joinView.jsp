@@ -89,13 +89,41 @@
               </button>
             </form>
 
-            <button type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-            <button type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+            <c:choose>
+	        	<c:when test="${loginID !=null}">
+					<div>${loginID }</div>
+		               <button type="button" id="mypage">마이페이지</button>
+		               <button type="button" id="logout">로그아웃</button>
+	
+			        <script>
+			            $("#mypage").on("click",function(){
+			               location.href="/mypage.member";
+			            })
+			            $("#logout").on("click",function(){
+			               location.href="/logout.member";
+			            })
+		            </script>
+		            
+				</c:when>
+				<c:otherwise>
+					<button id="login" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+					<button id="join" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+				</c:otherwise>
+			</c:choose>
+			
           </div>
         </div>
       </nav>
     </header>
-
+    
+      <script>
+		  $("#join").on("click",function(){
+		      location.href="/Member/joinView.jsp";
+		   })
+		  $("#login").on("click",function(){
+		     location.href="/Member/loginView.jsp"
+		  })
+	  </script>
 
 
     <!----------------------------------- Content ----------------------------------->
@@ -241,8 +269,13 @@
 	$("#pwcheck").on("keyup",function(){
 		let pw = $("#pw").val();
 		let pwcheck = $("#pwcheck").val();
+		let pwcheckRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/;
+		let pwcheckResult = pwcheckRegex.test(pwcheck);
 		
-		if(pw == pwcheck){
+		if(!pwcheckResult){
+			$("#pwcheckinfo").css("color", "red");
+			$("#pwcheckinfo").text("영문, 숫자를 하나 이상 포함한 8~16자");
+		} else if(pw == pwcheck){
 			$("#pwcheckinfo").css("color", "dodgerblue");
 			$("#pwcheckinfo").text("비밀번호가 일치합니다.");
 		} else {

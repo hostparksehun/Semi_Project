@@ -86,35 +86,62 @@
                 </svg>
               </button>
             </form>
+<c:choose>
+			<c:when test="${loginID !=null}">
+					
+					   ${loginID }
+					
+					<button type=button id="mypage">마이페이지</button>
+					<button type=button id="logout">로그아웃</button>
+			<script>
+				$("#mypage").on("click",function(){
+					location.href="/mypage.member";
+				})
+				$("#logout").on("click",function(){
+					location.href="/logout.member"
+				})
+				</script>
+			</c:when>
+			<c:otherwise>
+  <button id=login type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+  <button id=join type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+			</c:otherwise>
+	</c:choose>
 
-            <button type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-            <button type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
           </div>
         </div>
       </nav>
     </header>
-
-
+  <script>
+  $("#join").on("click",function(){
+		location.href="/Member/joinView.jsp";
+	})
+  $("#login").on("click",function(){
+	  location.href="/Member/loginView.jsp"
+  })
+  </script>
 
 
 <!---------------------------------------------헤더------------------------------------------>
 
+<form method="post" action="/update.member" id="frm">
+<c:forEach var="i" items="${list }">
     <div class="box" style="width: 360px;">
         <div style="text-align: center;"><h3>회원정보 수정</h3></div>
           <div class="join-box">
             <div class="title">이름<br></div>
-            <div><input type="text" id="name" name="name" placeholder="2~6자" class="join-input"></div>
-            <div class="check" id="nameinfo">확인용</div>
+            <div>${i.name}</div>
+            
           </div>   
           <div class="join-box">
             <div class="title">아이디<br></div>
-            <div><input type="text" id="id" name="id" placeholder="영문(소문자), 숫자 8~13자" class="join-input"></div>
-            <div class="check" id="idinfo">확인용</div>
+            <div>${i.id }</div>
+            
           </div>
         <div class="join-box">
           <div class="title">생년월일<br></div>
-          <div><input type="text" id="birthday" name="birthday" placeholder="ex)990322" class="join-input"></div>
-          <div class="check" id="birthdayCheckinfo">확인용</div>
+          <div>${i.birthday }</div>
+          
         </div>
         <div class="join-box">
           <div class="title">이메일<br></div>
@@ -147,9 +174,14 @@
             <input type="text" name="address2" id="address2" class="join-input">
           </div>
         </div>
-        <button type="button" class="btn btn-outline-primary" id="join">수정완료
-        </button>
+        <input type="submit" class="btn btn-outline-primary" id="update" value="수정완료">
+        
       </div>
+      </c:forEach>
+     </form>
+   <!------------------------------script부분 ------------------------------------------->
+
+   </script>
       <!-------------------------------------------Footer-------------------------------------------->
       <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">

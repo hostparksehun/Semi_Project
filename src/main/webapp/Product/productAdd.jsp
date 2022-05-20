@@ -25,26 +25,8 @@
         crossorigin="anonymous"></script>
 
     <script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
-  <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-    <script>
-    let oEditors = []
-
-    smartEditor = function() {
-      console.log("Naver SmartEditor")
-      nhn.husky.EZCreator.createInIFrame({
-        oAppRef: oEditors,
-        elPlaceHolder: "editorTxt",
-        sSkinURI: "/smarteditor/SmartEditor2Skin.html",
-        fCreator: "createSEditor2"
-      })
-    }
-
-    $(document).ready(function() {
-      smartEditor()
-    })
-  </script>
-   
     <style>
       * {box-sizing: border-box;}
 
@@ -54,7 +36,11 @@
           text-align: center;
           font-size: 25px;
         }
-
+      .input {
+        width:50%;
+        float:left;
+      }
+     
 
     </style>
    
@@ -64,35 +50,76 @@
     <div id="container">
     
 <div class="add_product">제품 등록</div>
+
+
+
+
+        <div class="editor_box">
+
+			<h3>이미지 파일 등록</h3>
+			
+		
+			<form action="insertStudentInfoForm" method="post">
+				<div id="smarteditor">
+					<textarea name="editorTxt" id="editorTxt" rows="20" cols="10"
+						placeholder="내용을 입력해주세요" style="width: 800px"></textarea>
+				  
+				</div>
+				 <input type="button" value="제출">
+			</form>
+
+         </div>
+		<script>
+			let oEditors = []
+
+			smartEditor = function() {
+
+				nhn.husky.EZCreator.createInIFrame({
+					oAppRef : oEditors,
+					elPlaceHolder : "editorTxt",
+					sSkinURI : "/smarteditor/SmartEditor2Skin.html",
+					fCreator : "createSEditor2"
+				})
+			}
+
+			$(document).ready(function() {
+				smartEditor()
+			})
+			
+			
+			submitPost = function() {
+            oEditors.getById["editorTxt"].exec("UPDATE_CONTENTS_FIELD", [])
+            let content = document.getElementById("editorTxt").value
+
+            if(content == '') {
+            alert("내용을 입력해주세요.")
+            oEditors.getById["editorTxt"].exec("FOCUS")
+            return
+            } else {
+             console.log(content)
+        }
+}
+			
+		</script>
+
+
+
+
        
-        
-        <h3>이미지 파일 등록</h3>
-        
-        <div>
- <form action="insertStudentInfoForm" method="post">
-      <div id="smarteditor">
-        <textarea name="editorTxt" id="editorTxt" 
-                  rows="20" cols="10" 
-                  placeholder="내용을 입력해주세요"
-                  style="width: 500px"></textarea>
-      </div>
-      <input type="button"  />
-    </form>
-
-        <table>
-          <tr><td><input type="text" name="product_name" placeholder="제품 이름을 입력하세요"></td></tr>
-          <tr><td><input type="text" name="price" placeholder="가격을 입력하세요"></td></tr>
-          <tr><td><input type="text" name="abv" placeholder="알콜 도수를 입력하세요"></td></tr>
-          <tr><td><input type="text" name="dealer_number" placeholder="판매처 번호를 입력하세요"></td></tr>
-          <tr><td><input type="text" name="capacity" placeholder="용량을 입력하세요"></td></tr>
-        </table>
+        <div class="input">제품 이름: <input type="text" name="product_name" placeholder="내용을 입력하세요"></div>
+        <div class="input">가격: <input type="text" name="price" placeholder="내용을 입력하세요"></div>
+        <div class="input">알콜 도수: <input type="text" name="abv" placeholder="내용을 입력하세요"></div>
+        <div class="input">판매처 번호: <input type="text" name="dealer_number" placeholder="내용을 입력하세요"></div>
+        <div class="input">용량: <input type="text" name="capacity" placeholder="내용을 입력하세요"></div>
+        <div class="input">상품 코드: <input type="text" name="product_name" placeholder="내용을 입력하세요"></div>
+        <div class="input">생산 업체 코드: <input type="text" name="product_name" placeholder="내용을 입력하세요"></div>
+        <div class="input">생산 지역 코드: <input type="text" name="product_name" placeholder="내용을 입력하세요"></div>
+      
     
-      </div>
+ 
     
-        <div>상품 코드: <input type="text" name="product_name" placeholder="제품 이름을 입력하세요"></div>
-        <div>생산 업체 코드: <input type="text" name="product_name" placeholder="제품 이름을 입력하세요"></div>
-        <div>생산 지역 코드: <input type="text" name="product_name" placeholder="제품 이름을 입력하세요"></div>
 
+      
 
 
 

@@ -98,12 +98,12 @@
 
 
 <!---------------------------------------------헤더------------------------------------------>
-
+<c:forEach var="i" items="${list }">
     <div class="box" style="width: 360px;">
         <div style="text-align: center;"><h3>회원정보 수정</h3></div>
           <div class="join-box">
             <div class="title">이름<br></div>
-            <div>{dto.name}</div>
+            <div>${i.name}</div>
             <div class="check" id="nameinfo">확인용</div>
           </div>   
           <div class="join-box">
@@ -150,6 +150,7 @@
         <button type="button" class="btn btn-outline-primary" id="join">수정완료
         </button>
       </div>
+      </c:forEach>
       <!-------------------------------------------Footer-------------------------------------------->
       <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">

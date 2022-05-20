@@ -1,6 +1,7 @@
 package Controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -38,6 +39,8 @@ public class MemberController extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("loginID",id);
 			}
+			
+
 			response.sendRedirect("index.jsp");
 //--------------------로그아웃-----------------------------
 		}else if(uri.equals("/logout.member")) {
@@ -54,6 +57,10 @@ public class MemberController extends HttpServlet {
 			}else if(uri.equals("/update.member")){
 				request.setCharacterEncoding("utf-8");
 				String id = (String) (request.getSession().getAttribute("loginID"));
+				List<MemberDTO> list = new ArrayList<>();
+				request.setAttribute("list", list);
+				
+				
 				int phone =Integer.parseInt(request.getParameter("phone"));
 				String email= request.getParameter("email");
 				int zipcode=Integer.parseInt(request.getParameter("zipcode"));
@@ -62,7 +69,7 @@ public class MemberController extends HttpServlet {
 				MemberDTO memdto = new MemberDTO();
 				int result = mydao.update(memdto);
 
-				response.sendRedirect("/Member/memberUpdate.jsp");
+				request.getRequestDispatcher("/Member/memberUpdate.jsp").forward(request, response);
 				
 //--------------------회원탈퇴--------------------------------------				
 			}else if(uri.equals("/memberout.member")) {

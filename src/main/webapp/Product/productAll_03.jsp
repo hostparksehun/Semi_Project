@@ -99,7 +99,7 @@
 
                 
                     <div class="col-12">
-                        <p class="m-auto banner_top">증류주/리큐르</p>
+                        <p class="m-auto banner_top">담금주/</p>
                     </div>
 
 

@@ -100,7 +100,7 @@
 
                 
                     <div class="col-12">
-                        <p class="m-auto banner_top">약주/청주</p>
+                        <p class="m-auto banner_top">증류주/리큐르</p>
                     </div>
 
 

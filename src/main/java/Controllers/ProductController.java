@@ -46,6 +46,10 @@ public class ProductController extends HttpServlet {
 				
 				response.sendRedirect("/Product/productAll_04.jsp");
 				
+			}else if(uri.equals("/productAll.ProductController")) {
+				
+				response.sendRedirect("/Product/productAll.jsp");
+			
 			}else if(uri.equals("/add.ProductController")) {
 			
 			String product_name = request.getParameter("product_name");

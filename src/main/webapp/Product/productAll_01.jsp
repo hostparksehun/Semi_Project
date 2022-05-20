@@ -97,7 +97,7 @@
 
                 
                     <div class="col-12">
-                        <p class="m-auto banner_top">술 종류</p>
+                        <p class="m-auto banner_top">막걸리/탁주</p>
                     </div>
 
 

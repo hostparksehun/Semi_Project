@@ -56,13 +56,13 @@
                                     우리술 정보
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">막걸리</a></li>
-                                    <li><a class="dropdown-item" href="#">증류주</a></li>
-                                    <li><a class="dropdown-item" href="#">담금주</a></li>
+                                    <li><a class="dropdown-item" href="/productAll_01.ProductController">막걸리</a></li>
+                                    <li><a class="dropdown-item" href="/productAll_02.ProductController">증류주</a></li>
+                                    <li><a class="dropdown-item" href="/productAll_03.ProductController">담금주</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="#">전체보기</a></li>
+                                    <li><a class="dropdown-item" href="/productAll.ProductController">전체보기</a></li>
                                 </ul>
                             </li>
 

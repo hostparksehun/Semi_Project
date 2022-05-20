@@ -97,7 +97,7 @@
 
                 
                     <div class="col-12">
-                        <p class="m-auto banner_top">술 종류</p>
+                        <p class="m-auto banner_top">와인/과실주</p>
                     </div>
 
 

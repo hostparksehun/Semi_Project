@@ -1,7 +1,6 @@
 package Controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -105,22 +104,27 @@ public class MemberController extends HttpServlet {
 			request.getRequestDispatcher("/Member/myPage.jsp").forward(request, response);
 				
 //-------------------수정------------------------------------------
-			}else if(uri.equals("/update.member")){
-				request.setCharacterEncoding("utf-8");
+			}else if(uri.equals("/updList.member")) {
 				String id = (String) (request.getSession().getAttribute("loginID"));
-				List<MemberDTO> list = new ArrayList<>();
+				List<MemberDTO> list = mydao.mypage(id);
 				request.setAttribute("list", list);
-				
-				
-				int phone =Integer.parseInt(request.getParameter("phone"));
-				String email= request.getParameter("email");
-				int zipcode=Integer.parseInt(request.getParameter("zipcode"));
-				String address1= request.getParameter("address1");
-				String address2= request.getParameter("address2");
-				MemberDTO memdto = new MemberDTO();
-				int result = mydao.update(memdto);
 
 				request.getRequestDispatcher("/Member/memberUpdate.jsp").forward(request, response);
+		
+		
+			}else if(uri.equals("/update.member")){
+				String id = (String) (request.getSession().getAttribute("loginID"));
+				
+				
+				String phone =request.getParameter("phone");
+				String email= request.getParameter("email");
+				String zipcode=request.getParameter("zipcode");
+				String address1= request.getParameter("address1");
+				String address2= request.getParameter("address2");
+				
+				int result = mydao.update(new MemberDTO(id,null,null,null,phone,email,zipcode,address1,address2));
+
+				response.sendRedirect("/mypage.member");
 				
 //--------------------회원탈퇴--------------------------------------				
 			}else if(uri.equals("/memberout.member")) {

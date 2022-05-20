@@ -190,7 +190,7 @@
    <!-- --------------------------------script부분 ---------------------------------->
    <script>
    $("#update").on("click",function(){
-	   location.href="/update.member"
+	   location.href="/updList.member"
    })
    </script>
    

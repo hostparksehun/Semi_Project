@@ -174,10 +174,8 @@
       <input type="submit" class="btn btn-outline-primary" id="join" value="가입하기">
     </div>
     </form>
-<<<<<<< HEAD
-=======
-    
->>>>>>> fe77951d772975006c69ae96dcf88adafaa6a6b2
+
+
     <!----------------------------------- footer ----------------------------------->
 
 

@@ -73,6 +73,7 @@ public class SearchDAO {
 				){
 			
 				pstat.setString(1, product_name);
+				pstat.setString(2, "전라도");
 			
 			try(
 					ResultSet rs = pstat.executeQuery();

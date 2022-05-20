@@ -80,7 +80,7 @@ public class MemberDAO {
 
 
 	
-	//아이디 찾기...예정
+	//아이디 찾기
 	public String searchId(MemberDTO dto) throws Exception{
 		String sql = "SELECT id FROM member WHERE name=? and phone=?";
 	      try(Connection con = this.getConnection();
@@ -99,32 +99,35 @@ public class MemberDAO {
 		  }
 	}		
 	
-	//비번 찾기...예정
+	//비번 확인하기
 	public String searchPw(MemberDTO dto) throws Exception{
-		String sql = "SELECT * FROM member WHERE name=? and id=?";
+		String sql = "SELECT * FROM member WHERE id=? and name=? and phone=?";
 	      try(Connection con = this.getConnection();
   		  PreparedStatement pstat = con.prepareStatement(sql);){
-  		  pstat.setString(1, dto.getName());
-  		  pstat.setString(2, dto.getId());
+    	  pstat.setString(1, dto.getId());
+  		  pstat.setString(2, dto.getName());
+  		  pstat.setString(3, dto.getPhone());
   		  try(ResultSet rs = pstat.executeQuery();){
   			  String pw;
 			      if(rs.next()) {
-			        pw = rs.getString("id");//rs.getString(1)
+			        pw = rs.getString("pw");
 			      } else {
 			        pw = null;
 			      }
 			      return pw;
-  		  }
-		  }
+  		  		}
+	      }
 	}
-	//비번 변경...예정
-	public int update(MemberDTO dto) throws Exception{
+	//비번 재설정
+	public int updatePw(MemberDTO dto) throws Exception{
 		String sql = "update member set pw=? where id=?";
 		try(Connection con = this.getConnection();
 			PreparedStatement pstat = con.prepareStatement(sql)){
-			pstat.setString(1,dto.getPw());
+			pstat.setString(1, dto.getPw());
 			pstat.setString(2, dto.getId());
+			
 			int result = pstat.executeUpdate();
+			String pw = dto.getPw();
 			con.commit();
 			return result;
 		}

@@ -109,12 +109,9 @@
 
 
     <!----------------------------------- Content ----------------------------------->
-<<<<<<< HEAD
-<form method="post" action="/add.member" id="loginFrm">
-=======
 
 	<form method="post" action="/account.member" id="frm">
->>>>>>> fe77951d772975006c69ae96dcf88adafaa6a6b2
+
 		<div class="container" style="width: 360px;">
       <div style="text-align: center;"><h3>회원정보 입력</h3></div>
         <div class="join-box">

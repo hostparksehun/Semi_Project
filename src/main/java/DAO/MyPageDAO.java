@@ -49,10 +49,10 @@ public class MyPageDAO {
 
 					dto.setId(rs.getString("id"));
 					dto.setName(rs.getString("name"));
-					dto.setBirthday(rs.getInt("birthday"));
-					dto.setPhone(rs.getInt("phone"));
+					dto.setBirthday(rs.getString("birthday"));
+					dto.setPhone(rs.getString("phone"));
 					dto.setEmail(rs.getString("email"));
-					dto.setZipcode(rs.getInt("zipcode"));
+					dto.setZipcode(rs.getString("zipcode"));
 					dto.setAddress1(rs.getString("address1"));
 					dto.setAddress2(rs.getString("address2"));
 
@@ -83,9 +83,9 @@ public class MyPageDAO {
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
 				){
-			pstat.setInt(1,dto.getPhone());
+			pstat.setString(1,dto.getPhone());
 			pstat.setString(2, dto.getEmail());
-			pstat.setInt(3,dto.getZipcode());
+			pstat.setString(3,dto.getZipcode());
 			pstat.setString(4,dto.getAddress1());
 			pstat.setString(5,dto.getAddress2());
 			pstat.setString(6,dto.getId());

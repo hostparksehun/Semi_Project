@@ -36,7 +36,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/index.jsp">
               <img alt="" src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
             </a>
           </div>
@@ -69,7 +69,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">우리 술 검색</a>
+                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Search/search.jsp">우리 술 검색</a>
               </li>
 
 
@@ -89,6 +89,7 @@
               </button>
             </form>
 
+<<<<<<< HEAD
             <c:choose>
 	        	<c:when test="${loginID !=null}">
 					<div>${loginID }</div>
@@ -115,7 +116,6 @@
         </div>
       </nav>
     </header>
-    
       <script>
 		  $("#join").on("click",function(){
 		      location.href="/Member/joinView.jsp";
@@ -129,6 +129,7 @@
     <!----------------------------------- Content ----------------------------------->
 
 	<form method="post" action="/account.member" id="frm">
+
 		<div class="container" style="width: 360px;">
       <div style="text-align: center;"><h3>회원정보 입력</h3></div>
         <div class="join-box">
@@ -191,7 +192,8 @@
       <input type="submit" class="btn btn-outline-primary" id="join" value="가입하기">
     </div>
     </form>
-    
+
+
     <!----------------------------------- footer ----------------------------------->
 
 

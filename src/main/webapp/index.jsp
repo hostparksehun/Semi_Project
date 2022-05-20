@@ -33,7 +33,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.jsp">
               <img alt="" src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
             </a>
           </div>
@@ -66,12 +66,12 @@
               </li>
 
               <li class="nav-item">
-                <a href="/Search/search.jsp" class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">우리 술 검색</a>
+                <a href="/Search/search.jsp" class="nav-link mx-0 mx-md-2 mx-xl-5">우리 술 검색</a>
               </li>
 
 
               <li class="nav-item">
-                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">술꾼술꾼</a>
+                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#" id="board">술꾼술꾼</a>
               </li>
 
             </ul>
@@ -111,7 +111,7 @@
         </div>
       </nav>
     </header>
-    
+
       <script>
 		  $("#join").on("click",function(){
 		      location.href="/Member/joinView.jsp";

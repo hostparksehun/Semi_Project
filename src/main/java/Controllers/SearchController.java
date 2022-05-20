@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DAO.SearchDAO;
+import DTO.SearchDTO;
 
 
 @WebServlet("*.search")
@@ -25,15 +26,14 @@ public class SearchController extends HttpServlet {
 		try {
 			if (uri.equals("/search.search")) {
 				
+				request.setCharacterEncoding("utf-8");
+				
 				String[] alcholArr;
 				String[] areaArr; 
-				String[] scoreStringArr;
+				String[] gradeString;
 				String product_name;
 				float abv;
 				
-				request.getParameterValues("score"); // int로 변환
-				
-				request.setCharacterEncoding("utf-8");
 				
 				String search_text = request.getParameter("search_text");
 				String search_avb = request.getParameter("avb");
@@ -70,46 +70,51 @@ public class SearchController extends HttpServlet {
 					areaArr = request.getParameterValues("area");
 					
 				} else {
+					
 					areaArr = null;
+				
 				}
 				
-				if(!(request.getParameterValues("score") == null)) {
+				if(!(request.getParameterValues("grade") == null)) {
 					
-					scoreStringArr = request.getParameterValues("score");
+					gradeString = request.getParameterValues("grade");
 					
-					List<Integer> scoreArr = new ArrayList<Integer>();
-					
-					for(int i=0; i<scoreStringArr.length; i++) {
-						
-						scoreArr.add(Integer.parseInt(scoreStringArr[i]));
-						
-					}
+					int grade = Integer.parseInt(gradeString[0]);
 					
 				} else {
 					
-					scoreStringArr = null;
+					gradeString = null;
 				}
 				
 				// -------------------------------------------- 검색 --------------------------------------------------------------
 				
 				// 일반 검색
-				if ((product_name) != null && areaArr == null && scoreStringArr == null && abv == 0 && alcholArr == null ) {
-					
-					
-					
+				if ((product_name) != null && areaArr == null && gradeString == null && abv == 0 && alcholArr == null ) {
+					System.out.println(product_name);
+					List<SearchDTO> list = sDAO.SearchByText(product_name);
+System.out.println("실행");
+					// JSP로 넘길 예정
+					for (SearchDTO dto : list) {
+						
+						System.out.println("상품명 : " + dto.getProduct_name());
+						System.out.println("상품코드 : " + dto.getProduct_code());
+						System.out.println("게시글 번호 : " + dto.getSeq());
+						System.out.println("첨부파일 번호 : " + dto.getFile_index());
+						
+					}
 					
 					
 				// 상세 검색
-				} else if ((product_name) == null && areaArr != null || scoreStringArr != null || abv == 0 || alcholArr != null) {
+				} else if ((product_name) == null && (areaArr != null || gradeString != null || abv == 0 || alcholArr != null)) {
 					
 					
+					System.out.println("상세 검색 1");
 					
 					
-					
-					
-				} else if ((product_name) != null && areaArr != null || scoreStringArr != null || abv == 0 || alcholArr != null) {
+				} else if ((product_name) != null && (areaArr != null || gradeString != null || abv == 0 || alcholArr != null)) {
 					
 				
+					System.out.println("상세 검색 2");
 					
 					
 				}

@@ -1,6 +1,7 @@
 package DTO;
 
 public class MemberDTO {
+
 	private String id;
 	private String pw;
 	private String name;
@@ -96,3 +97,4 @@ public class MemberDTO {
 		
 
 }
+

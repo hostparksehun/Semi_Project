@@ -36,7 +36,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/index.jsp">
               <img alt="" src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
             </a>
           </div>
@@ -69,7 +69,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">우리 술 검색</a>
+                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Search/search.jsp">우리 술 검색</a>
               </li>
 
 
@@ -130,6 +130,25 @@
 
      <div class="container" style="width: 360px;">
     <form action="/login.member" method="post">
+        <div style="text-align: center;"><h3>로그인</h3></div>
+            <div class="idline">
+=======
+  <script>
+  $("#join").on("click",function(){
+		location.href="/Member/joinView.jsp";
+	})
+  $("#login").on("click",function(){
+	  location.href="/Member/loginView.jsp"
+  })
+  </script>
+    
+
+
+
+
+    <!----------------------------------- Content ----------------------------------->
+<form action="/login.member" method=post>
+    <div class="container" style="width: 360px;">
         <div style="text-align: center;"><h3>로그인</h3></div>
             <div class="idline">
                 <div class="title">아이디</div>

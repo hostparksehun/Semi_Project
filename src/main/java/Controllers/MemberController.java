@@ -2,6 +2,8 @@ package Controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,19 +15,21 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import DAO.MemberDAO;
+import DAO.MyPageDAO;
 import DTO.MemberDTO;
 import utils.EncryptUtils;
-
 
 @WebServlet("*.member")
 public class MemberController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		request.setCharacterEncoding("utf8");//post 한글깨짐 방지
 		String uri = request.getRequestURI();
 		MemberDAO dao = new MemberDAO();
 		Gson g = new Gson();
+
+		MyPageDAO mydao=new MyPageDAO();
 		
 		try {
 			//회원가입시 joinView.jsp이동
@@ -55,8 +59,8 @@ public class MemberController extends HttpServlet {
 				response.getWriter().append(String.valueOf(result));
 				
 				
-			//로그인 id, pw 검사
-			} else if (uri.equals("/login.member")) {
+//-------------------- 로그인-----------------------------
+			}else if (uri.equals("/login.member")) {
 				String id = request.getParameter("id"); 
 				String pw = EncryptUtils.SHA256(request.getParameter("pw"));
 				
@@ -66,11 +70,10 @@ public class MemberController extends HttpServlet {
 					HttpSession session = request.getSession(); 
 					session.setAttribute("loginID", id); 
 					response.sendRedirect("index.jsp");	
-				} else {
-					response.sendRedirect("/Member/loginView.jsp");
-				}
-				
-			//로그아웃	
+			} else {
+				response.sendRedirect("/Member/loginView.jsp");
+			}
+			//로그아웃
 			} else if (uri.equals("/logout.member")) {
 				request.getSession().invalidate();
 				response.sendRedirect("/index.jsp");
@@ -111,6 +114,42 @@ public class MemberController extends HttpServlet {
 				dao.updatePw(new MemberDTO(id, pwd, null, null,null, null, null, null, null));
 				//System.out.println("변경 성공");
 				
+//--------------------마이페이지------------------------------------
+		}else if(uri.equals("/mypage.member")) {
+			String id = (String) (request.getSession().getAttribute("loginID"));
+			List<MemberDTO> list = mydao.mypage(id);
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("/Member/myPage.jsp").forward(request, response);
+				
+//-------------------마이페이지 수정------------------------------------------
+			}else if(uri.equals("/updList.member")) {
+				String id = (String) (request.getSession().getAttribute("loginID"));
+				List<MemberDTO> list = mydao.mypage(id);
+				request.setAttribute("list", list);
+
+				request.getRequestDispatcher("/Member/memberUpdate.jsp").forward(request, response);
+		
+		
+			}else if(uri.equals("/update.member")){
+				String id = (String) (request.getSession().getAttribute("loginID"));
+				
+				
+				String phone =request.getParameter("phone");
+				String email= request.getParameter("email");
+				String zipcode=request.getParameter("zipcode");
+				String address1= request.getParameter("address1");
+				String address2= request.getParameter("address2");
+				
+				int result = mydao.update(new MemberDTO(id,null,null,null,phone,email,zipcode,address1,address2));
+
+				response.sendRedirect("/mypage.member");
+				
+//--------------------회원탈퇴--------------------------------------				
+			}else if(uri.equals("/memberout.member")) {
+				String id= (String) (request.getSession().getAttribute("loginID"));
+				int result = mydao.memberout(id);
+				request.getSession().invalidate();
+				response.sendRedirect("index.jsp");
 			}
 				
 			

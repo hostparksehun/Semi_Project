@@ -34,7 +34,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.jsp">
               <img alt="" src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
             </a>
           </div>
@@ -67,7 +67,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">우리 술 검색</a>
+                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Search/search.jsp">우리 술 검색</a>
               </li>
 
 
@@ -87,12 +87,41 @@
               </button>
             </form>
 
-            <button type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-            <button type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+         <c:choose>
+			<c:when test="${loginID !=null}">
+					
+					   ${loginID }
+					
+					<button type=button id="mypage">마이페이지</button>
+					<button type=button id="logout">로그아웃</button>
+			<script>
+				$("#mypage").on("click",function(){
+					location.href="/mypage.member";
+				})
+				$("#logout").on("click",function(){
+					location.href="/logout.member"
+				})
+				</script>
+			</c:when>
+			<c:otherwise>
+  <button id=login type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+  <button id=join type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+			</c:otherwise>
+	</c:choose>
+
+          
           </div>
         </div>
       </nav>
     </header>
+  <script>
+  $("#join").on("click",function(){
+		location.href="/Member/joinView.jsp";
+	})
+  $("#login").on("click",function(){
+	  location.href="/Member/loginView.jsp"
+  })
+  </script>
 
 
 
@@ -105,8 +134,8 @@
     <div class="row" id="content" >
       <div class="col-12 col-md-3" id="mypage list" >
           <ul class="list-group list-group-flush">
-          <a href="myPage.jsp" class="list-group-item list-group-item-action">회원정보 수정</a>
-          <a href="memberOut.jsp" class="list-group-item list-group-item-action">회원탈퇴</a>
+          <a href="/mypage.member" class="list-group-item list-group-item-action">회원정보 수정</a>
+          <a href="/Member/memberOut.jsp" class="list-group-item list-group-item-action">회원탈퇴</a>
           <a href="myBoardList.jsp" class="list-group-item list-group-item-action">게시글 모아보기</a>
           <a href="#" class="list-group-item list-group-item-action">찜한 상품</a>
         </ul>
@@ -116,48 +145,56 @@
         <span id="title"><h3> Mypage </h3></span>
         <form action="/update.member" method="post">
           <table border=1 >
-          <!-- forEach -->
+         <c:forEach var="i" items="${list }">
             <tr>
               <th>아이디
-              <td>아이디 
+              <td>${i.id}
             </tr>
             <tr>
               <th>이름
-              <td>이름
+              <td>${i.name}
             </tr>
             <tr>
               <th>생일 
-              <td>생일
+              <td>${i.birthday}
             </tr>
             <tr>
               <th>휴대전화
-              <td>핸드폰번호
+              <td>${i.phone}
             </tr>
             <tr>
               <th>이메일
-              <td>이메일
+              <td>${i.email}
             </tr>
             <tr>
               <th>우편번호
-              <td>우편번호
+              <td>${i.zipcode}
             </tr>
             <tr>
               <th>주소
-              <td>주소
+              <td>${i.address1}
             </tr>
             <tr>
               <th>상세주소
-              <td>상세주소
+              <td>${i.address2}
             </tr>
             <tr>
               <td colspan=2 style="h" id="btns">
               <button type=button id=update>수정</button>
               </td>
           </table>
+          </c:forEach>
         </form>
-
       </div>
     </div>
+   <!-- --------------------------------script부분 ---------------------------------->
+   <script>
+   $("#update").on("click",function(){
+	   location.href="/updList.member"
+   })
+   </script>
+   
+   
 
     <!----------------------------------- footer ----------------------------------->
 

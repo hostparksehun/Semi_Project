@@ -67,7 +67,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">우리 술 검색</a>
+                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Search/search.jsp">우리 술 검색</a>
               </li>
 
 
@@ -86,9 +86,29 @@
                 </svg>
               </button>
             </form>
+<c:choose>
+			<c:when test="${loginID !=null}">
+					
+					   ${loginID }
+					
+					<button type=button id="mypage">마이페이지</button>
+					<button type=button id="logout">로그아웃</button>
+			<script>
+				$("#mypage").on("click",function(){
+					location.href="/mypage.member";
+				})
+				$("#logout").on("click",function(){
+					location.href="/logout.member"
+				})
+				</script>
+			</c:when>
+			<c:otherwise>
+  <button id=login type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+  <button id=join type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+			</c:otherwise>
+	</c:choose>
 
-            <button type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-            <button type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+          
           </div>
         </div>
       </nav>
@@ -105,7 +125,7 @@
     <div class="row" id="content">
       <div class="col-12 col-md-3" id="mypage list">
           <ul class="list-group list-group-flush">
-		  <a href="myPage.jsp" class="list-group-item list-group-item-action">회원정보 수정</a>
+		  <a href="/mypage.member" class="list-group-item list-group-item-action">회원정보 수정</a>
           <a href="memberOut.jsp" class="list-group-item list-group-item-action">회원탈퇴</a>
           <a href="myBoardList.jsp" class="list-group-item list-group-item-action">게시글 모아보기</a>
           <a href="#" class="list-group-item list-group-item-action">찜한 상품</a>
@@ -133,6 +153,12 @@
         </div>
       </div>
     </div>
+<!----------------------------------------script------------------------------------>
+<script>
+$("#ok").on("click",function(){
+	location.href="/memberout.member"
+})
+</script>
 
     <!----------------------------------- footer ----------------------------------->
 

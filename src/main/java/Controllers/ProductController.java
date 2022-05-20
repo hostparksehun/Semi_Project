@@ -26,7 +26,8 @@ public class ProductController extends HttpServlet {
 //				List<ProductDTO> list;
 //				list = dao.selectAll();
 //				request.setAttribute("list", list);
-				request.getRequestDispatcher("/Product/productList.jsp").forward(request, response);
+//				request.getRequestDispatcher("/Product/productList.jsp").forward(request, response);
+				response.sendRedirect("/Product/productList.jsp");
 	            
 		}else if(uri.equals("/productAll_01.ProductController")){
 		
@@ -46,10 +47,10 @@ public class ProductController extends HttpServlet {
 				
 				response.sendRedirect("/Product/productAll_04.jsp");
 				
-			}else if(uri.equals("/productAll.ProductController")) {
+			}else if(uri.equals("/productAll.ProductController")){
 				
-				response.sendRedirect("/Product/productAll.jsp");
-			
+				response.sendRedirect("productList.jsp");
+				
 			}else if(uri.equals("/add.ProductController")) {
 			
 			String product_name = request.getParameter("product_name");

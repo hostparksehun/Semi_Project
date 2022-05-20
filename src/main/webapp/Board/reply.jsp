@@ -141,29 +141,55 @@
 
                     <div id="top_line"></div>
 
-
                     <div id="head5">
                         <div class="reply_cont">총 댓글 : </div>
                         <div class="like_cont"> 추천 : </div>
                         <input type="button" class="like_btn" value="추천하기">
                     </div>
-
+                    
+                    <!--  댓글 입력 창 -->
+                    
+					<form action="/add.reply?parent_seq=${dto.seq}$writer=${loginID}" method="post">
+					
                     <div id="reply_box">
                         <textarea placeholder="댓글 내용을 입력하세요."></textarea>
-                        <input type="button" class="reply_btn" value="확인">
+                        <input id="reply" type="submit" class="reply_btn" value="확인">
                     </div>
+                    
+                    </form>
 
                     <div id="top_line"></div>
-
-                    <div class="reply_view">댓글 작성자 ID | 댓글 등록 날짜</div>
+                    
+                <!-- 댓글 출력 및 편집 부분 -->
+                    
+				<c:forEach var="i" items="${reply}">
+				
+				<form action="modify.reply?pseq=${dto.seq}&seq=${i.replySeq}" method="post" id="modifyFrm">
+				
+                    <div class="reply_view">${loginID} | ${dto.wirteDate}</div>
 
                     <div class="head6">
-                        <input type="text" class="reply_contents"><br>
+                        <div class="reply_contents">${i.contents}</div><br>
+                        
+                        <input type="hidden" id="contentsInput" name="reply_contents">
+                        
+                     <c:choose>
+                        
+                        
                         <button class="head6_btn">수정</button>
                         <button class="head6_btn">삭제</button>
                     </div>
 
+			
 
+					</c:choose>
+
+				</form>
+				
+				</c:forEach>	
+					
+					
+					
                 </div>
 
             </div>

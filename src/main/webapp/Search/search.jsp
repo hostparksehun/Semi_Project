@@ -133,7 +133,7 @@
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
                                         <input class="form-check-input" type="checkbox" value="막걸리"
-                                            id="flexCheckDefault">
+                                            id="flexCheckDefault" name="alchol">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             막걸리
                                         </label>
@@ -141,7 +141,7 @@
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
                                         <input class="form-check-input" type="checkbox" value="전통소주"
-                                            id="flexCheckDefault">
+                                            id="flexCheckDefault" name="alchol">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             전통 소주
                                         </label>
@@ -149,7 +149,7 @@
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
                                         <input class="form-check-input" type="checkbox" value="증류주"
-                                            id="flexCheckDefault">
+                                            id="flexCheckDefault" name="alchol">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             증류주
                                         </label>
@@ -157,7 +157,7 @@
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
                                         <input class="form-check-input" type="checkbox" value="과실주"
-                                            id="flexCheckDefault">
+                                            id="flexCheckDefault" name="alchol">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             과실주
                                         </label>
@@ -165,7 +165,7 @@
 
                                     <div class="col-2 form-check mb-1" style="padding-left: 5%;">
                                         <input class="form-check-input" type="checkbox" value="담금주"
-                                            id="flexCheckDefault">
+                                            id="flexCheckDefault" name="alchol">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             담금주
                                         </label>
@@ -178,7 +178,7 @@
 
                                     <div class="col-2 form-check mb-1" style="padding-left: 5%;">
                                         <input class="form-check-input" type="checkbox" value="경기도"
-                                            id="flexCheckDefault">
+                                            id="flexCheckDefault" name="area">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             경기도
                                         </label>
@@ -186,7 +186,7 @@
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
                                         <input class="form-check-input" type="checkbox" value="경상도"
-                                            id="flexCheckDefault">
+                                            id="flexCheckDefault" name="area">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             경상도
                                         </label>
@@ -194,7 +194,7 @@
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
                                         <input class="form-check-input" type="checkbox" value="강원도"
-                                            id="flexCheckDefault">
+                                            id="flexCheckDefault" name="area">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             강원도
                                         </label>
@@ -202,7 +202,7 @@
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
                                         <input class="form-check-input" type="checkbox" value="전라도"
-                                            id="flexCheckDefault">
+                                            id="flexCheckDefault" name="area">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             전라도
                                         </label>
@@ -210,7 +210,7 @@
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
                                         <input class="form-check-input" type="checkbox" value="충청도"
-                                            id="flexCheckDefault">
+                                            id="flexCheckDefault" name="area">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             충청도
                                         </label>
@@ -218,7 +218,7 @@
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
                                         <input class="form-check-input" type="checkbox" value="제주도"
-                                            id="flexCheckDefault">
+                                            id="flexCheckDefault" name="area">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             제주도
                                         </label>
@@ -230,35 +230,35 @@
                                     </div>
 
                                     <div class="col-2 form-check mb-1" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault">
+                                        <input class="form-check-input" type="radio" value="1" id="flexCheckDefault" name="grade">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             1
                                         </label>
                                     </div>
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="checkbox" value="2" id="flexCheckDefault">
+                                        <input class="form-check-input" type="radio" value="2" id="flexCheckDefault" name="grade">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             2
                                         </label>
                                     </div>
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="checkbox" value="3" id="flexCheckDefault">
+                                        <input class="form-check-input" type="radio" value="3" id="flexCheckDefault" name="grade">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             3
                                         </label>
                                     </div>
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="checkbox" value="4" id="flexCheckDefault">
+                                        <input class="form-check-input" type="radio" value="4" id="flexCheckDefault" name="grade">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             4
                                         </label>
                                     </div>
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="checkbox" value="5" id="flexCheckDefault">
+                                        <input class="form-check-input" type="radio" value="5" id="flexCheckDefault" name="grade">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             5
                                         </label>
@@ -270,7 +270,7 @@
                                     </div>
 
                                     <div class="input-group" style="padding-left: 1%;">
-                                        <input type="text" class="form-control" placeholder="입력값 이상"
+                                        <input id="avb" type="text" class="form-control" placeholder="입력값 이상"
                                             aria-label="Recipient's username" aria-describedby="basic-addon2"
                                             name="avb">
                                         <span class="input-group-text" id="basic-addon2">% AVB</span>
@@ -312,9 +312,12 @@
 
             let search_text = $("#search_text").val();
             console.log(search_text);
+            
+            let avb = $("#avb").val();
 
-
-            let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{1,20}$/g;
+            let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]*{0,20}$/gs;
+            
+            let regexAvb = /^[0-9]{0,2}.?[0-9]{0,5}$/g;
 
             if (!(regexSearch.test(search_text))) {
                 alert("한글만 입력해주세요");
@@ -323,6 +326,16 @@
 
                 return false
             }
+            
+            
+            if (!(regexAvb.test(avb))) {
+                alert("10의 자리, 소수점 5번째까지 숫자만");
+                $("#avb").val('')
+                $("#avb").focus();
+
+                return false
+            }
+            
         });
 
     </script>

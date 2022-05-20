@@ -33,7 +33,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.jsp">
               <img alt="" src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
             </a>
           </div>
@@ -66,7 +66,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="/Search/search.jsp" class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">우리 술 검색</a>
+                <a href="/Search/search.jsp" class="nav-link mx-0 mx-md-2 mx-xl-5">우리 술 검색</a>
               </li>
 
 
@@ -85,16 +85,46 @@
                 </svg>
               </button>
             </form>
+<c:choose>
+			<c:when test="${loginID !=null}">
+					
+					   ${loginID }
+					
+					<button type=button id="mypage">마이페이지</button>
+					<button type=button id="logout">로그아웃</button>
+			<script>
+				$("#mypage").on("click",function(){
+					location.href="/mypage.member";
+				})
+				$("#logout").on("click",function(){
+					location.href="/logout.member"
+				})
+				</script>
+			</c:when>
+			<c:otherwise>
+  <button id=login type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+  <button id=join type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+			</c:otherwise>
+	</c:choose>
 
-            <input type="submit" class="mx-1 btn btn-warning navbar-btn" value="로그인">
-            <button type="button" id="join" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
           </div>
         </div>
       </nav>
     </header>
+
     
         <div><a href="add.ProductController">상품등록</a></div>
   
+
+  <script>
+  $("#join").on("click",function(){
+		location.href="/Member/joinView.jsp";
+	})
+  $("#login").on("click",function(){
+	  location.href="/Member/loginView.jsp"
+  })
+  </script>
+
     
 
     <div class="row" id="main">

@@ -67,8 +67,10 @@
 									<li><a class="dropdown-item" href="list.ProductController">전체보기</a></li>
 								</ul></li>
 
-							<li class="nav-item">
-                                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">우리 술 검색</a>
+
+                            <li class="nav-item">
+                                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Search/search.jsp">우리 술 검색</a>
+
                             </li>
 
 

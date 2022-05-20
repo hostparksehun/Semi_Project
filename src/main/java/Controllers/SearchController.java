@@ -90,9 +90,9 @@ public class SearchController extends HttpServlet {
 				
 				// 일반 검색
 				if ((product_name) != null && areaArr == null && gradeString == null && abv == 0 && alcholArr == null ) {
-					
+					System.out.println(product_name);
 					List<SearchDTO> list = sDAO.SearchByText(product_name);
-
+System.out.println("실행");
 					// JSP로 넘길 예정
 					for (SearchDTO dto : list) {
 						

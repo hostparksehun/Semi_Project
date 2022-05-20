@@ -140,7 +140,19 @@ public class SearchController extends HttpServlet {
 					
 					sql = searchApp.getSql(searchType);
 					
+					System.out.println(sql);
 					
+					List<SearchDTO> list = sDAO.searchDetail(searchType, alcholArr, areaArr, grade, abv, sql);
+					
+					// JSP로 넘길 예정
+					for (SearchDTO dto : list) {
+						
+						System.out.println("상품명 : " + dto.getProduct_name());
+						System.out.println("상품코드 : " + dto.getProduct_code());
+						System.out.println("게시글 번호 : " + dto.getSeq());
+						System.out.println("첨부파일 번호 : " + dto.getFile_index());
+						
+					}
 					
 					
 				} else if ((product_name) != null && (areaArr != null || gradeString != null || abv != 0 || alcholArr != null || grade != 0)) { // 입력 텍스트 보냄
@@ -150,14 +162,16 @@ public class SearchController extends HttpServlet {
 					
 					List<SearchDTO> list = sDAO.searchDetailHasPname(searchType, product_name, alcholArr, areaArr, grade, abv, sql);
 					
-					
+					// JSP로 넘길 예정
+					for (SearchDTO dto : list) {
+						
+						System.out.println("상품명 : " + dto.getProduct_name());
+						System.out.println("상품코드 : " + dto.getProduct_code());
+						System.out.println("게시글 번호 : " + dto.getSeq());
+						System.out.println("첨부파일 번호 : " + dto.getFile_index());
+						
+					}
 				}
-				
-				
-				
-							
-				
-				
 			}
 			
 			

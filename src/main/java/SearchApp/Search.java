@@ -42,6 +42,8 @@ public class Search {
 				
 				defaultSql += sqlArr[i];
 				
+				
+				
 				if(searchType[i+1]) {
 					
 					defaultSql += "and";

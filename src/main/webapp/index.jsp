@@ -66,7 +66,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="/Search/search.jsp" class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">우리 술 검색</a>
+                <a href="/Search/search.jsp" class="nav-link mx-0 mx-md-2 mx-xl-5">우리 술 검색</a>
               </li>
 
 

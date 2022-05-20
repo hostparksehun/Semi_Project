@@ -230,35 +230,35 @@
                                     </div>
 
                                     <div class="col-2 form-check mb-1" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="score">
+                                        <input class="form-check-input" type="radio" value="1" id="flexCheckDefault" name="grade">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             1
                                         </label>
                                     </div>
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="checkbox" value="2" id="flexCheckDefault" name="score">
+                                        <input class="form-check-input" type="radio" value="2" id="flexCheckDefault" name="grade">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             2
                                         </label>
                                     </div>
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="checkbox" value="3" id="flexCheckDefault" name="score">
+                                        <input class="form-check-input" type="radio" value="3" id="flexCheckDefault" name="grade">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             3
                                         </label>
                                     </div>
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="checkbox" value="4" id="flexCheckDefault" name="score">
+                                        <input class="form-check-input" type="radio" value="4" id="flexCheckDefault" name="grade">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             4
                                         </label>
                                     </div>
 
                                     <div class="col-2 form-check" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="checkbox" value="5" id="flexCheckDefault" name="score">
+                                        <input class="form-check-input" type="radio" value="5" id="flexCheckDefault" name="grade">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             5
                                         </label>

@@ -71,7 +71,7 @@
 
 
               <li class="nav-item">
-                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">술꾼술꾼</a>
+                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#" id="board">술꾼술꾼</a>
               </li>
 
             </ul>
@@ -185,6 +185,10 @@
 		location.href = "/Member/joinView.jsp";
 	})
 
+	$("#board").on("click", function() {
+		location.href = "/Board/boardList.jsp";
+	})
+	
   </script>
   
 </body>

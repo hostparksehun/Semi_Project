@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import DAO.SearchDAO;
 import DTO.SearchDTO;
+import SearchApp.Search;
 
 
 @WebServlet("*.search")
@@ -20,45 +21,60 @@ public class SearchController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		SearchDAO sDAO = SearchDAO.getInstance();
+		Search searchApp = new Search();
 		
 		String uri =  request.getRequestURI();
 		
 		try {
 			if (uri.equals("/search.search")) {
-				
 				request.setCharacterEncoding("utf-8");
 				
+				// 검색 조건
+				boolean[] searchType = new boolean[] {false, false, false, false, false};
+				
+				// 검색 객체
 				String[] alcholArr;
 				String[] areaArr; 
 				String[] gradeString;
 				String product_name;
 				float abv;
+				int grade = 0;
+				
+				String sql;
 				
 				
 				String search_text = request.getParameter("search_text");
 				String search_avb = request.getParameter("avb");
 				
-				// 파싱
+				// 검색 조건 분류
 				
-				if(!(search_text.equals(""))) {
+				if(!(search_text.isEmpty())) { // 입력어가 있다면
 					
-					product_name = sDAO.getWord(search_text);
+					product_name = sDAO.getWord(search_text); // 파싱하고
+					searchType[0] = true; // 입력 검색을 활성화하라
 					
 				} else {
+					
 					product_name = null;
+					
 				}
 				
-				if(!(search_avb.equals(""))) {
+				
+				if(!(search_avb.equals(""))) { // 술 도수를 입력했으면
 					
-					abv = Float.parseFloat(search_avb);
+					abv = Float.parseFloat(search_avb); // float로 바꾸고
+					searchType[4] = true;
 					
 				} else {
+					
 					abv = 0;
+					
 				}
 				
-				if(!(request.getParameterValues("alchol") == null)) {
+				if(!(request.getParameterValues("alchol") == null)) { // 술 종류를 택했다면
 					
 					alcholArr = request.getParameterValues("alchol");
+					searchType[1] = true;
 					
 				} else {
 					
@@ -68,6 +84,7 @@ public class SearchController extends HttpServlet {
 				if(!(request.getParameterValues("area") == null)) {
 					
 					areaArr = request.getParameterValues("area");
+					searchType[2] = true;
 					
 				} else {
 					
@@ -79,7 +96,9 @@ public class SearchController extends HttpServlet {
 					
 					gradeString = request.getParameterValues("grade");
 					
-					int grade = Integer.parseInt(gradeString[0]);
+					grade = Integer.parseInt(gradeString[0]);
+					
+					searchType[3] = true;
 					
 				} else {
 					
@@ -92,7 +111,7 @@ public class SearchController extends HttpServlet {
 				if ((product_name) != null && areaArr == null && gradeString == null && abv == 0 && alcholArr == null ) {
 					System.out.println(product_name);
 					List<SearchDTO> list = sDAO.SearchByText(product_name);
-System.out.println("실행");
+					
 					// JSP로 넘길 예정
 					for (SearchDTO dto : list) {
 						
@@ -105,17 +124,17 @@ System.out.println("실행");
 					
 					
 				// 상세 검색
-				} else if ((product_name) == null && (areaArr != null || gradeString != null || abv == 0 || alcholArr != null)) {
+				} else if ((product_name) == null && (areaArr != null || gradeString != null || abv != 0 || alcholArr != null || grade != 0)) {
+					
+					sql = searchApp.getSql(searchType);
+					System.out.println(sql);
 					
 					
-					System.out.println("상세 검색 1");
 					
+				} else if ((product_name) != null && (areaArr != null || gradeString != null || abv != 0 || alcholArr != null || grade != 0)) {
 					
-				} else if ((product_name) != null && (areaArr != null || gradeString != null || abv == 0 || alcholArr != null)) {
-					
-				
-					System.out.println("상세 검색 2");
-					
+					sql = searchApp.getSql(searchType);
+					System.out.println(sql);
 					
 				}
 				

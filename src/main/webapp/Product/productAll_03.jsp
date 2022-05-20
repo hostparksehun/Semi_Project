@@ -26,7 +26,7 @@
 
     <script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
 
-    <title>우리술 검색</title>
+    <title>우리술 목록</title>
 
 
 

@@ -49,18 +49,20 @@ public class ProductController extends HttpServlet {
 				
 			}else if(uri.equals("/add.ProductController")) {
 			
-			String product_name = request.getParameter("product_name");
-			String product_area = request.getParameter("product_area");
-		    String producer_name = request.getParameter("producer_name");
-			int file_index;
-			String product_code = request.getParameter("product_name");
-			int kind = Integer.parseInt(request.getParameter("kind"));
-			int price = Integer.parseInt(request.getParameter("price"));
-			int abv = Integer.parseInt(request.getParameter("abv"));
-			String dealer_number = request.getParameter("dealer_number");
-			String adress1 = request.getParameter("adress1");
-			String adress2 = request.getParameter("adress2");
-			int capacity = Integer.parseInt(request.getParameter("product_name"));
+				response.sendRedirect("/Product/productAdd.jsp");
+				
+//			String product_name = request.getParameter("product_name");
+//			String product_area = request.getParameter("product_area");
+//		    String producer_name = request.getParameter("producer_name");
+//			int file_index;
+//			String product_code = request.getParameter("product_name");
+//			int kind = Integer.parseInt(request.getParameter("kind"));
+//			int price = Integer.parseInt(request.getParameter("price"));
+//			int abv = Integer.parseInt(request.getParameter("abv"));
+//			String dealer_number = request.getParameter("dealer_number");
+//			String adress1 = request.getParameter("adress1");
+//			String adress2 = request.getParameter("adress2");
+//			int capacity = Integer.parseInt(request.getParameter("product_name"));
 			
      		}
 	

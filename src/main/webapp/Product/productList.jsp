@@ -26,7 +26,7 @@
 
     <script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
 
-    <title>우리술 검색</title>
+    <title>우리술 목록</title>
 
 
 
@@ -308,8 +308,8 @@
                                 <a href="/productAll_03.ProductController" class="h_btn">전체보기</a>
                                </div>
                             </div>
-
-
+                            
+                     
                         <div class="col-12 w-100 mb-2 mt-3" id="pagination">
                             <nav aria-label="...">
                                 <ul class="pagination pagination-sm justify-content-center m-auto">

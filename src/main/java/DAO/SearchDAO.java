@@ -73,7 +73,6 @@ public class SearchDAO {
 				){
 			
 				pstat.setString(1, product_name);
-				pstat.setString(2, "전라도");
 			
 			try(
 					ResultSet rs = pstat.executeQuery();
@@ -104,5 +103,31 @@ public class SearchDAO {
 	
 	
 	// 상세 검색 2
+	
+	public List<SearchDTO> searchDetailHasPname(boolean[] searchType, String product_name, String[] alcholArr, String[] areaArr, int grade, float abv, String sql) throws Exception{
+		
+		boolean[] t = searchType;
+		
+		if (t[0] && t[1] && t[2] && t[3] && t[4]) {
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 }

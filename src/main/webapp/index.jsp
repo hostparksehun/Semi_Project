@@ -85,42 +85,45 @@
                 </svg>
               </button>
             </form>
-<c:choose>
-			<c:when test="${loginID !=null}">
-					
-					   ${loginID }
-					
-					<button type=button id="mypage">마이페이지</button>
-					<button type=button id="logout">로그아웃</button>
-			<script>
-				$("#mypage").on("click",function(){
-					location.href="/mypage.member";
-				})
-				$("#logout").on("click",function(){
-					location.href="/logout.member"
-				})
-				</script>
-			</c:when>
-			<c:otherwise>
-  <button id=login type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-  <button id=join type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
-			</c:otherwise>
-	</c:choose>
 
+<<<<<<< HEAD
 
+=======
+			<c:choose>
+	        	<c:when test="${loginID !=null}">
+					${loginID }
+		               <button type=button id="mypage">마이페이지</button>
+		               <button type=button id="logout">로그아웃</button>
+	
+			        <script>
+			            $("#mypage").on("click",function(){
+			               location.href="/mypage.member";
+			            })
+			            $("#logout").on("click",function(){
+			               location.href="/logout.member"
+			            })
+		            </script>
+				</c:when>
+				<c:otherwise>
+					<button id=login type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+					<button id=join type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+				</c:otherwise>
+			</c:choose>
+			
+>>>>>>> 5f0599973fde0e04959f2ceb10d9b5a060bf95d6
           </div>
         </div>
       </nav>
     </header>
-  <script>
-  $("#join").on("click",function(){
-		location.href="/Member/joinView.jsp";
-	})
-  $("#login").on("click",function(){
-	  location.href="/Member/loginView.jsp"
-  })
-  </script>
-    
+
+      <script>
+		  $("#join").on("click",function(){
+		      location.href="/Member/joinView.jsp";
+		   })
+		  $("#login").on("click",function(){
+		     location.href="/Member/loginView.jsp"
+		  })
+	  </script>
 
     <div class="row" id="main">
       <div class="col-12" id="contents" >
@@ -207,6 +210,7 @@
 
   </div>
   
+<<<<<<< HEAD
   <script>
   	$("#join").on("click", function() {
 		location.href = "/Member/joinView.jsp";
@@ -221,5 +225,7 @@
 	
   </script>
   
+=======
+>>>>>>> 5f0599973fde0e04959f2ceb10d9b5a060bf95d6
 </body>
 </html>

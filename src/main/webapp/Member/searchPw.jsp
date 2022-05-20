@@ -24,8 +24,6 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 
-<!-- 카카오 API -->
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
   <title>우리술夜</title>
 </head>
@@ -36,7 +34,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="/index.jsp">
+            <a class="navbar-brand" href="#">
               <img alt="" src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
             </a>
           </div>
@@ -69,7 +67,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Search/search.jsp">우리 술 검색</a>
+                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">우리 술 검색</a>
               </li>
 
 
@@ -89,7 +87,7 @@
               </button>
             </form>
 
-            <c:choose>
+			<c:choose>
 	        	<c:when test="${loginID !=null}">
 					${loginID }
 		               <button type="button" id="mypage">마이페이지</button>
@@ -128,109 +126,104 @@
 
     <!----------------------------------- Content ----------------------------------->
 
-     <div class="container" style="width: 360px;">
-    <form action="/login.member" method="post">
-        <div style="text-align: center;"><h3>로그인</h3></div>
-            <div class="idline">
-=======
-  <script>
-  $("#join").on("click",function(){
-		location.href="/Member/joinView.jsp";
-	})
-  $("#login").on("click",function(){
-	  location.href="/Member/loginView.jsp"
-  })
-  </script>
-    
-
-
-
-
-    <!----------------------------------- Content ----------------------------------->
-<form action="/login.member" method=post>
     <div class="container" style="width: 360px;">
-        <div style="text-align: center;"><h3>로그인</h3></div>
+        <div style="text-align: center;"><h3>비밀번호 재설정</h3></div>
             <div class="idline">
-                <div class="title">아이디</div>
-                <div><input type="text" class="textBox" id="id" name="id" placeholder="아이디를 입력하세요"></div>
+				<div><input type="text" class="textBox" id="id" name="id" placeholder="아이디"></div>
+			</div>
+            <div class="nameline">
+                <div><input type="text" class="textBox" id="name" name="name" placeholder="이름"></div>
             </div>
-            <div class="pwline"></div>
-				<div class="title">비밀번호</div>
-				<div><input type="password" class="textBox" id="pw" name="pw" placeholder="비밀번호를 입력하세요"></div>
-            <div id="search">
-            <a href="/Member/searchId.jsp">아이디 찾기</a>
-            <a href="/Member/searchPw.jsp">비밀번호 찾기</a>
-             </div>
-             <div>
-            <input type="submit" class="btn btn-outline-secondary" id="loginBtn" value="로그인하기">
-            <input type="button" class="btn btn-outline-secondary" id="joinBtn" value="회원가입">
-            </div>
-    </form>
+            <div class="phoneline">
+				<div><input type="text" class="textBox" id="phone" name="phone" placeholder="휴대폰번호"></div>
+			</div>
+		<form action="/updatePw.member" method="post">
+			<div id="changetext" style="display:none;">변경하실 비밀번호를 입력하세요.</div>
+            <input type="password" class="pwBox" id="pw" name="pw" placeholder="비밀번호 재설정" style="display:none;">
+            <div id="pwinfo"></div>
+            <input type="password" class="pwBox" id="pwcheck" name="pwcheck" placeholder="비밀번호 재설정 확인" style="display:none;">
+            <div id="pwcheckinfo"></div>
+            <input type="button" class="btn btn-outline-secondary" id="next" value="다음">
+            <input type="button" class="btn btn-outline-secondary" id="change" value="변경" style="display:none;">
+		</form>
             <hr>
             <div class="sns">
                 <div id="naver">
                     <img src="/img/loginFile/btnG_완성형.png">
                 </div>
                 <div id="kakao">
-                <a href="javascript:kakaoLogin();">
-                    <img src="/img/loginFile/kakao_login_medium_narrow.png"></a>
-                    <a href="javascript:secession();">연결 끊기?</a>
+                    <img src="/img/loginFile/kakao_login_medium_narrow.png">
                 </div>
             </div>
     	</div>
     
  		<script>
- 			$("#loginBtn").on("click",function(){
- 				location.href="/Member/loginView.jsp";
- 				
- 			})
- 			
- 			$("#joinBtn").on("click",function(){
- 				location.href="/Member/joinView.jsp";
- 			})
- 			
- 			
- 			//카카오 로그인
-			//a90276ed357ed7ce1c45d0863f399e1d 키값
-			window.Kakao.init("a90276ed357ed7ce1c45d0863f399e1d");
-			function kakaoLogin(){
-				window.Kakao.Auth.login({
-					scope:'account_email, birthday',
-	                success: function(response) {
-	                    console.log(response) // 로그인 성공하면 받는 데이터
-	                    window.Kakao.API.request({ // 사용자 정보 가져오기 
-	                        url: '/v2/user/me',
-	                        success: (res) => {
-	                            const kakao_account = res.kakao_account;
-	                            console.log(kakao_account)
-	                        }
-	                    });
-	                    // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
-	                },
-	                fail: function(error) {
-	                    console.log(error);
-	                }
-	            });
-	        }
-			//카카오 연결 끊기
-			function secession() {
-				Kakao.API.request({
-			    	url: '/v1/user/unlink',
-			    	success: function(response) {
-			    		console.log(response);
-			    		//callback(); //연결끊기 성공시 서버에서 처리할 함수
-			    		console.log("카카오 연결해제 O");
-			    		window.location.href='/index.jsp';
-			    		
-			    	},
-			    	fail: function(error) {
-			    		console.log("카카오 연결해제 X");
-			    		console.log(error);
-			    	},
+ 		//다음 버튼 누르면 비번 설정창 뜨게하기
+ 			$("#next").on("click",function(){
+				$.ajax({
+					url:"/searchPw.member",
+					data:{id:$("#id").val(), name:$("#name").val(), phone:$("#phone").val()} 
+				}).done(function(resp){ 
+					let result = JSON.parse(resp);
+					//console.log(result);
+					if(result == null){
+						alert("해당하는 정보가 없습니다. 다시 확인해주세요.");
+					}else{
+						$("#changetext").show();
+						$("#change").show();
+						$(".textBox").css("display","none");
+						$(".pwBox").show();
+					}
 				});
-			};
+ 			$("#change").on("click", function(){
+ 				$.ajax({
+ 					url:"/updatePw.member",
+ 					data:{pw:$("#pw").val()}
+ 				}).done(function(resp){
+ 					let result = JSON.parse(resp);
+ 					//console.log(result);
+ 					alert("변경이 완료됐습니다.");
+ 					location.href = "/Member/loginView.jsp";
+ 				})
+ 			})
+ 			})
+ 			//비번 유효성
+ 			$("#pw").on("keyup",function(){
+				let pw = $("#pw").val();
+				let pwRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/;
+				let pwResult = pwRegex.test(pw);
+				
+				if(!pwResult){
+					$("#pwinfo").css("color", "red");
+					$("#pwinfo").css("font-size", "10.5pt");
+					$("#pwinfo").text("영문, 숫자를 하나 이상 포함한 8~16자");
+				} else{
+					$("#pwinfo").text("");
+				}
+			})
+			//비번재확인 유효성
+			$("#pwcheck").on("keyup",function(){
+				let pw = $("#pw").val();
+				let pwcheck = $("#pwcheck").val();
+				let pwcheckRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/;
+				let pwcheckResult = pwcheckRegex.test(pwcheck);
+				
+				if(!pwcheckResult){
+					$("#pwcheckinfo").css("color", "red");
+					$("#pwcheckinfo").css("font-size", "10.5pt");
+					$("#pwcheckinfo").text("영문, 숫자를 하나 이상 포함한 8~16자");
+				} else if(pw == pwcheck){
+					$("#pwcheckinfo").css("color", "dodgerblue");
+					$("#pwcheckinfo").css("font-size", "10.5pt");
+					$("#pwcheckinfo").text("비밀번호가 일치합니다.");
+				} else {
+					$("#pwcheckinfo").css("color", "red");
+					$("#pwcheckinfo").css("font-size", "10.5pt");
+					$("#pwcheckinfo").text("비밀번호가 일치하지 않습니다.");
+				}
+			})
  		</script>
- 		
+    
     <!----------------------------------- footer ----------------------------------->
 
 

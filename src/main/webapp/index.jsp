@@ -86,9 +86,7 @@
               </button>
             </form>
 
-<<<<<<< HEAD
 
-=======
 			<c:choose>
 	        	<c:when test="${loginID !=null}">
 					${loginID }
@@ -109,8 +107,7 @@
 					<button id=join type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
 				</c:otherwise>
 			</c:choose>
-			
->>>>>>> 5f0599973fde0e04959f2ceb10d9b5a060bf95d6
+
           </div>
         </div>
       </nav>

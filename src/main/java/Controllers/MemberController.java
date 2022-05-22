@@ -59,13 +59,6 @@ public class MemberController extends HttpServlet {
 				response.getWriter().append(String.valueOf(result));
 				
 				
-<<<<<<< HEAD
-			//로그인폼에서 로그인버튼 눌러서 왔다.아이디랑 비번 일치 확인
-			//로그인이 되면 메인화면. 안되면 비동기로 오류안내메세지...예정
-
-			
-=======
->>>>>>> 5f0599973fde0e04959f2ceb10d9b5a060bf95d6
 //-------------------- 로그인-----------------------------
 			}else if (uri.equals("/login.member")) {
 				String id = request.getParameter("id"); 
@@ -81,7 +74,7 @@ public class MemberController extends HttpServlet {
 				response.sendRedirect("/Member/loginView.jsp");
 			}
 			//로그아웃
-			} else if (uri.equals("/logout.member")) {
+			}else if (uri.equals("/logout.member")) {
 				request.getSession().invalidate();
 				response.sendRedirect("/index.jsp");
 				

@@ -175,8 +175,7 @@
                                 <div class="Result_txt">
                                     <div class="review"></div>
                                                 
-                                    <p class="Result_name">${list[0].product_name }</p>
-                               
+                                    <p class="Result_name">술이름</p>
                                     <p class="Result_decs">간단한 설명이 들어갑니다</p>
                                   
                                 </div>
@@ -193,8 +192,7 @@
                                 <div class="Result_txt">
                                     <div class="review"></div>
                                   
-                                    <p class="Result_name">${list[1].product_name}</p>
-                                   
+                                    <p class="Result_name">술이름</p>
                                     <p class="Result_decs">간단한 설명이 들어갑니다</p>
                                 </div>
                             </a>

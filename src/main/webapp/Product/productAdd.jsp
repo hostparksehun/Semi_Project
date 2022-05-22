@@ -59,14 +59,13 @@
 			<h3>이미지 파일 등록</h3>
 			
 		
-			<form action="insertStudentInfoForm" method="post">
+			
 				<div id="smarteditor">
 					<textarea name="editorTxt" id="editorTxt" rows="20" cols="10"
 						placeholder="내용을 입력해주세요" style="width: 800px"></textarea>
-				  
 				</div>
-				 <input type="button" value="제출">
-			</form>
+				 
+			
 
          </div>
 		<script>
@@ -103,24 +102,35 @@
 		</script>
 
 
-
+<form action="/Input.ProductController" method="post">
 
        
-        <div class="input">제품 이름: <input type="text" name="product_name" placeholder="내용을 입력하세요"></div>
-        <div class="input">가격: <input type="text" name="price" placeholder="내용을 입력하세요"></div>
-        <div class="input">알콜 도수: <input type="text" name="abv" placeholder="내용을 입력하세요"></div>
-        <div class="input">판매처 번호: <input type="text" name="dealer_number" placeholder="내용을 입력하세요"></div>
-        <div class="input">용량: <input type="text" name="capacity" placeholder="내용을 입력하세요"></div>
-        <div class="input">상품 코드: <input type="text" name="product_name" placeholder="내용을 입력하세요"></div>
-        <div class="input">생산 업체 코드: <input type="text" name="product_name" placeholder="내용을 입력하세요"></div>
-        <div class="input">생산 지역 코드: <input type="text" name="product_name" placeholder="내용을 입력하세요"></div>
+        <div class="input">제품 이름: <input type="text" id="product_name" name="product_name" placeholder="내용을 입력하세요" required></div>
+        
+        <div class="input">제품 코드: <input type="text" id="product_code" name="product_code" placeholder="내용을 입력하세요"></div>
+        
+        <div class="input">가격: <input type="text" id="price" name="price" placeholder="내용을 입력하세요" required></div>
+        
+        <div class="input">알콜 도수: <input type="text" id="abv" name="abv" placeholder="내용을 입력하세요" required></div>
+        
+        <div class="input">판매처 번호: <input type="text" id="dealer_number" name="dealer_number" placeholder="내용을 입력하세요" required></div>
+        
+        <div class="input">용량: <input type="text" id="capacity" name="capacity" placeholder="내용을 입력하세요" required></div>
+        
+        <div class="input">상품 코드: <input type="text" id="product_cod" name="product_cod" placeholder="내용을 입력하세요" required></div>
+        
+        <div class="input">생산 업체 코드: <input type="text" id="producer_name" name="producer_name" placeholder="내용을 입력하세요"></div>
+        
+        <div class="input">생산 지역 코드: <input type="text" id="product_area" name="product_area" placeholder="내용을 입력하세요"></div>
+        
+        <div class="input">주소1: <input type="text" id="adress1" name="adress1" placeholder="내용을 입력하세요"></div>
+        
+        <div class="input">주소2: <input type="text" id="adress2" name="adress2" placeholder="내용을 입력하세요"></div>
       
-    
- 
-    
+        
+    <input type="submit" value="제출">
 
-      
-
+ </form>
 
 
 

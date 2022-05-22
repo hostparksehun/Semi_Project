@@ -30,9 +30,42 @@ private static ProductDAO instance = null;
 		DataSource ds =(DataSource)ctx.lookup("java:comp/env/jdbc/oracle");
 		return ds.getConnection();
 	}
+	
+	
+	public int insert(ProductDTO dto) throws Exception{
+		
+		String sql = "insert into product_info values(?, ?, ?, product_seq.nextval, 0, ?, 0, 0, ?, ?, ?, ?, ?, ?)";
+       
+	try(Connection con = this.getConnection();
+			PreparedStatement pstat = con.prepareStatement(sql);) 
+	{
+	   
+		pstat.setString(1, dto.getProduct_name());
+		pstat.setString(2, dto.getProduct_area());
+	    pstat.setString(3, dto.getProducer_name());
+	    pstat.setString(4, dto.getProduct_code());
+	    pstat.setInt(5, dto.getPrice());
+	    pstat.setInt(6, dto.getAbv());
+	    pstat.setString(7, dto.getDealer_number());
+        pstat.setString(8, dto.getAdress1());
+        pstat.setString(9, dto.getAdress2());
+	    pstat.setInt(10, dto.getCapacity());
+	    
+	    
+	    int result = pstat.executeUpdate();
+	    
+	    con.commit();
+	    
+	    return result;
+	    
+	   }
+							
+	}
+	
+	
 		
 	public List<ProductDTO> selectAll() throws Exception{
-		String sql = "select * form product_info";
+		String sql = "select * from product_info";
 		try(Connection con = this.getConnection(); 
 				PreparedStatement pstat = con.prepareStatement(sql);
 				ResultSet rs = pstat.executeQuery();

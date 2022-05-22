@@ -17,10 +17,12 @@ public class ProductDTO {
 	private String adress2;
 	private int capacity;
 	
+	
+	public ProductDTO() {}
 	public ProductDTO(String product_name, String product_area, String producer_name, int seq, int file_index,
 			String product_code, int kind, int choose_count, int price, int abv, String dealer_number, String adress1,
 			String adress2, int capacity) {
-		super();
+		
 		this.product_name = product_name;
 		this.product_area = product_area;
 		this.producer_name = producer_name;

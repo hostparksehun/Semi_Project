@@ -33,8 +33,8 @@ public class SearchController extends HttpServlet {
 				boolean[] searchType = new boolean[] {false, false, false, false, false};
 				
 				// 검색 객체
-				String[] alcholArr;
-				String[] areaArr; 
+				String[] alcholArr = new String[] {"null", "null", "null", "null", "null"}; // 5개
+				String[] areaArr = new String[] {"null", "null", "null", "null", "null", "null"}; // 6개
 				String[] gradeString;
 				String product_name;
 				float abv;
@@ -73,8 +73,14 @@ public class SearchController extends HttpServlet {
 				
 				if(!(request.getParameterValues("alchol") == null)) { // 술 종류를 택했다면
 					
-					alcholArr = request.getParameterValues("alchol");
-					searchType[1] = true;
+					searchType[1] = true; // 검색 조건을 활성화하고
+					
+					for(int i=0; i<request.getParameterValues("alchol").length; i++) {
+						
+						alcholArr[i] = request.getParameterValues("alchol")[i];
+						
+					}
+					
 					
 				} else {
 					
@@ -83,8 +89,14 @@ public class SearchController extends HttpServlet {
 				
 				if(!(request.getParameterValues("area") == null)) {
 					
-					areaArr = request.getParameterValues("area");
-					searchType[2] = true;
+					searchType[2] = true; // 검색 조건을 활성화
+					
+					for(int i=0; i<request.getParameterValues("area").length; i++) {
+						
+						areaArr[i] = request.getParameterValues("area")[i];
+						
+					}
+					
 					
 				} else {
 					
@@ -124,25 +136,42 @@ public class SearchController extends HttpServlet {
 					
 					
 				// 상세 검색
-				} else if ((product_name) == null && (areaArr != null || gradeString != null || abv != 0 || alcholArr != null || grade != 0)) {
+				} else if ((product_name) == null && (areaArr != null || gradeString != null || abv != 0 || alcholArr != null || grade != 0)) { // 입력 텍스트 안 보냄
+					
+					sql = searchApp.getSql(searchType);
+					
+					System.out.println(sql);
+					
+					List<SearchDTO> list = sDAO.searchDetail(searchType, alcholArr, areaArr, grade, abv, sql);
+					
+					// JSP로 넘길 예정
+					for (SearchDTO dto : list) {
+						
+						System.out.println("상품명 : " + dto.getProduct_name());
+						System.out.println("상품코드 : " + dto.getProduct_code());
+						System.out.println("게시글 번호 : " + dto.getSeq());
+						System.out.println("첨부파일 번호 : " + dto.getFile_index());
+						
+					}
+					
+					
+				} else if ((product_name) != null && (areaArr != null || gradeString != null || abv != 0 || alcholArr != null || grade != 0)) { // 입력 텍스트 보냄
 					
 					sql = searchApp.getSql(searchType);
 					System.out.println(sql);
 					
+					List<SearchDTO> list = sDAO.searchDetailHasPname(searchType, product_name, alcholArr, areaArr, grade, abv, sql);
 					
-					
-				} else if ((product_name) != null && (areaArr != null || gradeString != null || abv != 0 || alcholArr != null || grade != 0)) {
-					
-					sql = searchApp.getSql(searchType);
-					System.out.println(sql);
-					
+					// JSP로 넘길 예정
+					for (SearchDTO dto : list) {
+						
+						System.out.println("상품명 : " + dto.getProduct_name());
+						System.out.println("상품코드 : " + dto.getProduct_code());
+						System.out.println("게시글 번호 : " + dto.getSeq());
+						System.out.println("첨부파일 번호 : " + dto.getFile_index());
+						
+					}
 				}
-				
-				
-				
-							
-				
-				
 			}
 			
 			

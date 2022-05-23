@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+@charset "utf-8";
+
+/* * {
+    box-sizing: border-box;
+}
+
+div {
+    border: 1px solid black;
+} */
+
+/* 기본 CSS - header, footer */
+#logo {
+    width: 150px;
+    height: auto;
+}
+
+#content {
+    height: 600px;
+}
+
+#drop img {
+    height: 30px;
+    width: 30px;
+}
+
+#search img {
+    height: 30px;
+    width: 30px;
+}
+
+#contents img {
+    width: 100%;
+    height: 500px;
+}
+
+/* Content */
+#manager_head {
+    padding-top: 5%;
+}

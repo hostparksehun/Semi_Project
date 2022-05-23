@@ -8,6 +8,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.eclipse.jdt.internal.compiler.lookup.TagBits;
+
 import DTO.SearchDTO;
 
 
@@ -65,7 +67,7 @@ public class SearchDAO {
 	// 일반 검색
 	public List<SearchDTO> SearchByText(String product_name) throws Exception{
 
-		String sql = "select product_name, seq, kind, price, abv, grade, smry from product_info where search_name like '%'||?||'%'";
+		String sql = "select row_number() over(order by product_name desc) index, product_name, seq, kind, price, abv, grade, smry, ori_name, sys_name from product_info where search_name like '%'||?||'%'";
 
 		try(
 				Connection con = this.getConnection();
@@ -81,7 +83,8 @@ public class SearchDAO {
 				List<SearchDTO> list = new ArrayList<SearchDTO>();
 
 				while(rs.next()) {
-
+					
+					int index = rs.getInt("index");
 					String pname = rs.getString("product_name");
 					int seq = rs.getInt("seq");
 					int price = rs.getInt("price");
@@ -89,8 +92,10 @@ public class SearchDAO {
 					float abv = rs.getFloat("abv");
 					int grade = rs.getInt("grade");
 					String smry = rs.getString("smry");
+					String oriName = rs.getString("ori_name");
+					String sysName = rs.getString("sys_name");
 
-					SearchDTO dto = new SearchDTO(pname, seq, kind, price, abv, grade, smry);
+					SearchDTO dto = new SearchDTO(index,pname, seq, kind, price, abv, grade, smry, oriName, sysName);
 
 					list.add(dto);
 				}
@@ -235,7 +240,8 @@ public class SearchDAO {
 				List<SearchDTO> list = new ArrayList<SearchDTO>();
 
 				while(rs.next()) {
-
+					
+					int index = rs.getInt("index");
 					String pname = rs.getString("product_name");
 					int seq = rs.getInt("seq");
 					int price = rs.getInt("price");
@@ -243,8 +249,10 @@ public class SearchDAO {
 					float rAbv = rs.getFloat("abv");
 					int rGrade = rs.getInt("grade");
 					String smry = rs.getString("smry");
+					String oriName = rs.getString("ori_name");
+					String sysName = rs.getString("sys_name");
 
-					SearchDTO dto = new SearchDTO(pname, seq, kind, price, rAbv, rGrade, smry);
+					SearchDTO dto = new SearchDTO(index, pname, seq, kind, price, rAbv, rGrade, smry, oriName, sysName);
 
 					list.add(dto);
 				}
@@ -409,7 +417,8 @@ public class SearchDAO {
 				List<SearchDTO> list = new ArrayList<SearchDTO>();
 
 				while(rs.next()) {
-
+					
+					int index = rs.getInt("index");
 					String pname = rs.getString("product_name");
 					int seq = rs.getInt("seq");
 					int price = rs.getInt("price");
@@ -417,9 +426,10 @@ public class SearchDAO {
 					float rAbv = rs.getFloat("abv");
 					int rGrade = rs.getInt("grade");
 					String smry = rs.getString("smry");
+					String oriName = rs.getString("ori_name");
+					String sysName = rs.getString("sys_name");
 
-					SearchDTO dto = new SearchDTO(pname, seq, kind, price, rAbv, rGrade, smry);
-
+					SearchDTO dto = new SearchDTO(index, pname, seq, kind, price, rAbv, rGrade, smry, oriName, sysName);
 					list.add(dto);
 				}
 

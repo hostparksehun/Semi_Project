@@ -1,66 +1,100 @@
 package DTO;
 
 public class ProductDTO {
-
+	// 수정 -- 시작
 	private String product_name;
+	private String search_name;
 	private String product_area;
-	private String producer_name;
-	private int seq; 
-	private int file_index;
+	private int seq;
 	private String product_code;
-	private int kind;
+	private String kind;
 	private int choose_count;
 	private int price;
-	private int abv;
-	private String dealer_number;
+	private float abv;
 	private String adress1;
 	private String adress2;
+	private String brewery;
 	private int capacity;
+	private float grade;
+	private String smry;
+	private String oriName;
+	private String sysName;
 	
+	public ProductDTO() {
+		super();
+	}
+
+//	public ProductDTO(String product_name, String search_name,String product_area, int seq, String product_code, String kind,
+//			int choose_count, int price, float abv, String brewery,String adress1, String adress2, int capacity, float grade,
+//			String smry, String oriName, String sysName) {
+//		this.product_name = product_name;
+//		this.search_name = search_name;
+//		this.product_area = product_area;
+//		this.seq = seq;
+//		this.product_code = product_code;
+//		this.kind = kind;
+//		this.choose_count = choose_count;
+//		this.price = price;
+//		this.abv = abv;
+//		this.brewery = brewery;
+//		this.adress1 = adress1;
+//		this.adress2 = adress2;
+//		this.capacity = capacity;
+//		this.grade = grade;
+//		this.smry = smry;
+//		this.oriName = oriName;
+//		this.sysName = sysName;
+//	}
 	
-	public ProductDTO() {}
-	public ProductDTO(String product_name, String product_area, String producer_name, int seq, int file_index,
-			String product_code, int kind, int choose_count, int price, int abv, String dealer_number, String adress1,
-			String adress2, int capacity) {
-		
+	public ProductDTO(String product_name, String search_name, String product_area, int seq, String product_code,
+			String kind, int choose_count, int price, float abv, String adress1, String adress2, String brewery,
+			int capacity, float grade, String smry, String oriName, String sysName) {
+		super();
 		this.product_name = product_name;
+		this.search_name = search_name;
 		this.product_area = product_area;
-		this.producer_name = producer_name;
 		this.seq = seq;
-		this.file_index = file_index;
 		this.product_code = product_code;
 		this.kind = kind;
 		this.choose_count = choose_count;
 		this.price = price;
 		this.abv = abv;
-		this.dealer_number = dealer_number;
 		this.adress1 = adress1;
 		this.adress2 = adress2;
+		this.brewery = brewery;
 		this.capacity = capacity;
+		this.grade = grade;
+		this.smry = smry;
+		this.oriName = oriName;
+		this.sysName = sysName;
 	}
 
 	public String getProduct_name() {
 		return product_name;
 	}
 
+
+
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
 	}
 
+	
+	public String getSearch_name() {
+		return search_name;
+	}
+
+	public void setSearch_name(String search_name) {
+		this.search_name = search_name;
+	}
+
+	
 	public String getProduct_area() {
 		return product_area;
 	}
 
 	public void setProduct_area(String product_area) {
 		this.product_area = product_area;
-	}
-
-	public String getProducer_name() {
-		return producer_name;
-	}
-
-	public void setProducer_name(String producer_name) {
-		this.producer_name = producer_name;
 	}
 
 	public int getSeq() {
@@ -71,14 +105,6 @@ public class ProductDTO {
 		this.seq = seq;
 	}
 
-	public int getFile_index() {
-		return file_index;
-	}
-
-	public void setFile_index(int file_index) {
-		this.file_index = file_index;
-	}
-
 	public String getProduct_code() {
 		return product_code;
 	}
@@ -87,11 +113,11 @@ public class ProductDTO {
 		this.product_code = product_code;
 	}
 
-	public int getKind() {
+	public String getKind() {
 		return kind;
 	}
 
-	public void setKind(int kind) {
+	public void setKind(String kind) {
 		this.kind = kind;
 	}
 
@@ -111,20 +137,20 @@ public class ProductDTO {
 		this.price = price;
 	}
 
-	public int getAbv() {
+	public float getAbv() {
 		return abv;
 	}
 
-	public void setAbv(int abv) {
+	public void setAbv(float abv) {
 		this.abv = abv;
 	}
-
-	public String getDealer_number() {
-		return dealer_number;
+	
+	public String getBrewery() {
+		return brewery;
 	}
 
-	public void setDealer_number(String dealer_number) {
-		this.dealer_number = dealer_number;
+	public void setBrewery(String brewery) {
+		this.brewery = brewery;
 	}
 
 	public String getAdress1() {
@@ -150,4 +176,45 @@ public class ProductDTO {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
+
+	public float getGrade() {
+		return grade;
+	}
+
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+
+	public String getSmry() {
+		return smry;
+	}
+
+	public void setSmry(String smry) {
+		this.smry = smry;
+	}
+
+	public String getOriName() {
+		return oriName;
+	}
+
+	public void setOriName(String oriName) {
+		this.oriName = oriName;
+	}
+
+	public String getSysName() {
+		return sysName;
+	}
+
+	public void setSysName(String sysName) {
+		this.sysName = sysName;
+	}
+	
+	
+	
+	
+
+	// ----> 수정 끝
+	
+	
+	
 }

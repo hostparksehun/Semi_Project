@@ -2,9 +2,9 @@ package DTO;
 
 public class SearchDTO {
 	
+	private int index;
 	private String product_name;
 	private String product_area;
-//	private String producer_name;
 	private int seq;
 	private String product_code;
 	private String kind;
@@ -16,59 +16,18 @@ public class SearchDTO {
 	private int capacity;
 	private int grade;
 	private String smry;
+	private String oriName;
+	private String sysName;
 	
 	
-	
-	// 명시 생성자
-	public SearchDTO(String product_name, String product_area, int seq,
-			String product_code, String kind, int choose_count, int price, float abv, String dealer_number,
-			String adress1, String adress2, int capacity, int grade) {
-		this.product_name = product_name;
-		this.product_area = product_area;
-		this.seq = seq;
-		this.product_code = product_code;
-		this.kind = kind;
-		this.choose_count = choose_count;
-		this.price = price;
-		this.abv = abv;
-		this.adress1 = adress1;
-		this.adress2 = adress2;
-		this.capacity = capacity;
-		this.grade = grade;
-	}
-
-
 	// 비명시 생성자
 	public SearchDTO() {
 		super();
 	}
-
-
-	// 일반 검색용 생성자
-	public SearchDTO(String product_name, int seq, String product_code) {
-		super();
-		this.product_name = product_name;
-		this.seq = seq;
-		this.product_code = product_code;
-	}
-
-
-	// 상세 검색 생성자(상품명, 생산지역, 게시글 번호, 파일 번호, 상품 코드, 종류, 가격, 알콜 도수, 평점)
-	public SearchDTO(String product_name, String product_area, int seq, int file_index, String product_code,
-			String kind, int price, float abv, int grade) {
-		super();
-		this.product_name = product_name;
-		this.product_area = product_area;
-		this.seq = seq;
-		this.product_code = product_code;
-		this.kind = kind;
-		this.price = price;
-		this.abv = abv;
-		this.grade = grade;
-	}
 	
 	// 출력용
-	public SearchDTO(String product_name, int seq, String kind, int price, float abv, int grade, String smry) {
+	public SearchDTO(int index, String product_name, int seq, String kind, int price, float abv, int grade, String smry, String oriName, String sysName) {
+		this.index = index;
 		this.product_name = product_name;
 		this.seq = seq;
 		this.kind = kind;
@@ -76,15 +35,26 @@ public class SearchDTO {
 		this.abv = abv;
 		this.grade = grade;
 		this.smry = smry;
+		this.oriName = oriName;
+		this.sysName = sysName;
 	}
 
 	
 //----------------------------------------------------------------------------------------------------------------------------//
+	
+	public int getIndex() {
+		return index;
+	}
 
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+		
+	
 	public String getProduct_name() {
 		return product_name;
 	}
-
 
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
@@ -208,6 +178,23 @@ public class SearchDTO {
 		this.smry = smry;
 	}
 	
-	
+	public String getOriName() {
+		return oriName;
+	}
+
+
+	public void setOriName(String oriName) {
+		this.oriName = oriName;
+	}
+
+
+	public String getSysName() {
+		return sysName;
+	}
+
+
+	public void setSysName(String sysName) {
+		this.sysName = sysName;
+	}
 
 }

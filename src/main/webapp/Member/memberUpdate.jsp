@@ -23,6 +23,7 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
   <title>우리술夜</title>
 
@@ -155,13 +156,14 @@
           <div><input type="text" id="phone" name="phone" placeholder="ex)01012349876" class="join-input"></div>
           <div class="check" id="phoneCheckinfo">확인용</div>
         </div>
-        <div class="join-box">
-          <div class="title">우편번호<br></div>
-          <div>
-            <input type="text" name="zipcode" id="zipcode" class="join-input">
-            <button type="button" class="btn btn-secondary" id="zipcode_find">찾기</button>
-          </div>
+       <div class="join-box">
+        <div class="title">우편번호<br></div>
+        <div>
+          <input type="text" name="zipcode" id="zipcode" class="join-input"/>
+          <button type="button" onclick="execDaumPostcode()"
+          class="btn btn-secondary" id="zipcode_find">찾기</button>
         </div>
+      </div>
         <div class="join-box">
           <div class="title">주소<br></div>
           <div>
@@ -193,5 +195,24 @@
         </ul>
         <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
       </footer>
+      
+      <script>
+    //우편번호
+      function execDaumPostcode() {
+    		new daum.Postcode({
+    			oncomplete : function(data) {
+    				var addr = "";
+
+    				if (data.userSelectedType === "R") {
+    					addr = data.roadAddress;
+    				}
+
+    				document.getElementById("zipcode").value = data.zonecode;
+    				document.getElementById("address1").value = addr;
+    				document.getElementById("address2").focus();
+    				},
+    			}).open();
+    		}
+      </script>
 </body>
 </html>

@@ -1,15 +1,17 @@
 @charset "UTF-8";
 
+
 #logo {
-	width: 150px;
-	height: auto;
+  width: 150px;
+  height: auto;
 }
 
 /* 검색바 */
+
 * {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -66,13 +68,13 @@ button {
 .form_list_input label {
 	float: left;
 	display: none;
+
 }
 
 /*---------검색-----------*/
 .banner_top {
-	font-size: 2rem;
-}
-
+font-size: 2rem;
+	}
 .banner_bot {
 	font-size: 1.5rem;
 }
@@ -147,3 +149,6 @@ button {
 	display: inline-block;
 	text-decoration: none;
 }
+
+
+

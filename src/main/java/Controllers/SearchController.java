@@ -121,16 +121,23 @@ public class SearchController extends HttpServlet {
 				
 				// 일반 검색
 				if ((product_name) != null && areaArr == null && gradeString == null && abv == 0 && alcholArr == null ) {
+
 					System.out.println(product_name);
 					List<SearchDTO> list = sDAO.SearchByText(product_name);
+					
+					int count = list.size();
 					
 					// JSP로 넘길 예정
 					for (SearchDTO dto : list) {
 						
-						System.out.println("상품명 : " + dto.getProduct_name());
-						System.out.println("상품코드 : " + dto.getProduct_code());
 						System.out.println("게시글 번호 : " + dto.getSeq());
-						System.out.println("첨부파일 번호 : " + dto.getFile_index());
+						System.out.println("상품명 : " + dto.getProduct_name());
+						System.out.println("술 종류 : " + dto.getKind());
+						System.out.println("가격 : " + dto.getPrice());
+						System.out.println("도수 : " + dto.getAbv());
+						System.out.println("평점 : " + dto.getGrade());
+						System.out.println("설명 : " + dto.getSmry());
+						System.out.println();
 						
 					}
 					
@@ -144,13 +151,19 @@ public class SearchController extends HttpServlet {
 					
 					List<SearchDTO> list = sDAO.searchDetail(searchType, alcholArr, areaArr, grade, abv, sql);
 					
+					int count = list.size();
+					
 					// JSP로 넘길 예정
 					for (SearchDTO dto : list) {
 						
-						System.out.println("상품명 : " + dto.getProduct_name());
-						System.out.println("상품코드 : " + dto.getProduct_code());
 						System.out.println("게시글 번호 : " + dto.getSeq());
-						System.out.println("첨부파일 번호 : " + dto.getFile_index());
+						System.out.println("상품명 : " + dto.getProduct_name());
+						System.out.println("술 종류 : " + dto.getKind());
+						System.out.println("가격 : " + dto.getPrice());
+						System.out.println("도수 : " + dto.getAbv());
+						System.out.println("평점 : " + dto.getGrade());
+						System.out.println("설명 : " + dto.getSmry());
+						System.out.println();
 						
 					}
 					
@@ -162,13 +175,19 @@ public class SearchController extends HttpServlet {
 					
 					List<SearchDTO> list = sDAO.searchDetailHasPname(searchType, product_name, alcholArr, areaArr, grade, abv, sql);
 					
+					int count = list.size();
+					
 					// JSP로 넘길 예정
 					for (SearchDTO dto : list) {
 						
-						System.out.println("상품명 : " + dto.getProduct_name());
-						System.out.println("상품코드 : " + dto.getProduct_code());
 						System.out.println("게시글 번호 : " + dto.getSeq());
-						System.out.println("첨부파일 번호 : " + dto.getFile_index());
+						System.out.println("상품명 : " + dto.getProduct_name());
+						System.out.println("술 종류 : " + dto.getKind());
+						System.out.println("가격 : " + dto.getPrice());
+						System.out.println("도수 : " + dto.getAbv());
+						System.out.println("평점 : " + dto.getGrade());
+						System.out.println("설명 : " + dto.getSmry());
+						System.out.println();
 						
 					}
 				}

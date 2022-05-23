@@ -85,33 +85,34 @@
                 </svg>
               </button>
             </form>
-<c:choose>
-			<c:when test="${loginID !=null}">
-					
-					   ${loginID }
-					
-					<button type=button id="mypage">마이페이지</button>
-					<button type=button id="logout">로그아웃</button>
-			<script>
-				$("#mypage").on("click",function(){
-					location.href="/mypage.member";
-				})
-				$("#logout").on("click",function(){
-					location.href="/logout.member"
-				})
-				</script>
-			</c:when>
-			<c:otherwise>
-  <button id=login type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-  <button id=join type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
-			</c:otherwise>
-	</c:choose>
 
+			<c:choose>
+	        	<c:when test="${loginID !=null}">
+					${loginID }
+		               <button type=button id="mypage">마이페이지</button>
+		               <button type=button id="logout">로그아웃</button>
+	
+			        <script>
+			            $("#mypage").on("click",function(){
+			               location.href="/mypage.member";
+			            })
+			            $("#logout").on("click",function(){
+			               location.href="/logout.member"
+			            })
+		            </script>
+				</c:when>
+				<c:otherwise>
+					<button id=login type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+					<button id=join type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+				</c:otherwise>
+			</c:choose>
+			
           </div>
         </div>
       </nav>
     </header>
 
+<<<<<<< HEAD
     
         <div><a href="add.ProductController">상품등록</a></div>
   
@@ -126,6 +127,16 @@
   </script>
 
     
+=======
+      <script>
+		  $("#join").on("click",function(){
+		      location.href="/Member/joinView.jsp";
+		   })
+		  $("#login").on("click",function(){
+		     location.href="/Member/loginView.jsp"
+		  })
+	  </script>
+>>>>>>> 59c4ebb42d20d600a32b09ba4387b5d05d504332
 
     <div class="row" id="main">
       <div class="col-12" id="contents" >
@@ -211,17 +222,6 @@
     </footer>
 
   </div>
-  
-  <script>
-  	$("#join").on("click", function() {
-		location.href = "/Member/joinView.jsp";
-	})
-
-	$("#board").on("click", function() {
-		location.href = "/Board/boardList.jsp";
-	})
-	
-  </script>
   
 </body>
 </html>

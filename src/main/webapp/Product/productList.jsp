@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +28,8 @@
     <script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
 
     <title>우리술 목록</title>
+
+
 
 
 
@@ -165,8 +168,12 @@
                     <!----------------------------------- Result  ----------------------------------->
                 
                     <div class="row m-auto">
-                     
                  
+              
+              <c:if test="${fn:length(list) < 4}">
+
+             
+                     <c:forEach var="i" items="${list }">            
                         <div class="col-4">
                             <a href="productDetail.jsp">
                                 <div class="Result_img">
@@ -174,172 +181,162 @@
                                 </div>
                                 <div class="Result_txt">
                                     <div class="review"></div>
-                                                
-                                    <p class="Result_name">${list[0].product_name }</p>
+                                    
+                                    <p class="Result_name">${i.product_name }</p>
                                
                                     <p class="Result_decs">간단한 설명이 들어갑니다</p>
                                   
                                 </div>
                             </a>
                         </div>
-                        
-                        
-                        
-                        <div class="col-4">
-                            <a href="#">
-                                <div class="Result_img">
-                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
-                                </div>
-                                <div class="Result_txt">
-                                    <div class="review"></div>
+                     </c:forEach>
+                  
+                 </c:if>
+<!--                         <div class="col-4"> -->
+<!--                             <a href="#"> -->
+<!--                                 <div class="Result_img"> -->
+<!--                                     <img src="https://picsum.photos/id/1020/150/150" class="w-100"> -->
+<!--                                 </div> -->
+<!--                                 <div class="Result_txt"> -->
+<!--                                     <div class="review"></div> -->
                                   
-                                    <p class="Result_name">${list[1].product_name}</p>
+<%--                                     <p class="Result_name">${i.product_name}</p> --%>
                                    
-                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
-                                </div>
-                            </a>
+<!--                                     <p class="Result_decs">간단한 설명이 들어갑니다</p> -->
+<!--                                 </div> -->
+<!--                             </a> -->
                             
-                        </div>
+<!--                         </div> -->
 
 
-                        <div class="col-4">
-                            <a href="#">
-                                <div class="Result_img">
-                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
-                                </div>
-                                <div class="Result_txt">
-                                    <div class="review"></div>
-                                    <p class="Result_name">술이름</p>
-                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
-                                </div>
-                            </a>
-                        </div>
+<!--                         <div class="col-4"> -->
+<!--                             <a href="#"> -->
+<!--                                 <div class="Result_img"> -->
+<!--                                     <img src="https://picsum.photos/id/1020/150/150" class="w-100"> -->
+<!--                                 </div> -->
+<!--                                 <div class="Result_txt"> -->
+<!--                                     <div class="review"></div> -->
+<!--                                     <p class="Result_name">술이름</p> -->
+<!--                                     <p class="Result_decs">간단한 설명이 들어갑니다</p> -->
+<!--                                 </div> -->
+<!--                             </a> -->
+<!--                         </div> -->
 
-                        <div class="col-12 w-100 mb-2"></div>
+<!--                         <div class="col-12 w-100 mb-2"></div> -->
 
-                        <div class="col-12 w-100">
-                            <div class="area_btn">
-                                <a href="/productAll_01.ProductController" class="h_btn">전체보기</a>
-                               </div>
-                            </div>
+<!--                         <div class="col-12 w-100"> -->
+<!--                             <div class="area_btn"> -->
+<!--                                 <a href="/productAll_01.ProductController" class="h_btn">전체보기</a> -->
+<!--                                </div> -->
+<!--                             </div> -->
                             
                     
                     
-                        <div class="col-4">
-                            <a href="#">
-                                <div class="Result_img">
-                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
-                                </div>       
-                                <div class="Result_txt">
-                                    <div class="review"></div>
-                                   <p class="Result_name">술이름</p>
-                                   <p class="Result_decs">간단한 설명이 들어갑니다</p>
-                                </div>
-                            </a>
-                        </div>
+<!--                         <div class="col-4"> -->
+<!--                             <a href="#"> -->
+<!--                                 <div class="Result_img"> -->
+<!--                                     <img src="https://picsum.photos/id/1020/150/150" class="w-100"> -->
+<!--                                 </div>        -->
+<!--                                 <div class="Result_txt"> -->
+<!--                                     <div class="review"></div> -->
+<!--                                    <p class="Result_name">술이름</p> -->
+<!--                                    <p class="Result_decs">간단한 설명이 들어갑니다</p> -->
+<!--                                 </div> -->
+<!--                             </a> -->
+<!--                         </div> -->
 
-                        <div class="col-4">
-                            <a href="#">
-                                <div class="Result_img">
-                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
-                                </div>
-                                <div class="Result_txt">
-                                    <div class="review"></div>
-                                    <p class="Result_name">술이름</p>
-                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
-                                </div>
-                            </a>
+<!--                         <div class="col-4"> -->
+<!--                             <a href="#"> -->
+<!--                                 <div class="Result_img"> -->
+<!--                                     <img src="https://picsum.photos/id/1020/150/150" class="w-100"> -->
+<!--                                 </div> -->
+<!--                                 <div class="Result_txt"> -->
+<!--                                     <div class="review"></div> -->
+<!--                                     <p class="Result_name">술이름</p> -->
+<!--                                     <p class="Result_decs">간단한 설명이 들어갑니다</p> -->
+<!--                                 </div> -->
+<!--                             </a> -->
                      
-                        </div>
+<!--                         </div> -->
 
 
-                        <div class="col-4">
-                            <a href="#">
-                                <div class="Result_img">
-                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
-                                </div>
-                                <div class="Result_txt">
-                                    <div class="review"></div>
-                                    <p class="Result_name">술이름</p>
-                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
-                                </div>
-                            </a>
-                        </div>
+<!--                         <div class="col-4"> -->
+<!--                             <a href="#"> -->
+<!--                                 <div class="Result_img"> -->
+<!--                                     <img src="https://picsum.photos/id/1020/150/150" class="w-100"> -->
+<!--                                 </div> -->
+<!--                                 <div class="Result_txt"> -->
+<!--                                     <div class="review"></div> -->
+<!--                                     <p class="Result_name">술이름</p> -->
+<!--                                     <p class="Result_decs">간단한 설명이 들어갑니다</p> -->
+<!--                                 </div> -->
+<!--                             </a> -->
+<!--                         </div> -->
                      
                     
-                        <div class="col-12 w-100"></div>
+<!--                         <div class="col-12 w-100"></div> -->
 
-                        <div class="col-12 w-100">
-                        <div class="area_btn">
-                            <a href=" /productAll_02.ProductController" class="h_btn">전체보기</a>
-                           </div>
-                        </div>
+<!--                         <div class="col-12 w-100"> -->
+<!--                         <div class="area_btn"> -->
+<!--                             <a href=" /productAll_02.ProductController" class="h_btn">전체보기</a> -->
+<!--                            </div> -->
+<!--                         </div> -->
 
-                        <div class="col-4">
-                            <a href="#">
-                                <div class="Result_img">
-                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
-                                </div>
-                                <div class="Result_txt">
-                                    <div class="review"></div>
-                                     <p class="Result_name">술이름</p>
-                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
-                                </div>
-                            </a>
-                        </div>
+<!--                         <div class="col-4"> -->
+<!--                             <a href="#"> -->
+<!--                                 <div class="Result_img"> -->
+<!--                                     <img src="https://picsum.photos/id/1020/150/150" class="w-100"> -->
+<!--                                 </div> -->
+<!--                                 <div class="Result_txt"> -->
+<!--                                     <div class="review"></div> -->
+<!--                                      <p class="Result_name">술이름</p> -->
+<!--                                     <p class="Result_decs">간단한 설명이 들어갑니다</p> -->
+<!--                                 </div> -->
+<!--                             </a> -->
+<!--                         </div> -->
 
-                        <div class="col-4">
-                            <a href="#">
-                                <div class="Result_img">
-                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
-                                </div>
-                                <div class="Result_txt">
-                                    <div class="review"></div>
-                                    <p class="Result_name">술이름</p>
-                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
-                                </div>
-                            </a>
-                        </div>
-
-
-                        <div class="col-4">
-                            <a href="#">
-                                <div class="Result_img">
-                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
-                                </div>
-                                <div class="Result_txt">
-                                    <div class="review"></div>
-                                    <p class="Result_name">술이름</p>
-                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="col-12 w-100 mb-2"></div>
+<!--                         <div class="col-4"> -->
+<!--                             <a href="#"> -->
+<!--                                 <div class="Result_img"> -->
+<!--                                     <img src="https://picsum.photos/id/1020/150/150" class="w-100"> -->
+<!--                                 </div> -->
+<!--                                 <div class="Result_txt"> -->
+<!--                                     <div class="review"></div> -->
+<!--                                     <p class="Result_name">술이름</p> -->
+<!--                                     <p class="Result_decs">간단한 설명이 들어갑니다</p> -->
+<!--                                 </div> -->
+<!--                             </a> -->
+<!--                         </div> -->
 
 
-                        <div class="col-12 w-100">
-                            <div class="area_btn">
-                                <a href="/productAll_03.ProductController" class="h_btn">전체보기</a>
-                               </div>
-                            </div>
+<!--                         <div class="col-4"> -->
+<!--                             <a href="#"> -->
+<!--                                 <div class="Result_img"> -->
+<!--                                     <img src="https://picsum.photos/id/1020/150/150" class="w-100"> -->
+<!--                                 </div> -->
+<!--                                 <div class="Result_txt"> -->
+<!--                                     <div class="review"></div> -->
+<!--                                     <p class="Result_name">술이름</p> -->
+<!--                                     <p class="Result_decs">간단한 설명이 들어갑니다</p> -->
+<!--                                 </div> -->
+<!--                             </a> -->
+<!--                         </div> -->
+
+<!--                         <div class="col-12 w-100 mb-2"></div> -->
+
+
+<!--                         <div class="col-12 w-100"> -->
+<!--                             <div class="area_btn"> -->
+<!--                                 <a href="/productAll_03.ProductController" class="h_btn">전체보기</a> -->
+<!--                                </div> -->
+<!--                             </div> -->
 
                             
                      
-                        <div class="col-12 w-100 mb-2 mt-3" id="pagination">
-                            <nav aria-label="...">
-                                <ul class="pagination pagination-sm justify-content-center m-auto">
-                                    <li class="page-item active" aria-current="page">
-                                        <span class="page-link">1</span>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                </ul>
-                            </nav>
-                        </div>
+                       
 
 
-                    </div>
+<!--                     </div> -->
 
 
 

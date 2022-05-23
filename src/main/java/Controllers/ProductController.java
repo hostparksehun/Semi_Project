@@ -29,7 +29,7 @@ public class ProductController extends HttpServlet {
 				list = dao.selectAll();
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("/Product/productList.jsp").forward(request, response);
-//				response.sendRedirect("/Product/productList.jsp");
+
 	            
 		}else if(uri.equals("/productAll_01.ProductController")){
 		

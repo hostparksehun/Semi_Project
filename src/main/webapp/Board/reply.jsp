@@ -215,9 +215,9 @@
 		
 		$(".modify").on("click", function(){
 			
-			$($(this).parent().sibling().children()[1].attr("contenteditable","true");
+			$($(this).parent().sibling().children()[0].attr("contenteditable","true");
 			
-			$($(this).praent().siblings().children()[1].focus();
+			$($(this).praent().siblings().children()[0].focus();
 			
 			$(this).css("display", "none");
 			$(#"rDel").css("display", "none");
@@ -236,8 +236,8 @@
 				location.reload();
 			})
 			
-			$(".reply_contents").append(okBtn);
-			$(".replt_contents").append(cencelBtn);
+			$(this).parent(".container").children(".reply_contents").append(okBtn);
+			$(this).parent(".container").children(".reply_contents").prepend(cancelBtn);
 			
 		});
 			

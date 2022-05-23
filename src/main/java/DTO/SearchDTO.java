@@ -4,9 +4,8 @@ public class SearchDTO {
 	
 	private String product_name;
 	private String product_area;
-	private String producer_name;
+//	private String producer_name;
 	private int seq;
-	private int file_index;
 	private String product_code;
 	private String kind;
 	private int choose_count;
@@ -16,17 +15,17 @@ public class SearchDTO {
 	private String adress2;
 	private int capacity;
 	private int grade;
+	private String smry;
+	
 	
 	
 	// 명시 생성자
-	public SearchDTO(String product_name, String product_area, String producer_name, int seq, int file_index,
+	public SearchDTO(String product_name, String product_area, int seq,
 			String product_code, String kind, int choose_count, int price, float abv, String dealer_number,
 			String adress1, String adress2, int capacity, int grade) {
 		this.product_name = product_name;
 		this.product_area = product_area;
-		this.producer_name = producer_name;
 		this.seq = seq;
-		this.file_index = file_index;
 		this.product_code = product_code;
 		this.kind = kind;
 		this.choose_count = choose_count;
@@ -46,28 +45,37 @@ public class SearchDTO {
 
 
 	// 일반 검색용 생성자
-	public SearchDTO(String product_name, int seq, int file_index, String product_code) {
+	public SearchDTO(String product_name, int seq, String product_code) {
 		super();
 		this.product_name = product_name;
 		this.seq = seq;
-		this.file_index = file_index;
 		this.product_code = product_code;
 	}
 
 
-	// 상세 검색 생성자(상품명, 생산지역, 게시글 번호, 파일 번호, 상품 코드, 종류, 가격, 알콜 도수, 평정)
+	// 상세 검색 생성자(상품명, 생산지역, 게시글 번호, 파일 번호, 상품 코드, 종류, 가격, 알콜 도수, 평점)
 	public SearchDTO(String product_name, String product_area, int seq, int file_index, String product_code,
 			String kind, int price, float abv, int grade) {
 		super();
 		this.product_name = product_name;
 		this.product_area = product_area;
 		this.seq = seq;
-		this.file_index = file_index;
 		this.product_code = product_code;
 		this.kind = kind;
 		this.price = price;
 		this.abv = abv;
 		this.grade = grade;
+	}
+	
+	// 출력용
+	public SearchDTO(String product_name, int seq, String kind, int price, float abv, int grade, String smry) {
+		this.product_name = product_name;
+		this.seq = seq;
+		this.kind = kind;
+		this.price = price;
+		this.abv = abv;
+		this.grade = grade;
+		this.smry = smry;
 	}
 
 	
@@ -92,17 +100,6 @@ public class SearchDTO {
 		this.product_area = product_area;
 	}
 
-
-	public String getProducer_name() {
-		return producer_name;
-	}
-
-
-	public void setProducer_name(String producer_name) {
-		this.producer_name = producer_name;
-	}
-
-
 	public int getSeq() {
 		return seq;
 	}
@@ -110,16 +107,6 @@ public class SearchDTO {
 
 	public void setSeq(int seq) {
 		this.seq = seq;
-	}
-
-
-	public int getFile_index() {
-		return file_index;
-	}
-
-
-	public void setFile_index(int file_index) {
-		this.file_index = file_index;
 	}
 
 
@@ -209,6 +196,16 @@ public class SearchDTO {
 
 	public void setGrade(int grade) {
 		this.grade = grade;
+	}
+
+
+	public String getSmry() {
+		return smry;
+	}
+
+
+	public void setSmry(String smry) {
+		this.smry = smry;
 	}
 	
 	

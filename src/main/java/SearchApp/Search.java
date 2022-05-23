@@ -6,15 +6,15 @@ public class Search {
 
 	private String defaultSql = "select product_name, product_code, seq, file_index from product_info where";
 
-	private String pname = " product_name like ? ";
+	private String pname = " product_name like '%'||?||'%' ";
 
-	private String achType = " kind like ? or kind like ? or kind like ? kind like ? kind like ? ";
+	private String achType = " (kind like ? or kind like ? or kind like ? or kind like ? or kind like ?) ";
 
-	private String area = " product_area like ? or product_area like ? or product_area like ? or product_area like ? or product_area like ? or product_area like ? ";
+	private String area = " (product_area like ? or product_area like ? or product_area like ? or product_area like ? or product_area like ? or product_area like ?) ";
 	//	String area = "product_area like '경기도' or product_area like '경상도' or product_area like '강원도' or product_area like '전라도' or product_area like '충청도' or product_area like '제주도'";
 
-	private String gradeStr = " grade >= ? ";
-	private String abvStr = " abv >= ?";
+	private String gradeStr = " (grade >= ?) ";
+	private String abvStr = " (abv >= ?)";
 
 	// 대치 쿼리문
 	private String[] sqlArr = new String[] {pname, achType, area, gradeStr, abvStr};
@@ -52,6 +52,16 @@ public class Search {
 				}
 			}
 		}
+		
+		System.out.println(defaultSql.contains("whereand"));
+		
+		if (defaultSql.contains("whereand")) {
+			
+			String sql = defaultSql.replace("whereand", "where");
+			
+			return sql;
+		}
+		
 		return defaultSql;
 	}
 

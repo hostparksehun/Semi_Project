@@ -110,11 +110,23 @@
 					<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
 				</c:otherwise>
 			</c:choose>
-			
+
           </div>
         </div>
       </nav>
     </header>
+
+  <script>
+  $("#join12").on("click",function(){
+		location.href="/Member/joinView.jsp";
+	})
+  $("#login12").on("click",function(){
+	  location.href="/Member/loginView.jsp"
+  })
+  </script>
+    
+
+
 
     <!----------------------------------- Content ----------------------------------->
 <form action="/login.member" method=post>
@@ -142,7 +154,7 @@
                     <img src="/img/loginFile/btnG_완성형.png">
                 </div>
                 <div id="kakao">
-                <a href="javascript:kakaoLogin();">
+                <a id="btn-kakao-login" href="kakao/login">
                     <img src="/img/loginFile/kakao_login_medium_narrow.png"></a>
                     <a href="javascript:secession();">연결 끊기?</a>
                 </div>
@@ -170,13 +182,13 @@
 	                    console.log(response) // 로그인 성공하면 받는 데이터
 	                    window.Kakao.API.request({ // 사용자 정보 가져오기 
 	                        url: '/v2/user/me',
-	                        success: (res) => {
+	                       success: (res) => {
 	                            const kakao_account = res.kakao_account;
 	                            console.log(kakao_account)
-	                        }
-	                    });
+	                       }
+	                   });
 	                    // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
-	                },
+	               },
 	                fail: function(error) {
 	                    console.log(error);
 	                }
@@ -194,7 +206,7 @@
 			    		
 			    	},
 			    	fail: function(error) {
-			    		console.log("카카오 연결해제 X");
+			  		console.log("카카오 연결해제 X");
 			    		console.log(error);
 			    	},
 				});

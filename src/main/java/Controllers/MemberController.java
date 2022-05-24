@@ -74,7 +74,7 @@ public class MemberController extends HttpServlet {
 				response.sendRedirect("/Member/loginView.jsp");
 			}
 			//로그아웃
-			}else if (uri.equals("/logout.member")) {
+			} else if (uri.equals("/logout.member")) {
 				request.getSession().invalidate();
 				response.sendRedirect("/index.jsp");
 				
@@ -113,7 +113,7 @@ public class MemberController extends HttpServlet {
 				pw.append(g.toJson(pwd));
 				dao.updatePw(new MemberDTO(id, pwd, null, null,null, null, null, null, null));
 				//System.out.println("변경 성공");
-				
+			
 //--------------------마이페이지------------------------------------
 		}else if(uri.equals("/mypage.member")) {
 			String id = (String) (request.getSession().getAttribute("loginID"));

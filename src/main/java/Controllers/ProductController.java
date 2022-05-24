@@ -1,5 +1,6 @@
 package Controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -8,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import DAO.ProductDAO;
 import DTO.ProductDTO;
@@ -20,14 +24,14 @@ public class ProductController extends HttpServlet {
 		
 		
 		String uri = request.getRequestURI();
-		ProductDAO dao = new ProductDAO();
+		ProductDAO dao = ProductDAO.getInstance();
 
 		try {	
 	     if(uri.equals("/list.ProductController")) {
 
 				List<ProductDTO> list;
-				list = dao.selectAll();
-				request.setAttribute("list", list);
+//				list = dao.selectAll();
+//				request.setAttribute("list", list);
 				request.getRequestDispatcher("/Product/productList.jsp").forward(request, response);
 
 	            
@@ -53,30 +57,64 @@ public class ProductController extends HttpServlet {
 			
 				response.sendRedirect("/Product/productAdd.jsp");
 				
-     		}else if(uri.equals("/Input.ProductController")) {
+     		}else if(uri.equals("/input.ProductController")) {
      			
-     			String product_name = request.getParameter("product_name");
-    			String product_area = request.getParameter("product_area");
-    		            String producer_name = request.getParameter("producer_name");
-    			String product_code = request.getParameter("product_code");
-    			int kind = Integer.parseInt(request.getParameter("kind"));
-    			int price = Integer.parseInt(request.getParameter("price"));
-    			int abv = Integer.parseInt(request.getParameter("abv"));
-    			String dealer_number = request.getParameter("dealer_number");
-    			String adress1 = request.getParameter("adress1");
-    			String adress2 = request.getParameter("adress2");
-    			int capacity = Integer.parseInt(request.getParameter("capacity"));
+     			request.setCharacterEncoding("utf-8");
+     			
+     			// 파일 처리
+     			int maxSize = 1024*1024*1024;
+     			
+     			String savePath = request.getServletContext().getRealPath("thumbnail/");
+     			
+     			System.out.println(savePath);
+     			
+     			File filePath = new File(savePath);
+     			
+     			if(!filePath.exists()) { filePath.mkdir(); };
+     			
+     			MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF8", new DefaultFileRenamePolicy());
+
+    			String oriName = multi.getOriginalFileName("product_img");
+    			String sysName = multi.getFilesystemName("product_img");
+
+    			System.out.println(oriName);
+    			System.out.println(sysName);
+    			// DB입력
     			
-//     			dao.insert(new ProductDTO(product_name, product_area, producer_name, 0, 0, product_code, 0, 0, price, abv, dealer_number, adress1, adress2, capacity));
-    			response.sendRedirect("/Product/productList.jsp");
+    			String product_name = multi.getParameter("product_name"); 
+    			String search_name = multi.getParameter("search_name"); 
+    			String product_area = multi.getParameter("product_area");
+    			int seq = 0; 
+    			String product_code = multi.getParameter("product_code"); 
+    			String kind = multi.getParameter("kind");
+    			int choose_count = 0; 
+    			int capacity = Integer.parseInt(multi.getParameter("capacity")); ;
+    			float grade = Float.parseFloat(multi.getParameter("grade")); 
+    			float abv = Float.parseFloat(multi.getParameter("abv")); 
+    			int price = Integer.parseInt(multi.getParameter("price")); 
+    			String brewery = multi.getParameter("brewery"); 
+    			String adress1 = multi.getParameter("adress1"); 
+    			String adress2 = multi.getParameter("adress2");
+    			String smry = multi.getParameter("smry");
+    			
+    			ProductDTO dto = new ProductDTO(product_name, search_name, product_area, seq, product_code, kind, choose_count, price, abv, adress1, adress2, brewery, capacity, grade, smry, oriName, sysName);
+    			
+    			int result = dao.insert(dto);
+    			
+    			response.sendRedirect("/add.ProductController");
+
      		}
-	
-		}catch(Exception e) {
+	     
+	     
+		} catch(Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("error.jsp");
+			response.sendRedirect("error.html");
 		}
 
 	}
+		
+		
+		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

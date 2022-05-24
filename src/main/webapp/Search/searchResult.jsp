@@ -126,7 +126,7 @@
 						</div>
 						<!----------------------------------- Detail-Search  ----------------------------------->
 						<div class="col-12 mt-3 mb-1">
-							<p class="m-auto banner_bot">상세 검색 (항목 별 최대 2개)</p>
+							<p class="m-auto banner_bot">필요한 조건을 선택하세요</p>
 						</div>
 
 						<div class="col-12" id="detail_box">
@@ -134,7 +134,7 @@
 								<div class="row">
 									<!-- 주종 -->
 									<div class="col-12 mb-1">
-										<p class="m-auto title">주종</p>
+										<p class="m-auto title">술 종류</p>
 									</div>
 
 									<div class="col-2 form-check" style="padding-left: 5%;">
@@ -147,14 +147,14 @@
 									<div class="col-2 form-check" style="padding-left: 5%;">
 										<input class="form-check-input" type="checkbox" value="전통소주"
 											id="flexCheckDefault" name="alchol"> <label
-											class="form-check-label" for="flexCheckDefault"> 전통
+											class="form-check-label" for="flexCheckDefault"> 전통소주
 											소주 </label>
 									</div>
 
 									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="증류주"
+										<input class="form-check-input" type="checkbox" value="약주"
 											id="flexCheckDefault" name="alchol"> <label
-											class="form-check-label" for="flexCheckDefault"> 증류주
+											class="form-check-label" for="flexCheckDefault"> 약주
 										</label>
 									</div>
 
@@ -166,9 +166,9 @@
 									</div>
 
 									<div class="col-2 form-check mb-1" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="담금주"
+										<input class="form-check-input" type="checkbox" value="리큐르"
 											id="flexCheckDefault" name="alchol"> <label
-											class="form-check-label" for="flexCheckDefault"> 담금주
+											class="form-check-label" for="flexCheckDefault"> 리큐르
 										</label>
 									</div>
 
@@ -178,6 +178,13 @@
 									</div>
 
 									<div class="col-2 form-check mb-1" style="padding-left: 5%;">
+										<input class="form-check-input" type="checkbox" value="서울"
+											id="flexCheckDefault" name="area"> <label
+											class="form-check-label" for="flexCheckDefault"> 서울
+										</label>
+									</div>
+
+									<div class="col-2 form-check" style="padding-left: 5%;">
 										<input class="form-check-input" type="checkbox" value="경기도"
 											id="flexCheckDefault" name="area"> <label
 											class="form-check-label" for="flexCheckDefault"> 경기도
@@ -209,13 +216,6 @@
 										<input class="form-check-input" type="checkbox" value="충청도"
 											id="flexCheckDefault" name="area"> <label
 											class="form-check-label" for="flexCheckDefault"> 충청도
-										</label>
-									</div>
-
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="제주도"
-											id="flexCheckDefault" name="area"> <label
-											class="form-check-label" for="flexCheckDefault"> 제주도
 										</label>
 									</div>
 
@@ -296,7 +296,7 @@
 						<div class="col-4">
 							<a href="#">
 								<div class="Result_img">
-									<img src="https://picsum.photos/id/1020/150/150" class="w-100">
+									<img src="..\thumbnail\daedaepo.png" class="w-100">
 								</div>
 								<div class="Result_txt">
 									<div class="review"></div>
@@ -474,9 +474,9 @@
         
         let avb = $("#avb").val();
 
-        let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]*{0,20}$/gs;
+        let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{0,20}$/gs;
         
-        let regexAvb = /^[0-9]{0,2}.?[0-9]{0,5}$/g;
+        let regexAvb = /^[0-9]{1,2}.?[0-9]{0,5}$/g;
 
         if (!(regexSearch.test(search_text))) {
             alert("한글만 입력해주세요");

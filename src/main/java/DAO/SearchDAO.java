@@ -8,6 +8,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.eclipse.jdt.internal.compiler.lookup.TagBits;
+
 import DTO.SearchDTO;
 
 
@@ -65,7 +67,7 @@ public class SearchDAO {
 	// 일반 검색
 	public List<SearchDTO> SearchByText(String product_name) throws Exception{
 
-		String sql = "select product_name, product_code, seq, file_index from product_info where product_name like '%'||?||'%'";
+		String sql = "select row_number() over(order by product_name desc) index, product_name, seq, kind, price, abv, grade, smry, ori_name, sys_name from product_info where search_name like '%'||?||'%'";
 
 		try(
 				Connection con = this.getConnection();
@@ -81,13 +83,19 @@ public class SearchDAO {
 				List<SearchDTO> list = new ArrayList<SearchDTO>();
 
 				while(rs.next()) {
-
+					
+					int index = rs.getInt("index");
 					String pname = rs.getString("product_name");
-					String pcode = rs.getString("product_code");
 					int seq = rs.getInt("seq");
-					int file_index = rs.getInt("file_index");
+					int price = rs.getInt("price");
+					String kind = rs.getString("kind");
+					float abv = rs.getFloat("abv");
+					int grade = rs.getInt("grade");
+					String smry = rs.getString("smry");
+					String oriName = rs.getString("ori_name");
+					String sysName = rs.getString("sys_name");
 
-					SearchDTO dto = new SearchDTO(pname, seq, file_index, pcode);
+					SearchDTO dto = new SearchDTO(index,pname, seq, kind, price, abv, grade, smry, oriName, sysName);
 
 					list.add(dto);
 				}
@@ -121,7 +129,8 @@ public class SearchDAO {
 				pstat.setString(10, areaArr[4]);
 				pstat.setString(11, areaArr[5]);
 				pstat.setInt(12, grade);
-				pstat.setFloat(13, abv);
+				pstat.setInt(13, grade);
+				pstat.setFloat(14, abv);
 				
 			} else if(t[1] && t[2] && t[3]) { // 조건 2
 				pstat.setString(1, alcholArr[0]);
@@ -136,6 +145,7 @@ public class SearchDAO {
 				pstat.setString(10, areaArr[4]);
 				pstat.setString(11, areaArr[5]);
 				pstat.setInt(12, grade);
+				pstat.setInt(13, grade);
 				
 			} else if(t[1] && t[2] && t[4]) { // 조건 3
 				pstat.setString(1, alcholArr[0]);
@@ -179,7 +189,8 @@ public class SearchDAO {
 				pstat.setString(5, areaArr[4]);
 				pstat.setString(6, areaArr[5]);
 				pstat.setInt(7, grade);
-				pstat.setFloat(8, abv);
+				pstat.setInt(8, grade);
+				pstat.setFloat(9, abv);
 				
 			} else if( t[2] && t[3]) { // 조건 7
 				pstat.setString(1, areaArr[0]);
@@ -189,6 +200,7 @@ public class SearchDAO {
 				pstat.setString(5, areaArr[4]);
 				pstat.setString(6, areaArr[5]);
 				pstat.setInt(7, grade);
+				pstat.setInt(8, grade);
 				
 			} else if(t[2] && t[4]) { // 조건 8
 				pstat.setString(1, areaArr[0]);
@@ -209,10 +221,12 @@ public class SearchDAO {
 				
 			} else if(t[3] && t[4]) { // 조건 10
 				pstat.setInt(1, grade);
+				pstat.setInt(2, grade);
 				pstat.setFloat(2, abv);
 				
 			} else if( t[3] ) { // 조건 11
 				pstat.setInt(1, grade);
+				pstat.setInt(2, grade);
 				
 			} else if( t[4] ) { // 조건 12
 				pstat.setFloat(1, abv);;
@@ -226,13 +240,19 @@ public class SearchDAO {
 				List<SearchDTO> list = new ArrayList<SearchDTO>();
 
 				while(rs.next()) {
-
+					
+					int index = rs.getInt("index");
 					String pname = rs.getString("product_name");
-					String pcode = rs.getString("product_code");
 					int seq = rs.getInt("seq");
-					int file_index = rs.getInt("file_index");
+					int price = rs.getInt("price");
+					String kind = rs.getString("kind");
+					float rAbv = rs.getFloat("abv");
+					int rGrade = rs.getInt("grade");
+					String smry = rs.getString("smry");
+					String oriName = rs.getString("ori_name");
+					String sysName = rs.getString("sys_name");
 
-					SearchDTO dto = new SearchDTO(pname, seq, file_index, pcode);
+					SearchDTO dto = new SearchDTO(index, pname, seq, kind, price, rAbv, rGrade, smry, oriName, sysName);
 
 					list.add(dto);
 				}
@@ -269,7 +289,8 @@ public class SearchDAO {
 				pstat.setString(11, areaArr[4]);
 				pstat.setString(12, areaArr[5]);
 				pstat.setInt(13, grade);
-				pstat.setFloat(14, abv);
+				pstat.setInt(14, grade);
+				pstat.setFloat(15, abv);
 				
 			} else if(t[0] && t[1] && t[2] && t[3]) { // 조건 2
 				pstat.setString(1, product_name);
@@ -285,6 +306,7 @@ public class SearchDAO {
 				pstat.setString(11, areaArr[4]);
 				pstat.setString(12, areaArr[5]);
 				pstat.setInt(13, grade);
+				pstat.setInt(14, grade);
 				
 			} else if(t[0] && t[1] && t[2] && t[4]) { // 조건 3
 				pstat.setString(1, product_name);
@@ -338,7 +360,8 @@ public class SearchDAO {
 				pstat.setString(6, areaArr[4]);
 				pstat.setString(7, areaArr[5]);
 				pstat.setInt(8, grade);
-				pstat.setFloat(9, abv);
+				pstat.setInt(9, grade);
+				pstat.setFloat(10, abv);
 				
 			} else if(t[0] && t[2] && t[3]) { // 조건 7
 				pstat.setString(1, product_name);
@@ -349,6 +372,7 @@ public class SearchDAO {
 				pstat.setString(6, areaArr[4]);
 				pstat.setString(7, areaArr[5]);
 				pstat.setInt(8, grade);
+				pstat.setInt(9, grade);
 				
 			} else if(t[0] && t[2] && t[4]) { // 조건 8
 				pstat.setString(1, product_name);
@@ -372,11 +396,13 @@ public class SearchDAO {
 			} else if(t[0] && t[3] && t[4]) { // 조건 10
 				pstat.setString(1, product_name);
 				pstat.setInt(2, grade);
-				pstat.setFloat(3, abv);
+				pstat.setInt(3, grade);
+				pstat.setFloat(4, abv);
 				
 			} else if( t[0] && t[3] ) { // 조건 11
 				pstat.setString(1, product_name);
 				pstat.setInt(2, grade);
+				pstat.setInt(3, grade);
 				
 			} else if( t[0] && t[4] ) { // 조건 12
 				pstat.setString(1, product_name);
@@ -391,14 +417,19 @@ public class SearchDAO {
 				List<SearchDTO> list = new ArrayList<SearchDTO>();
 
 				while(rs.next()) {
-
+					
+					int index = rs.getInt("index");
 					String pname = rs.getString("product_name");
-					String pcode = rs.getString("product_code");
 					int seq = rs.getInt("seq");
-					int file_index = rs.getInt("file_index");
+					int price = rs.getInt("price");
+					String kind = rs.getString("kind");
+					float rAbv = rs.getFloat("abv");
+					int rGrade = rs.getInt("grade");
+					String smry = rs.getString("smry");
+					String oriName = rs.getString("ori_name");
+					String sysName = rs.getString("sys_name");
 
-					SearchDTO dto = new SearchDTO(pname, seq, file_index, pcode);
-
+					SearchDTO dto = new SearchDTO(index, pname, seq, kind, price, rAbv, rGrade, smry, oriName, sysName);
 					list.add(dto);
 				}
 

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import DTO.ReplyDTO;
+import DTO.BoardDTO;
 
 public class ReplyDAO {
 
@@ -37,7 +39,7 @@ public class ReplyDAO {
 	// 댓글 등록 DAO
 	public int addReply(String writer, String cotents, int parentSeq) throws Exception{
 		
-		String sql = "insert into reply values(reply_seq.nextval, ?, ?, sysdate, ?)";
+		String sql = "insert into reply values(reply_seq.nextval, ?, ?, sysdate, ?, 0)";
 		
 		try(
 				Connection con = this.getConnection();
@@ -75,10 +77,10 @@ public class ReplyDAO {
 					int seq = rs.getInt("seq");
 					String writer = rs.getString("writer");
 					String contents = rs.getString("contents");
-					Date writeDate = rs.getDate("write_date");
+					Timestamp writeDate = rs.getTimestamp("write_date");
 					int pSeq = rs.getInt("parent_seq");
 					
-					ReplyDTO dto = new ReplyDTO(seq, writer, contents, writeDate, pSeq);
+					ReplyDTO dto = new ReplyDTO(seq, writer, contents, writeDate, pSeq,0);
 					
 					list.add(dto);
 					
@@ -126,6 +128,32 @@ public class ReplyDAO {
 			con.commit();
 			
 			return result;
+		}
+	}
+
+	public List<ReplyDTO> selectReply(int num) throws Exception{
+		String sql = "select * from reply where PARENT_SEQ = ?";
+
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setInt(1, num);
+
+			try(ResultSet rs = pstat.executeQuery();){
+				List<ReplyDTO> list = new ArrayList<ReplyDTO>();
+				
+				while(rs.next()) {
+					int seq = rs.getInt("seq");
+					String writer = rs.getString("WRITER");
+					String contents = rs.getString("CONTENTS");
+					Timestamp write_date = rs.getTimestamp("WRITE_DATE");
+					int parentSeq = rs.getInt("PARENT_SEQ");
+					int likeFunc = rs.getInt("LIKE_FUNC");
+	
+					ReplyDTO dto = new ReplyDTO(seq, writer, contents, write_date, parentSeq,likeFunc);
+					list.add(dto);
+				}
+				return list;
+			}
 		}
 	}
 

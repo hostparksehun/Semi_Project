@@ -314,12 +314,19 @@
 								</div>
 							</a>
 						</div>
+						<c:choose>
+							<c:when test="${i.index mod 3 == 0}">
 						
-						<c:if test="${i.index/3 == 0}">
+								<div class="col-12 w-100 mb-3"></div>
 						
-						<div class="col-12 w-100 mb-2"></div>
+							</c:when>
 						
-						</c:if>
+						
+							<c:otherwise>
+							
+							</c:otherwise>
+						
+						</c:choose>
 						
 					</c:forEach>
 

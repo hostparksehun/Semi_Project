@@ -130,22 +130,6 @@ public class SearchController extends HttpServlet {
 					
 					request.getRequestDispatcher("/Search/searchResult.jsp").forward(request, response);
 					
-
-					// JSP로 넘길 예정
-					for (SearchDTO dto : list) {
-
-						System.out.println("게시글 번호 : " + dto.getSeq());
-						System.out.println("상품명 : " + dto.getProduct_name());
-						System.out.println("술 종류 : " + dto.getKind());
-						System.out.println("가격 : " + dto.getPrice());
-						System.out.println("도수 : " + dto.getAbv());
-						System.out.println("평점 : " + dto.getGrade());
-						System.out.println("설명 : " + dto.getSmry());
-						System.out.println();
-
-					}
-
-
 					// 상세 검색
 				} else if ((product_name) == null && (areaArr != null || gradeString != null || abv != 0 || alcholArr != null || grade != 0)) { // 입력 텍스트 안 보냄
 
@@ -162,20 +146,6 @@ public class SearchController extends HttpServlet {
 					
 					request.getRequestDispatcher("/Search/searchResult.jsp").forward(request, response);
 
-					// JSP로 넘길 예정
-					for (SearchDTO dto : list) {
-
-						System.out.println("게시글 번호 : " + dto.getSeq());
-						System.out.println("상품명 : " + dto.getProduct_name());
-						System.out.println("술 종류 : " + dto.getKind());
-						System.out.println("가격 : " + dto.getPrice());
-						System.out.println("도수 : " + dto.getAbv());
-						System.out.println("평점 : " + dto.getGrade());
-						System.out.println("설명 : " + dto.getSmry());
-						System.out.println();
-
-					}
-
 
 				} else if ((product_name) != null && (areaArr != null || gradeString != null || abv != 0 || alcholArr != null || grade != 0)) { // 입력 텍스트 보냄
 
@@ -191,19 +161,6 @@ public class SearchController extends HttpServlet {
 					
 					request.getRequestDispatcher("/Search/searchResult.jsp").forward(request, response);
 
-					// JSP로 넘길 예정
-					for (SearchDTO dto : list) {
-
-						System.out.println("게시글 번호 : " + dto.getSeq());
-						System.out.println("상품명 : " + dto.getProduct_name());
-						System.out.println("술 종류 : " + dto.getKind());
-						System.out.println("가격 : " + dto.getPrice());
-						System.out.println("도수 : " + dto.getAbv());
-						System.out.println("평점 : " + dto.getGrade());
-						System.out.println("설명 : " + dto.getSmry());
-						System.out.println();
-
-					}
 				}
 			} if (uri.equals("/mini.search")) {
 				request.setCharacterEncoding("utf-8");

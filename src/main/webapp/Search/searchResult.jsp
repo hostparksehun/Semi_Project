@@ -296,7 +296,7 @@
 						<div class="col-4">
 							<a href="#">
 								<div class="Result_img">
-									<img src="" class="w-100">
+									<img src="..\thumbnail\daedaepo.png" class="w-100">
 								</div>
 								<div class="Result_txt">
 									<div class="review"></div>

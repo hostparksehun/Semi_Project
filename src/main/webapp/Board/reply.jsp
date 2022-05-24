@@ -171,24 +171,25 @@
 						</c:when>
 						<c:otherwise>
 							<c:forEach var="i" items="${reply}">
-								<form action="modify.board?pseq=${boardNum.seq}&seq=${i.replySeq}"
-									method="post" id="modifyFrm">
+								<form action="modify.board?pseq=${board.boardNum}&seq=${i.replySeq}"
+									method="post" id="modifyFrm" enctype="multipart/form-data">
 		
-									<div class="reply_view">${i.writer}| ${i.wirteDate}</div>
+									<div class="reply_view">${i.writer} | ${i.wirteDate}</div>
 		
 									<div class="head6">
-										<div class="reply_contents">${i.cotents}</div>
-										<br> <input type="hidden" id="contentsInput"
-											name="reply_contents">
-		
+										<div class="reply_contents">${i.cotents}</div> 
+										<!-- $(this).siblings(".reply_contents") 여기까지가  <div class="reply_contents">${i.cotents}</div>  이걸 선택한 상태 -->
+										<input name='contents' value="${i.cotents}" style="display: none; width:50%;">
+										<!-- $(this).siblings(".reply_contents").next() 여기는 <input name='contents' value="${i.cotents}" style="display: none; width:50%;"> 이걸 선택한 상태에요 -->
+										<br> <input type="hidden" id="contentsInput" name="reply_contents">
+	
 										<c:choose>
 		
 											<c:when test="${loginID == i.writer}">
 		
 												<input type="hidden" class="reply_seq" value="${i.replySeq}">
-												<button class="head6_btn" class="modify rBtn" type="button">수정</button>
-												<button class="head6_btn" id="rDel" class="rBtn delRbtn"
-													type="button">삭제</button>
+												<button class="head6_btn modify" type="button">수정</button>
+												<button class="head6_btn delRbtn" type="button">삭제</button>
 		
 											</c:when>
 		
@@ -228,15 +229,17 @@
 		
 		<script>
 		$(".modify").on("click", function(){
-			$($(this).parent().sibling().children()[0].attr("contenteditable","true"));
-			$($(this).praent().siblings().children()[0].focus());
+			//$(this).siblings(".reply_contents").attr("contenteditable","true");
+			$(this).siblings(".reply_contents").next().show(); // 이게 display : none; 이걸 disply : inile-black이런식으로 변경해주는 코드 (숨겨져있던 창을 보여주기) 혹시 next() 이건 어떤 건가여?
+												// 선택자 $(this).siblings(".reply_contents")이거의 다음형제를 선택하는거에요 
+			$(this).siblings(".reply_contents").hide(); // 이건 black나 inlie을 none으로 변경해주는 코드 에요. (보여지고 있던 창을 숨기기)
 			$(this).css("display", "none");
-			$("#rDel").css("display", "none");
+			$(this).siblings(".delRbtn").css("display", "none");
 			
 			let okBtn = $("<button>");
-			okBtn.tex("수정완료");
-			okBtn.attr("type","button");
-			okBtn.attr("class","head6_btn");
+			okBtn.text("수정완료");
+			okBtn.attr("type","submit");
+			okBtn.attr("class","head6_btn"); // submit 관련 작업 필요
 			
 			let cancelBtn = $("<button>");
 			cancelBtn.attr("type","button");
@@ -247,11 +250,15 @@
 				location.reload();
 			})
 			
-			$(this).parent(".container").children(".reply_contents").append(okBtn);
-			$(this).parent(".container").children(".reply_contents").prepend(cancelBtn);
+			$(this).parent().append(okBtn);
+			$(this).parent().append(cancelBtn);
 			
 		});
 			
+		$("#modifyFrm").on("submit",function(){
+			$("#contentsInput").val($("#reply_contents").text());
+		});
+		
 			$(".delRbtn").on("click",function(){
 				
 				let result = confirm("댓글을 삭제하시겠습니까?");
@@ -261,7 +268,7 @@
 					
 					$.ajax({
 						url: "/del.board",	
-						data: {"seq":reply_seq,"pseq": "${dto.seq}"}
+						data: {"seq":reply_seq,"pseq": "${board.boardNum}"}
 					}).done(function(resp){
 						location.reload();
 					});

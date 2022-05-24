@@ -63,7 +63,7 @@
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item" href="#">전체보기</a></li>
+                  <li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
                 </ul>
               </li>
 
@@ -115,12 +115,6 @@
     </header>
 
 
-    
-        <div><a href="add.ProductController">상품등록</a></div>
-  
-
-
-
       <script>
 		  $("#join").on("click",function(){
 		      location.href="/Member/joinView.jsp";
@@ -130,6 +124,8 @@
 		  })
 	  </script>
 
+
+<a href="/add.ProductController"><div>상품등록</div></a>
 
     <div class="row" id="main">
       <div class="col-12" id="contents" >

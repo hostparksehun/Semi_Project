@@ -152,3 +152,22 @@ font-size: 2rem;
 
 
 
+   .categor_box{
+  padding: 60px;
+  text-align: center;
+  
+} 
+.categor_list{
+  width: 90%;
+  display: inline-block;
+}
+.categor_list_btn{
+  float: left;
+  list-style: none;
+  width: 12.7%;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  border: 1px solid #000;
+  font-size: 20px;
+  border-radius: 30px;
+}

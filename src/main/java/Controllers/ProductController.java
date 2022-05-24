@@ -24,35 +24,56 @@ public class ProductController extends HttpServlet {
 		
 		
 		String uri = request.getRequestURI();
+		
 		ProductDAO dao = ProductDAO.getInstance();
 
 		try {	
 	     if(uri.equals("/list.ProductController")) {
 
 				List<ProductDTO> list;
-//				list = dao.selectAll();
-//				request.setAttribute("list", list);
+				list = dao.selectAll();
+				request.setAttribute("list", list);
 				request.getRequestDispatcher("/Product/productList.jsp").forward(request, response);
 
 	            
 		}else if(uri.equals("/productA10.ProductController")){
 		
-			response.sendRedirect("/Product/productDetail.jsp");
+			List<ProductDTO> list;
+			list = dao.selectAll();
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("/Product/productA10.jsp").forward(request, response);
+
 			
 			
 		}else if(uri.equals("/productA20.ProductController")){
 			
-			response.sendRedirect("/Product/productAll_02.jsp");
+			List<ProductDTO> list;
+			list = dao.selectAll();
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("/Product/productA20.jsp").forward(request, response);
 			
 			
 			}else if(uri.equals("/productA30.ProductController")){
 				
-				response.sendRedirect("/Product/productAll_03.jsp");
+				List<ProductDTO> list;
+				list = dao.selectAll();
+				request.setAttribute("list", list);
+				request.getRequestDispatcher("/Product/productA30.jsp").forward(request, response);
 				
-			}else if(uri.equals("/productAll_04.ProductController")){
+			}else if(uri.equals("/productA40.ProductController")){
 				
-				response.sendRedirect("/Product/productAll_04.jsp");
+				List<ProductDTO> list;
+				list = dao.selectAll();
+				request.setAttribute("list", list);
+				request.getRequestDispatcher("/Product/productA40.jsp").forward(request, response);
 				
+			}else if(uri.equals("/productA50.ProductController")){
+			
+				List<ProductDTO> list;
+				list = dao.selectAll();
+				request.setAttribute("list", list);
+				request.getRequestDispatcher("/Product/productA50.jsp").forward(request, response);
+			
 			}else if(uri.equals("/add.ProductController")) {
 			
 				response.sendRedirect("/Product/productAdd.jsp");

@@ -8,7 +8,7 @@
 
 <head>
     <!-- CSS -->
-    <link rel="stylesheet" href="/CSS/productList.css"> <!-- 경로 수정 고려 -->
+     <link rel="stylesheet" href="/CSS/productList.css"> <!-- 경로 수정 고려 -->
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,13 +27,44 @@
 
     <script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
 
+
     <title>우리술 목록</title>
 
+<style>
+ 
 
+
+   .categor_box{
+  padding: 60px;
+  text-align: center;
+  
+} 
+.categor_list{
+  width: 90%;
+  display: inline-block;
+}
+.categor_list_btn{
+  float: left;
+  list-style: none;
+  width: 15.1%;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  border: 1px solid #000;
+  font-size: 20px;
+  border-radius: 30px;
+  color:black;
+}
+
+
+</style>
 
 
 
 </head>
+
+
 
 <body>
     <div class="container">
@@ -59,15 +90,15 @@
 								aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<li><a class="dropdown-item"
-										href="/productAll_01.ProductController">막걸리</a></li>
+										href="/productA10.ProductController">막걸리</a></li>
 									<li><a class="dropdown-item"
-										href="/productAll_02.ProductController">증류주</a></li>
+										href="/productA20.ProductController">증류주</a></li>
 									<li><a class="dropdown-item"
-										href="/productAll_03.ProductController">담금주</a></li>
+										href="/productA30.ProductController">담금주</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="list.ProductController">전체보기</a></li>
+									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
 								</ul></li>
 
 
@@ -140,14 +171,27 @@
                          </a></li>
                         </ul>
                        
-                      </div>                  
-               
-                    
+                      </div>
+
+<!----------------------------------- Categori---------------------------------->
+
+				<div class="categor_box">
+
+					<ul calss="categor_list">
+						<a href="#"><li class="categor_list_btn" style="background-color:dodgerblue; color:white;">전체상품</li></a>
+						<a href="/productA10.ProductController"><li class="categor_list_btn">막걸리</li></a>
+						<a href="/productA20.ProductController"><li class="categor_list_btn">전통소주</li></a>
+						<a href="/productA30.ProductController"><li class="categor_list_btn">약주</li></a>
+						<a href="/productA40.ProductController"><li class="categor_list_btn">과실주</li></a>
+						<a href="/productA50.ProductController"><li class="categor_list_btn">리큐르</li></a>
+					</ul>
+					
+				</div>
 
 
 
 
-        <!----------------------------------- Search-Result  ----------------------------------->
+				<!----------------------------------- Search-Result  ----------------------------------->
 
 
 
@@ -170,28 +214,28 @@
                     <div class="row m-auto">
                  
               
-              <c:if test="${fn:length(list) < 4}">
+
 
              
                      <c:forEach var="i" items="${list }">            
                         <div class="col-4">
                             <a href="productDetail.jsp">
                                 <div class="Result_img">
-                                    <img src="https://picsum.photos/id/1020/150/150" class="w-100">
+                                   <img src="../thumbnail/${i.sysName}" style="width: 100%; height: 300px;" >
                                 </div>
                                 <div class="Result_txt">
                                     <div class="review"></div>
                                     
                                     <p class="Result_name">${i.product_name }</p>
                                
-                                    <p class="Result_decs">간단한 설명이 들어갑니다</p>
+                                    <p class="Result_decs">${i.smry }</p>
                                   
                                 </div>
                             </a>
                         </div>
                      </c:forEach>
                   
-                 </c:if>
+
 <!--                         <div class="col-4"> -->
 <!--                             <a href="#"> -->
 <!--                                 <div class="Result_img"> -->
@@ -200,7 +244,7 @@
 <!--                                 <div class="Result_txt"> -->
 <!--                                     <div class="review"></div> -->
                                   
-<%--                                     <p class="Result_name">${i.product_name}</p> --%>
+<!--                                     <p class="Result_name">${i.product_name}</p> -->
                                    
 <!--                                     <p class="Result_decs">간단한 설명이 들어갑니다</p> -->
 <!--                                 </div> -->

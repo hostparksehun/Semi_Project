@@ -55,13 +55,13 @@
                   우리술 정보
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                     <li><a class="dropdown-item" href="/productAll_01.ProductController">막걸리</a></li>
-                     <li><a class="dropdown-item" href="/productAll_02.ProductController">증류주</a></li>
-                     <li><a class="dropdown-item" href="/productAll_03.ProductController">담금주</a></li>
+                  <li><a class="dropdown-item" href="#">막걸리</a></li>
+                  <li><a class="dropdown-item" href="#">증류주</a></li>
+                  <li><a class="dropdown-item" href="#">담금주</a></li>
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item" href="list.ProductController">전체보기</a></li>
+                  <li><a class="dropdown-item" href="#">전체보기</a></li>
                 </ul>
               </li>
 
@@ -71,7 +71,7 @@
 
 
               <li class="nav-item">
-                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#" id="board">술꾼술꾼</a>
+                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/boardList.board" id="board">술꾼술꾼</a>
               </li>
 
             </ul>
@@ -113,18 +113,14 @@
       </nav>
     </header>
 
-
-    
-        <div><a href="add.ProductController">상품등록</a></div>
-  
-  <script>
-  $("#join").on("click",function(){
-		location.href="/Member/joinView.jsp";
-	})
-  $("#login").on("click",function(){
-	  location.href="/Member/loginView.jsp"
-  })
-  </script>
+      <script>
+		  $("#join").on("click",function(){
+		      location.href="/Member/joinView.jsp";
+		   })
+		  $("#login").on("click",function(){
+		     location.href="/Member/loginView.jsp"
+		  })
+	  </script>
 
     <div class="row" id="main">
       <div class="col-12" id="contents" >

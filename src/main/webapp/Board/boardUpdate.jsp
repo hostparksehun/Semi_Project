@@ -16,9 +16,9 @@
 <link rel="stylesheet" href="../CSS/summernote/summernote-lite.css">
 </head>
 <body>
-	<form action="/boardAdd.board" method="post" enctype="multipart/form-data">
+	<form action="/boardUpdateAction.board" method="post" enctype="multipart/form-data">
 		<div class='boardCreateBody'>
-			<h5>우리술 리뷰 쓰기</h5>
+			<h5>우리술 리뷰 수정</h5>
 			<hr>
 			<div class='alcoholInfo'>
 				<!-- 술 정보 -->
@@ -45,17 +45,18 @@
 				<input type="radio" class='score' id='scoreFive' name='boardScore'><label for="scoreFive">★★★★★</label>
 			</div>
 			<hr>
+			<input id='num' name='num' type="hidden" maxlength="35" value="${board.boardNum}">
 			<div class='boardSet'>
 				<div class='boardUser'>제목</div>
-				<input id='boardTitle' name='title' type="text" maxlength="35"
+				<input id='boardTitle' name='title' type="text" maxlength="35" value="${board.title}"
 					placeholder="제목을 입력하세요.">
 			</div>
 			<hr>
 			
 			<div class='boardSet'>
 				<div class='boardUser' style="height: 300px; line-height: 300px;">내용</div>
-				<input id='boardDetail' name='boardExp' type="text" maxlength="35"
-					placeholder="내용을 입력하세요." style="height: 300px; ">
+				<input id='boardDetail' name='boardExp' type="text" maxlength="35" value="${board.boardExp}"
+					placeholder="내용을 입력하세요." style="height: 300px;">
 				<!-- <div id="summernote"><p></p></div> -->
 			</div>
 			<hr>
@@ -64,7 +65,7 @@
 			</div>
 			<hr>
 			<div class='boardLastBtn'>
-				<button>등록</button>
+				<button>수정</button>
 				<button>취소</button>	
 			</div>
 		</div>

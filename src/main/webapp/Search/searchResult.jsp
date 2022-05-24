@@ -296,7 +296,7 @@
 						<div class="col-4">
 							<a href="#">
 								<div class="Result_img">
-									<img src="" class="w-100">
+									<img src="..\thumbnail\daedaepo.png" class="w-100">
 								</div>
 								<div class="Result_txt">
 									<div class="review"></div>
@@ -474,9 +474,9 @@
         
         let avb = $("#avb").val();
 
-        let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]*{0,20}$/gs;
+        let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{0,20}$/gs;
         
-        let regexAvb = /^[0-9]{0,2}.?[0-9]{0,5}$/g;
+        let regexAvb = /^[0-9]{1,2}.?[0-9]{0,5}$/g;
 
         if (!(regexSearch.test(search_text))) {
             alert("한글만 입력해주세요");

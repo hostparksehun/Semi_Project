@@ -4,7 +4,7 @@ public class Search {
 
 	// 쿼리문 변수
 	// ori_name, sys_name 추가예정
-	private String defaultSql = "select product_name, seq, kind, price, abv, grade, smry from product_info where";
+	private String defaultSql = "select row_number() over(order by product_name desc) index, product_name, seq, kind, price, abv, grade, smry, ori_name, sys_name from product_info where"; // index추가
 
 	private String pname = " product_name like '%'||?||'%' ";
 

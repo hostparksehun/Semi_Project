@@ -548,7 +548,41 @@ public class SearchDAO {
 			}
 		}
 	}
+	
+	public List<SearchDTO> SearchAll() throws Exception{
 
+		String sql = "select row_number() over(order by product_name desc) num, product_name, seq, kind, price, abv, grade, smry, ori_name, sys_name from product_info";
+
+		try(
+				Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				ResultSet rs = pstat.executeQuery();
+				){
+
+				List<SearchDTO> list = new ArrayList<SearchDTO>();
+
+				while(rs.next()) {
+
+					int index = rs.getInt("num");
+					String pname = rs.getString("product_name");
+					int seq = rs.getInt("seq");
+					int price = rs.getInt("price");
+					String kind = rs.getString("kind");
+					float abv = rs.getFloat("abv");
+					int grade = rs.getInt("grade");
+					String smry = rs.getString("smry");
+					String oriName = rs.getString("ori_name");
+					String sysName = rs.getString("sys_name");
+
+					SearchDTO dto = new SearchDTO(index, pname, seq, kind, price, abv, grade, smry, oriName, sysName);
+ 
+					list.add(dto);
+				}
+
+				return list;
+
+		}
+	}
 
 
 

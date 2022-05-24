@@ -161,6 +161,18 @@ public class SearchController extends HttpServlet {
 					
 					request.getRequestDispatcher("/Search/searchResult.jsp").forward(request, response);
 
+				} else {
+					
+					
+					List<SearchDTO> list = sDAO.SearchAll();
+
+					int count = list.size();
+					
+					request.setAttribute("count", count);
+					request.setAttribute("list", list);
+					
+					request.getRequestDispatcher("/Search/searchResult.jsp").forward(request, response);
+					
 				}
 			} if (uri.equals("/mini.search")) {
 				request.setCharacterEncoding("utf-8");
@@ -188,8 +200,6 @@ public class SearchController extends HttpServlet {
 
 				}
 			}
-
-
 
 
 

@@ -101,34 +101,30 @@
                 <div id="container">
 
                     <div id="head">
-                        <div class="title_num">글번호</div>
-                        <div class="board_like">조회수</div>
+                        <div class="title_num">글번호 : ${board.boardNum}</div>
+                        <div class="board_like">조회수 : ${board.boardCount}</div>
                     </div>
 
                     <div id="top_line"></div>
-
-                    <div class="board_title">글 제목</div>
+					<c:choose>
+						<c:when test="${board.boardSatus == 2}">
+							<div class="board_title">글 제목 : ${board.title} <span style="color: red">[신고된게시글]</span></div>
+						</c:when>
+						<c:otherwise>
+							<div class="board_title">글 제목 : ${board.title}</div>
+						</c:otherwise>
+					</c:choose>
+                    
 
                     <div id="top_line"></div>
 
                     <div id="head2">
-                        <div class="board_writer">작성자</div>
-                        <div class="board_date">작성일</div>
+                        <div class="board_writer">작성자 : ${board.writer}</div>
+                        <div class="board_date">작성일 : ${board.writeDate}</div>
                     </div>
 
                     <div id="head3">
-                        <input type="text" class="board_contents">
-                    </div>
-
-                    <div id="head4">
-                        <div class="hd4">작성자 :</div>
-                        <div class="hd4">가입일 : </div>
-                        <input type="button" class="hd4"
-                            style="background-color:white; border: none; margin-right: 5px;" value="♥관심회원 등록하기">
-                        <div class="hd4">방문횟수 : </div>
-                        <div class="hd4">추천수 : </div>
-                        <div class="hd4">게시글 수 : </div>
-                        <div class="hd4">댓글 수 : </div>
+                        <div class="board_contents">${board.boardExp}</div>
                     </div>
 
                     <div id="top_line"></div>
@@ -142,33 +138,79 @@
                     <div id="top_line"></div>
 
 
-                    <div id="head5">
+                    <div id="head5" style="position: relative;">
                         <div class="reply_cont">총 댓글 : </div>
-                        <div class="like_cont"> 추천 : </div>
-                        <input type="button" class="like_btn" value="추천하기">
+                        <div class="like_cont"> 추천 : ${board.boardLike} </div>
+                        <input type="button" class="like_btn" value="추천하기" onclick="location.href='/boardLike.board?num=${board.boardNum}'">
+                        <input type="button" class="like_btn" value="신고하기" onclick="if(confirm('정말로 이게시글을 신고하시겠습니까?')){location.href='/boardSet.board?num=${board.boardNum}&stat=2'}">
+                        <c:if test="${board.writer == loginID}">
+	                        <div style="position: absolute; right: 0px; top: 0px;">
+		                        <input type="button" class="like_btn" value="수정하기" onclick="location.href='/boardUpdate.board?num=${board.boardNum}'">
+		                        <input type="button" class="like_btn" value="삭제하기" onclick="if(confirm('정말로 삭제하시겠습니까?')){location.href='/boardSet.board?num=${board.boardNum}&stat=1'}">
+	                        </div>
+                        </c:if>
                     </div>
+	
+                    <!--  댓글 입력 창 -->
 
-                    <div id="reply_box">
-                        <textarea placeholder="댓글 내용을 입력하세요."></textarea>
-                        <input type="button" class="reply_btn" value="확인">
-                    </div>
+					<form action="/add.board?parent_seq=${board.boardNum}&writer=${loginID}"
+						method="post">
 
-                    <div id="top_line"></div>
+						<div id="reply_box">
+							<textarea placeholder="댓글 내용을 입력하세요." name='content'></textarea>
+							<input id="reply" type="submit" class="reply_btn" value="확인">
+						</div>
 
-                    <div class="reply_view">댓글 작성자 ID | 댓글 등록 날짜</div>
+					</form>
 
-                    <div class="head6">
-                        <input type="text" class="reply_contents"><br>
-                        <button class="head6_btn">수정</button>
-                        <button class="head6_btn">삭제</button>
-                    </div>
+					<div id="top_line"></div>
 
+					<!-- 댓글 출력 및 편집 부분 -->
+					<c:choose>
+						<c:when test="${empty reply}">
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="i" items="${reply}">
+								<form action="modify.board?pseq=${boardNum.seq}&seq=${i.replySeq}"
+									method="post" id="modifyFrm">
+		
+									<div class="reply_view">${i.writer}| ${i.wirteDate}</div>
+		
+									<div class="head6">
+										<div class="reply_contents">${i.cotents}</div>
+										<br> <input type="hidden" id="contentsInput"
+											name="reply_contents">
+		
+										<c:choose>
+		
+											<c:when test="${loginID == i.writer}">
+		
+												<input type="hidden" class="reply_seq" value="${i.replySeq}">
+												<button class="head6_btn" class="modify rBtn" type="button">수정</button>
+												<button class="head6_btn" id="rDel" class="rBtn delRbtn"
+													type="button">삭제</button>
+		
+											</c:when>
+		
+											<c:otherwise>
+		
+											</c:otherwise>
+		
+										</c:choose>
+		
+									</div>
+		
+								</form>
+		
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 
-                </div>
+				</div>
 
-            </div>
+			</div>
 
-        </div>
+		</div>
 
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
@@ -182,7 +224,54 @@
         </footer>
 
     </div>
-
+	<!-- 댓글 관련 스크립트 작성 -->
+		
+		<script>
+		$(".modify").on("click", function(){
+			$($(this).parent().sibling().children()[0].attr("contenteditable","true"));
+			$($(this).praent().siblings().children()[0].focus());
+			$(this).css("display", "none");
+			$("#rDel").css("display", "none");
+			
+			let okBtn = $("<button>");
+			okBtn.tex("수정완료");
+			okBtn.attr("type","button");
+			okBtn.attr("class","head6_btn");
+			
+			let cancelBtn = $("<button>");
+			cancelBtn.attr("type","button");
+			cancelBtn.attr("class","head6_btn");
+			cancelBtn.text("취소");
+			
+			cancelBtn.on("click", function(){
+				location.reload();
+			})
+			
+			$(this).parent(".container").children(".reply_contents").append(okBtn);
+			$(this).parent(".container").children(".reply_contents").prepend(cancelBtn);
+			
+		});
+			
+			$(".delRbtn").on("click",function(){
+				
+				let result = confirm("댓글을 삭제하시겠습니까?");
+				let reply_seq = $(this).siblings(".reply_seq").val();
+				
+				if(result){
+					
+					$.ajax({
+						url: "/del.board",	
+						data: {"seq":reply_seq,"pseq": "${dto.seq}"}
+					}).done(function(resp){
+						location.reload();
+					});
+					
+				} else{
+					
+				}
+				
+			});
+		</script>
 
         <!----------------------------------- footer ----------------------------------->
 

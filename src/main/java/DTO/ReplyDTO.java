@@ -1,26 +1,29 @@
 package DTO;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class ReplyDTO {
 
 	private int replySeq;
 	private String writer;
 	private String cotents;
-	private Date wirteDate;
+	private Timestamp wirteDate;
 	private int parentSeq;
+	private int likeFunc;
 	
 	public ReplyDTO() {
-		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public ReplyDTO(int replySeq, String writer, String cotents, Date wirteDate, int parentSeq) {
+	public ReplyDTO(int replySeq, String writer, String cotents, Timestamp wirteDate, int parentSeq, int likeFunc) {
 		super();
 		this.replySeq = replySeq;
 		this.writer = writer;
 		this.cotents = cotents;
 		this.wirteDate = wirteDate;
 		this.parentSeq = parentSeq;
+		this.likeFunc = likeFunc;
 	}
 
 	public int getReplySeq() {
@@ -47,11 +50,11 @@ public class ReplyDTO {
 		this.cotents = cotents;
 	}
 
-	public Date getWirteDate() {
+	public Timestamp getWirteDate() {
 		return wirteDate;
 	}
 
-	public void setWirteDate(Date wirteDate) {
+	public void setWirteDate(Timestamp wirteDate) {
 		this.wirteDate = wirteDate;
 	}
 
@@ -61,6 +64,14 @@ public class ReplyDTO {
 
 	public void setParentSeq(int parentSeq) {
 		this.parentSeq = parentSeq;
+	}
+
+	public int getLikeFunc() {
+		return likeFunc;
+	}
+
+	public void setLikeFunc(int likeFunc) {
+		this.likeFunc = likeFunc;
 	}
 	
 	

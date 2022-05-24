@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,13 +14,12 @@
 	<div class='boardBody'>
 		<div class='boardDiv'>
 			<div class='btn_layer'>
-				<button class='top_board'>인기글 모아보기</button>
+				<button class='top_board' onclick="location.href='boardList.board?type=3&cpage=1'">인기글 모아보기</button>
 			</div>
 			<table class='boardTable'>
 				<thead>
 					<tr>
 						<th>번호</th>
-						<th>분류</th>
 						<th>작성자</th>
 						<th>제목</th>
 						<th>조회</th>
@@ -28,36 +28,50 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td colspan="7">현재 등록된 게시글이 없습니다.</td>
-					</tr>
-		
+					<c:choose>
+						<c:when test="${empty list}">
+							<tr>
+								<td colspan="7">현재 등록된 게시글이 없습니다.</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="list" items="${list}">
+								<tr class='boardSelect' data-id='${list.boardNum}'>
+									<td>${list.boardNum}</td>
+									<td>${list.writer}</td>
+									<td>${list.title}</td>
+									<td>${list.boardCount}</td>
+									<td>${list.boardLike}</td>
+									<td>${list.writeDate}</td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</tbody>
 			</table>
 			<div class='btn_under'>
-				<button class='down_board'>전체 보기</button>
-				<button class='down_board'>조회 순</button>
-				<button class='down_board'>최근 작성 순</button>
-				<button class='down_board'>태그별 보기</button>
+				<button class='down_board' onclick="location.href='boardList.board?type=0&cpage=1'">전체 보기</button>
+				<button class='down_board' onclick="location.href='boardList.board?type=1&cpage=1'">조회 순</button>
+				<button class='down_board' onclick="location.href='boardList.board?type=2&cpage=1'">최근 작성 순</button>
+				<!-- <button class='down_board'>태그별 보기</button> -->
 				<div class='btn_write'>
-					<button class='down_write'>글쓰기</button>
+					<button class='down_write' onclick="if(${loginID != null}) {location.href='/Board/boardAdd.jsp'}else{alert('로그인 후 작성할 수 있습니다')};">글쓰기</button>
 				</div>
 			</div>
-			<div class='page'>
-				<ul class='pagination modal'>
-					<li><a href="#" class='first'>처음페이지</a></li>
-					<li><a href="#" class='arrow left'>&lt&lt</a></li>
-					<li><a href="#" class='active num'>1</a></li>
-					<li><a href="#" class='num'>2</a></li>
-					<li><a href="#" class='num'>3</a></li>
-					<li><a href="#" class='num'>4</a></li>
-					<li><a href="#" class='num'>5</a></li>
-					<li><a href="#" class='arrow right'>&gt&gt</a></li>
-					<li><a href="#" class='last'>끝 페이지</a></li>
-				</ul>
+			<div class="row bd nav">
+				<div class="col">
+					${navi}
+				</div>
 			</div>
 		</div>
 	</div>
+	<script>
+		$(document).on("click",".boardSelect",function(){
+			var num = $(this).data("id");
+			$(location).attr('href',"boardSelect.board?num="+num);
+		});
+		
+	</script>
 	<jsp:include page="common/footer.jsp"/>
 </body>
 </html>

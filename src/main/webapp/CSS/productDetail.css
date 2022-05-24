@@ -1,8 +1,8 @@
 @charset "utf-8";
 
-div {
-    border: 1px solid black;
-}
+/* div { */
+/*     border: 1px solid black; */
+/* } */
 
 * {
     box-sizing: border-box;
@@ -18,7 +18,7 @@ div {
     height: 600px;
 }
 
-/* ÀÌ¹ÌÁö CSS */
+/* ï¿½Ì¹ï¿½ï¿½ï¿½ CSS */
 
   .section_s01{
     background-color: rgb(235, 228, 228);
@@ -33,16 +33,10 @@ div {
 .img_box{
   
     float: left;
-    width: 487px;
+    width: 500px;
+    height: 500px;
 }
-.img_drink{
-  position: relative;
-    width: 486px;
-    height: 486px;
-    border-radius: 50%;
-    background-color: white;
-    
-}
+
 #main_img{
   width: 100%;
     /* max-width: 486px;
@@ -50,28 +44,20 @@ div {
    
 }
 
-/* txt¶û Ç¥ CSS */
-
 .txt_box{
   padding-left:30px;
   /*margin-left: 30px;*/
   width: 55%;
   float: left;
   overflow: hidden;}
-h2 {
-  margin-bottom: 70px;
-  font-size: 30px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-  font-weight: 400px;
-}
-h3{
-  margin-bottom: 10px;
-    font-size: 36px;
-    font-weight: 700;
-}
-.ingredient{
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
+
+  .product_name{
+     font-size: 30px;
+     font-weight: 300px;
+
+   }
+
+
 .rating{
   padding-top: 30px;
   padding-bottom: 20px;
@@ -83,7 +69,7 @@ h3{
   }
 
 
-/* ¼ú ¼³¸í°ú ÆÇ¸ÅÃ³ Á¤º¸ */
+/* ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½Ã³ ï¿½ï¿½ï¿½ï¿½ */
 
 
 .seciton_s02{

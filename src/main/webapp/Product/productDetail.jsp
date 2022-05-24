@@ -31,7 +31,375 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
-<title>우리술夜</title>
+<style>
+/* div {
+    border: 1px solid black;
+} */
+
+* {
+    box-sizing: border-box;
+}
+
+#logo {
+    width: 150px;
+    height: auto;
+}
+
+#content {
+    width: 100%;
+    height: 600px;
+}
+
+
+  .section_s01{
+    background-color: rgb(235, 228, 228);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 100%;
+    height: auto;
+	 /* overflow: auto; */
+    display: inline-block; 
+    float:left;
+   
+}
+
+/* 이미지 CSS */
+
+.img_box{
+  
+    float: left;
+    width: 500px;
+    height: 500px;
+	padding: 30px;
+}
+
+
+.main_img{
+	width: 500px;
+	height: 500px; 
+	float:left; 
+	display : inline-block
+   
+}
+
+.img{
+	width: 100%;
+}
+
+/* 텍스트 CSS */
+
+.txt_box{
+  
+  margin-left: 30px;
+  width: 750px;
+  float: left;
+  overflow: hidden;}
+
+  .product_name{
+     font-size: 30px;
+     font-weight: 300px;
+
+   }
+  dt{
+  float:left;
+  display: inline-block;
+  width: 130px;
+  }
+
+
+.rating{
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+.tbl{
+     text-align: center;
+     width: 100%;
+     margin-top: 40px;
+  }
+
+
+.seciton_s02{
+    margin-top: 30px;
+    width: 100%;
+    
+
+}
+.drink_description_box{
+  width: 100%;
+}
+.description{    
+     padding-left:0px;
+     padding-bottom: 50px;
+    }   
+.descr_2{margin-top: 60px;}
+
+
+@media (max-width: 1400px) {
+.img_box{
+  float: left;
+  width: 450px;
+  height: 500px;
+  padding: 30px;
+  }
+
+  .main_img{
+	width: 450px; 
+	height: 500px; 
+	display : inline-block;
+   
+}
+.img{
+	width: 100%;
+	height: 100%;
+}
+
+  /* 텍스트 */
+
+ .txt_box{
+  
+ 
+  width: 600px;
+  float: left;
+  overflow: hidden;}
+
+  .product_name{
+     font-size: 30px;
+     font-weight: 300px;
+
+   }
+  dt{
+  float:left;
+  display: inline-block;
+  width: 130px;
+  } 
+
+
+}
+
+@media (max-width: 1200px) {
+.img_box{
+  float: left;
+  width: 350px;
+  height: 500px;
+  padding: 30px;
+  }
+
+  .main_img{
+	width: 350px; 
+	height: 500px; 
+	display : inline-block;
+   
+}
+.img{
+	width: 100%;
+	height: 100%;
+}
+
+  /* 텍스트 */
+
+ .txt_box{
+  
+ 
+  width: 500px;
+  float: left;
+  overflow: hidden;}
+
+  .product_name{
+     font-size: 30px;
+     font-weight: 300px;
+
+   }
+  dt{
+  float:left;
+  display: inline-block;
+  width: 130px;
+  } 
+
+
+}
+
+
+
+@media (max-width: 992px) {
+
+	/* 이미지 */
+
+.img_box{
+  float: left;
+  width: 300px;
+  height: 500px;
+  padding: 30px;
+  }
+
+  .main_img{
+	width: 300px; 
+	height: 500px; 
+	display : inline-block;
+   
+}
+.img{
+	width: 100%;
+	height: 100%;
+}
+
+     /* 텍스트 */
+
+ .txt_box{
+  padding-left:30px;
+  margin-left: 30px;
+  width: 300px;
+  float: left;
+  overflow: hidden;}
+
+  .product_name{
+     font-size: 30px;
+     font-weight: 300px;
+
+   }
+  dt{
+  float:left;
+  display: inline-block;
+  width: 130px;
+  } 
+}
+
+@media (max-width: 768px) {
+
+/* 이미지 */
+
+.img_box{
+float: left;
+width: 200px;
+height: 400px;
+padding: 30px;
+}
+
+.main_img{
+width: 200px; 
+height: 400px; 
+display : inline-block;
+
+}
+.img{
+width: 100%;
+height: 100%;
+}
+
+ /* 텍스트 */
+
+.txt_box{
+margin-left: 30px;
+width: 250px;
+float: left;
+overflow: hidden;}
+
+.product_name{
+ font-size: 30px;
+ font-weight: 300px;
+
+}
+dt{
+float:left;
+display: inline-block;
+width: 95px;
+} 
+
+}
+
+@media (max-width: 530px) {
+
+/* 이미지 */
+
+.img_box{
+
+width: 450px;
+height: 400px;
+padding: 30px;
+
+}
+
+.main_img{
+width: 450px; 
+height: 400px; 
+display : inline-block;
+
+}
+.img{
+width: 100%;
+height: 100%;
+}
+
+ /* 텍스트 */
+
+.txt_box{
+margin-left: 0px;
+margin-top: 30px;
+width: 450px;
+float: left;
+overflow: hidden;}
+
+.product_name{
+ font-size: 30px;
+ font-weight: 300px;
+
+}
+dt{
+float:left;
+display: inline-block;
+width: 130px;
+} 
+
+}
+
+@media (max-width: 390px) {
+
+/* 이미지 */
+
+.img_box{
+
+width: 350px;
+height: 400px;
+padding: 30px;
+
+}
+
+.main_img{
+width: 350px; 
+height: 400px; 
+display : inline-block;
+
+}
+.img{
+width: 100%;
+height: 100%;
+}
+
+ /* 텍스트 */
+
+.txt_box{
+margin-left: 0px;
+margin-top: 30px;
+width: 350px;
+float: left;
+overflow: hidden;}
+
+.product_name{
+ font-size: 30px;
+ font-weight: 300px;
+
+}
+dt{
+float:left;
+display: inline-block;
+width: 130px;
+} 
+
+}
+
+</style>
+
+	<title>우리술夜</title>
+
 </head>
 
 <body>
@@ -101,26 +469,40 @@
 
 		<!----------------------------------- Content ----------------------------------->
 		<div class="row">
-			<div class="col-12" id="content">
+			<div class="col-12 col-xs-12" id="content" style="height: auto;">
 
 				<div class="section_s01">
 
-
+                <div class="main_img">
+				
 					<div class="img_box">
-						<div class="img_drink">
-							<img src="밤야.jp" id="main_img">
-						</div>
+						<img src="https://picsum.photos/id/1020/150/150" class="img">
 					</div>
+				
+				</div>
+					
+				
+
 					<div class="txt_box">
 
-						<h2>전체상품</h2>
-						<h3>술이름</h3>
-						<p>간단한 술 설명</p>
-						<div class="ingredient">
-							<strong style="margin-right: 30px;">주원료</strong> <span>정제수,
-								찹쌀, 백미, 기타 등등</span>
-						</div>
-						<div class="box_user_rating">
+						<div class="product_name">상품 이름</div>
+                        
+						<div style="width: 500px; margin-top: 30px; margin-bottom: 30px;" ></div>
+					<dl>
+					<dt>짧은 설명</dt> <dd class="smry">마시기 좋은 술</dd>
+					<dt>가격</dt> 	<dd class="price">15000</dd>
+					<dt>상품 코드</dt> <dd class="product_code">A10</dd>
+					<dt>유형</dt> <dd class="kind">막걸리</dd>
+					<dt>도수(%)</dt> <dd class="abv">17</dd>
+					<dt>용량(ml)</dt> <dd class="capacity">500ml</dd>
+					<dt>양조장</dt> <dd class="brewery">강원도</dd>
+					<dt>판매처</dt> <dd class="adress">CU</dd>
+                    <dt>유저 평가</dt> <dd><span>*</span> <span>*</span> <span>*</span> <span>*</span> <span>*</span></dd>
+
+					</dl>
+
+			
+						<!-- <div class="box_user_rating">
 							<div class="rating">
 								<p>
 									<span>유저평가</span>
@@ -151,7 +533,7 @@
 								</table>
 
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

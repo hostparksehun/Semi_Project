@@ -40,16 +40,16 @@ private static ProductDAO instance = null;
 			PreparedStatement pstat = con.prepareStatement(sql);) 
 	{
 	   
-		pstat.setString(1, dto.getProduct_name());
-		pstat.setString(2, dto.getProduct_area());
-	    pstat.setString(3, dto.getProducer_name());
-	    pstat.setString(4, dto.getProduct_code());
-	    pstat.setInt(5, dto.getPrice());
-	    pstat.setInt(6, dto.getAbv());
-	    pstat.setString(7, dto.getDealer_number());
-        pstat.setString(8, dto.getAdress1());
-        pstat.setString(9, dto.getAdress2());
-	    pstat.setInt(10, dto.getCapacity());
+//		pstat.setString(1, dto.getProduct_name());
+//		pstat.setString(2, dto.getProduct_area());
+//	    pstat.setString(3, dto.getProducer_name());
+//	    pstat.setString(4, dto.getProduct_code());
+//	    pstat.setInt(5, dto.getPrice());
+//	    pstat.setFloat(6, dto.getAbv());
+//	    pstat.setString(7, dto.getDealer_number());
+//        pstat.setString(8, dto.getAdress1());
+//        pstat.setString(9, dto.getAdress2());
+//	    pstat.setInt(10, dto.getCapacity());
 	    
 	    
 	    int result = pstat.executeUpdate();
@@ -89,10 +89,10 @@ private static ProductDAO instance = null;
             	String adress2  = rs.getString("adress2");
             	int capacity=rs.getInt("capacity");
             	
-                ProductDTO dto = new ProductDTO(product_name,product_area,producer_name,0,file_index,product_code, kind, 0,price,abv,dealer_number,adress1,adress2,capacity);
+//                ProductDTO dto = new ProductDTO(product_name,product_area,producer_name,0,file_index,product_code, kind, 0,price,abv,dealer_number,adress1,adress2,capacity);
             
             
-             list.add(dto);
+//             list.add(dto);
             
             }
           return list;

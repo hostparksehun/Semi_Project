@@ -55,9 +55,9 @@
                   우리술 정보
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                     <li><a class="dropdown-item" href="/productAll_01.ProductController">막걸리</a></li>
-                     <li><a class="dropdown-item" href="/productAll_02.ProductController">증류주</a></li>
-                     <li><a class="dropdown-item" href="/productAll_03.ProductController">담금주</a></li>
+                     <li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
+                     <li><a class="dropdown-item" href="/productA20.ProductController">증류주</a></li>
+                     <li><a class="dropdown-item" href="/productA30.ProductController">담금주</a></li>
                   <li>
                     <hr class="dropdown-divider">
                   </li>
@@ -112,22 +112,11 @@
       </nav>
     </header>
 
-<<<<<<< HEAD
+
     
         <div><a href="add.ProductController">상품등록</a></div>
   
 
-  <script>
-  $("#join").on("click",function(){
-		location.href="/Member/joinView.jsp";
-	})
-  $("#login").on("click",function(){
-	  location.href="/Member/loginView.jsp"
-  })
-  </script>
-
-    
-=======
       <script>
 		  $("#join").on("click",function(){
 		      location.href="/Member/joinView.jsp";
@@ -136,7 +125,7 @@
 		     location.href="/Member/loginView.jsp"
 		  })
 	  </script>
->>>>>>> 59c4ebb42d20d600a32b09ba4387b5d05d504332
+
 
     <div class="row" id="main">
       <div class="col-12" id="contents" >

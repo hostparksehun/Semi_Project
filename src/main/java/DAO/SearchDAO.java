@@ -67,7 +67,7 @@ public class SearchDAO {
 	// 일반 검색
 	public List<SearchDTO> SearchByText(String product_name) throws Exception{
 
-		String sql = "select row_number() over(order by product_name desc) index, product_name, seq, kind, price, abv, grade, smry, ori_name, sys_name from product_info where search_name like '%'||?||'%'";
+		String sql = "select row_number() over(order by product_name desc) num, product_name, seq, kind, price, abv, grade, smry, ori_name, sys_name from product_info where search_name like '%'||?||'%'";
 
 		try(
 				Connection con = this.getConnection();
@@ -84,7 +84,7 @@ public class SearchDAO {
 
 				while(rs.next()) {
 					
-					int index = rs.getInt("index");
+					int index = rs.getInt("num");
 					String pname = rs.getString("product_name");
 					int seq = rs.getInt("seq");
 					int price = rs.getInt("price");
@@ -241,7 +241,7 @@ public class SearchDAO {
 
 				while(rs.next()) {
 					
-					int index = rs.getInt("index");
+					int index = rs.getInt("num");
 					String pname = rs.getString("product_name");
 					int seq = rs.getInt("seq");
 					int price = rs.getInt("price");
@@ -418,7 +418,7 @@ public class SearchDAO {
 
 				while(rs.next()) {
 					
-					int index = rs.getInt("index");
+					int index = rs.getInt("num");
 					String pname = rs.getString("product_name");
 					int seq = rs.getInt("seq");
 					int price = rs.getInt("price");

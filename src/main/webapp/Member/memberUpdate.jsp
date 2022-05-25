@@ -23,6 +23,7 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
   <title>우리술夜</title>
 
@@ -34,7 +35,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.jsp">
               <img alt="" src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
             </a>
           </div>
@@ -72,7 +73,7 @@
 
 
               <li class="nav-item">
-                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">술꾼술꾼</a>
+                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/boardList.board">술꾼술꾼</a>
               </li>
 
             </ul>
@@ -88,19 +89,15 @@
             </form>
 <c:choose>
 			<c:when test="${loginID !=null}">
-					
-					   ${loginID }
-					
-					<button type=button id="mypage">마이페이지</button>
-					<button type=button id="logout">로그아웃</button>
-			<script>
-				$("#mypage").on("click",function(){
-					location.href="/mypage.member";
-				})
-				$("#logout").on("click",function(){
-					location.href="/logout.member"
-				})
-				</script>
+			        	<div class="btn-group">
+  <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    ${loginID } 
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+    <li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+  </ul>
+</div>
 			</c:when>
 			<c:otherwise>
   <button id=login type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
@@ -155,13 +152,14 @@
           <div><input type="text" id="phone" name="phone" placeholder="ex)01012349876" class="join-input"></div>
           <div class="check" id="phoneCheckinfo">확인용</div>
         </div>
-        <div class="join-box">
-          <div class="title">우편번호<br></div>
-          <div>
-            <input type="text" name="zipcode" id="zipcode" class="join-input">
-            <button type="button" class="btn btn-secondary" id="zipcode_find">찾기</button>
-          </div>
+       <div class="join-box">
+        <div class="title">우편번호<br></div>
+        <div>
+          <input type="text" name="zipcode" id="zipcode" class="join-input"/>
+          <button type="button" onclick="execDaumPostcode()"
+          class="btn btn-secondary" id="zipcode_find">찾기</button>
         </div>
+      </div>
         <div class="join-box">
           <div class="title">주소<br></div>
           <div>
@@ -193,5 +191,24 @@
         </ul>
         <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
       </footer>
+      
+      <script>
+    //우편번호
+      function execDaumPostcode() {
+	new daum.Postcode({
+		oncomplete : function(data) {
+			var addr = "";
+
+			if (data.userSelectedType === "R") {
+				addr = data.roadAddress;
+			}
+
+			document.getElementById("zipcode").value = data.zonecode;
+			document.getElementById("address1").value = addr;
+			document.getElementById("address2").focus();
+			},
+		}).open();
+	}
+      </script>
 </body>
 </html>

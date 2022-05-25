@@ -238,10 +238,6 @@
 												<input type="hidden" class="reply_seq" value="${i.replySeq}">
 												<button class="head6_btn modify" type="button">수정</button>
 												<button class="head6_btn delRbtn" type="button">삭제</button>
-		
-												<button class="head6_btn" class="modify rBtn" type="button">수정</button>
-												<button class="head6_btn" id="rDel" class="rBtn delRbtn"
-													type="button">삭제</button>
 
 											</c:when>
 

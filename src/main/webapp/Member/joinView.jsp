@@ -74,7 +74,7 @@
 
 
               <li class="nav-item">
-                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">술꾼술꾼</a>
+                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/boardList.board">술꾼술꾼</a>
               </li>
 
             </ul>
@@ -348,13 +348,8 @@
 		} else if($("#phone").val() == null){
 			alert("휴대폰번호를 입력해주세요.");
 			return false;
-<<<<<<< HEAD
-=======
-		} 
->>>>>>> 9cde4e254261771e04ade121fd2b87b622c41742
-		
-		
-	})
+		}
+	});
 	
 	//우편번호
 	function execDaumPostcode() {

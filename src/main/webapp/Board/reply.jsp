@@ -76,7 +76,7 @@
 
 
 							<li class="nav-item"><a
-								class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">술꾼술꾼</a></li>
+								class="nav-link mx-0 mx-md-2 mx-xl-5" href="/boardList.board">술꾼술꾼</a></li>
 
 						</ul>
 						<form class="d-flex">
@@ -91,9 +91,27 @@
                                 </svg>
 							</button>
 						</form>
+						
+						<c:choose>
+							<c:when test="${loginID !=null}">
+								<div class="btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${loginID }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+									</ul>
+								</div>
 
-						<button type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-						<button type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+							</c:when>
+							<c:otherwise>
+								<button id=login type="button"
+									class="mx-1 btn btn-warning navbar-btn">로그인</button>
+								<button id=join type="button"
+									class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 			</nav>
@@ -284,6 +302,7 @@
 
 	<script>
 		$(".modify").on("click", function(){
+
 			$(this).siblings(".reply_contents").next().show(); 
 			$(this).siblings(".reply_contents").hide();
 			$(this).css("display", "none");

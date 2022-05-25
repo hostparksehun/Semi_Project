@@ -92,8 +92,41 @@
 							</button>
 						</form>
 
+<<<<<<< HEAD
 						<button type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
 						<button type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+=======
+            <c:choose>
+	        	<c:when test="${loginID !=null}">
+					<div>${loginID }</div>
+		               <button type="button" id="mypage">마이페이지</button>
+		               <button type="button" id="logout">로그아웃</button>
+	
+			        <script>
+			            $("#mypage").on("click",function(){
+			               location.href="/mypage.member";
+			            })
+			            $("#logout").on("click",function(){
+			               location.href="/logout.member";
+			            })
+		            </script>
+		            
+				</c:when>
+				<c:otherwise>
+					<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+					<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+					
+					<script>
+					  $("#joinBtn").on("click",function(){
+					      location.href="/Member/joinView.jsp";
+					   })
+					  $("#loginBtn").on("click",function(){
+					     location.href="/Member/loginView.jsp"
+					  })
+					</script>
+				</c:otherwise>
+			</c:choose>
+>>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
 					</div>
 				</div>
 			</nav>
@@ -145,7 +178,11 @@
 
 
 					<div id="head5" style="position: relative;">
+<<<<<<< HEAD
 						<div class="reply_cont">총 댓글 : ${ count }</div>
+=======
+						<div class="reply_cont">총 댓글 :</div>
+>>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
 						<div class="like_cont">추천 : ${board.boardLike}</div>
 						<input type="button" class="like_btn" value="추천하기"
 							onclick="location.href='/boardLike.board?num=${board.boardNum}'">
@@ -182,6 +219,7 @@
 						</c:when>
 						<c:otherwise>
 							<c:forEach var="i" items="${reply}">
+<<<<<<< HEAD
 								<form action="modify.board?pseq=${board.boardNum}&seq=${i.replySeq}"
 									method="post" id="modifyFrm" enctype="multipart/form-data">
 		
@@ -194,6 +232,19 @@
 										<!-- $(this).siblings(".reply_contents").next() 여기는 <input name='contents' value="${i.cotents}" style="display: none; width:50%;"> 이걸 선택한 상태에요 -->
 										<br> <input type="hidden" id="contentsInput" name="reply_contents">
 	
+=======
+								<form
+									action="modify.board?pseq=${boardNum.seq}&seq=${i.replySeq}"
+									method="post" id="modifyFrm">
+
+									<div class="reply_view">${i.writer}|${i.wirteDate}</div>
+
+									<div class="head6">
+										<div class="reply_contents">${i.cotents}</div>
+										<br> <input type="hidden" id="contentsInput"
+											name="reply_contents">
+
+>>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
 										<c:choose>
 
 											<c:when test="${loginID == i.writer}">

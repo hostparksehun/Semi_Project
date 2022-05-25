@@ -10,11 +10,13 @@
 <link rel="stylesheet" type="text/css" href="../CSS/board.css">
 </head>
 <body>
-	<jsp:include page="common/header.jsp"/>
+	<jsp:include page="common/header.jsp" />
 	<div class='boardBody'>
 		<div class='boardDiv'>
 			<div class='btn_layer'>
-				<button class='top_board' onclick="location.href='boardList.board?type=3&cpage=1'">인기글 모아보기</button>
+				<button class='top_board'
+					onclick="location.href='boardList.board?type=3&cpage=1'">인기글
+					모아보기</button>
 			</div>
 			<table class='boardTable'>
 				<thead>
@@ -50,18 +52,31 @@
 				</tbody>
 			</table>
 			<div class='btn_under'>
-				<button class='down_board' onclick="location.href='boardList.board?type=0&cpage=1'">전체 보기</button>
-				<button class='down_board' onclick="location.href='boardList.board?type=1&cpage=1'">조회 순</button>
-				<button class='down_board' onclick="location.href='boardList.board?type=2&cpage=1'">최근 작성 순</button>
+				<button class='down_board'
+					onclick="location.href='boardList.board?type=0&cpage=1'">전체
+					보기</button>
+				<button class='down_board'
+					onclick="location.href='boardList.board?type=1&cpage=1'">조회
+					순</button>
+				<button class='down_board'
+					onclick="location.href='boardList.board?type=2&cpage=1'">최근
+					작성 순</button>
 				<!-- <button class='down_board'>태그별 보기</button> -->
 				<div class='btn_write'>
-					<button class='down_write' onclick="if(${loginID != null}) {location.href='/Board/boardAdd.jsp'}else{alert('로그인 후 작성할 수 있습니다')};">글쓰기</button>
+					<button class='down_write'
+						onclick="if(${loginID != null}) {location.href='/Board/boardAdd.jsp'}else{alert('로그인 후 작성할 수 있습니다')};">글쓰기</button>
 				</div>
 			</div>
+				<form action=/boardList.board align="center">
+					<select name="selectType">
+						<option value="1">제목</option>
+						<option value="2">작성자</option>
+					</select> 
+					<input type="text" class='boardSearch' name="boardSearch"> 
+					<button style="background-color: #70e0f6; color: white; border: 0px; font-size: 18px; " class='boardSearchBtn'>검색하기</button>
+				</form>
 			<div class="row bd nav">
-				<div class="col">
-					${navi}
-				</div>
+				<div class="col">${navi}</div>
 			</div>
 		</div>
 	</div>
@@ -71,7 +86,11 @@
 			$(location).attr('href',"boardSelect.board?num="+num);
 		});
 		
+		$(document).on("click","#boardSearchBtn",function(){
+			
+		});
+		
 	</script>
-	<jsp:include page="common/footer.jsp"/>
+	<jsp:include page="common/footer.jsp" />
 </body>
 </html>

@@ -64,32 +64,64 @@ public class ProductController extends HttpServlet {
 			
 		}else if(uri.equals("/productA20.ProductController")){
 			
+	int cpage = Integer.parseInt(request.getParameter("cpage"));
+		    
 			List<ProductDTO> list;
 			list = dao.selectAll();
+			
+			String PageNavi = dao.getPageNavi(cpage);
+			
+			
+			
 			request.setAttribute("list", list);
-			request.getRequestDispatcher("/Product/productA20.jsp").forward(request, response);
+			request.setAttribute("navi", PageNavi);
+			request.getRequestDispatcher("/Product/productA10.jsp").forward(request, response);
 			
 			
 			}else if(uri.equals("/productA30.ProductController")){
 				
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
+			    
 				List<ProductDTO> list;
 				list = dao.selectAll();
+				
+				String PageNavi = dao.getPageNavi(cpage);
+				
+				
+				
 				request.setAttribute("list", list);
-				request.getRequestDispatcher("/Product/productA30.jsp").forward(request, response);
+				request.setAttribute("navi", PageNavi);
+				request.getRequestDispatcher("/Product/productA10.jsp").forward(request, response);
 				
 			}else if(uri.equals("/productA40.ProductController")){
 				
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
+			    
 				List<ProductDTO> list;
 				list = dao.selectAll();
+				
+				String PageNavi = dao.getPageNavi(cpage);
+				
+				
+				
 				request.setAttribute("list", list);
-				request.getRequestDispatcher("/Product/productA40.jsp").forward(request, response);
+				request.setAttribute("navi", PageNavi);
+				request.getRequestDispatcher("/Product/productA10.jsp").forward(request, response);
 				
 			}else if(uri.equals("/productA50.ProductController")){
 			
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
+			    
 				List<ProductDTO> list;
 				list = dao.selectAll();
+				
+				String PageNavi = dao.getPageNavi(cpage);
+				
+				
+				
 				request.setAttribute("list", list);
-				request.getRequestDispatcher("/Product/productA50.jsp").forward(request, response);
+				request.setAttribute("navi", PageNavi);
+				request.getRequestDispatcher("/Product/productA10.jsp").forward(request, response);
 			
 			}else if(uri.equals("/add.ProductController")) {
 			

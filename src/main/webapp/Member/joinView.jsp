@@ -359,8 +359,7 @@
 		}
 		alert("가입이 완료되었습니다 :) 환영합니다!");
 		} 
-		
-	})
+	});
 	
 	//우편번호
 	function execDaumPostcode() {

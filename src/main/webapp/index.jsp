@@ -86,27 +86,26 @@
               </button>
             </form>
 
+
 			<c:choose>
 	        	<c:when test="${loginID !=null}">
-					${loginID }
-		               <button type=button id="mypage">마이페이지</button>
-		               <button type=button id="logout">로그아웃</button>
-	
-			        <script>
-			            $("#mypage").on("click",function(){
-			               location.href="/mypage.member";
-			            })
-			            $("#logout").on("click",function(){
-			               location.href="/logout.member"
-			            })
-		            </script>
+	        	<div class="btn-group">
+  <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    ${loginID } 
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+    <li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+  </ul>
+</div>
+					
 				</c:when>
 				<c:otherwise>
 					<button id=login type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
 					<button id=join type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
 				</c:otherwise>
 			</c:choose>
-			
+
           </div>
         </div>
       </nav>
@@ -206,5 +205,22 @@
 
   </div>
   
+<<<<<<< HEAD
+  <script>
+  	$("#join").on("click", function() {
+		location.href = "/Member/joinView.jsp";
+	})
+	$("#login").on("click", function() {
+		location.href = "/Member/loginView.jsp";
+	})
+
+	$("#board").on("click", function() {
+		location.href = "/Board/boardList.jsp";
+	})
+	
+  </script>
+  
+=======
+>>>>>>> 5f0599973fde0e04959f2ceb10d9b5a060bf95d6
 </body>
 </html>

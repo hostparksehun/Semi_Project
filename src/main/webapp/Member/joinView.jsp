@@ -231,6 +231,10 @@
 		let idRegex = /^[\da-z_]{8,13}$/; //영어 소문자, 숫자, 언더바 8~13글자
 		let idResult = idRegex.test(id);
 		
+		if(id=="admin"){
+			$("#idinfo").css("color", "red");
+			$("#idinfo").text("이 아이디는 사용할 수 없습니다.");
+		}
 		if(!idResult){
 			$("#idinfo").css("color", "red");
 			$("#idinfo").text("8~13자(영문 소문자,숫자,_)를 입력하세요.");

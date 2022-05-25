@@ -27,10 +27,14 @@ import DAO.ReplyDAO;
 public class BoardController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.setCharacterEncoding("UTF-8");
+		
 		String uri = request.getRequestURI();
 
-		BoardDAO dao = new BoardDAO();
+
+		BoardDAO dao = BoardDAO.getInstance();
+
 		FileDAO fdao = FileDAO.getInstance();
 		ReplyDAO rdao = ReplyDAO.getInstance();
 
@@ -79,7 +83,9 @@ public class BoardController extends HttpServlet {
 				case 3 : typeSql = " ORDER BY BOARD_LIKE DESC"; break;
 				default : typeSql = "ORDER BY BOARD_NUM DESC";break;
 				}
+				
 				List<BoardDTO> list = dao.selectByPage(cpage,typeSql,where);	// 한 페이지에 보여지는 게시글의 개수를 정하기 위해 새로운 메소드가 필요함.
+
 				//List<BoardDTO> list = dao.selectAll();
 				String pageNavi = dao.getPageNavi(cpage,typeSql,type,where,selectType,search);
 				request.setAttribute("list", list);

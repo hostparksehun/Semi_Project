@@ -7,32 +7,29 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import DTO.FileDTO;
 
 public class FileDAO {
 	private static FileDAO instance = null;
-	public FileDAO() {
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
+
 	public static synchronized FileDAO getInstance() {
 		if(instance == null) {
 			instance = new FileDAO();
+
 		}
 		return instance;
 	}
+	
 
 
 	private Connection getConnection() throws Exception{
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String id = "semi";
-		String pw = "semi";
-		return DriverManager.getConnection(url, id, pw);
+		Context ctx = new InitialContext();
+		DataSource ds=(DataSource)ctx.lookup("java:comp/env/jdbc/orcl"); 
+		return ds.getConnection();
 	}
 	
 	public int insert(FileDTO dto) throws Exception{

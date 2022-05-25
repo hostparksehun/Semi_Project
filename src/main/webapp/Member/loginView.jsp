@@ -26,6 +26,10 @@
 
 <!-- 카카오 API -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<!-- 네이버 API 관련 -->
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
 
   <title>우리술夜</title>
 </head>
@@ -91,7 +95,7 @@
 
             <c:choose>
 	        	<c:when test="${loginID !=null}">
-					${loginID }
+					<div>${loginID }</div>
 		               <button type="button" id="mypage">마이페이지</button>
 		               <button type="button" id="logout">로그아웃</button>
 	
@@ -108,6 +112,15 @@
 				<c:otherwise>
 					<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
 					<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+					
+					<script>
+					  $("#joinBtn").on("click",function(){
+					      location.href="/Member/joinView.jsp";
+					   })
+					  $("#loginBtn").on("click",function(){
+					     location.href="/Member/loginView.jsp"
+					  })
+					</script>
 				</c:otherwise>
 			</c:choose>
 			
@@ -117,8 +130,8 @@
     </header>
 
     <!----------------------------------- Content ----------------------------------->
-<form action="/login.member" method=post>
     <div class="container" style="width: 360px;">
+<form action="/login.member" method=post>
         <div style="text-align: center;"><h3>로그인</h3></div>
             <div class="idline">
                 <div class="title">아이디</div>
@@ -135,16 +148,41 @@
             <input type="submit" class="btn btn-outline-secondary" id="loginBtn" value="로그인하기">
             <input type="button" class="btn btn-outline-secondary" id="joinBtn" value="회원가입">
             </div>
-    </form>
+    	</form>
             <hr>
             <div class="sns">
-                <div id="naver">
-                    <img src="/img/loginFile/btnG_완성형.png">
-                </div>
-                <div id="kakao">
-                <a href="javascript:kakaoLogin();">
-                    <img src="/img/loginFile/kakao_login_medium_narrow.png"></a>
+<!--              <div id="naver_id_login"> -->
+<!--                     <img src="/img/loginFile/btnG_완성형.png"> -->
+<!--                 </div> -->
+                
+<!--                 <script type="text/javascript"> -->
+<!-- 				  	var naver_id_login = new naver_id_login("hJtsJHj17cTSu5fTaM9q", "http://localhost/index.jsp"); -->
+<!-- 				  	var state = naver_id_login.getUniqState(); -->
+<!-- 				  	naver_id_login.setButton("white", 2,40); -->
+<!-- 				  	naver_id_login.setDomain("http://localhost/Member/loginView.jsp"); -->
+<!-- 				  	naver_id_login.setState(state); -->
+<!-- 				  	naver_id_login.setPopup(); -->
+<!-- 				  	naver_id_login.init_naver_id_login(); -->
+<!-- 				</script> -->
+				
+<!-- 		<div id="naverIdLogin"></div> -->
+	
+<!-- 				  <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script> -->
+<!--   <div id="message"> -->
+<!--   로그인 버튼을 눌러 로그인 해주세요. -->
+<!-- </div> -->
+
+				
+				        <div class="button-login" align ="center" >
+                <a id="kakao-login-btn" >
+    <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="83%" height ="50px" />
+    </a>
+<!--                 <div id="kakao-login-btn"> -->
+<!--                 <a href="javascript:kakaoLogin();"> -->
+<!--                     <img src="/img/loginFile/kakao_login_medium_narrow.png"></a> -->
                     <a href="javascript:secession();">연결 끊기?</a>
+                </div>
+                <div id="test">
                 </div>
             </div>
     	</div>
@@ -162,26 +200,76 @@
  			
  			//카카오 로그인
 			//a90276ed357ed7ce1c45d0863f399e1d 키값
-			window.Kakao.init("a90276ed357ed7ce1c45d0863f399e1d");
-			function kakaoLogin(){
-				window.Kakao.Auth.login({
-					scope:'account_email, birthday',
-	                success: function(response) {
-	                    console.log(response) // 로그인 성공하면 받는 데이터
-	                    window.Kakao.API.request({ // 사용자 정보 가져오기 
-	                        url: '/v2/user/me',
-	                        success: (res) => {
-	                            const kakao_account = res.kakao_account;
-	                            console.log(kakao_account)
-	                        }
-	                    });
-	                    // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
-	                },
-	                fail: function(error) {
-	                    console.log(error);
-	                }
-	            });
-	        }
+// 			window.Kakao.init("a90276ed357ed7ce1c45d0863f399e1d");
+// 			function kakaoLogin(){
+// 				window.Kakao.Auth.login({
+// 					scope:'account_email, birthday',
+// 	                success: function(response) {
+// 	                    console.log(response) // 로그인 성공하면 받는 데이터
+// 	                    window.Kakao.API.request({ // 사용자 정보 가져오기 
+// 	                        url: '/v2/user/me',
+// 	                        success: (res) => {
+// 	                            const kakao_account = res.kakao_account;
+// 	                            console.log(kakao_account)
+// 	                        }
+// 	                    });
+// 	                    // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
+// 	                },
+// 	                fail: function(error) {
+// 	                    console.log(error);
+// 	                }
+// 	            });
+// 	        }
+			// 카카오 초기화
+			Kakao.init('a90276ed357ed7ce1c45d0863f399e1d');
+			
+			$("#kakao-login-btn").on("click", function(){
+			    //1. 로그인 시도
+			    Kakao.Auth.login({
+			        success: function(authObj) {
+			         
+			          //2. 로그인 성공시, API 호출
+			          Kakao.API.request({
+			            url: '/v2/user/me',
+// 			            data: {
+// 			                property_keys: ["kakao_account.email","kakao_account.gender"]
+// 			            },
+			            success: function(res) {
+						console.log(res);
+						//scope : 'account_email';
+						let id = res.id;
+						let name = res.properties.nickname; 
+						let email = res.kakao_account.email;
+						let birthday = res.kakao_account.birthday;
+						console.log(id);
+						console.log(name);
+						console.log(email);
+						console.log(birthday);
+						//alert('로그인성공');
+						//location.href="http://localhost/index.jsp";
+						
+						$.ajax({
+							url:"/kakaologin.member",
+							data: {id:id, email:email, birthday:birthday},
+							type:"POST",
+						}).done(function(resp){
+							$("#test").text(resp);
+							console.log(resp);
+							//location.reload();
+						})
+			        }
+			          })
+			          console.log(authObj);
+			          var token = authObj.access_token;
+			        },
+			        fail: function(err) {
+			          alert(JSON.stringify(err));
+			        }
+			      });
+			        
+			}) //
+
+
 			//카카오 연결 끊기
 			function secession() {
 				Kakao.API.request({

@@ -91,9 +91,6 @@
                                 </svg>
 							</button>
 						</form>
-
-						<button type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-						<button type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
 					</div>
 				</div>
 			</nav>

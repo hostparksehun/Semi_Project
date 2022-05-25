@@ -133,6 +133,32 @@ public class MemberDAO {
 		}
 	}
 	
-
+	//카카오 로그인 위한 이메일 확인
+	public boolean kakaoLogin(String email) throws Exception {
+		String sql = "select * from member where email=?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);
+				) {
+			pstat.setString(1, email);
+			try(ResultSet rs = pstat.executeQuery();){
+				return rs.next();
+			}
+		}
+	}
+	//카카오 로그인 후 이메일 false라면 회원가입
+	public int kakaoInsert(MemberDTO dto) throws Exception {
+		String sql = "insert into kakaomember values(?,?,?,?)";
+			try (Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+					pstat.setString(1, dto.getId());
+					pstat.setString(2, dto.getName());
+					pstat.setString(3, dto.getBirthday());
+					pstat.setString(4, dto.getEmail());
+					int result = pstat.executeUpdate();
+					con.commit();
+					return result;
+				}
+			}
+	
 	
 }

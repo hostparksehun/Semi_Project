@@ -88,7 +88,7 @@
             </form>
 
          <c:choose>
-			<c:when test="${loginID !=null}">
+			<c:when test="${loginID != null}">
 					
 					        	<div class="btn-group">
   <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -99,6 +99,7 @@
     <li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
   </ul>
 </div>
+
 			</c:when>
 			<c:otherwise>
   <button id=login type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
@@ -139,10 +140,10 @@
         
       </div>
       <div class="col-12 col-md-9"  >
-        <span id="title"><h3> Mypage </h3></span>
+        <span id="title"><h3> My page </h3></span>
         <form action="/update.member" method="post">
           <table border=1 >
-         <c:forEach var="i" items="${list }">
+         <c:forEach var="i" items="${list}">
             <tr>
               <th>아이디
               <td>${i.id}
@@ -176,7 +177,7 @@
               <td>${i.address2}
             </tr>
             <tr>
-              <td colspan=2 style="h" id="btns">
+              <td colspan=2 style="" id="btns">
               <button type=button id=update>수정</button>
               </td>
           </table>

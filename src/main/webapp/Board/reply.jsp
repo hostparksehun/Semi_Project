@@ -285,9 +285,8 @@
 	<script>
 		$(".modify").on("click", function(){
 			//$(this).siblings(".reply_contents").attr("contenteditable","true");
-			$(this).siblings(".reply_contents").next().show(); // 이게 display : none; 이걸 disply : inile-black이런식으로 변경해주는 코드 (숨겨져있던 창을 보여주기) 혹시 next() 이건 어떤 건가여?
-												// 선택자 $(this).siblings(".reply_contents")이거의 다음형제를 선택하는거에요 
-			$(this).siblings(".reply_contents").hide(); // 이건 black나 inlie을 none으로 변경해주는 코드 에요. (보여지고 있던 창을 숨기기)
+			$(this).siblings(".reply_contents").next().show(); 
+			$(this).siblings(".reply_contents").hide();
 			$(this).css("display", "none");
 			$(this).siblings(".delRbtn").css("display", "none");
 			

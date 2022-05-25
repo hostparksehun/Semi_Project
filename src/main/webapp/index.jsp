@@ -78,9 +78,9 @@
 								id="board">술꾼술꾼</a></li>
 
 						<c:choose>
-							<c:when test="${loginID == admin}">
+							<c:when test="${loginID eq 'admin'}">
 							<li class="nav-item">
-								<a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#" id="board">관리자 페이지</a>
+								<a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Manager/manager.jsp" id="board">관리자 페이지</a>
 							</li>
 							</c:when>
 							
@@ -89,8 +89,6 @@
 							</c:otherwise>
 						</c:choose>
 							
-							<!--if로 묶을 예정-->
-
 						</ul>
 						<form action="/mini.search" class="d-flex">
 							<input class="form-control me-1" type="search"
@@ -106,9 +104,8 @@
 							</button>
 						</form>
 
-
 						<c:choose>
-							<c:when test="${loginID !=null}">
+							<c:when test="${loginID != null}">
 								<div class="btn-group">
 									<button type="button" class="btn btn-warning dropdown-toggle"
 										data-bs-toggle="dropdown" aria-expanded="false">

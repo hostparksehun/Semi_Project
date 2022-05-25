@@ -75,22 +75,33 @@
                             <li class="nav-item">
                                 <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#" id="board">술꾼술꾼</a>
                             </li>
-                            <!--if로 묶을 예정-->
-                            <li class="nav-item">
-                                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#" id="board">관리자 페이지</a>
-                            </li>
-                            <!--if로 묶을 예정-->
+						<c:choose>
+							<c:when test="${loginID eq 'admin'}">
+							<li class="nav-item">
+								<a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Manager/manager.jsp" id="board">관리자 페이지</a>
+							</li>
+							</c:when>
+							
+							<c:otherwise>
+							
+							</c:otherwise>
+						</c:choose>
                         </ul>
-                        <form class="d-flex">
-                            <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success me-1" type="submit" id="search_btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-search" viewBox="0 0 16 16">
+                        
+						<form action="/mini.search" class="d-flex">
+							<input class="form-control me-1" type="search"
+								placeholder="Search" aria-label="Search" name="search_text"
+								required>
+							<button class="btn btn-outline-success me-1" type="submit"
+								id="search_btn">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+									fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                     <path
-                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+										d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                 </svg>
-                            </button>
-                        </form>
+							</button>
+						</form>
+
 
             <c:choose>
 	        	<c:when test="${loginID !=null}">

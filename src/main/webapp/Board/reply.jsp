@@ -104,25 +104,46 @@
 			<div class="col-12" id="content2">
 
 				<div id="container">
-
+					<div id="top_line"></div>
 					<div id="head">
 						<div class="title_num">글번호 : ${board.boardNum}</div>
 						<div class="board_like">조회수 : ${board.boardCount}</div>
 					</div>
 
-					<div id="top_line"></div>
-					<c:choose>
-						<c:when test="${board.boardSatus == 2}">
-							<div class="board_title">
-								글 제목 : ${board.title} <span style="color: red">[신고된게시글]</span>
-							</div>
-						</c:when>
-						<c:otherwise>
-							<div class="board_title">글 제목 : ${board.title}</div>
-						</c:otherwise>
-					</c:choose>
-
-
+					<div style="min-height: 70px;">
+						<c:choose>
+							<c:when test="${board.boardSatus == 2}">
+								<div class="board_title">
+									글 제목 : ${board.title} <span style="color: red">[신고된게시글]</span>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="board_title">글 제목 : ${board.title}</div>
+							</c:otherwise>
+						</c:choose>
+						
+						<c:choose>
+							<c:when test="${board.score == '1'}">
+								<div>평점 : ★ (${board.score})</div>
+							</c:when>
+							
+							<c:when test="${board.score == '2'}">
+								<div>평점 : ★★ (${board.score})</div>
+							</c:when>
+							
+							<c:when test="${board.score == '3'}">
+								<div>평점 : ★★★ (${board.score})</div>
+							</c:when>
+							
+							<c:when test="${board.score == '4'}">
+								<div>평점 : ★★★★ (${board.score})</div>
+							</c:when>
+							
+							<c:otherwise>
+								<div>평점 : ★★★★★ (${board.score})</div>
+							</c:otherwise>
+						</c:choose>
+					</div>
 					<div id="top_line"></div>
 
 					<div id="head2">

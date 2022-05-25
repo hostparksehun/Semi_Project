@@ -38,6 +38,9 @@ public class BoardController extends HttpServlet {
 				
 				int cpage = 1;
 				int type = 0;
+				int selectType = 0;
+				String search = "";
+				String where = "";
 				// 게시판 리스트 가져오기
 				if(request.getParameter("cpage") != null && request.getParameter("cpage") != "") {
 					cpage = Integer.parseInt(request.getParameter("cpage"));
@@ -47,7 +50,23 @@ public class BoardController extends HttpServlet {
 				if(request.getParameter("type") != null && request.getParameter("type") != "") {
 					type = Integer.parseInt(request.getParameter("type"));
 				}
-
+				
+				// 검색 기능 파라미터 가져오기
+				if(request.getParameter("selectType") != null && request.getParameter("selectType") != "") {
+					selectType = Integer.parseInt(request.getParameter("selectType"));
+				}
+				
+				// 검색 기능 파라미터 가져오기
+				if(request.getParameter("boardSearch") != null && request.getParameter("boardSearch") != "") {
+					search = request.getParameter("boardSearch");
+				}
+				
+				if(selectType == 1) {
+					where = " and title like '%"+search+"%'";
+				}else if(selectType == 2) {
+					where = " and writer like '%"+search+"%'";
+				}
+				
 				HttpSession session = request.getSession();
 				session.setAttribute("cpage", cpage);
 				String typeSql = "ORDER BY BOARD_NUM DESC";
@@ -58,9 +77,9 @@ public class BoardController extends HttpServlet {
 				case 3 : typeSql = " ORDER BY BOARD_LIKE DESC"; break;
 				default : typeSql = "ORDER BY BOARD_NUM DESC";break;
 				}
-				List<BoardDTO> list = dao.selectByPage(cpage,typeSql);	// 한 페이지에 보여지는 게시글의 개수를 정하기 위해 새로운 메소드가 필요함.
+				List<BoardDTO> list = dao.selectByPage(cpage,typeSql,where);	// 한 페이지에 보여지는 게시글의 개수를 정하기 위해 새로운 메소드가 필요함.
 				//List<BoardDTO> list = dao.selectAll();
-				String pageNavi = dao.getPageNavi(cpage,typeSql,type);
+				String pageNavi = dao.getPageNavi(cpage,typeSql,type,where,selectType,search);
 				request.setAttribute("list", list);
 				request.setAttribute("navi", pageNavi);
 				request.getRequestDispatcher("/Board/boardList.jsp").forward(request, response);
@@ -80,8 +99,9 @@ public class BoardController extends HttpServlet {
 				String editorTxt = multi.getParameter("editorTxt");
 				String oriName = multi.getOriginalFileName("file");
 				String sysName = multi.getFilesystemName("file");
+				int score = Integer.parseInt(multi.getParameter("score"));
 				int seq = dao.getSeqNextVal();
-				int result = dao.insert(new BoardDTO(seq, writer, title, editorTxt, 0, 0, null, 0));
+				int result = dao.insert(new BoardDTO(seq, 0, score,writer, title, editorTxt, 0, 0, null, 0));
 				if(oriName != null) {
 					fdao.insert(new FileDTO(0, oriName,sysName,seq));
 				}
@@ -146,8 +166,9 @@ public class BoardController extends HttpServlet {
 
 				String oriName = multi.getOriginalFileName("file");
 				String sysName = multi.getFilesystemName("file");
+				int score = Integer.parseInt(multi.getParameter("score"));
 				int seq = num;
-				int result = dao.update(new BoardDTO(seq, writer, title, contents, 0, 0, null, 0));
+				int result = dao.update(new BoardDTO(seq,0, score, writer, title, contents, 0, 0, null, 0));
 				/*if(oriName != null) {
 					fdao.insert(new FileDTO(0, oriName,sysName,seq));
 				}*/

@@ -39,15 +39,17 @@
 			<hr>
 			<div class='boardSet'>
 				<div class='boardUser'>평가</div>
-				<input type="radio" class='score' id='scoreOne' name='boardScore'
-					checked><label for="scoreOne">★</label> <input type="radio"
-					class='score' id='scoreTwe' name='boardScore'><label
-					for="scoreTwe">★★</label> <input type="radio" class='score'
-					id='scoreThree' name='boardScore'><label for="scoreThree">★★★</label>
-				<input type="radio" class='score' id='scoreFore' name='boardScore'><label
-					for="scoreFore">★★★★</label> <input type="radio" class='score'
-					id='scoreFive' name='boardScore'><label for="scoreFive">★★★★★</label>
+				<input type="hidden" id='score' name='score' value='${board.score}'>
+				<input type="radio" class='score' id='scoreOne' name='boardScore' value='1' checked><label for="scoreOne">★</label> 
+				<input type="radio" class='score' id='scoreTwe' name='boardScore' value='2'><label for="scoreTwe">★★</label>
+				<input type="radio" class='score' id='scoreThree' name='boardScore' value='3'><label for="scoreThree">★★★</label> 
+				<input type="radio" class='score' id='scoreFore' name='boardScore' value='4'><label for="scoreFore">★★★★</label>
+				<input type="radio" class='score' id='scoreFive' name='boardScore' value='5'><label for="scoreFive">★★★★★</label>
 			</div>
+			<script>
+			    $('input:radio[name=boardScore]').eq(${board.score}-1).attr("checked", true);
+			</script>
+			
 			<hr>
 			<input id='num' name='num' type="hidden" maxlength="35"
 				value="${board.boardNum}">
@@ -71,10 +73,10 @@
 			     </div>
 			</div>
 			<hr>
-			<div class='boardSet'>
+			<!-- <div class='boardSet'>
 				<div class='boardUser'>이미지</div> <input id='file' name='file' type="file">
 			</div>
-			<hr>
+			<hr> -->
 			<div class='boardLastBtn'>
 				<button type="submit" onclick="submitAdd()">수정</button>
 				<button type="button" onclick="if(confirm('정말로 취소 하시겠습니까?')){location.href='/boardSelect.board?num=${board.boardNum}'}">취소</button>
@@ -126,6 +128,12 @@
 		function submitAdd() {
 			oEditors.getById["editorTxt"].exec("UPDATE_CONTENTS_FIELD", []);
 		}
+		
+		 $("input[name='boardScore']:radio").change(function () {
+	        //라디오 버튼 값을 가져온다.
+	        var noticeCat = this.value;
+	        $("#score").val(noticeCat);      
+		});
 	</script>
 
 

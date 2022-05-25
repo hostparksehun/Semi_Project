@@ -225,18 +225,25 @@ public class BoardController extends HttpServlet {
 				pw.append("1");
 				request.getRequestDispatcher("/boardSelect.board?num="+seq).forward(request, response);
 
-				// 수정	
-			} else if (uri.equals("/modify.board")) {
+		         // 수정   
+	         } else if (uri.equals("/modify.board")) {
 
-				request.setCharacterEncoding("utf-8");
+	            request.setCharacterEncoding("utf-8");
+	            String path = request.getServletContext().getRealPath("files");
+	            File filePath = new File(path);
+	            if(!filePath.exists()) {
+	               filePath.mkdir();
+	            }
+	            
+	            MultipartRequest multi = new MultipartRequest(request, path, 1024*1024*10,"UTF8",new DefaultFileRenamePolicy());
+	            
+	            int pseq = Integer.parseInt(request.getParameter("pseq"));
+	            int seq = Integer.parseInt(request.getParameter("seq"));
+	            String content = multi.getParameter("contents");
+	            int result = rdao.updateReply(pseq, seq, content);
 
-				int pseq = Integer.parseInt(request.getParameter("pseq"));
-				int seq = Integer.parseInt(request.getParameter("seq"));
-				String content = request.getParameter("contents");
-
-				int result = rdao.updateReply(pseq, seq, content);
-				request.getRequestDispatcher("/boardSelect.board?num="+seq).forward(request, response);
-			}
+	            request.getRequestDispatcher("/boardSelect.board?num="+pseq).forward(request, response);
+	         }
 
 		} catch (Exception e) {
 			e.printStackTrace();

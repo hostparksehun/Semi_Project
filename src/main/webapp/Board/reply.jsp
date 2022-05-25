@@ -91,34 +91,27 @@
                                 </svg>
 							</button>
 						</form>
+						
+						<c:choose>
+							<c:when test="${loginID !=null}">
+								<div class="btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${loginID }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+									</ul>
+								</div>
 
-            <c:choose>
-	        	<c:when test="${loginID !=null}">
-					        	<div class="btn-group">
-  <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-    ${loginID } 
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
-    <li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
-  </ul>
-</div>
-		            
-				</c:when>
-				<c:otherwise>
-					<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-					<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
-					
-					<script>
-					  $("#joinBtn").on("click",function(){
-					      location.href="/Member/joinView.jsp";
-					   })
-					  $("#loginBtn").on("click",function(){
-					     location.href="/Member/loginView.jsp"
-					  })
-					</script>
-				</c:otherwise>
-			</c:choose>
+							</c:when>
+							<c:otherwise>
+								<button id=login type="button"
+									class="mx-1 btn btn-warning navbar-btn">로그인</button>
+								<button id=join type="button"
+									class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 			</nav>
@@ -243,25 +236,26 @@
 						</c:when>
 						<c:otherwise>
 							<c:forEach var="i" items="${reply}">
-								<form
-									action="modify.board?pseq=${boardNum.seq}&seq=${i.replySeq}"
-									method="post" id="modifyFrm">
 
-									<div class="reply_view">${i.writer}|${i.wirteDate}</div>
-
+								<form action="modify.board?pseq=${board.boardNum}&seq=${i.replySeq}"
+									method="post" id="modifyFrm" enctype="multipart/form-data">
+		
+									<div class="reply_view">${i.writer} | ${i.wirteDate}</div>
+		
 									<div class="head6">
-										<div class="reply_contents">${i.cotents}</div>
-										<br> <input type="hidden" id="contentsInput"
-											name="reply_contents">
-
+										<div class="reply_contents">${i.cotents}</div> 
+										<!-- $(this).siblings(".reply_contents") 여기까지가  <div class="reply_contents">${i.cotents}</div>  이걸 선택한 상태 -->
+										<input name='contents' value="${i.cotents}" style="display: none; width:50%;">
+										<!-- $(this).siblings(".reply_contents").next() 여기는 <input name='contents' value="${i.cotents}" style="display: none; width:50%;"> 이걸 선택한 상태에요 -->
+										<br> <input type="hidden" id="contentsInput" name="reply_contents">
+	
 										<c:choose>
 
 											<c:when test="${loginID == i.writer}">
 
 												<input type="hidden" class="reply_seq" value="${i.replySeq}">
-												<button class="head6_btn modify rBtn" type="button">수정</button>
-												<button class="head6_btn" id="rDel" class="rBtn delRbtn"
-													type="button">삭제</button>
+												<button class="head6_btn modify" type="button">수정</button>
+												<button class="head6_btn delRbtn" type="button">삭제</button>
 
 											</c:when>
 
@@ -276,7 +270,9 @@
 								</form>
 
 							</c:forEach>
+							
 						</c:otherwise>
+						
 					</c:choose>
 
 				</div>
@@ -306,14 +302,15 @@
 
 	<script>
 		$(".modify").on("click", function(){
-			$($(this).parent().siblings().children()[0]).attr("contenteditable","true");
-			$($(this).parent().siblings().children()[0]).focus();
+			//$(this).siblings(".reply_contents").attr("contenteditable","true");
+			$(this).siblings(".reply_contents").next().show(); 
+			$(this).siblings(".reply_contents").hide();
 			$(this).css("display", "none");
-			$("#rDel").css("display", "none");
+			$(this).siblings(".delRbtn").css("display", "none");
 			
 			let okBtn = $("<button>");
 			okBtn.text("수정완료");
-			okBtn.attr("type","button");
+			okBtn.attr("type","submit");
 			okBtn.attr("class","head6_btn");
 			
 			let cancelBtn = $("<button>");
@@ -325,11 +322,15 @@
 				location.reload();
 			})
 			
-			$(this).parent(".container").children(".reply_contents").append(okBtn);
-			$(this).parent(".container").children(".reply_contents").prepend(cancelBtn);
+			$(this).parent().append(okBtn);
+			$(this).parent().append(cancelBtn);
 			
 		});
 			
+		$("#modifyFrm").on("submit",function(){
+			$("#contentsInput").val($("#reply_contents").text());
+		});
+		
 			$(".delRbtn").on("click",function(){
 				
 				let result = confirm("댓글을 삭제하시겠습니까?");
@@ -339,7 +340,7 @@
 					
 					$.ajax({
 						url: "/del.board",	
-						data: {"seq":reply_seq,"pseq": "${dto.seq}"}
+						data: {"seq":reply_seq,"pseq": "${board.boardNum}"}
 					}).done(function(resp){
 						location.reload();
 					});

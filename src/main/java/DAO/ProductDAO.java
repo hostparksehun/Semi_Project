@@ -115,12 +115,12 @@ private static ProductDAO instance = null;
 
 	
 	
-	public ProductDTO selectBySeq(int cseq) throws Exception{	
+	public ProductDTO selectBySeq(int pseq) throws Exception{	
 		String sql = "select * from product_info where seq=?";
 
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
-			pstat.setInt(1, cseq);
+			pstat.setInt(1, pseq);
 
 			try(ResultSet rs = pstat.executeQuery();){
 				rs.next();

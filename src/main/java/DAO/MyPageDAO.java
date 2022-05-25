@@ -15,14 +15,12 @@ import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import DTO.MemberDTO;
 
 
-
-
 public class MyPageDAO {
 	private BasicDataSource ds = new BasicDataSource();
 
 	private static MyPageDAO instance = null;
 
-	public synchronized static MyPageDAO  getInstance() {
+	public synchronized static MyPageDAO getInstance() {
 
 		if(instance == null) {
 			instance = new MyPageDAO();

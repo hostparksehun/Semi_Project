@@ -88,9 +88,9 @@
             </form>
 
          <c:choose>
-			<c:when test="${loginID !=null}">
+			<c:when test="${loginID != null}">
 					
-					   ${loginID }
+					   ${ loginID }
 					
 					<button type=button id="mypage">마이페이지</button>
 					<button type=button id="logout">로그아웃</button>
@@ -142,10 +142,10 @@
         
       </div>
       <div class="col-12 col-md-9"  >
-        <span id="title"><h3> Mypage </h3></span>
+        <span id="title"><h3> My page </h3></span>
         <form action="/update.member" method="post">
           <table border=1 >
-         <c:forEach var="i" items="${list }">
+         <c:forEach var="i" items="${list}">
             <tr>
               <th>아이디
               <td>${i.id}

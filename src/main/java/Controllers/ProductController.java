@@ -46,9 +46,18 @@ public class ProductController extends HttpServlet {
 	            
 		}else if(uri.equals("/productA10.ProductController")){
 		
+			
+			int cpage = Integer.parseInt(request.getParameter("cpage"));
+		    
 			List<ProductDTO> list;
 			list = dao.selectAll();
+			
+			String PageNavi = dao.getPageNavi(cpage);
+			
+			
+			
 			request.setAttribute("list", list);
+			request.setAttribute("navi", PageNavi);
 			request.getRequestDispatcher("/Product/productA10.jsp").forward(request, response);
 
 			

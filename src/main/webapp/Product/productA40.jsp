@@ -84,19 +84,19 @@
 								aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<li><a class="dropdown-item"
-										href="/productA10.ProductController">막걸리</a></li>
+										href="/productA10.ProductController?cpage=1">막걸리</a></li>
 									<li><a class="dropdown-item"
-										href="/productA20.ProductController">전통소주</a></li>
+										href="/productA20.ProductController?cpage=1">전통소주</a></li>
 									<li><a class="dropdown-item"
-										href="/productA30.ProductController">약주</a></li>
+										href="/productA30.ProductController?cpage=1">약주</a></li>
 									<li><a class="dropdown-item"
-										href="/productA40.ProductController">과실주</a></li>
+										href="/productA40.ProductController?cpage=1">과실주</a></li>
 									<li><a class="dropdown-item"
-										href="/productA50.ProductController">리큐르</a></li>
+										href="/productA50.ProductController?cpage=1">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
+									<li><a class="dropdown-item" href="/list.ProductController?cpage=1">전체보기</a></li>
 								</ul></li>
 
 
@@ -125,12 +125,12 @@
 				<div class="categor_box">
 
 					<ul calss="categor_list">
-						<a href="/list.ProductController"><li class="categor_list_btn">전체상품</li></a>
-						<a href="/productA10.ProductController"><li class="categor_list_btn">막걸리</li></a>
-						<a href="/productA20.ProductController"><li class="categor_list_btn">전통소주</li></a>
-						<a href="/productA30.ProductController"><li class="categor_list_btn">약주</li></a>
+						<a href="/list.ProductController?cpage=1"><li class="categor_list_btn">전체상품</li></a>
+						<a href="/productA10.ProductController?cpage=1"><li class="categor_list_btn">막걸리</li></a>
+						<a href="/productA20.ProductController?cpage=1"><li class="categor_list_btn">전통소주</li></a>
+						<a href="/productA30.ProductController?cpage=1"><li class="categor_list_btn">약주</li></a>
 						<a href="#"><li class="categor_list_btn" style="background-color:dodgerblue; color:white;">과실주</li></a>
-						<a href="/productA50.ProductController"><li class="categor_list_btn">리큐르</li></a>
+						<a href="/productA50.ProductController?cpage=1"><li class="categor_list_btn">리큐르</li></a>
 					</ul>
 					
 				</div>

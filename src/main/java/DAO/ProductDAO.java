@@ -115,6 +115,7 @@ private static ProductDAO instance = null;
 	}
 
 	
+	//Detail page 출력
 	
 	public ProductDTO selectBySeq(int pseq) throws Exception{	
 		String sql = "select * from product_info where seq=?";
@@ -149,6 +150,7 @@ private static ProductDAO instance = null;
 		}
 	}
 	
+	
 	// DB의 총 record 개수를 알아내기 위한 메소드
 		private int getRecordTotalCount() throws Exception{
 			String sql = "select count(*) from product_info";
@@ -157,7 +159,7 @@ private static ProductDAO instance = null;
 					PreparedStatement pstat = con.prepareStatement(sql);
 					ResultSet rs = pstat.executeQuery();){
 				rs.next();
-				return rs.getInt(1);	// count(*)로 전체 record 수가 출력되는데, 1열만 나오기 때문에
+				return rs.getInt(1);
 			}
 		}
 	
@@ -246,9 +248,9 @@ private static ProductDAO instance = null;
 					PreparedStatement pstat = con.prepareStatement(sql);) {
 				    pstat.setInt(1, start);
 					pstat.setInt(2, end);
+					
 				try(ResultSet rs = pstat.executeQuery();) {
-				  
-					List<ProductDTO> list = new ArrayList<>();
+					List<ProductDTO> list = new ArrayList<ProductDTO>();
 			    	 
 		            while(rs.next()) {
 		            	String product_name  = rs.getString("product_name");

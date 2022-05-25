@@ -199,20 +199,20 @@
       <script>
     //우편번호
       function execDaumPostcode() {
-    		new daum.Postcode({
-    			oncomplete : function(data) {
-    				var addr = "";
+	new daum.Postcode({
+		oncomplete : function(data) {
+			var addr = "";
 
-    				if (data.userSelectedType === "R") {
-    					addr = data.roadAddress;
-    				}
+			if (data.userSelectedType === "R") {
+				addr = data.roadAddress;
+			}
 
-    				document.getElementById("zipcode").value = data.zonecode;
-    				document.getElementById("address1").value = addr;
-    				document.getElementById("address2").focus();
-    				},
-    			}).open();
-    		}
+			document.getElementById("zipcode").value = data.zonecode;
+			document.getElementById("address1").value = addr;
+			document.getElementById("address2").focus();
+			},
+		}).open();
+	}
       </script>
 </body>
 </html>

@@ -136,8 +136,8 @@
           <ul class="list-group list-group-flush">
           <a href="/mypage.member" class="list-group-item list-group-item-action">회원정보 수정</a>
           <a href="/Member/memberOut.jsp" class="list-group-item list-group-item-action">회원탈퇴</a>
-          <a href="myBoardList.jsp" class="list-group-item list-group-item-action">게시글 모아보기</a>
-          <a href="#" class="list-group-item list-group-item-action">찜한 상품</a>
+          <a href="/Member/myBoardList.jsp" class="list-group-item list-group-item-action">게시글 모아보기</a>
+     
         </ul>
         
       </div>

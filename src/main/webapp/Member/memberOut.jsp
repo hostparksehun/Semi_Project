@@ -128,7 +128,7 @@
 		  <a href="/mypage.member" class="list-group-item list-group-item-action">회원정보 수정</a>
           <a href="memberOut.jsp" class="list-group-item list-group-item-action">회원탈퇴</a>
           <a href="myBoardList.jsp" class="list-group-item list-group-item-action">게시글 모아보기</a>
-          <a href="#" class="list-group-item list-group-item-action">찜한 상품</a>
+         
         </ul>
         
       </div>

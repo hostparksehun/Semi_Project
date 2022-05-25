@@ -225,3 +225,9 @@
     border-radius: 4px;
     font-size: 1.3em;
 }
+
+.boardSearchBtn {
+    background-color: #70e0f6; 
+    color: white; border: 0px; 
+    font-size: 18px;
+}

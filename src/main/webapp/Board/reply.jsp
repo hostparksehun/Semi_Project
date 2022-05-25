@@ -129,25 +129,46 @@
 			<div class="col-12" id="content2">
 
 				<div id="container">
-
+					<div id="top_line"></div>
 					<div id="head">
 						<div class="title_num">글번호 : ${board.boardNum}</div>
 						<div class="board_like">조회수 : ${board.boardCount}</div>
 					</div>
 
-					<div id="top_line"></div>
-					<c:choose>
-						<c:when test="${board.boardSatus == 2}">
-							<div class="board_title">
-								글 제목 : ${board.title} <span style="color: red">[신고된게시글]</span>
-							</div>
-						</c:when>
-						<c:otherwise>
-							<div class="board_title">글 제목 : ${board.title}</div>
-						</c:otherwise>
-					</c:choose>
-
-
+					<div style="min-height: 70px;">
+						<c:choose>
+							<c:when test="${board.boardSatus == 2}">
+								<div class="board_title">
+									글 제목 : ${board.title} <span style="color: red">[신고된게시글]</span>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="board_title">글 제목 : ${board.title}</div>
+							</c:otherwise>
+						</c:choose>
+						
+						<c:choose>
+							<c:when test="${board.score == '1'}">
+								<div>평점 : ★ (${board.score})</div>
+							</c:when>
+							
+							<c:when test="${board.score == '2'}">
+								<div>평점 : ★★ (${board.score})</div>
+							</c:when>
+							
+							<c:when test="${board.score == '3'}">
+								<div>평점 : ★★★ (${board.score})</div>
+							</c:when>
+							
+							<c:when test="${board.score == '4'}">
+								<div>평점 : ★★★★ (${board.score})</div>
+							</c:when>
+							
+							<c:otherwise>
+								<div>평점 : ★★★★★ (${board.score})</div>
+							</c:otherwise>
+						</c:choose>
+					</div>
 					<div id="top_line"></div>
 
 					<div id="head2">
@@ -170,10 +191,25 @@
 
 
 					<div id="head5" style="position: relative;">
-						<div class="reply_cont">총 댓글 :</div>
+						<div class="reply_cont">총 댓글 : <c:out value="${replyCount}"/></div>
+						<c:forEach var="reply" items="${reply}" varStatus="stat">
+							<script class="scriptDelte">
+								$(".reply_cont").text("총 댓글 : ${stat.count}");
+								if(${stat.last}){
+									$(".scriptDelte").remove();
+								}
+							</script>
+						</c:forEach>
 						<div class="like_cont">추천 : ${board.boardLike}</div>
-						<input type="button" class="like_btn" value="추천하기"
-							onclick="location.href='/boardLike.board?num=${board.boardNum}'">
+						<c:choose>
+							<c:when test="${boardLike > 0}">
+								<input type="button" class="like_btn" value="추천완료">
+							</c:when>
+							<c:otherwise>
+								<input type="button" class="like_btn" value="추천하기"
+								onclick="location.href='/boardLike.board?num=${board.boardNum}'">
+							</c:otherwise>
+						</c:choose>
 						<input type="button" class="like_btn" value="신고하기"
 							onclick="if(confirm('정말로 이게시글을 신고하시겠습니까?')){location.href='/boardSet.board?num=${board.boardNum}&stat=2'}">
 						<c:if test="${board.writer == loginID}">
@@ -223,7 +259,7 @@
 											<c:when test="${loginID == i.writer}">
 
 												<input type="hidden" class="reply_seq" value="${i.replySeq}">
-												<button class="head6_btn" class="modify rBtn" type="button">수정</button>
+												<button class="head6_btn modify rBtn" type="button">수정</button>
 												<button class="head6_btn" id="rDel" class="rBtn delRbtn"
 													type="button">삭제</button>
 
@@ -270,13 +306,13 @@
 
 	<script>
 		$(".modify").on("click", function(){
-			$($(this).parent().sibling().children()[0].attr("contenteditable","true"));
-			$($(this).praent().siblings().children()[0].focus());
+			$($(this).parent().siblings().children()[0]).attr("contenteditable","true");
+			$($(this).parent().siblings().children()[0]).focus();
 			$(this).css("display", "none");
 			$("#rDel").css("display", "none");
 			
 			let okBtn = $("<button>");
-			okBtn.tex("수정완료");
+			okBtn.text("수정완료");
 			okBtn.attr("type","button");
 			okBtn.attr("class","head6_btn");
 			

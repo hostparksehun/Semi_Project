@@ -19,9 +19,12 @@ public class FileDAO {
 	public static synchronized FileDAO getInstance() {
 		if(instance == null) {
 			instance = new FileDAO();
+
 		}
 		return instance;
 	}
+	
+
 
 	private Connection getConnection() throws Exception{
 		Context ctx = new InitialContext();

@@ -34,8 +34,8 @@ public class BoardDAO {
 	}
 
 	// DB의 총 record 개수를 알아내기 위한 메소드
-	private int getRecordTotalCount() throws Exception{
-		String sql = "select count(*) from board";
+	private int getRecordTotalCount(String typeSql, String where) throws Exception{
+		String sql = "select count(*) from board where board_status IN (0,2) "+ where + typeSql;
 
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -46,8 +46,8 @@ public class BoardDAO {
 	}
 
 	// Page Navigator
-	public String getPageNavi(int currentPage,int type) throws Exception{
-		int recordTotalCount = this.getRecordTotalCount();	// 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
+	public String getPageNavi(int currentPage,String typeSql, int type, String where, int selectType, String search) throws Exception{
+		int recordTotalCount = this.getRecordTotalCount(typeSql,where);	// 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
 
 		int recordCountPerPage = 10;	// 한 페이지에 몇 개의 게시글을 보여줄 건지
 
@@ -90,33 +90,35 @@ public class BoardDAO {
 		StringBuilder sb = new StringBuilder();
 
 		if(needPrev) {
-			sb.append("<a href='boardList.board?type="+type+"&cpage="+(startNavi-1)+"'> < </a>");
+			sb.append("<a href='boardList.board?type="+type+"&cpage="+(startNavi-1)+"&selectType="+selectType+"&boardSearch="+search+"'> < </a>");
 		}
 
 		for(int i = startNavi; i <= endNavi; i++) {
 			if(currentPage == i) {
-				sb.append("<a href=\'boardList.board?type="+type+"&cpage="+i+"\'>[" + i + "] </a>");	// 페이지 당 10개씩 보이도록 해야하기 때문에 현재 페이지를 매개변수로 보냄으로써 페이지 네비를 클릭할 때 어디로 가야하는지 알아야한다.
+				sb.append("<a href=\'boardList.board?type="+type+"&cpage="+i+"&selectType="+selectType+"&boardSearch="+search+"\'>[" + i + "] </a>");	// 페이지 당 10개씩 보이도록 해야하기 때문에 현재 페이지를 매개변수로 보냄으로써 페이지 네비를 클릭할 때 어디로 가야하는지 알아야한다.
 			}else {
-				sb.append("<a href=\'boardList.board?type="+type+"&cpage="+i+"\'>" + i + " </a>");
+				sb.append("<a href=\'boardList.board?type="+type+"&cpage="+i+"&selectType="+selectType+"&boardSearch="+search+"\'>" + i + " </a>");
 			}
 		}
 
 		if(needNext) {
-			sb.append("<a href='boardList.board?type="+type+"&cpage="+(endNavi+1)+"'> > </a>");
+			sb.append("<a href='boardList.board?type="+type+"&cpage="+(endNavi+1)+"&selectType="+selectType+"&boardSearch="+search+"'> > </a>");
 		}
 
 		return sb.toString();
 	}
 
 	// boradlist에서 보여지는 게시글 개수를 정하기 위한 메소드
-	public List<BoardDTO> selectByPage(int cpage, String typeSql) throws Exception{
+	public List<BoardDTO> selectByPage(int cpage, String typeSql, String where) throws Exception{
 
 		// 게시글의 번호를 세팅한다.
 		int start = cpage * 10 - 9; // 1
 		int end = cpage * 10; // 10
 
 		// 한 페이지에 게시글이 10개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select row_number() over(order by board_num desc) line, board.* from\n board) where board_status IN (0,2) and line between ? and ?" + typeSql;
+		System.out.println(where);
+		String sql = "select * from (select row_number() over("+typeSql+") line, board.* from\n board) where board_status IN (0,2) "+ where +" and line between ? and ?";
+		System.out.println(sql);
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setInt(1, start);
@@ -127,6 +129,8 @@ public class BoardDAO {
 
 				while(rs.next()) {
 					int seq = rs.getInt("board_num");
+					int prductNum = rs.getInt("product_num");
+					int score = rs.getInt("score");
 					String writer = rs.getString("writer");
 					String title = rs.getString("title");
 					String boardExp = rs.getString("board_exp");
@@ -135,7 +139,7 @@ public class BoardDAO {
 					Timestamp writeDate = rs.getTimestamp("write_date");
 					int boardSatus = rs.getInt("board_status");
 
-					BoardDTO dto = new BoardDTO(seq, writer, title, boardExp, boardLike, boardCount, writeDate, boardSatus);
+					BoardDTO dto = new BoardDTO(seq,prductNum,score, writer, title, boardExp, boardLike, boardCount, writeDate, boardSatus);
 					list.add(dto);
 				}
 				return list;
@@ -156,13 +160,14 @@ public class BoardDAO {
 
 	// 게시글 작성
 	public int insert(BoardDTO dto) throws Exception{	
-		String sql = "insert into board values(?, ?, ?, ?, 0, sysdate, 0, 0)";
+		String sql = "insert into board values(?, 0, ?, ?, ?, ?, 0, sysdate, 0, 0)";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setInt(1, dto.getBoardNum());
-			pstat.setString(2, dto.getWriter());;
-			pstat.setString(3, dto.getTitle());
-			pstat.setString(4, dto.getBoardExp());
+			pstat.setInt(2, dto.getScore());
+			pstat.setString(3, dto.getWriter());;
+			pstat.setString(4, dto.getTitle());
+			pstat.setString(5, dto.getBoardExp());
 
 			int result = pstat.executeUpdate();
 			con.commit();
@@ -181,15 +186,17 @@ public class BoardDAO {
 			try(ResultSet rs = pstat.executeQuery();){
 				rs.next();
 				int seq = rs.getInt("board_num");
+				int prductNum = rs.getInt("product_num");
+				int score = rs.getInt("score");
 				String writer = rs.getString("writer");
 				String title = rs.getString("title");
-				String contents = rs.getString("board_exp");
-				int board_like = rs.getInt("board_like");
-				Timestamp write_date = rs.getTimestamp("write_date");
-				int view_count = rs.getInt("view_count");
-				int board_status = rs.getInt("board_status");
+				String boardExp = rs.getString("board_exp");
+				int boardLike = rs.getInt("board_like");
+				int boardCount = rs.getInt("view_count");
+				Timestamp writeDate = rs.getTimestamp("write_date");
+				int boardSatus = rs.getInt("board_status");
 
-				BoardDTO dto = new BoardDTO(seq, writer, title, contents, board_like, view_count, write_date, board_status);
+				BoardDTO dto = new BoardDTO(seq,prductNum,score, writer, title, boardExp, boardLike, boardCount, writeDate, boardSatus);
 				return dto;
 			}
 		}
@@ -237,16 +244,45 @@ public class BoardDAO {
 
 	// 게시판 수정
 	public int update(BoardDTO dto) throws Exception{
-		String sql = "update board set title = ?, board_exp = ? where board_num = ?";
+		String sql = "update board set title = ?, board_exp = ?, score =? where board_num = ?";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setString(1, dto.getTitle());
 			pstat.setString(2, dto.getBoardExp());
-			pstat.setInt(3, dto.getBoardNum());
+			pstat.setInt(3, dto.getScore());
+			pstat.setInt(4, dto.getBoardNum());
 
 			int result = pstat.executeUpdate();
 			con.commit();
 			return result;
+		}
+	}
+
+	// 게시글 좋아요 누른 유저 정보 등록
+	public void boardUserLike(int num, String id) throws Exception{
+		String sql = "insert into Board_like values(?,?)";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setInt(1, num);
+			pstat.setString(2, id);
+
+			int result = pstat.executeUpdate();
+			con.commit();
+		}
+	}
+
+	// 게시글 좋아요 누른 유저가 기존에 눌렀는지 체크
+	public int boardLikeCheck(int num, String id) throws Exception{
+		String sql = "select count(*) from board_like where board_num = ? and user_id = ?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setInt(1, num);
+			pstat.setString(2, id);
+
+			ResultSet rs = pstat.executeQuery();{
+				rs.next();
+				return rs.getInt(1);
+			}
 		}
 	}
 }

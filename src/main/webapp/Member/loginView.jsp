@@ -163,14 +163,14 @@
     	</form>
             <hr>
             <div class="sns">
-<<<<<<< HEAD
+
                 <div id="naver">
                     <img src="/img/loginFile/btnG_완성형.png">
                 </div>
                 <div id="kakao">
                 <a id="btn-kakao-login" href="kakao/login">
                     <img src="/img/loginFile/kakao_login_medium_narrow.png"></a>
-=======
+
 <!--              <div id="naver_id_login"> -->
 <!--                     <img src="/img/loginFile/btnG_완성형.png"> -->
 <!--                 </div> -->
@@ -193,14 +193,7 @@
 <!-- </div> -->
 
 				
-				        <div class="button-login" align ="center" >
-                <a id="kakao-login-btn" >
-    <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="83%" height ="50px" />
-    </a>
-<!--                 <div id="kakao-login-btn"> -->
-<!--                 <a href="javascript:kakaoLogin();"> -->
-<!--                     <img src="/img/loginFile/kakao_login_medium_narrow.png"></a> -->
->>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
+				  
                     <a href="javascript:secession();">연결 끊기?</a>
                 </div>
                 <div id="test">

@@ -25,6 +25,7 @@ public class MemberController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf8");//post 한글깨짐 방지
+	
 		String uri = request.getRequestURI();
 		MemberDAO dao = MemberDAO.getInstance();
 		Gson g = new Gson();
@@ -116,10 +117,16 @@ public class MemberController extends HttpServlet {
 				
 			//카카오 로그인 도전...ing	
 			} else if (uri.equals("/kakaologin.member")){
+				response.setCharacterEncoding("UTF-8");
+				//+아이디 +생일 //주소-핸드폰- //널값 대신에 " "넣기..
 				String name = request.getParameter("name");
+				String email = request.getParameter("email");
 				PrintWriter pw = response.getWriter();
-				System.out.println(g.toJson(name));
-				pw.append(g.toJson(name));
+//				dao.kakaologin();
+				String result = g.toJson(email);
+				System.out.println(result);
+				pw.append(result);
+				
 				
 //--------------------마이페이지------------------------------------
 		}else if(uri.equals("/mypage.member")) {

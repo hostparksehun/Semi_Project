@@ -114,6 +114,13 @@ public class MemberController extends HttpServlet {
 				dao.updatePw(new MemberDTO(id, pwd, null, null,null, null, null, null, null));
 				//System.out.println("변경 성공");
 				
+			//카카오 로그인 도전...ing	
+			} else if (uri.equals("/kakaologin.member")){
+				String name = request.getParameter("name");
+				PrintWriter pw = response.getWriter();
+				System.out.println(g.toJson(name));
+				pw.append(g.toJson(name));
+				
 //--------------------마이페이지------------------------------------
 		}else if(uri.equals("/mypage.member")) {
 			String id = (String) (request.getSession().getAttribute("loginID"));

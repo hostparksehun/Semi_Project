@@ -213,7 +213,6 @@
 
 
 	<script>
-	
 	//이름 유효성 검사
 	$("#name").on("keyup",function(){
 		let name = $("#name").val();
@@ -232,6 +231,8 @@
 		let id = $("#id").val();
 		let idRegex = /^[\da-z_]{8,13}$/; //영어 소문자, 숫자, 언더바 8~13글자
 		let idResult = idRegex.test(id);
+		
+
 		
 		if(!idResult){
 			$("#idinfo").css("color", "red");
@@ -254,6 +255,7 @@
 				}
 			});
 		}
+
 	})
 	//비번 유효성 검사
 	$("#pw").on("keyup",function(){
@@ -327,33 +329,36 @@
 	
 	//회원가입 클릭시 비어있는 입력칸 alert
 	$("#join").on("click", function(){
-		if($("#name").val() == null){
+		if($("#name").val()==""){
 			alert("이름을 입력해주세요.");
 			return false;
-		} else if($("#id").val() == null){
+		} 
+		if($("#id").val() ==""){
 			alert("아이디를 입력해주세요.");
 			return false;
-		} else if($("#pw").val() == null){
+		}
+		if($("#pw").val() == ""){
 			alert("비밀번호를 입력해주세요.");
 			return false;
-		} else if($("#pwcheck").val() == null){
+		}
+		if($("#pwcheck").val() == ""){
 			alert("비밀번호 확인을 입력해주세요.");
 			return false;
-		} else if($("#birthday").val() == null){
+		}
+		if($("#birthday").val() == ""){
 			alert("생년월일을 입력해주세요.");
 			return false;
-		} else if($("#email").val() == null){
+		}
+		if($("#email").val() == ""){
 			alert("이메일을 입력해주세요.");
 			return false;
-		} else if($("#phone").val() == null){
+		}
+		if($("#phone").val() == ""){
 			alert("휴대폰번호를 입력해주세요.");
 			return false;
-		} else {
-			alert("빈 칸을 입력해주세요.");
-			return false;
 		}
+		alert("가입이 완료되었습니다 :) 환영합니다!");
 		
-		//수정해야함
 		
 	})
 	

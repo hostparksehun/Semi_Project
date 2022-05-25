@@ -250,11 +250,13 @@
 						
 						$.ajax({
 							url:"/kakaologin.member",
-							data: {id:id, email:email, birthday:birthday},
+							data: {name:name, email:email, birthday:birthday},
 							type:"POST",
 						}).done(function(resp){
-							$("#test").text(resp);
 							console.log(resp);
+							//let result = JSON.parse(resp);
+							$("#test").text(resp);
+							//console.log(result);
 							//location.reload();
 						})
 			        }

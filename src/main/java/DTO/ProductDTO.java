@@ -23,28 +23,6 @@ public class ProductDTO {
 	public ProductDTO() {
 		super();
 	}
-
-//	public ProductDTO(String product_name, String search_name,String product_area, int seq, String product_code, String kind,
-//			int choose_count, int price, float abv, String brewery,String adress1, String adress2, int capacity, float grade,
-//			String smry, String oriName, String sysName) {
-//		this.product_name = product_name;
-//		this.search_name = search_name;
-//		this.product_area = product_area;
-//		this.seq = seq;
-//		this.product_code = product_code;
-//		this.kind = kind;
-//		this.choose_count = choose_count;
-//		this.price = price;
-//		this.abv = abv;
-//		this.brewery = brewery;
-//		this.adress1 = adress1;
-//		this.adress2 = adress2;
-//		this.capacity = capacity;
-//		this.grade = grade;
-//		this.smry = smry;
-//		this.oriName = oriName;
-//		this.sysName = sysName;
-//	}
 	
 	public ProductDTO(String product_name, String search_name, String product_area, int seq, String product_code,
 			String kind, int choose_count, int price, float abv, String adress1, String adress2, String brewery,
@@ -72,8 +50,6 @@ public class ProductDTO {
 	public String getProduct_name() {
 		return product_name;
 	}
-
-
 
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
@@ -208,10 +184,6 @@ public class ProductDTO {
 	public void setSysName(String sysName) {
 		this.sysName = sysName;
 	}
-	
-	
-	
-	
 
 	// ----> 수정 끝
 	

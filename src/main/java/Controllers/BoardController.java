@@ -29,13 +29,15 @@ public class BoardController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String uri = request.getRequestURI();
+
 		BoardDAO dao = new BoardDAO();
 		FileDAO fdao = FileDAO.getInstance();
 		ReplyDAO rdao = ReplyDAO.getInstance();
+
 		try {
 			// 게시판 목록 불러오기
 			if(uri.equals("/boardList.board")) {
-				
+
 				int cpage = 1;
 				int type = 0;
 				int selectType = 0;
@@ -50,27 +52,27 @@ public class BoardController extends HttpServlet {
 				if(request.getParameter("type") != null && request.getParameter("type") != "") {
 					type = Integer.parseInt(request.getParameter("type"));
 				}
-				
+
 				// 검색 기능 파라미터 가져오기
 				if(request.getParameter("selectType") != null && request.getParameter("selectType") != "") {
 					selectType = Integer.parseInt(request.getParameter("selectType"));
 				}
-				
+
 				// 검색 기능 파라미터 가져오기
 				if(request.getParameter("boardSearch") != null && request.getParameter("boardSearch") != "") {
 					search = request.getParameter("boardSearch");
 				}
-				
+
 				if(selectType == 1) {
 					where = " and title like '%"+search+"%'";
 				}else if(selectType == 2) {
 					where = " and writer like '%"+search+"%'";
-				}
-				
+				}			
 				HttpSession session = request.getSession();
 				session.setAttribute("cpage", cpage);
 				String typeSql = "ORDER BY BOARD_NUM DESC";
 				switch(type) {
+
 				case 0 : typeSql = "ORDER BY BOARD_NUM DESC"; break;
 				case 1 : typeSql = " ORDER BY VIEW_COUNT DESC"; break;
 				case 2 : typeSql = " ORDER BY WRITE_DATE DESC"; break;
@@ -84,19 +86,23 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("navi", pageNavi);
 				request.getRequestDispatcher("/Board/boardList.jsp").forward(request, response);
 
-			// 게시글 추가
+				// 게시글 추가
 			}else if(uri.equals("/boardAdd.board")) {
 				String writer = (String)request.getSession().getAttribute("loginID");
 
 				String path = request.getServletContext().getRealPath("files");
 				File filePath = new File(path);
+
 				if(!filePath.exists()) {
+
 					filePath.mkdir();
 				}
 				MultipartRequest multi = new MultipartRequest(request, path, 1024*1024*10,"UTF8",new DefaultFileRenamePolicy());
 
 				String title = multi.getParameter("title");
+
 				String editorTxt = multi.getParameter("editorTxt");
+
 				String oriName = multi.getOriginalFileName("file");
 				String sysName = multi.getFilesystemName("file");
 				int score = Integer.parseInt(multi.getParameter("score"));
@@ -107,8 +113,9 @@ public class BoardController extends HttpServlet {
 				}
 				request.getRequestDispatcher("/boardList.board?cpage=1").forward(request, response);
 
-			// 게시글 상세 조회
+				// 게시글 상세 조회
 			}else if(uri.equals("/boardSelect.board")){
+
 				int num = Integer.parseInt(request.getParameter("num"));
 				String id = (String) (request.getSession().getAttribute("loginID"));
 				int result = dao.boardUpdateCount(num);
@@ -118,13 +125,15 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("board", board);
 				request.setAttribute("reply", reply);
 				request.setAttribute("boardLike", boardLike);
-				
+
 				request.getRequestDispatcher("/Board/reply.jsp").forward(request, response);
 
-			// 게시글 좋아요
+
+				// 게시글 좋아요
 			}else if(uri.equals("/boardLike.board")) {
+
 				int num = Integer.parseInt(request.getParameter("num"));
-				
+
 				String id = (String) (request.getSession().getAttribute("loginID"));
 				int result = dao.boardLikeCheck(num,id); 
 				if(result == 0) {
@@ -135,33 +144,39 @@ public class BoardController extends HttpServlet {
 				}
 				request.getRequestDispatcher("/boardSelect.board?num="+num).forward(request, response);
 
-			// 게시글 설정 (1= 삭제, 2= 신고됨)
+				// 게시글 설정 (1= 삭제, 2= 신고됨)
 			}else if(uri.equals("/boardSet.board")) {
+
 				int num = Integer.parseInt(request.getParameter("num"));
 				int stat = Integer.parseInt(request.getParameter("stat"));
 				int result = dao.boardDelete(num,stat);
 				request.getRequestDispatcher("/boardSelect.board?num="+num).forward(request, response);
 
-			// 게시글 수정 페이지 이동
 			}else if(uri.equals("/boardUpdate.board")) {
+
 				int num = Integer.parseInt(request.getParameter("num"));
 				BoardDTO board = dao.selectBoard(num);
 				request.setAttribute("board", board);
 				request.getRequestDispatcher("/Board/boardUpdate.jsp").forward(request, response);
-			
-			// 게시글 수정
+
+				// 게시글 수정
 			}else if(uri.equals("/boardUpdateAction.board")) {
+
 				String writer = (String)request.getSession().getAttribute("loginID");
 
 				String path = request.getServletContext().getRealPath("files");
 				File filePath = new File(path);
 				if(!filePath.exists()) {
 					filePath.mkdir();
+
 				}
+
+
 				MultipartRequest multi = new MultipartRequest(request, path, 1024*1024*10,"UTF8",new DefaultFileRenamePolicy());
 
 				int num = Integer.parseInt(multi.getParameter("num"));
 				String title = multi.getParameter("title");
+
 				String contents = multi.getParameter("editorTxt");
 
 				String oriName = multi.getOriginalFileName("file");
@@ -203,6 +218,7 @@ public class BoardController extends HttpServlet {
 
 				pw.append("1");
 				request.getRequestDispatcher("/boardSelect.board?num="+seq).forward(request, response);
+
 				// 수정	
 			} else if (uri.equals("/modify.board")) {
 

@@ -104,6 +104,7 @@
 			<div class="col-12" id="content2">
 
 				<div id="container">
+<<<<<<< HEAD
 					<div id="top_line"></div>
 					<div id="head">
 						<div class="title_num">글번호 : ${board.boardNum}</div>
@@ -197,6 +198,65 @@
 						</c:if>
 					</div>
 
+=======
+
+					<div id="head">
+						<div class="title_num">글번호 : ${board.boardNum}</div>
+						<div class="board_like">조회수 : ${board.boardCount}</div>
+					</div>
+
+					<div id="top_line"></div>
+					<c:choose>
+						<c:when test="${board.boardSatus == 2}">
+							<div class="board_title">
+								글 제목 : ${board.title} <span style="color: red">[신고된게시글]</span>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="board_title">글 제목 : ${board.title}</div>
+						</c:otherwise>
+					</c:choose>
+
+
+					<div id="top_line"></div>
+
+					<div id="head2">
+						<div class="board_writer">작성자 : ${board.writer}</div>
+						<div class="board_date">작성일 : ${board.writeDate}</div>
+					</div>
+
+					<div id="head3">
+						<div class="board_contents">${board.boardExp}</div>
+					</div>
+
+					<div id="top_line"></div>
+
+					<div class="board_select">
+						여기가 이전 글 리스트 링크 거는 곳입니다<br> 여기가 이전 글 리스트 링크 거는 곳입니다<br>
+						여기가 이전 글 리스트 링크 거는 곳입니다<br>
+					</div>
+
+					<div id="top_line"></div>
+
+
+					<div id="head5" style="position: relative;">
+						<div class="reply_cont">총 댓글 :</div>
+						<div class="like_cont">추천 : ${board.boardLike}</div>
+						<input type="button" class="like_btn" value="추천하기"
+							onclick="location.href='/boardLike.board?num=${board.boardNum}'">
+						<input type="button" class="like_btn" value="신고하기"
+							onclick="if(confirm('정말로 이게시글을 신고하시겠습니까?')){location.href='/boardSet.board?num=${board.boardNum}&stat=2'}">
+						<c:if test="${board.writer == loginID}">
+							<div style="position: absolute; right: 0px; top: 0px;">
+								<input type="button" class="like_btn" value="수정하기"
+									onclick="location.href='/boardUpdate.board?num=${board.boardNum}'">
+								<input type="button" class="like_btn" value="삭제하기"
+									onclick="if(confirm('정말로 삭제하시겠습니까?')){location.href='/boardSet.board?num=${board.boardNum}&stat=1'}">
+							</div>
+						</c:if>
+					</div>
+
+>>>>>>> b18f5ac996ffdabbe09e14279bf088de04d514c2
 					<!--  댓글 입력 창 -->
 
 					<form

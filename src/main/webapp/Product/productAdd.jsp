@@ -73,7 +73,7 @@
 
 
                             <li class="nav-item">
-                                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#" id="board">술꾼술꾼</a>
+                                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/boardList.board" id="board">술꾼술꾼</a>
                             </li>
 						<c:choose>
 							<c:when test="${loginID eq 'admin'}">

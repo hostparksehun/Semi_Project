@@ -31,14 +31,10 @@ public class BoardController extends HttpServlet {
 		
 		String uri = request.getRequestURI();
 		BoardDAO dao = BoardDAO.getInstance();
-<<<<<<< HEAD
+
 		FileDAO fdao = new FileDAO();
 		ReplyDAO rdao = new ReplyDAO();
-=======
-		FileDAO fdao = FileDAO.getInstance();
-		ReplyDAO rdao = ReplyDAO.getInstance();
-
->>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
+		
 		try {
 			if(uri.equals("/boardList.board")) {
 				int cpage = 1;
@@ -91,11 +87,6 @@ public class BoardController extends HttpServlet {
 				if(oriName != null) {
 					fdao.insert(new FileDTO(0, oriName,sysName,seq));
 				}
-<<<<<<< HEAD
-				
-			
-=======
->>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
 				request.getRequestDispatcher("/boardList.board?cpage=1").forward(request, response);	
 
 			}else if(uri.equals("/boardSelect.board")){
@@ -107,20 +98,12 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("board", board);
 				request.setAttribute("reply", reply);
 				request.getRequestDispatcher("/Board/reply.jsp").forward(request, response);
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
 			}else if(uri.equals("/boardLike.board")) {
 
 				int num = Integer.parseInt(request.getParameter("num"));
 				int result = dao.boardLike(num);
 				request.getRequestDispatcher("/boardSelect.board?num="+num).forward(request, response);
-<<<<<<< HEAD
-			
-=======
->>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
 
 			}else if(uri.equals("/boardSet.board")) {
 
@@ -128,22 +111,14 @@ public class BoardController extends HttpServlet {
 				int stat = Integer.parseInt(request.getParameter("stat"));
 				int result = dao.boardDelete(num,stat);
 				request.getRequestDispatcher("/boardSelect.board?num="+num).forward(request, response);
-<<<<<<< HEAD
-			
-=======
 
->>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
 			}else if(uri.equals("/boardUpdate.board")) {
 
 				int num = Integer.parseInt(request.getParameter("num"));
 				BoardDTO board = dao.selectBoard(num);
 				request.setAttribute("board", board);
 				request.getRequestDispatcher("/Board/boardUpdate.jsp").forward(request, response);
-<<<<<<< HEAD
 			
-=======
->>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
-
 			}else if(uri.equals("/boardUpdateAction.board")) {
 
 				String writer = (String)request.getSession().getAttribute("loginID");
@@ -168,12 +143,7 @@ public class BoardController extends HttpServlet {
 					fdao.insert(new FileDTO(0, oriName,sysName,seq));
 				}*/
 				request.getRequestDispatcher("/boardSelect.board?num="+num).forward(request, response);
-<<<<<<< HEAD
 			
-=======
-			}
-
->>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
 			// 댓글 추가
 			
 			}else if (uri.equals("/add.board")) {
@@ -189,10 +159,7 @@ public class BoardController extends HttpServlet {
 
 				int result = rdao.addReply(writer, content, parentSeq);
 				request.getRequestDispatcher("/boardSelect.board?num="+parentSeq).forward(request, response);
-<<<<<<< HEAD
 				
-=======
->>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
 				// 확인 후 수정 필요 response.sendRedirect("/articleView.board?seq="+parentSeq);
 
 				// 삭제	
@@ -207,17 +174,11 @@ public class BoardController extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 
 				pw.append("1");
-<<<<<<< HEAD
 				
 				request.getRequestDispatcher("/boardSelect.board?num="+pseq).forward(request, response);
 				
 			// 수정	
 				
-=======
-				request.getRequestDispatcher("/boardSelect.board?num="+seq).forward(request, response);
-				
-				// 수정	
->>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
 			} else if (uri.equals("/modify.board")) {
 
 				request.setCharacterEncoding("utf-8");
@@ -233,7 +194,6 @@ public class BoardController extends HttpServlet {
 				int seq = Integer.parseInt(request.getParameter("seq"));
 				String content = multi.getParameter("contents");
 				int result = rdao.updateReply(pseq, seq, content);
-<<<<<<< HEAD
 				// 처음에 오류뜨는건 contents < 댓글 내용부분인데 댓글 내용이 전달이 안됐어요 컨트롤러로 그래서 컨트롤러에서 null값 ( 비어있는 값 ) 을 가지고 dao로 전달해서 dao에서 널을 받아들일수 없다해서 에러가 발생했던거구
 				// 두번째 에러는 ("/boardSelect.board?num="+pseq) 이부분에서 ("/boardSelect.board?num="+seq) 이렇게 되어있었어서 게시글 번호는 100번부터 시작하는데 댓급 시퀀스인 24번을 출력하려고해서 게시글을 못찾아서 에러가 발생한건에용.
 				request.getRequestDispatcher("/boardSelect.board?num="+pseq).forward(request, response);
@@ -251,10 +211,6 @@ public class BoardController extends HttpServlet {
 			request.getRequestDispatcher("/Search/searchResult.jsp").forward(request, response);
 			
 		}
-=======
-				request.getRequestDispatcher("/boardSelect.board?num="+seq).forward(request, response);
-			}
->>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
 
 		} catch (Exception e) {
 			e.printStackTrace();

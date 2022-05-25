@@ -148,7 +148,7 @@
 										<input class="form-check-input" type="checkbox" value="전통소주"
 											id="flexCheckDefault" name="alchol"> <label
 											class="form-check-label" for="flexCheckDefault"> 전통소주
-											소주 </label>
+											</label>
 									</div>
 
 									<div class="col-2 form-check" style="padding-left: 5%;">
@@ -219,40 +219,45 @@
 										</label>
 									</div>
 
-									<!-- 평점 -->
-									<div class="col-12 mb-1">
-										<p class="m-auto title">평점</p>
-									</div>
+                                   <!-- 평점 -->
+                                    <div class="col-12 mb-1">
+                                        <p class="m-auto title">평점</p>
+                                    </div>
 
-									<div class="col-2 form-check mb-1" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="1"
-											id="flexCheckDefault" name="score"> <label
-											class="form-check-label" for="flexCheckDefault"> 1 </label>
-									</div>
+                                    <div class="col-2 form-check mb-1" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="radio" value="1" id="flexCheckDefault" name="grade">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            1
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="2"
-											id="flexCheckDefault" name="score"> <label
-											class="form-check-label" for="flexCheckDefault"> 2 </label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="radio" value="2" id="flexCheckDefault" name="grade">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            2
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="3"
-											id="flexCheckDefault" name="score"> <label
-											class="form-check-label" for="flexCheckDefault"> 3 </label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="radio" value="3" id="flexCheckDefault" name="grade">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            3
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="4"
-											id="flexCheckDefault" name="score"> <label
-											class="form-check-label" for="flexCheckDefault"> 4 </label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="radio" value="4" id="flexCheckDefault" name="grade">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            4
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="5"
-											id="flexCheckDefault" name="score"> <label
-											class="form-check-label" for="flexCheckDefault"> 5 </label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="radio" value="5" id="flexCheckDefault" name="grade">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            5
+                                        </label>
+                                    </div>
 
 									<!-- 도수 -->
 									<div class="col-12 mb-1">
@@ -263,7 +268,7 @@
 										<input type="text" class="form-control" placeholder="입력값 이상"
 											aria-label="Recipient's username"
 											aria-describedby="basic-addon2" name="avb"> <span
-											class="input-group-text" id="basic-addon2">% AVB</span>
+											class="input-group-text" id="basic-addon2">% ABV</span>
 									</div>
 								</div>
 							</div>
@@ -285,159 +290,47 @@
 			<div class="row">
 				<div class="col-1 "></div>
 				<div class="col-10">
-					<div class="col-12">
-						<p class="m-auto Result_banner">총 {}건이 검색되었습니다.</p>
+					<div class="col-12 mb-2">
+						<p class="m-auto Result_banner">총 ${ count }건이 검색되었습니다.</p>
 					</div>
 
 					<!----------------------------------- Result  ----------------------------------->
 
 					<div class="row m-auto">
+					
+					<!-- a태그 처리해야 상세 페이지 볼 수 있음 -->
+					
+					<c:forEach var="i" items="${list}">
 
 						<div class="col-4">
 							<a href="#">
 								<div class="Result_img">
-									<img src="..\thumbnail\daedaepo.png" class="w-100">
+									<img src="../thumbnail/${i.sysName}" class="w-100">
 								</div>
-								<div class="Result_txt">
+								<div class="Result_txt" style="text-align:center;">
 									<div class="review"></div>
-									<p class="Result_name">술이름</p>
-									<p class="Result_decs">간단한 설명이 들어갑니다</p>
+									<p class="Result_name">${i.product_name}</p>
+									<p class="Result_decs">${i.smry}</p>
 								</div>
 							</a>
 						</div>
-
-						<div class="col-4">
-							<a href="#">
-								<div class="Result_img">
-									<img src="https://picsum.photos/id/1020/150/150" class="w-100">
-								</div>
-								<div class="Result_txt">
-									<div class="review"></div>
-									<p class="Result_name">술이름</p>
-									<p class="Result_decs">간단한 설명이 들어갑니다</p>
-								</div>
-							</a>
-						</div>
-
-
-						<div class="col-4">
-							<a href="#">
-								<div class="Result_img">
-									<img src="https://picsum.photos/id/1020/150/150" class="w-100">
-								</div>
-								<div class="Result_txt">
-									<div class="review"></div>
-									<p class="Result_name">술이름</p>
-									<p class="Result_decs">간단한 설명이 들어갑니다</p>
-								</div>
-							</a>
-						</div>
-
-						<div class="col-12 w-100 mb-2"></div>
-
-						<div class="col-4">
-							<a href="#">
-								<div class="Result_img">
-									<img src="https://picsum.photos/id/1020/150/150" class="w-100">
-								</div>
-								<div class="Result_txt">
-									<div class="review"></div>
-									<p class="Result_name">술이름</p>
-									<p class="Result_decs">간단한 설명이 들어갑니다</p>
-								</div>
-							</a>
-						</div>
-
-						<div class="col-4">
-							<a href="#">
-								<div class="Result_img">
-									<img src="https://picsum.photos/id/1020/150/150" class="w-100">
-								</div>
-								<div class="Result_txt">
-									<div class="review"></div>
-									<p class="Result_name">술이름</p>
-									<p class="Result_decs">간단한 설명이 들어갑니다</p>
-								</div>
-							</a>
-						</div>
-
-
-						<div class="col-4">
-							<a href="#">
-								<div class="Result_img">
-									<img src="https://picsum.photos/id/1020/150/150" class="w-100">
-								</div>
-								<div class="Result_txt">
-									<div class="review"></div>
-									<p class="Result_name">술이름</p>
-									<p class="Result_decs">간단한 설명이 들어갑니다</p>
-								</div>
-							</a>
-						</div>
-
-						<div class="col-12 w-100"></div>
-
-						<div class="col-4">
-							<a href="#">
-								<div class="Result_img">
-									<img src="https://picsum.photos/id/1020/150/150" class="w-100">
-								</div>
-								<div class="Result_txt">
-									<div class="review"></div>
-									<p class="Result_name">술이름</p>
-									<p class="Result_decs">간단한 설명이 들어갑니다</p>
-								</div>
-							</a>
-						</div>
-
-						<div class="col-4">
-							<a href="#">
-								<div class="Result_img">
-									<img src="https://picsum.photos/id/1020/150/150" class="w-100">
-								</div>
-								<div class="Result_txt">
-									<div class="review"></div>
-									<p class="Result_name">술이름</p>
-									<p class="Result_decs">간단한 설명이 들어갑니다</p>
-								</div>
-							</a>
-						</div>
-
-
-						<div class="col-4">
-							<a href="#">
-								<div class="Result_img">
-									<img src="https://picsum.photos/id/1020/150/150" class="w-100">
-								</div>
-								<div class="Result_txt">
-									<div class="review"></div>
-									<p class="Result_name">술이름</p>
-									<p class="Result_decs">간단한 설명이 들어갑니다</p>
-								</div>
-							</a>
-						</div>
-
-						<div class="col-12 w-100 mb-2"></div>
-
-						<div class="col-12 w-100 mb-2 mt-3" id="pagination">
-							<nav aria-label="...">
-								<ul
-									class="pagination pagination-sm justify-content-center m-auto">
-									<li class="page-item active" aria-current="page"><span
-										class="page-link">1</span></li>
-									<li class="page-item"><a class="page-link" href="#">2</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-								</ul>
-							</nav>
-						</div>
-
+						<c:choose>
+							<c:when test="${i.index mod 3 == 0}">
+						
+								<div class="col-12 w-100 mb-3"></div>
+						
+							</c:when>
+						
+						
+							<c:otherwise>
+							
+							</c:otherwise>
+						
+						</c:choose>
+						
+					</c:forEach>
 
 					</div>
-
-
-
-
-
 
 				</div>
 			</div>
@@ -474,9 +367,9 @@
         
         let avb = $("#avb").val();
 
-        let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{0,20}$/gs;
+        let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]*{0,20}$/gs;
         
-        let regexAvb = /^[0-9]{1,2}.?[0-9]{0,5}$/g;
+        let regexAvb = /^[0-9]{0,2}.?[0-9]{0,5}$/g;
 
         if (!(regexSearch.test(search_text))) {
             alert("한글만 입력해주세요");

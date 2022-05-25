@@ -34,8 +34,8 @@ public class BoardDAO {
 	}
 
 	// DB의 총 record 개수를 알아내기 위한 메소드
-	private int getRecordTotalCount() throws Exception{
-		String sql = "select count(*) from board";
+	private int getRecordTotalCount(String typeSql) throws Exception{
+		String sql = "select count(*) from board where board_status IN (0,2)" + typeSql;
 
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -46,8 +46,8 @@ public class BoardDAO {
 	}
 
 	// Page Navigator
-	public String getPageNavi(int currentPage,int type) throws Exception{
-		int recordTotalCount = this.getRecordTotalCount();	// 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
+	public String getPageNavi(int currentPage,String typeSql, int type) throws Exception{
+		int recordTotalCount = this.getRecordTotalCount(typeSql);	// 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
 
 		int recordCountPerPage = 10;	// 한 페이지에 몇 개의 게시글을 보여줄 건지
 
@@ -116,7 +116,7 @@ public class BoardDAO {
 		int end = cpage * 10; // 10
 
 		// 한 페이지에 게시글이 10개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		String sql = "select * from (select row_number() over(order by board_num desc) line, board.* from\n board) where board_status IN (0,2) and line between ? and ?" + typeSql;
+		String sql = "select * from (select row_number() over("+typeSql+") line, board.* from\n board) where board_status IN (0,2) and line between ? and ?";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setInt(1, start);
@@ -247,6 +247,34 @@ public class BoardDAO {
 			int result = pstat.executeUpdate();
 			con.commit();
 			return result;
+		}
+	}
+
+	// 게시글 좋아요 누른 유저 정보 등록
+	public void boardUserLike(int num, String id) throws Exception{
+		String sql = "insert into Board_like values(?,?)";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setInt(1, num);
+			pstat.setString(2, id);
+
+			int result = pstat.executeUpdate();
+			con.commit();
+		}
+	}
+
+	// 게시글 좋아요 누른 유저가 기존에 눌렀는지 체크
+	public int boardLikeCheck(int num, String id) throws Exception{
+		String sql = "select count(*) from board_like where board_num = ? and user_id = ?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setInt(1, num);
+			pstat.setString(2, id);
+
+			ResultSet rs = pstat.executeQuery();{
+				rs.next();
+				return rs.getInt(1);
+			}
 		}
 	}
 }

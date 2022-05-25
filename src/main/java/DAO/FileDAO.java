@@ -10,6 +10,7 @@ import java.util.List;
 import DTO.FileDTO;
 
 public class FileDAO {
+	private static FileDAO instance = null;
 	public FileDAO() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -17,6 +18,15 @@ public class FileDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public static synchronized FileDAO getInstance() {
+		if(instance == null) {
+			instance = new FileDAO();
+		}
+		return instance;
+	}
+
 
 	private Connection getConnection() throws Exception{
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";

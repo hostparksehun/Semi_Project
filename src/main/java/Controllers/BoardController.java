@@ -30,96 +30,120 @@ public class BoardController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String uri = request.getRequestURI();
 		BoardDAO dao = new BoardDAO();
-		FileDAO fdao = new FileDAO();
-		ReplyDAO rdao = new ReplyDAO();
+		FileDAO fdao = FileDAO.getInstance();
+		ReplyDAO rdao = ReplyDAO.getInstance();
 		try {
+			// 게시판 목록 불러오기
 			if(uri.equals("/boardList.board")) {
+				
 				int cpage = 1;
 				int type = 0;
 				// 게시판 리스트 가져오기
-				if(request.getParameter("cpage") != null) {
+				if(request.getParameter("cpage") != null && request.getParameter("cpage") != "") {
 					cpage = Integer.parseInt(request.getParameter("cpage"));
 				}
-				
+
 				// 게시판 정렬 타입 가져오기 
-				if(request.getParameter("type") != null) {
+				if(request.getParameter("type") != null && request.getParameter("type") != "") {
 					type = Integer.parseInt(request.getParameter("type"));
 				}
-				
+
 				HttpSession session = request.getSession();
 				session.setAttribute("cpage", cpage);
-				String typeSql = "";
+				String typeSql = "ORDER BY BOARD_NUM DESC";
 				switch(type) {
-					case 0 : typeSql = ""; break;
-					case 1 : typeSql = " ORDER BY VIEW_COUNT DESC"; break;
-					case 2 : typeSql = " ORDER BY WRITE_DATE DESC"; break;
-					case 3 : typeSql = " ORDER BY BOARD_LIKE DESC"; break;
-					default : typeSql = "";break;
+				case 0 : typeSql = "ORDER BY BOARD_NUM DESC"; break;
+				case 1 : typeSql = " ORDER BY VIEW_COUNT DESC"; break;
+				case 2 : typeSql = " ORDER BY WRITE_DATE DESC"; break;
+				case 3 : typeSql = " ORDER BY BOARD_LIKE DESC"; break;
+				default : typeSql = "ORDER BY BOARD_NUM DESC";break;
 				}
 				List<BoardDTO> list = dao.selectByPage(cpage,typeSql);	// 한 페이지에 보여지는 게시글의 개수를 정하기 위해 새로운 메소드가 필요함.
 				//List<BoardDTO> list = dao.selectAll();
-				String pageNavi = dao.getPageNavi(cpage,type);
+				String pageNavi = dao.getPageNavi(cpage,typeSql,type);
 				request.setAttribute("list", list);
 				request.setAttribute("navi", pageNavi);
 				request.getRequestDispatcher("/Board/boardList.jsp").forward(request, response);
-				
+
+			// 게시글 추가
 			}else if(uri.equals("/boardAdd.board")) {
 				String writer = (String)request.getSession().getAttribute("loginID");
-				
+
 				String path = request.getServletContext().getRealPath("files");
 				File filePath = new File(path);
 				if(!filePath.exists()) {
 					filePath.mkdir();
 				}
 				MultipartRequest multi = new MultipartRequest(request, path, 1024*1024*10,"UTF8",new DefaultFileRenamePolicy());
-				
+
 				String title = multi.getParameter("title");
-				String contents = multi.getParameter("boardExp");
-				
+				String editorTxt = multi.getParameter("editorTxt");
 				String oriName = multi.getOriginalFileName("file");
 				String sysName = multi.getFilesystemName("file");
 				int seq = dao.getSeqNextVal();
-				int result = dao.insert(new BoardDTO(seq, writer, title, contents, 0, 0, null, 0));
+				int result = dao.insert(new BoardDTO(seq, writer, title, editorTxt, 0, 0, null, 0));
 				if(oriName != null) {
 					fdao.insert(new FileDTO(0, oriName,sysName,seq));
 				}
-				request.getRequestDispatcher("/boardList.board?cpage=1").forward(request, response);		
+				request.getRequestDispatcher("/boardList.board?cpage=1").forward(request, response);
+
+			// 게시글 상세 조회
 			}else if(uri.equals("/boardSelect.board")){
 				int num = Integer.parseInt(request.getParameter("num"));
+				String id = (String) (request.getSession().getAttribute("loginID"));
 				int result = dao.boardUpdateCount(num);
 				BoardDTO board = dao.selectBoard(num);
 				List<ReplyDTO> reply = rdao.selectReply(num);
+				int boardLike = dao.boardLikeCheck(num,id);
 				request.setAttribute("board", board);
 				request.setAttribute("reply", reply);
+				request.setAttribute("boardLike", boardLike);
+				
 				request.getRequestDispatcher("/Board/reply.jsp").forward(request, response);
+
+			// 게시글 좋아요
 			}else if(uri.equals("/boardLike.board")) {
 				int num = Integer.parseInt(request.getParameter("num"));
-				int result = dao.boardLike(num);
+				
+				String id = (String) (request.getSession().getAttribute("loginID"));
+				int result = dao.boardLikeCheck(num,id); 
+				if(result == 0) {
+					// 게시글 좋아요 개수 업데이트 
+					result = dao.boardLike(num);
+					// 게시글 좋아요 누른 유저 정보 등록
+					dao.boardUserLike(num,id);
+				}
 				request.getRequestDispatcher("/boardSelect.board?num="+num).forward(request, response);
+
+			// 게시글 설정 (1= 삭제, 2= 신고됨)
 			}else if(uri.equals("/boardSet.board")) {
 				int num = Integer.parseInt(request.getParameter("num"));
 				int stat = Integer.parseInt(request.getParameter("stat"));
 				int result = dao.boardDelete(num,stat);
 				request.getRequestDispatcher("/boardSelect.board?num="+num).forward(request, response);
+
+			// 게시글 수정 페이지 이동
 			}else if(uri.equals("/boardUpdate.board")) {
 				int num = Integer.parseInt(request.getParameter("num"));
 				BoardDTO board = dao.selectBoard(num);
 				request.setAttribute("board", board);
 				request.getRequestDispatcher("/Board/boardUpdate.jsp").forward(request, response);
+			
+			// 게시글 수정
 			}else if(uri.equals("/boardUpdateAction.board")) {
 				String writer = (String)request.getSession().getAttribute("loginID");
-				
+
 				String path = request.getServletContext().getRealPath("files");
 				File filePath = new File(path);
 				if(!filePath.exists()) {
 					filePath.mkdir();
 				}
 				MultipartRequest multi = new MultipartRequest(request, path, 1024*1024*10,"UTF8",new DefaultFileRenamePolicy());
-				
+
 				int num = Integer.parseInt(multi.getParameter("num"));
 				String title = multi.getParameter("title");
-				String contents = multi.getParameter("boardExp");
-				
+				String contents = multi.getParameter("editorTxt");
+
 				String oriName = multi.getOriginalFileName("file");
 				String sysName = multi.getFilesystemName("file");
 				int seq = num;
@@ -129,7 +153,7 @@ public class BoardController extends HttpServlet {
 				}*/
 				request.getRequestDispatcher("/boardSelect.board?num="+num).forward(request, response);
 			}
-			
+
 			// 댓글 추가
 			else if (uri.equals("/add.board")) {
 
@@ -141,12 +165,12 @@ public class BoardController extends HttpServlet {
 				if(request.getParameter("parent_seq") != null && request.getParameter("parent_seq") != "") {
 					parentSeq = Integer.parseInt(request.getParameter("parent_seq"));	
 				}
-				
+
 				int result = rdao.addReply(writer, content, parentSeq);
 				request.getRequestDispatcher("/boardSelect.board?num="+parentSeq).forward(request, response);
-		// 확인 후 수정 필요 response.sendRedirect("/articleView.board?seq="+parentSeq);
+				// 확인 후 수정 필요 response.sendRedirect("/articleView.board?seq="+parentSeq);
 
-			// 삭제	
+				// 삭제	
 			} else if (uri.equals("/del.board")) {
 
 				int pseq = Integer.parseInt(request.getParameter("pseq"));
@@ -155,10 +179,10 @@ public class BoardController extends HttpServlet {
 				int result = rdao.delReply(seq, pseq);
 
 				PrintWriter pw = response.getWriter();
-				
+
 				pw.append("1");
 				request.getRequestDispatcher("/boardSelect.board?num="+seq).forward(request, response);
-			// 수정	
+				// 수정	
 			} else if (uri.equals("/modify.board")) {
 
 				request.setCharacterEncoding("utf-8");
@@ -170,7 +194,7 @@ public class BoardController extends HttpServlet {
 				int result = rdao.updateReply(pseq, seq, content);
 				request.getRequestDispatcher("/boardSelect.board?num="+seq).forward(request, response);
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -273,7 +273,7 @@
                                         <input id="avb" type="text" class="form-control" placeholder="입력값 이상"
                                             aria-label="Recipient's username" aria-describedby="basic-addon2"
                                             name="avb">
-                                        <span class="input-group-text" id="basic-addon2">% AVB</span>
+                                        <span class="input-group-text" id="basic-addon2">% ABV</span>
                                     </div>
                                 </div>
                             </div>

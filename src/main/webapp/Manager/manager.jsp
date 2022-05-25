@@ -35,7 +35,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-white">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="index.jsp">
+                        <a class="navbar-brand" href="/index.jsp">
                             <img alt="" src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
                         </a>
                     </div>
@@ -81,8 +81,8 @@
                             </li>
                             <!--if로 묶을 예정-->
                         </ul>
-                        <form class="d-flex">
-                            <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+                        <form action="/mini.search" class="d-flex">
+                            <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search" name="search_text" required>
                             <button class="btn btn-outline-success me-1" type="submit" id="search_btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-search" viewBox="0 0 16 16">

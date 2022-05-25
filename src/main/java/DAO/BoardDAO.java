@@ -18,11 +18,11 @@ import DTO.ReplyDTO;
 import DAO.SearchDAO;
 
 public class BoardDAO {
-	private static SearchDAO instance = null;
+	private static BoardDAO instance = null;
 
-	public static synchronized SearchDAO getInstance() {
+	public static synchronized BoardDAO getInstance() {
 		if(instance == null) {
-			instance = new SearchDAO();
+			instance = new BoardDAO();
 		}
 		return instance;
 	}

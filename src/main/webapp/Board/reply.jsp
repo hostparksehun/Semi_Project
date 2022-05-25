@@ -239,7 +239,7 @@
 			let okBtn = $("<button>");
 			okBtn.text("수정완료");
 			okBtn.attr("type","submit");
-			okBtn.attr("class","head6_btn"); // submit 관련 작업 필요
+			okBtn.attr("class","head6_btn");
 			
 			let cancelBtn = $("<button>");
 			cancelBtn.attr("type","button");

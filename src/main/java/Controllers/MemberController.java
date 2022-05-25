@@ -127,7 +127,6 @@ public class MemberController extends HttpServlet {
 				System.out.println(result);
 				pw.append(result);
 				
-				
 //--------------------마이페이지------------------------------------
 		}else if(uri.equals("/mypage.member")) {
 			String id = (String) (request.getSession().getAttribute("loginID"));

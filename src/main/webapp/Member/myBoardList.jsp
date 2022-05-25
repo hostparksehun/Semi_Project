@@ -34,7 +34,7 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/index.jsp">
               <img alt="" src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
             </a>
           </div>
@@ -72,7 +72,7 @@
 
 
               <li class="nav-item">
-                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">술꾼술꾼</a>
+                <a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/boardList.board">술꾼술꾼</a>
               </li>
 
             </ul>
@@ -87,20 +87,18 @@
               </button>
             </form>
 
+
             <c:choose>
 	        	<c:when test="${loginID !=null}">
-					<div>${loginID }</div>
-		               <button type="button" id="mypage">마이페이지</button>
-		               <button type="button" id="logout">로그아웃</button>
-	
-			        <script>
-			            $("#mypage").on("click",function(){
-			               location.href="/mypage.member";
-			            })
-			            $("#logout").on("click",function(){
-			               location.href="/logout.member";
-			            })
-		            </script>
+					        	<div class="btn-group">
+  <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    ${loginID } 
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+    <li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+  </ul>
+</div>
 		            
 				</c:when>
 				<c:otherwise>
@@ -108,6 +106,7 @@
 					<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
 				</c:otherwise>
 			</c:choose>
+
 
           </div>
         </div>
@@ -125,10 +124,10 @@
     <div class="row" id="content">
       <div class="col-12 col-md-3" id="mypage list">
           <ul class="list-group list-group-flush">
-          <a href="myPage.jsp" class="list-group-item list-group-item-action">회원정보 수정</a>
+          <a href="/mypage.member" class="list-group-item list-group-item-action">회원정보 수정</a>
           <a href="memberOut.jsp" class="list-group-item list-group-item-action">회원탈퇴</a>
           <a href="myBoardList.jsp" class="list-group-item list-group-item-action">게시글 모아보기</a>
-          <a href="#" class="list-group-item list-group-item-action">찜한 상품</a>
+         
         </ul>
         
       </div>

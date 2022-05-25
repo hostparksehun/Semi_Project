@@ -131,7 +131,41 @@
         </ul>
         
       </div>
-    
+    <div class="col-12 col-md-9" id="myboard list">
+    	<table class='boardTable'>
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>작성자</th>
+						<th>제목</th>
+						<th>조회</th>
+						<th>추천</th>
+						<th>날짜</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:choose>
+						<c:when test="${empty list}">
+							<tr>
+								<td colspan="7">현재 등록된 게시글이 없습니다.</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="list" items="${list}">
+								<tr class='boardSelect' data-id='${list.boardNum}'>
+									<td>${list.boardNum}</td>
+									<td>${list.writer}</td>
+									<td>${list.title}</td>
+									<td>${list.boardCount}</td>
+									<td>${list.boardLike}</td>
+									<td>${list.writeDate}</td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+    </div>
     </div>
 
     <!----------------------------------- footer ----------------------------------->

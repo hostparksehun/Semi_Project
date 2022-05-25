@@ -21,5 +21,10 @@
 #message{
     text-align: left;
 }
-
-
+table{
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    border: 1px solid white;
+   
+}

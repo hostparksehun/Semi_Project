@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import DAO.BoardDAO;
+import DAO.FileDAO;
+import DAO.MyPageDAO;
+import DAO.ReplyDAO;
 import DTO.BoardDTO;
 import DTO.FileDTO;
 import DTO.ReplyDTO;
-import DAO.FileDAO;
-import DAO.ReplyDAO;
 
 @WebServlet("*.board")
 public class BoardController extends HttpServlet {
@@ -34,7 +34,7 @@ public class BoardController extends HttpServlet {
 
 
 		BoardDAO dao = BoardDAO.getInstance();
-
+		MyPageDAO mdao = MyPageDAO.getInstance();
 		FileDAO fdao = FileDAO.getInstance();
 		ReplyDAO rdao = ReplyDAO.getInstance();
 
@@ -236,6 +236,32 @@ public class BoardController extends HttpServlet {
 
 				int result = rdao.updateReply(pseq, seq, content);
 				request.getRequestDispatcher("/boardSelect.board?num="+seq).forward(request, response);
+			} else if(uri.equals("/myboard.board")) {
+
+					int cpage = 1;
+					int type = 0;
+					int selectType = 0;
+					String search = "";
+					String where = "";
+					// 게시판 리스트 가져오기
+					if(request.getParameter("cpage") != null && request.getParameter("cpage") != "") {
+						cpage = Integer.parseInt(request.getParameter("cpage"));
+					}
+	
+					HttpSession session = request.getSession();
+					session.setAttribute("cpage", cpage);
+
+					
+					List<BoardDTO> list = mdao.selectByPage(cpage,where);	// 한 페이지에 보여지는 게시글의 개수를 정하기 위해 새로운 메소드가 필요함.
+
+					//List<BoardDTO> list = dao.selectAll();
+					String pageNavi = mdao.getPageNavi(cpage,type,where,selectType,search);
+					request.setAttribute("list", list);
+					request.setAttribute("navi", pageNavi);
+					request.getRequestDispatcher("/Board/boardList.jsp").forward(request, response);
+
+					// 게시글 추가
+				
 			}
 
 		} catch (Exception e) {

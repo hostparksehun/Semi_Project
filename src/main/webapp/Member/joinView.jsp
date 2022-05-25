@@ -108,6 +108,15 @@
 				<c:otherwise>
 					<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
 					<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+					
+					<script>
+					  $("#joinBtn").on("click",function(){
+					      location.href="/Member/joinView.jsp";
+					   })
+					  $("#loginBtn").on("click",function(){
+					     location.href="/Member/loginView.jsp"
+					  })
+					</script>
 				</c:otherwise>
 			</c:choose>
 			
@@ -115,14 +124,7 @@
         </div>
       </nav>
     </header>
-      <script>
-		  $("#joinBtn").on("click",function(){
-		      location.href="/Member/joinView.jsp";
-		   })
-		  $("#loginBtn").on("click",function(){
-		     location.href="/Member/loginView.jsp"
-		  })
-	  </script>
+
 
 
     <!----------------------------------- Content ----------------------------------->
@@ -152,20 +154,20 @@
       </div>
       <div class="join-box">
         <div class="title">생년월일<br></div>
-        <div><input type="text" id="birthday" name="birthday" placeholder="ex)990322" class="join-input"></div>
+        <div><input type="text" id="birthday" name="birthday" placeholder="990322" class="join-input"></div>
         <div class="check" id="birthdayinfo"></div>
       </div>
       <div class="join-box">
         <div class="title">이메일<br></div>
         <div>
-          <input type="text" id="email" name="email" class="join-input">
-          <button type="button" class="btn btn-secondary" id="emailAuth">인증</button>
+          <input type="text" id="email" name="email" class="join-input" placeholder="example@naver.com">
+<!--           <button type="button" class="btn btn-secondary" id="emailAuth">인증</button> -->
           <div class="check" id="emailinfo"></div>
         </div>
       </div>
       <div class="join-box">
         <div class="title">휴대폰번호<br></div>
-        <div><input type="text" id="phone" name="phone" placeholder="ex)01012349876" class="join-input"></div>
+        <div><input type="text" id="phone" name="phone" placeholder="01012349876" class="join-input"></div>
         <div class="check" id="phoneinfo"></div>
       </div>
       <div class="join-box">
@@ -231,10 +233,6 @@
 		let idRegex = /^[\da-z_]{8,13}$/; //영어 소문자, 숫자, 언더바 8~13글자
 		let idResult = idRegex.test(id);
 		
-		if(id=="admin"){
-			$("#idinfo").css("color", "red");
-			$("#idinfo").text("이 아이디는 사용할 수 없습니다.");
-		}
 		if(!idResult){
 			$("#idinfo").css("color", "red");
 			$("#idinfo").text("8~13자(영문 소문자,숫자,_)를 입력하세요.");
@@ -296,7 +294,7 @@
 		
 		if(!birthdayResult){
 			$("#birthdayinfo").css("color", "red");
-			$("#birthdayinfo").text("생일 6자리를 입력하세요. 미성년자 가입불가");
+			$("#birthdayinfo").text("※미성년자 가입불가. 생일 6자리를 입력하세요.");
 		} else{
 			$("#birthdayinfo").text("");
 		}
@@ -331,18 +329,28 @@
 	$("#join").on("click", function(){
 		if($("#name").val() == null){
 			alert("이름을 입력해주세요.");
+			return false;
 		} else if($("#id").val() == null){
 			alert("아이디를 입력해주세요.");
+			return false;
 		} else if($("#pw").val() == null){
 			alert("비밀번호를 입력해주세요.");
+			return false;
 		} else if($("#pwcheck").val() == null){
 			alert("비밀번호 확인을 입력해주세요.");
+			return false;
 		} else if($("#birthday").val() == null){
 			alert("생년월일을 입력해주세요.");
+			return false;
 		} else if($("#email").val() == null){
 			alert("이메일을 입력해주세요.");
+			return false;
 		} else if($("#phone").val() == null){
 			alert("휴대폰번호를 입력해주세요.");
+			return false;
+		} else {
+			alert("빈 칸을 입력해주세요.");
+			return false;
 		}
 		
 		//수정해야함

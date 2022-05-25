@@ -348,11 +348,8 @@
 		} else if($("#phone").val() == null){
 			alert("휴대폰번호를 입력해주세요.");
 			return false;
-		} 
-		
-		//수정해야함
-		
-	})
+		}
+	});
 	
 	//우편번호
 	function execDaumPostcode() {

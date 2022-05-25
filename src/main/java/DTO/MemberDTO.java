@@ -16,6 +16,14 @@ public class MemberDTO {
 	public MemberDTO() {
 	}
 	
+	public MemberDTO(String id, String name, String birthday, String email) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.birthday = birthday;
+		this.email = email;
+	}
+	
 	public MemberDTO(String name, String phone) {
 		this.name = name;
 		this.phone = phone;

@@ -25,6 +25,7 @@ public class MemberController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf8");//post 한글깨짐 방지
+	
 		String uri = request.getRequestURI();
 		MemberDAO dao = MemberDAO.getInstance();
 		Gson g = new Gson();
@@ -113,7 +114,34 @@ public class MemberController extends HttpServlet {
 				pw.append(g.toJson(pwd));
 				dao.updatePw(new MemberDTO(id, pwd, null, null,null, null, null, null, null));
 				//System.out.println("변경 성공");
-			
+				
+			//카카오 로그인 도전...ing	
+			} else if (uri.equals("/kakaologin.member")){
+				HttpSession session = request.getSession(); 
+				response.setCharacterEncoding("UTF-8");
+				//+아이디 +생일 //주소-핸드폰- //널값 대신에 " "넣기..
+				String id = request.getParameter("id");
+				String name = request.getParameter("name");
+				String email = request.getParameter("email");
+				String birthday = request.getParameter("birthday");
+				PrintWriter pw = response.getWriter();
+				System.out.println(id);
+				boolean result = dao.kakaoLogin(email);
+				System.out.println(result);
+				if(result==false) {
+					dao.kakaoInsert(new MemberDTO(id, name, birthday, email));
+					session.setAttribute("kakaoemail", email); 
+					//response.sendRedirect("/index.jsp");
+				} else {
+					session.setAttribute("kakaoemail", email); 
+					//response.sendRedirect("/index.jsp");
+				}
+				
+				
+				//String result1 = g.toJson(email);
+				//System.out.println(result);
+				//pw.append(result);
+				
 //--------------------마이페이지------------------------------------
 		}else if(uri.equals("/mypage.member")) {
 			String id = (String) (request.getSession().getAttribute("loginID"));

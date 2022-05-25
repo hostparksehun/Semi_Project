@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 
 public class BoardDTO {
 	private int boardNum; // 게시판 번호
+	private int productNum;
+	private int score;
 	private String writer; // 작성자이름
 	private String title; // 제목
 	private String boardExp; // 내용
@@ -16,10 +18,12 @@ public class BoardDTO {
 	public BoardDTO() {
 	}
 
-	public BoardDTO(int boardNum, String writer, String title, String boardExp, int boardLike, int boardCount,
-			Timestamp writeDate, int boardSatus) {
+	public BoardDTO(int boardNum, int productNum, int score, String writer, String title, String boardExp,
+			int boardLike, int boardCount, Timestamp writeDate, int boardSatus) {
 		super();
 		this.boardNum = boardNum;
+		this.productNum = productNum;
+		this.score = score;
 		this.writer = writer;
 		this.title = title;
 		this.boardExp = boardExp;
@@ -35,6 +39,22 @@ public class BoardDTO {
 
 	public void setBoardNum(int boardNum) {
 		this.boardNum = boardNum;
+	}
+
+	public int getProductNum() {
+		return productNum;
+	}
+
+	public void setProductNum(int productNum) {
+		this.productNum = productNum;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 	public String getWriter() {

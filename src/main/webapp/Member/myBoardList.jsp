@@ -87,6 +87,7 @@
               </button>
             </form>
 
+<<<<<<< HEAD
          <c:choose>
 			<c:when test="${loginID !=null}">
 					
@@ -110,6 +111,30 @@
 	</c:choose>
 
           
+=======
+            <c:choose>
+	        	<c:when test="${loginID !=null}">
+					<div>${loginID }</div>
+		               <button type="button" id="mypage">마이페이지</button>
+		               <button type="button" id="logout">로그아웃</button>
+	
+			        <script>
+			            $("#mypage").on("click",function(){
+			               location.href="/mypage.member";
+			            })
+			            $("#logout").on("click",function(){
+			               location.href="/logout.member";
+			            })
+		            </script>
+		            
+				</c:when>
+				<c:otherwise>
+					<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+					<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+				</c:otherwise>
+			</c:choose>
+
+>>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
           </div>
         </div>
       </nav>

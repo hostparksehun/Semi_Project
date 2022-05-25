@@ -85,8 +85,37 @@
                             </button>
                         </form> -->
 
-                        <button type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-                        <button type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+            <c:choose>
+	        	<c:when test="${loginID !=null}">
+					<div>${loginID }</div>
+		               <button type="button" id="mypage">마이페이지</button>
+		               <button type="button" id="logout">로그아웃</button>
+	
+			        <script>
+			            $("#mypage").on("click",function(){
+			               location.href="/mypage.member";
+			            })
+			            $("#logout").on("click",function(){
+			               location.href="/logout.member";
+			            })
+		            </script>
+		            
+				</c:when>
+				<c:otherwise>
+					<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+					<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+					
+					<script>
+					  $("#joinBtn").on("click",function(){
+					      location.href="/Member/joinView.jsp";
+					   })
+					  $("#loginBtn").on("click",function(){
+					     location.href="/Member/loginView.jsp"
+					  })
+					</script>
+				</c:otherwise>
+			</c:choose>
+			
                     </div>
                 </div>
             </nav>

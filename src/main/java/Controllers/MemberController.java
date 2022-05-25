@@ -26,10 +26,10 @@ public class MemberController extends HttpServlet {
 
 		request.setCharacterEncoding("utf8");//post 한글깨짐 방지
 		String uri = request.getRequestURI();
-		MemberDAO dao = new MemberDAO();
+		MemberDAO dao = MemberDAO.getInstance();
 		Gson g = new Gson();
 
-		MyPageDAO mydao=new MyPageDAO();
+		MyPageDAO mydao= MyPageDAO.getInstance();
 		
 		try {
 			//회원가입시 joinView.jsp이동

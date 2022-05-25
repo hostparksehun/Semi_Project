@@ -123,11 +123,23 @@
 					</script>
 				</c:otherwise>
 			</c:choose>
-			
+
           </div>
         </div>
       </nav>
     </header>
+
+  <script>
+  $("#join12").on("click",function(){
+		location.href="/Member/joinView.jsp";
+	})
+  $("#login12").on("click",function(){
+	  location.href="/Member/loginView.jsp"
+  })
+  </script>
+    
+
+
 
     <!----------------------------------- Content ----------------------------------->
     <div class="container" style="width: 360px;">
@@ -151,6 +163,14 @@
     	</form>
             <hr>
             <div class="sns">
+
+                <div id="naver">
+                    <img src="/img/loginFile/btnG_완성형.png">
+                </div>
+                <div id="kakao">
+                <a id="btn-kakao-login" href="kakao/login">
+                    <img src="/img/loginFile/kakao_login_medium_narrow.png"></a>
+
 <!--              <div id="naver_id_login"> -->
 <!--                     <img src="/img/loginFile/btnG_완성형.png"> -->
 <!--                 </div> -->
@@ -173,13 +193,7 @@
 <!-- </div> -->
 
 				
-				        <div class="button-login" align ="center" >
-                <a id="kakao-login-btn" >
-    <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="83%" height ="50px" />
-    </a>
-<!--                 <div id="kakao-login-btn"> -->
-<!--                 <a href="javascript:kakaoLogin();"> -->
-<!--                     <img src="/img/loginFile/kakao_login_medium_narrow.png"></a> -->
+				  
                     <a href="javascript:secession();">연결 끊기?</a>
                 </div>
                 <div id="test">
@@ -200,6 +214,28 @@
  			
  			//카카오 로그인
 			//a90276ed357ed7ce1c45d0863f399e1d 키값
+<<<<<<< HEAD
+			window.Kakao.init("a90276ed357ed7ce1c45d0863f399e1d");
+			function kakaoLogin(){
+				window.Kakao.Auth.login({
+					scope:'account_email, birthday',
+	                success: function(response) {
+	                    console.log(response) // 로그인 성공하면 받는 데이터
+	                    window.Kakao.API.request({ // 사용자 정보 가져오기 
+	                        url: '/v2/user/me',
+	                       success: (res) => {
+	                            const kakao_account = res.kakao_account;
+	                            console.log(kakao_account)
+	                       }
+	                   });
+	                    // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
+	               },
+	                fail: function(error) {
+	                    console.log(error);
+	                }
+	            });
+	        }
+=======
 // 			window.Kakao.init("a90276ed357ed7ce1c45d0863f399e1d");
 // 			function kakaoLogin(){
 // 				window.Kakao.Auth.login({
@@ -270,6 +306,7 @@
 			}) //
 
 
+>>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
 			//카카오 연결 끊기
 			function secession() {
 				Kakao.API.request({
@@ -282,7 +319,7 @@
 			    		
 			    	},
 			    	fail: function(error) {
-			    		console.log("카카오 연결해제 X");
+			  		console.log("카카오 연결해제 X");
 			    		console.log(error);
 			    	},
 				});

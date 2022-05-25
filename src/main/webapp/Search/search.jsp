@@ -87,18 +87,15 @@
 
             <c:choose>
 	        	<c:when test="${loginID !=null}">
-					<div>${loginID }</div>
-		               <button type="button" id="mypage">마이페이지</button>
-		               <button type="button" id="logout">로그아웃</button>
-	
-			        <script>
-			            $("#mypage").on("click",function(){
-			               location.href="/mypage.member";
-			            })
-			            $("#logout").on("click",function(){
-			               location.href="/logout.member";
-			            })
-		            </script>
+					        	<div class="btn-group">
+  <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    ${loginID } 
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+    <li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+  </ul>
+</div>
 		            
 				</c:when>
 				<c:otherwise>

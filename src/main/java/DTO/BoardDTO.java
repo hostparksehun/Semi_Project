@@ -4,112 +4,112 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class BoardDTO {
-   private int boardNum; // 게시판 번호
-   private int productNum;
-   private int score;
-   private String writer; // 작성자이름
-   private String title; // 제목
-   private String boardExp; // 내용
-   private int boardLike; // 좋아여 개수
-   private int boardCount; // 조회수
-   private Timestamp writeDate; // 작성 날짜
-   private int boardSatus; // 상태
+	private int boardNum; // 게시판 번호
+	private int productNum;
+	private int score;
+	private String writer; // 작성자이름
+	private String title; // 제목
+	private String boardExp; // 내용
+	private int boardLike; // 좋아여 개수
+	private int boardCount; // 조회수
+	private Timestamp writeDate; // 작성 날짜
+	private int boardSatus; // 상태
 
-   public BoardDTO() {
-   }
+	public BoardDTO() {
+	}
 
-   public BoardDTO(int boardNum, int productNum, int score, String writer, String title, String boardExp,
-         int boardLike, int boardCount, Timestamp writeDate, int boardSatus) {
-      super();
-      this.boardNum = boardNum;
-      this.productNum = productNum;
-      this.score = score;
-      this.writer = writer;
-      this.title = title;
-      this.boardExp = boardExp;
-      this.boardLike = boardLike;
-      this.boardCount = boardCount;
-      this.writeDate = writeDate;
-      this.boardSatus = boardSatus;
-   }
+	public BoardDTO(int boardNum, int productNum, int score, String writer, String title, String boardExp,
+			int boardLike, int boardCount, Timestamp writeDate, int boardSatus) {
+		super();
+		this.boardNum = boardNum;
+		this.productNum = productNum;
+		this.score = score;
+		this.writer = writer;
+		this.title = title;
+		this.boardExp = boardExp;
+		this.boardLike = boardLike;
+		this.boardCount = boardCount;
+		this.writeDate = writeDate;
+		this.boardSatus = boardSatus;
+	}
 
-   public int getBoardNum() {
-      return boardNum;
-   }
+	public int getBoardNum() {
+		return boardNum;
+	}
 
-   public void setBoardNum(int boardNum) {
-      this.boardNum = boardNum;
-   }
+	public void setBoardNum(int boardNum) {
+		this.boardNum = boardNum;
+	}
 
-   public int getProductNum() {
-      return productNum;
-   }
+	public int getProductNum() {
+		return productNum;
+	}
 
-   public void setProductNum(int productNum) {
-      this.productNum = productNum;
-   }
+	public void setProductNum(int productNum) {
+		this.productNum = productNum;
+	}
 
-   public int getScore() {
-      return score;
-   }
+	public int getScore() {
+		return score;
+	}
 
-   public void setScore(int score) {
-      this.score = score;
-   }
+	public void setScore(int score) {
+		this.score = score;
+	}
 
-   public String getWriter() {
-      return writer;
-   }
+	public String getWriter() {
+		return writer;
+	}
 
-   public void setWriter(String writer) {
-      this.writer = writer;
-   }
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 
-   public String getTitle() {
-      return title;
-   }
+	public String getTitle() {
+		return title;
+	}
 
-   public void setTitle(String title) {
-      this.title = title;
-   }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-   public String getBoardExp() {
-      return boardExp;
-   }
+	public String getBoardExp() {
+		return boardExp;
+	}
 
-   public void setBoardExp(String boardExp) {
-      this.boardExp = boardExp;
-   }
+	public void setBoardExp(String boardExp) {
+		this.boardExp = boardExp;
+	}
 
-   public int getBoardLike() {
-      return boardLike;
-   }
+	public int getBoardLike() {
+		return boardLike;
+	}
 
-   public void setBoardLike(int boardLike) {
-      this.boardLike = boardLike;
-   }
+	public void setBoardLike(int boardLike) {
+		this.boardLike = boardLike;
+	}
 
-   public int getBoardCount() {
-      return boardCount;
-   }
+	public int getBoardCount() {
+		return boardCount;
+	}
 
-   public void setBoardCount(int boardCount) {
-      this.boardCount = boardCount;
-   }
+	public void setBoardCount(int boardCount) {
+		this.boardCount = boardCount;
+	}
 
-   public Timestamp getWriteDate() {
-      return writeDate;
-   }
+	public Timestamp getWriteDate() {
+		return writeDate;
+	}
 
-   public void setWriteDate(Timestamp writeDate) {
-      this.writeDate = writeDate;
-   }
+	public void setWriteDate(Timestamp writeDate) {
+		this.writeDate = writeDate;
+	}
 
-   public int getBoardSatus() {
-      return boardSatus;
-   }
+	public int getBoardSatus() {
+		return boardSatus;
+	}
 
-   public void setBoardSatus(int boardSatus) {
-      this.boardSatus = boardSatus;
-   }
+	public void setBoardSatus(int boardSatus) {
+		this.boardSatus = boardSatus;
+	}
 }

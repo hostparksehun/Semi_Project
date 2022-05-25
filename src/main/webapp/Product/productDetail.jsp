@@ -515,13 +515,13 @@ width: 130px;
 
       
       
-           <c:forEach var="i" items="${list }"> 
+<%--            <c:forEach var="i" items="${list }">  --%>
 
-             <c:if test="${i.seq == 16 }">
+<%--              <c:if test="${i.seq == 16 }"> --%>
                 <div class="main_img">
 				
 					<div class="img_box">
-						<img src="../thumbnail/${i.sysName}" class="img">
+						<img src="../thumbnail/${dto.sysName}" class="img">
 					</div>
 				
 				</div>
@@ -530,24 +530,24 @@ width: 130px;
 
 					<div class="txt_box">
 
-						<div class="product_name">${i.product_name }</div>
+						<div class="product_name">${dto.product_name }</div>
                         
 						<div style="width: 500px; margin-top: 30px; margin-bottom: 30px;" ></div>
 					<dl>
-					<dt>짧은 설명</dt> <dd class="smry">${i.smry }</dd>
-					<dt>가격</dt> 	<dd class="price">${i.price }</dd>
-					<dt>상품 코드</dt> <dd class="product_code">${i.product_code }</dd>
-					<dt>유형</dt> <dd class="kind">${i.kind }</dd>
-					<dt>도수(%)</dt> <dd class="abv">${i.abv }</dd>
-					<dt>용량(ml)</dt> <dd class="capacity">${i.capacity }</dd>
-					<dt>양조장</dt> <dd class="brewery">${i.brewery }</dd>
-					<dt>판매처</dt> <dd class="adress1">${i.adress1 } ${i.adress2 }</dd>
+					<dt>짧은 설명</dt> <dd class="smry">${dto.smry }</dd>
+					<dt>가격</dt> 	<dd class="price">${dto.price }</dd>
+					<dt>상품 코드</dt> <dd class="product_code">${dto.product_code }</dd>
+					<dt>유형</dt> <dd class="kind">${dto.kind }</dd>
+					<dt>도수(%)</dt> <dd class="abv">${dto.abv }</dd>
+					<dt>용량(ml)</dt> <dd class="capacity">${dto.capacity }</dd>
+					<dt>양조장</dt> <dd class="brewery">${dto.brewery }</dd>
+					<dt>판매처</dt> <dd class="adress1">${dto.adress1 } ${dto.adress2 }</dd>
                     <dt>유저 평가</dt> <dd><span>*</span> <span>*</span> <span>*</span> <span>*</span> <span>*</span></dd>
 
 					</dl>
 					
-					</c:if>
-              </c:forEach> 
+<%-- 					</c:if> --%>
+<%--               </c:forEach>  --%>
 			
 						<!-- <div class="box_user_rating">
 							<div class="rating">

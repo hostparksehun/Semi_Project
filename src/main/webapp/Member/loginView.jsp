@@ -168,32 +168,11 @@
                     <img src="/img/loginFile/btnG_완성형.png">
                 </div>
                 <div id="kakao">
-                <a id="btn-kakao-login" href="kakao/login">
-                    <img src="/img/loginFile/kakao_login_medium_narrow.png"></a>
-
-<!--              <div id="naver_id_login"> -->
-<!--                     <img src="/img/loginFile/btnG_완성형.png"> -->
-<!--                 </div> -->
-                
-<!--                 <script type="text/javascript"> -->
-<!-- 				  	var naver_id_login = new naver_id_login("hJtsJHj17cTSu5fTaM9q", "http://localhost/index.jsp"); -->
-<!-- 				  	var state = naver_id_login.getUniqState(); -->
-<!-- 				  	naver_id_login.setButton("white", 2,40); -->
-<!-- 				  	naver_id_login.setDomain("http://localhost/Member/loginView.jsp"); -->
-<!-- 				  	naver_id_login.setState(state); -->
-<!-- 				  	naver_id_login.setPopup(); -->
-<!-- 				  	naver_id_login.init_naver_id_login(); -->
-<!-- 				</script> -->
+                <a id="kakao-login-btn" >
+    <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="83%" height ="50px" />
+    </a>
+<!--                     <img src="/img/loginFile/kakao_login_medium_narrow.png"></a> -->
 				
-<!-- 		<div id="naverIdLogin"></div> -->
-	
-<!-- 				  <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script> -->
-<!--   <div id="message"> -->
-<!--   로그인 버튼을 눌러 로그인 해주세요. -->
-<!-- </div> -->
-
-				
-				  
                     <a href="javascript:secession();">연결 끊기?</a>
                 </div>
                 <div id="test">
@@ -214,28 +193,6 @@
  			
  			//카카오 로그인
 			//a90276ed357ed7ce1c45d0863f399e1d 키값
-<<<<<<< HEAD
-			window.Kakao.init("a90276ed357ed7ce1c45d0863f399e1d");
-			function kakaoLogin(){
-				window.Kakao.Auth.login({
-					scope:'account_email, birthday',
-	                success: function(response) {
-	                    console.log(response) // 로그인 성공하면 받는 데이터
-	                    window.Kakao.API.request({ // 사용자 정보 가져오기 
-	                        url: '/v2/user/me',
-	                       success: (res) => {
-	                            const kakao_account = res.kakao_account;
-	                            console.log(kakao_account)
-	                       }
-	                   });
-	                    // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
-	               },
-	                fail: function(error) {
-	                    console.log(error);
-	                }
-	            });
-	        }
-=======
 // 			window.Kakao.init("a90276ed357ed7ce1c45d0863f399e1d");
 // 			function kakaoLogin(){
 // 				window.Kakao.Auth.login({
@@ -287,7 +244,7 @@
 						$.ajax({
 							url:"/kakaologin.member",
 // 							contentType : "application/json; charset:UTF-8",
-							data: {name:name, email:email, birthday:birthday},
+							data: {id:id, name:name, email:email, birthday:birthday},
 							type:"POST",
 							dataType:"json",
 						}).done(function(resp){
@@ -306,8 +263,6 @@
 			        
 			}) //
 
-
->>>>>>> c79e94b67b89063d0d5b818bbc22fbbfcad678e4
 			//카카오 연결 끊기
 			function secession() {
 				Kakao.API.request({

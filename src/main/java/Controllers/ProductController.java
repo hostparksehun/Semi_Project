@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -29,11 +30,12 @@ public class ProductController extends HttpServlet {
 
 		try {	
 	     if(uri.equals("/list.ProductController")) {
-
-				List<ProductDTO> list;
-				list = dao.selectAll();
-				request.setAttribute("list", list);
-				request.getRequestDispatcher("/Product/productList.jsp").forward(request, response);
+	    	 
+	    
+			List<ProductDTO> list;
+			list = dao.selectAll();
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("/Product/productList.jsp").forward(request, response);
 
 	            
 		}else if(uri.equals("/productA10.ProductController")){
@@ -124,6 +126,20 @@ public class ProductController extends HttpServlet {
     			
     			response.sendRedirect("/add.ProductController");
 
+     		}else if(uri.equals("/Detail.ProductController")) {
+     			
+     			
+     			List<ProductDTO> list;
+    			list = dao.selectAll();
+    			
+    			
+     			
+     			int seq = Integer.parseInt(request.getParameter("seq"));
+     		    ProductDTO dto = dao.selectBySeq(seq);
+     			 
+     		    request.setAttribute("list", list);
+     		    request.setAttribute("dto", dto);
+     		    request.getRequestDispatcher("/Product/productDetail.jsp").forward(request, response);
      		}
 	     
 	     

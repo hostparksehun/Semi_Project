@@ -1,8 +1,10 @@
 package DAO;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import DTO.ProductDTO;
+
 
 public class ProductDAO {
 
@@ -110,6 +113,40 @@ private static ProductDAO instance = null;
 		
 	}
 
+	
+	
+	public ProductDTO selectBySeq(int cseq) throws Exception{	
+		String sql = "select * from product_info where seq=?";
+
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setInt(1, cseq);
+
+			try(ResultSet rs = pstat.executeQuery();){
+				rs.next();
+				String product_name  = rs.getString("product_name");
+            	String search_name  = rs.getString("search_name");
+            	String product_area  = rs.getString("product_area");
+            	int seq=rs.getInt("seq");
+            	String product_code  = rs.getString("product_code");
+            	String kind  = rs.getString("kind");
+            	int choose_count = rs.getInt("choose_count");
+            	int price=rs.getInt("price");
+            	float abv=rs.getFloat("abv");
+            	String adress1  = rs.getString("adress1");
+            	String adress2  = rs.getString("adress2");
+                String brewery  = rs.getString("brewery");
+            	int capacity = rs.getInt("capacity");
+            	float grade = rs.getFloat("grade");
+            	String smry  = rs.getString("smry");
+            	String oriName  = rs.getString("ori_name");
+            	String sysName  = rs.getString("sys_name");
+
+				ProductDTO dto = new ProductDTO(product_name,search_name,product_area, seq, product_code, kind, choose_count, price, abv, adress1, adress2, brewery, capacity, grade, smry, oriName, sysName);
+				return dto;
+			}
+		}
+	}
 }
 
 

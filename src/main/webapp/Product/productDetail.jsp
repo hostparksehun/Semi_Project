@@ -423,20 +423,28 @@ width: 130px;
 						aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					
+					 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle mx-0 mx-md-2 mx-xl-5" href="#"
 								id="navbarDropdown" role="button" data-bs-toggle="dropdown"
 								aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="#">막걸리</a></li>
-									<li><a class="dropdown-item" href="#">증류주</a></li>
-									<li><a class="dropdown-item" href="#">담금주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA10.ProductController">막걸리</a></li>
+									<li><a class="dropdown-item"
+										href="/productA20.ProductController">전통소주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA30.ProductController">약주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA40.ProductController">과실주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA50.ProductController">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="#">전체보기</a></li>
+									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
 								</ul></li>
 
 							<li class="nav-item"><a
@@ -468,39 +476,50 @@ width: 130px;
 		</header>
 
 		<!----------------------------------- Content ----------------------------------->
+
+
 		<div class="row">
+
+ 
 			<div class="col-12 col-xs-12" id="content" style="height: auto;">
 
 				<div class="section_s01">
 
+      
+      
+           <c:forEach var="i" items="${list }"> 
+
+             <c:if test="${i.seq == 16 }">
                 <div class="main_img">
 				
 					<div class="img_box">
-						<img src="https://picsum.photos/id/1020/150/150" class="img">
+						<img src="../thumbnail/${i.sysName}" class="img">
 					</div>
 				
 				</div>
 					
-				
+				 
 
 					<div class="txt_box">
 
-						<div class="product_name">상품 이름</div>
+						<div class="product_name">${i.product_name }</div>
                         
 						<div style="width: 500px; margin-top: 30px; margin-bottom: 30px;" ></div>
 					<dl>
-					<dt>짧은 설명</dt> <dd class="smry">마시기 좋은 술</dd>
-					<dt>가격</dt> 	<dd class="price">15000</dd>
-					<dt>상품 코드</dt> <dd class="product_code">A10</dd>
-					<dt>유형</dt> <dd class="kind">막걸리</dd>
-					<dt>도수(%)</dt> <dd class="abv">17</dd>
-					<dt>용량(ml)</dt> <dd class="capacity">500ml</dd>
-					<dt>양조장</dt> <dd class="brewery">강원도</dd>
-					<dt>판매처</dt> <dd class="adress">CU</dd>
+					<dt>짧은 설명</dt> <dd class="smry">${i.smry }</dd>
+					<dt>가격</dt> 	<dd class="price">${i.price }</dd>
+					<dt>상품 코드</dt> <dd class="product_code">${i.product_code }</dd>
+					<dt>유형</dt> <dd class="kind">${i.kind }</dd>
+					<dt>도수(%)</dt> <dd class="abv">${i.abv }</dd>
+					<dt>용량(ml)</dt> <dd class="capacity">${i.capacity }</dd>
+					<dt>양조장</dt> <dd class="brewery">${i.brewery }</dd>
+					<dt>판매처</dt> <dd class="adress1">${i.adress1 } ${i.adress2 }</dd>
                     <dt>유저 평가</dt> <dd><span>*</span> <span>*</span> <span>*</span> <span>*</span> <span>*</span></dd>
 
 					</dl>
-
+					
+					</c:if>
+              </c:forEach> 
 			
 						<!-- <div class="box_user_rating">
 							<div class="rating">

@@ -166,7 +166,7 @@
                         <div class="col-4">
                             <a href="productDetail.jsp">
                                 <div class="Result_img">
-                                  <img src="../thumbnail/${i.sysName}" style="width: 100%; height: 300px;" >
+                                   <img src="../thumbnail/${i.sysName}" style="width: 100%;">
                                 </div>
                                 <div class="Result_txt">
                                     <div class="review"></div>

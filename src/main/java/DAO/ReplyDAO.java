@@ -13,6 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import DTO.ReplyDTO;
+import DTO.SearchDTO;
 import DTO.BoardDTO;
 
 public class ReplyDAO {
@@ -157,6 +158,32 @@ public class ReplyDAO {
 		}
 	}
 
+	public List<ReplyDTO> SearchAll(int num) throws Exception{
+
+		String sql = "select * from reply where PARENT_SEQ = ?";
+
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setInt(1, num);
+
+			try(ResultSet rs = pstat.executeQuery();){
+				List<ReplyDTO> list = new ArrayList<ReplyDTO>();
+				
+				while(rs.next()) {
+					int seq = rs.getInt("seq");
+					String writer = rs.getString("WRITER");
+					String contents = rs.getString("CONTENTS");
+					Timestamp write_date = rs.getTimestamp("WRITE_DATE");
+					int parentSeq = rs.getInt("PARENT_SEQ");
+					int likeFunc = rs.getInt("LIKE_FUNC");
+	
+					ReplyDTO dto = new ReplyDTO(seq, writer, contents, write_date, parentSeq,likeFunc);
+					list.add(dto);
+				}
+				return list;
+			}
+		}
+	}
 }
 
 

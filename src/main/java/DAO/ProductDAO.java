@@ -1,6 +1,7 @@
 package DAO;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -12,7 +13,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import DTO.ProductDTO;
-import dto.BoardDTO;
+
 
 
 public class ProductDAO {
@@ -148,7 +149,17 @@ private static ProductDAO instance = null;
 		}
 	}
 	
-	
+	// DB의 총 record 개수를 알아내기 위한 메소드
+		private int getRecordTotalCount() throws Exception{
+			String sql = "select count(*) from product_info";
+			
+			try(Connection con = this.getConnection();
+					PreparedStatement pstat = con.prepareStatement(sql);
+					ResultSet rs = pstat.executeQuery();){
+				rs.next();
+				return rs.getInt(1);	// count(*)로 전체 record 수가 출력되는데, 1열만 나오기 때문에
+			}
+		}
 	
 	
 	// Page Navigator
@@ -202,25 +213,24 @@ private static ProductDAO instance = null;
 			StringBuilder sb = new StringBuilder();
 
 			if(needPrev) {
-				sb.append("<a href='list.board?cpage="+(startNavi-1)+"'> < </a>");
+				sb.append("<a href='list.ProductController?cpage="+(startNavi-1)+"'> < </a>");
 			}
 
 			for(int i = startNavi; i <= endNavi; i++) {
 				if(currentPage == i) {
-					sb.append("<a href=\'list.board?cpage="+i+"\'>[" + i + "] </a>");	// 페이지 당 10개씩 보이도록 해야하기 때문에 현재 페이지를 매개변수로 보냄으로써 페이지 네비를 클릭할 때 어디로 가야하는지 알아야한다.
+					sb.append("<a href=\'list.ProductController?cpage="+i+"\'>[" + i + "] </a>");	// 페이지 당 10개씩 보이도록 해야하기 때문에 현재 페이지를 매개변수로 보냄으로써 페이지 네비를 클릭할 때 어디로 가야하는지 알아야한다.
 				}else {
-					sb.append("<a href=\'list.board?cpage="+i+"\'>" + i + " </a>");
+					sb.append("<a href=\'list.ProductController?cpage="+i+"\'>" + i + " </a>");
 				}
 			}
 
 			if(needNext) {
-				sb.append("<a href='list.board?cpage="+(endNavi+1)+"'> > </a>");
+				sb.append("<a href='list.ProductController?cpage="+(endNavi+1)+"'> > </a>");
 			}
 
 			return sb.toString();
 		}
 		
-		// boradlist에서 보여지는 게시글 개수를 정하기 위한 메소드
 		
 		public List<ProductDTO> selectByPage(int cpage) throws Exception{
 
@@ -231,23 +241,36 @@ private static ProductDAO instance = null;
 			// 한 페이지에 게시글이 10개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
 			String sql = "select * from (select row_number() over(order by seq desc) line, product_info.* from\n product_info) where line between ? and ?";
 
-			try(Connection con = this.getConnection();
-					PreparedStatement pstat = con.prepareStatement(sql);){
-				pstat.setInt(1, start);
-				pstat.setInt(2, end);
-
-				try(ResultSet rs = pstat.executeQuery();){
-					List<ProductDTO> list = new ArrayList<ProductDTO>();
-
-					while(rs.next()) {
-						int seq = rs.getInt("seq");
-						String title = rs.getString("title");
-						String contents = rs.getString("contents");
-						String writer = rs.getString("writer");
-						Timestamp write_date = rs.getTimestamp("write_date");
-						int view_count = rs.getInt("view_count");
-
-						ProductDTO dto = new ProductDTO(seq, title, contents, writer, write_date, view_count);
+			
+			try(Connection con = this.getConnection(); 
+					PreparedStatement pstat = con.prepareStatement(sql);) {
+				    pstat.setInt(1, start);
+					pstat.setInt(2, end);
+				try(ResultSet rs = pstat.executeQuery();) {
+				  
+					List<ProductDTO> list = new ArrayList<>();
+			    	 
+		            while(rs.next()) {
+		            	String product_name  = rs.getString("product_name");
+		            	String search_name  = rs.getString("search_name");
+		            	String product_area  = rs.getString("product_area");
+		            	int seq=rs.getInt("seq");
+		            	String product_code  = rs.getString("product_code");
+		            	String kind  = rs.getString("kind");
+		            	int choose_count = rs.getInt("choose_count");
+		            	int price=rs.getInt("price");
+		            	float abv=rs.getFloat("abv");
+		            	String adress1  = rs.getString("adress1");
+		            	String adress2  = rs.getString("adress2");
+		                String brewery  = rs.getString("brewery");
+		            	int capacity = rs.getInt("capacity");
+		            	float grade = rs.getFloat("grade");
+		            	String smry  = rs.getString("smry");
+		            	String oriName  = rs.getString("ori_name");
+		            	String sysName  = rs.getString("sys_name");
+		            	
+		    
+		                ProductDTO dto = new ProductDTO(product_name,search_name,product_area, seq, product_code, kind, choose_count, price, abv, adress1, adress2, brewery, capacity, grade, smry, oriName, sysName);
 						list.add(dto);
 					}
 					return list;

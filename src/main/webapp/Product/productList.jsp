@@ -102,7 +102,7 @@
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
+									<li><a class="dropdown-item" href="/list.ProductController?cpage=1">전체보기</a></li>
 								</ul></li>
 
 
@@ -267,24 +267,26 @@
                      </c:forEach>
                   
 
-             <div class="col-12 w-100 mb-2 mt-3" id="pagination">
-                            <nav aria-label="...">
-                                <ul class="pagination pagination-sm justify-content-center m-auto">
-                                    <li class="page-item active" aria-current="page">
-                                        <span class="page-link">1</span>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                </ul>
-                            </nav>
-                        </div>
+<!--              <div class="col-12 w-100 mb-2 mt-3" id="pagination"> -->
+<!--                             <nav aria-label="..."> -->
+<!--                                 <ul class="pagination pagination-sm justify-content-center m-auto"> -->
+<!--                                     <li class="page-item active" aria-current="page"> -->
+<!--                                         <span class="page-link">1</span> -->
+<!--                                     </li> -->
+<!--                                     <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+<!--                                     <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+<!--                                 </ul> -->
+<!--                             </nav> -->
+<!--                         </div> -->
 
 
-                    </div>
+<!--                     </div> -->
 
 
-
-        <!----------------------------------- footer ----------------------------------->
+								<div class="row bd nav">
+									<div class="col">${navi }</div>
+								</div>
+<!----------------------------------- footer ----------------------------------->
 
 
         <footer class="py-3 my-4">

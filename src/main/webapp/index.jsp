@@ -47,25 +47,28 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle mx-0 mx-md-2 mx-xl-5" href="#" id="navbarDropdown" role="button" href=""
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  우리술 정보
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                     <li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
-                     <li><a class="dropdown-item" href="/productA20.ProductController">증류주</a></li>
-                     <li><a class="dropdown-item" href="/productA30.ProductController">담금주</a></li>
-
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
-                </ul>
-              </li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle mx-0 mx-md-2 mx-xl-5" href="#"
+								id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false"> 우리술 정보 </a>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item"
+										href="/productA10.ProductController?cpage=1">막걸리</a></li>
+									<li><a class="dropdown-item"
+										href="/productA20.ProductController">전통소주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA30.ProductController">약주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA40.ProductController">과실주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA50.ProductController">리큐르</a></li>
+									<li>
+										<hr class="dropdown-divider">
+									</li>
+									<li><a class="dropdown-item" href="/list.ProductController?cpage=1">전체보기</a></li>
+								</ul></li>
 
               <li class="nav-item">
                 <a href="/Search/search.jsp" class="nav-link mx-0 mx-md-2 mx-xl-5">우리 술 검색</a>

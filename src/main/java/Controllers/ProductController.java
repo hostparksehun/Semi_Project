@@ -31,13 +31,16 @@ public class ProductController extends HttpServlet {
 		try {	
 	     if(uri.equals("/list.ProductController")) {
 	    	 
+	    	 
+	    	int cpage = Integer.parseInt(request.getParameter("cpage"));
 	    
 			List<ProductDTO> list;
 			list = dao.selectAll();
 			
-			String PageNavi = dao.getPageNavi(0);
+			String PageNavi = dao.getPageNavi(cpage);
 			
 			request.setAttribute("list", list);
+			request.setAttribute("navi", PageNavi);
 			request.getRequestDispatcher("/Product/productList.jsp").forward(request, response);
 
 	            

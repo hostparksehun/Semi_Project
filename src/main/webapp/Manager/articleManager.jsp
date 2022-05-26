@@ -6,11 +6,9 @@
 <html lang="en">
 
 <head>
-
 <!-- CSS -->
-<link rel="stylesheet" href="/CSS/productDetail.css">
+<link rel="stylesheet" href="/CSS/productAdd.css">
 <!-- 경로 수정 고려 -->
-
 
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,23 +29,26 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
-<title>우리술夜</title>
-</head>
+<script src="https://kit.fontawesome.com/7f0130da7d.js"
+	crossorigin="anonymous"></script>
+<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js"
+	charset="utf-8"></script>
 
+<title>게시글 관리</title>
 <body>
 	<div class="container">
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-light bg-white">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<a class="navbar-brand" href="#"> <img alt=""
-							src="img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
+						<a class="navbar-brand" href="index.jsp"> <img alt=""
+							src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
 						</a>
 					</div>
 
 					<!-- <a class="navbar-brand" href="#">
-              <img src="/img/logo2.jpg" id="logo">
-            </a> -->
+                <img src="/img/logo2.jpg" id="logo">
+              </a> -->
 
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -59,26 +60,28 @@
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle mx-0 mx-md-2 mx-xl-5" href="#"
-								id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-								aria-expanded="false"> 우리술 정보 </a>
+								id="navbarDropdown" role="button" href=""
+								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="#">막걸리</a></li>
-									<li><a class="dropdown-item" href="#">증류주</a></li>
-									<li><a class="dropdown-item" href="#">담금주</a></li>
+									<li><a class="dropdown-item"
+										href="/productAll_01.ProductController">막걸리</a></li>
+									<li><a class="dropdown-item"
+										href="/productAll_02.ProductController">증류주</a></li>
+									<li><a class="dropdown-item"
+										href="/productAll_03.ProductController">담금주</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="#">전체보기</a></li>
+									<li><a class="dropdown-item" href="list.ProductController">전체보기</a></li>
 								</ul></li>
 
-							<li class="nav-item"><a
-								class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Search/search.jsp">우리
-									술 검색</a></li>
+							<li class="nav-item"><a href="/Search/search.jsp"
+								class="nav-link mx-0 mx-md-2 mx-xl-5">우리 술 검색</a></li>
 
 
 							<li class="nav-item"><a
-								class="nav-link mx-0 mx-md-2 mx-xl-5" href="/boardList.board">술꾼술꾼</a></li>
-
+								class="nav-link mx-0 mx-md-2 mx-xl-5" href="/boardList.board"
+								id="board">술꾼술꾼</a></li>
 							<c:choose>
 								<c:when test="${loginID eq 'admin'}">
 									<li class="nav-item"><a
@@ -90,8 +93,8 @@
 
 								</c:otherwise>
 							</c:choose>
-
 						</ul>
+
 						<form action="/mini.search" class="d-flex">
 							<input class="form-control me-1" type="search"
 								placeholder="Search" aria-label="Search" name="search_text"
@@ -105,6 +108,7 @@
                                 </svg>
 							</button>
 						</form>
+
 
 						<c:choose>
 							<c:when test="${loginID !=null}">
@@ -135,125 +139,110 @@
 								</script>
 							</c:otherwise>
 						</c:choose>
+
 					</div>
 				</div>
 			</nav>
 		</header>
 
-		<!----------------------------------- Content ----------------------------------->
-		<div class="row">
-			<div class="col-12" id="content">
+		<!--//////////////////////////////////////////////////////////////////////////////////-->
+		<div class="container mt-3">
+			<div class="row" id="manager">
+				<div class="col-12" id="manager_head">
+					<h2>관리 페이지</h2>
+				</div>
+			</div>
+			<div class="row my-2" id="content">
+				<div class="col-12 col-md-3" id="mypage list">
+					<ul class="list-group list-group-flush">
+						<a href="/add.ProductController"
+							class="list-group-item list-group-item-action"> 상품 등록 </a>
 
-				<div class="section_s01">
+						<a href="/article.manager?cpage=1"
+							class="list-group-item list-group-item-action"> 게시물 관리 </a>
+
+						<a href="/member.manager"
+							class="list-group-item list-group-item-action"> 회원 관리 </a>
+
+						<a href="#" class="list-group-item list-group-item-action"> 통계
+						</a>
+					</ul>
+				</div>
+				<div class="col-12 col-md-9">
+
+					<span id="title">
+						<h3 class="mt-2">게시글 관리</h3>
+					</span>
+
+					<div class="container">
+						<div class="row">
+
+							<div class="col-12 mb-2 mt-1">총 게시물 : ${count} 건</div>
 
 
-					<div class="img_box">
-						<div class="img_drink">
-							<img src="밤야.jp" id="main_img">
-						</div>
-					</div>
-					<div class="txt_box">
 
-						<h2>전체상품</h2>
-						<h3>술이름</h3>
-						<p>간단한 술 설명</p>
-						<div class="ingredient">
-							<strong style="margin-right: 30px;">주원료</strong> <span>정제수,
-								찹쌀, 백미, 기타 등등</span>
-						</div>
-						<div class="box_user_rating">
-							<div class="rating">
-								<p>
-									<span>유저평가</span>
-								</p>
-								<div class="num_5">
-									<span></span> <span></span> <span></span> <span></span>
-								</div>
-								<table class="tbl">
-									<colgroup>
-										<col width="30"%>
-										<col width="30"%>
-										<col width="30"%>
-										<col width="30"%>
+							<form action="/delAcl.manager">
+								<div class="col-3 mb-2 mt-2 ">신고된 게시글</div>
 
-									</colgroup>
-									<tr>
-										<th scope="col">용량(ml)</th>
-										<th scope="col">도수(%)</th>
-										<th scope="col">유형</th>
-										<th scope="col">생산지역</th>
-									</tr>
-									<tr>
-										<td>추후 추가</td>
-										<td>추후 추가</td>
-										<td>추후 추가</td>
-										<td>추후 추가</td>
-									</tr>
-								</table>
 
+								<div class="col-12">
+
+									<table class="table">
+
+										<thead class="table-danger" style="text-align: center;">
+											<th>
+											<td colspan="1">#</td>
+											<td colspan="6">제목</td>
+											<td colspan="2">작성자</td>
+											<td colspan="3">날짜</td>
+											</th>
+										</thead>
+
+										<!-- 반복문 돌릴 예정 : board_num이 value임 -->
+										<c:forEach var="i" items="${list}">
+
+											<tbody style="text-align: center;">
+												<th>
+												<td colspan="1"><input type="checkbox"
+													value="${i.board_num}" id="flexCheckIndeterminate" name="del">
+												</td>
+												<td colspan="6"><a
+													href="/boardSelect.board?num=${i.board_num}"> ${ i.title }
+												</a></td>
+												<td colspan="2">${ i.writer }</td>
+												<td colspan="3">${ i.formedDate }</td>
+												</th>
+											</tbody>
+
+										</c:forEach>
+									</table>
+
+									<div class="col-12 d-md-flex mb-2 mt-1 justify-content-md-end">
+
+										<button type="submit" class="btn btn-outline-danger">삭제</button>
+
+									</div>
+							</form>
+
+							<div class="col-12 mb-2 mt-1">
+
+								<nav aria-label="Page navigation example">
+									<ul class="pagination justify-content-center">${navi}
+									</ul>
+								</nav>
 							</div>
+
 						</div>
 					</div>
 				</div>
+
+
 			</div>
 		</div>
-
-
-		<div class="seciton_s02">
-			<div class="drink_description_box">
-				<div style="margin-bottom: 50px; font-size: 25px; color: aqua;">술
-					설명</div>
-				<ul class="description">
-					<div class="descr_1">
-						<p style="font-size: 30px;">
-							<strong>술이름, 어떤 술인가요?</strong>
-						</p>
-						<P>
-							우리나라 최초의 요리책, &lt;산가요록&gt;에 실린 주방문을 토대로 박흥선 명인이 복원한 역사 깊은 우리술이에요.
-							<br> <br> 잔에 담긴 모습이 거울에 비친 푸른 파도같이 맑다 하여 '녹파'라는 이름이
-							붙었다고 해요. <br> <br> 이름처럼 맑은 빛깔과 담백하고 드라이한 맛이 매력적이지요. <br>
-							<br> 녹파주를 즐기던 옛 선조들처럼 술 한잔에 담긴 은은한 기품을 느껴보세요.
-
-						</P>
-						<p style="font-size: 30px;">
-							<strong>술이름, 어떻게 만드나요?</strong>
-						</p>
-						<p>
-							text<br> text<br> text<br> text<br>
-						</p>
-					</div>
-					<div class="descr_2">
-
-						<div>
-							<div style="margin-bottom: 50px; font-size: 25px; color: aqua;">양조장</div>
-							<p style="font-size: 30px;">
-								<strong>생산자</strong>
-							</p>
-							<p>
-								text<br> text<br> text<br> text<br> text<br>
-							</p>
-						</div>
-
-					</div>
-
-					<div class="descr_3">
-						<div style="margin-bottom: 50px; font-size: 25px; color: aqua;">판매처</div>
-						<P>
-							text<br> text
-						</P>
-					</div>
-				</ul>
-			</div>
-
-
-		</div>
-
-	</div>
 	</div>
 
-	<!----------------------------------- footer ----------------------------------->
 
-
+	<!--//////////////////////////////////////////////////////////////////////////////////-->
 	<footer class="py-3 my-4">
 		<ul class="nav justify-content-center border-bottom pb-3 mb-3">
 			<li class="nav-item"><a href="#"
@@ -269,7 +258,9 @@
 		</ul>
 		<p class="text-center text-muted">&copy; 2022 Company, Inc</p>
 	</footer>
+
 	</div>
+
 
 </body>
 

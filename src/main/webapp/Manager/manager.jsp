@@ -82,11 +82,18 @@
 							<li class="nav-item"><a
 								class="nav-link mx-0 mx-md-2 mx-xl-5" href="#" id="board">술꾼술꾼</a>
 							</li>
-							<!--if로 묶을 예정-->
+							
+						<c:choose>
+							<c:when test="${loginID eq 'admin'}">
 							<li class="nav-item">
-								<a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#" id="board">관리자 페이지</a>
+								<a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Manager/manager.jsp" id="board">관리자 페이지</a>
 							</li>
-							<!--if로 묶을 예정-->
+							</c:when>
+							
+							<c:otherwise>
+							
+							</c:otherwise>
+						</c:choose>
 						</ul>
 						<form action="/mini.search" class="d-flex">
 							<input class="form-control me-1" type="search"
@@ -150,11 +157,16 @@
 				<div class="col-12 col-md-3" id="mypage list">
 					<ul class="list-group list-group-flush">
 						<a href="/add.ProductController"
-							class="list-group-item list-group-item-action">상품 등록</a>
-						<a href="#" class="list-group-item list-group-item-action">회원관리</a>
-						<a href="#" class="list-group-item list-group-item-action">게시글
-							관리</a>
-						<a href="#" class="list-group-item list-group-item-action">통계</a>
+							class="list-group-item list-group-item-action"> 상품 등록 </a>
+
+						<a href="/article.manager?cpage=1"
+							class="list-group-item list-group-item-action"> 게시물 관리 </a>
+
+						<a href="/member.manager"
+							class="list-group-item list-group-item-action"> 회원 관리 </a>
+
+						<a href="#" class="list-group-item list-group-item-action"> 통계
+						</a>
 					</ul>
 				</div>
 

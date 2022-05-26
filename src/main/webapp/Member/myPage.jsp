@@ -151,7 +151,7 @@
 			</div>
 		</div>
 		<div class="row" id="content">
-			<div class="col-12 col-md-3" id="mypage list">
+			<div class="col-12 col-md-3 d-none d-lg-block" id="mypage list">
 				<ul class="list-group list-group-flush">
 					<a href="/mypage.member"
 						class="list-group-item list-group-item-action">회원정보 수정</a>
@@ -163,10 +163,18 @@
 				</ul>
 
 			</div>
+			<div class="col-12 d-lg-none" id="navmenu">
+			<nav class="nav nav-pills nav-fill" >
+  				<a class="nav-link" href="/mypage.member">회원정보 수정</a>
+ 				<a class="nav-link" href="/Member/memberOut.jsp">회원탈퇴</a>
+  				<a class="nav-link" href="/myboard.board?cpage=1">게시글 모아보기</a>
+ 
+			</nav>
+			</div>
 			<div class="col-12 col-md-9">
 				<span id="title"><h3>   </h3></span>
 				<form action="/update.member" method="post">
-					<table border=1>
+					<table class="table table-borderless ">
 						<c:forEach var="i" items="${list}">
 							<tr>
 								<th>아이디
@@ -202,7 +210,7 @@
 							</tr>
 							<tr>
 								<td colspan=2 style="" id="btns">
-									<button type=button id=update>수정</button>
+									<button type="button" class="btn btn-outline-success" id="update">수정</button>
 								</td>
 					</table>
 					</c:forEach>

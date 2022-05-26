@@ -13,7 +13,7 @@
     height: 600px;
 }
   #drop img{
-    height: 30px;
+    height: auto;
     width: 30px;
   }
   #search img{

@@ -157,7 +157,7 @@
 						class="list-group-item list-group-item-action">회원정보 수정</a>
 					<a href="memberOut.jsp"
 						class="list-group-item list-group-item-action">회원탈퇴</a>
-					<a href="myBoardList.jsp"
+					<a href="/myboard.board?cpage=1""
 						class="list-group-item list-group-item-action">게시글 모아보기</a>
 
 				</ul>

@@ -201,7 +201,7 @@
 				<div class="col-12">
 					<a href="https://ktestone.com/kapable.github.io/dringkingHabit/">
 						<img src="/img/indexFile/술BTI.png"
-						style="width: 100%; height: 200px;">
+						style="width: 100%; height: auto;">
 					</a>
 				</div>
 			</div>
@@ -238,21 +238,6 @@
 
 	</div>
 
-	<<<<<<< HEAD
-	<script>
-  	$("#join").on("click", function() {
-		location.href = "/Member/joinView.jsp";
-	})
-	$("#login").on("click", function() {
-		location.href = "/Member/loginView.jsp";
-	})
-
-	$("#board").on("click", function() {
-		location.href = "/Board/boardList.jsp";
-	})
 	
-  </script>
-
-	======= >>>>>>> 5f0599973fde0e04959f2ceb10d9b5a060bf95d6
 </body>
 </html>

@@ -157,14 +157,14 @@
 						class="list-group-item list-group-item-action">회원정보 수정</a>
 					<a href="/Member/memberOut.jsp"
 						class="list-group-item list-group-item-action">회원탈퇴</a>
-					<a href="/Member/myBoardList.jsp"
+					<a href="/myboard.board?cpage=1"
 						class="list-group-item list-group-item-action">게시글 모아보기</a>
 
 				</ul>
 
 			</div>
 			<div class="col-12 col-md-9">
-				<span id="title"><h3>My page</h3></span>
+				<span id="title"><h3>   </h3></span>
 				<form action="/update.member" method="post">
 					<table border=1>
 						<c:forEach var="i" items="${list}">

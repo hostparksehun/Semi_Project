@@ -136,7 +136,7 @@
 
 
 
-<<<<<<< HEAD
+
     <!----------------------------------- Content ----------------------------------->
     <div class="row" id="mypage">
       <div class="col-12" id="mypage_text">
@@ -147,71 +147,46 @@
       <div class="col-12 col-md-3" id="mypage list">
           <ul class="list-group list-group-flush">
           <a href="/mypage.member" class="list-group-item list-group-item-action">회원정보 수정</a>
-          <a href="memberOut.jsp" class="list-group-item list-group-item-action">회원탈퇴</a>
-          <a href="myBoardList.jsp" class="list-group-item list-group-item-action">게시글 모아보기</a>
+          <a href="/Member/memberOut.jsp" class="list-group-item list-group-item-action">회원탈퇴</a>
+          <a href="/myboard.board?cpage=1"" class="list-group-item list-group-item-action">게시글 모아보기</a>
          
         </ul>
         
       </div>
     <div class="col-12 col-md-9" id="myboard list">
-    	<table class='boardTable'>
-				<thead>
-					<tr>
-						<th>번호</th>
-						<th>작성자</th>
-						<th>제목</th>
-						<th>조회</th>
-						<th>추천</th>
-						<th>날짜</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:choose>
-						<c:when test="${empty list}">
-							<tr>
-								<td colspan="7">현재 등록된 게시글이 없습니다.</td>
-							</tr>
-						</c:when>
-						<c:otherwise>
-							<c:forEach var="list" items="${list}">
-								<tr class='boardSelect' data-id='${list.boardNum}'>
-									<td>${list.boardNum}</td>
-									<td>${list.writer}</td>
-									<td>${list.title}</td>
-									<td>${list.boardCount}</td>
-									<td>${list.boardLike}</td>
-									<td>${list.writeDate}</td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
-				</tbody>
-			</table>
+    	<table class="table">
+
+										<thead class="table-danger" style="text-align: center;">
+											<th>
+											<td colspan="1">#</td>
+											<td colspan="6">제목</td>
+											<td colspan="2">작성자</td>
+											<td colspan="3">날짜</td>
+											</th>
+										</thead>
+
+										<!-- 반복문 돌릴 예정 : board_num이 value임 -->
+										<c:forEach var="i" items="${list}">
+
+											<tbody style="text-align: center;">
+												<th>
+												<td colspan="1">
+													${i.board_num}
+												</td>
+												<td colspan="6"><a
+													href="/boardSelect.board?num=${i.board_num}"> ${ i.title }
+												</a></td>
+												<td colspan="2">${ i.writer }</td>
+												<td colspan="3">${ i.formedDate }</td>
+												</th>
+											</tbody>
+
+										</c:forEach>
+									</table>
     </div>
     </div>
-=======
-		<!----------------------------------- Content ----------------------------------->
-		<div class="row" id="mypage">
-			<div class="col-12" id="mypage_text">
-				<h1>게시판 모아보기</h1>
-			</div>
-		</div>
-		<div class="row" id="content">
-			<div class="col-12 col-md-3" id="mypage list">
-				<ul class="list-group list-group-flush">
-					<a href="/mypage.member"
-						class="list-group-item list-group-item-action">회원정보 수정</a>
-					<a href="memberOut.jsp"
-						class="list-group-item list-group-item-action">회원탈퇴</a>
-					<a href="myBoardList.jsp"
-						class="list-group-item list-group-item-action">게시글 모아보기</a>
->>>>>>> ba47c4e49b58b322398205888bbbbd8147741352
 
-				</ul>
-
-			</div>
-
-		</div>
+	
 
 		<!----------------------------------- footer ----------------------------------->
 

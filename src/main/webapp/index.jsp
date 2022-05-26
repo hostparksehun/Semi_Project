@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -77,12 +77,18 @@
 								class="nav-link mx-0 mx-md-2 mx-xl-5" href="/boardList.board"
 								id="board">술꾼술꾼</a></li>
 
-							<!--if로 묶을 예정-->
+						<c:choose>
+							<c:when test="${loginID eq 'admin'}">
 							<li class="nav-item">
-								<a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#" id="board">관리자 페이지</a>
+								<a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Manager/manager.jsp" id="board">관리자 페이지</a>
 							</li>
-							<!--if로 묶을 예정-->
-
+							</c:when>
+							
+							<c:otherwise>
+							
+							</c:otherwise>
+						</c:choose>
+							
 						</ul>
 						<form action="/mini.search" class="d-flex">
 							<input class="form-control me-1" type="search"
@@ -98,9 +104,8 @@
 							</button>
 						</form>
 
-
 						<c:choose>
-							<c:when test="${loginID !=null}">
+							<c:when test="${loginID != null}">
 								<div class="btn-group">
 									<button type="button" class="btn btn-warning dropdown-toggle"
 										data-bs-toggle="dropdown" aria-expanded="false">

@@ -74,13 +74,19 @@
 
 
 							<li class="nav-item"><a
-								class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">술꾼술꾼</a></li>
+								class="nav-link mx-0 mx-md-2 mx-xl-5" href="/boardList.board">술꾼술꾼</a></li>
 
-							<!--if로 묶을 예정-->
+						<c:choose>
+							<c:when test="${loginID eq 'admin'}">
 							<li class="nav-item">
-								<a class="nav-link mx-0 mx-md-2 mx-xl-5" href="#" id="board">관리자 페이지</a>
+								<a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Manager/manager.jsp" id="board">관리자 페이지</a>
 							</li>
-							<!--if로 묶을 예정-->
+							</c:when>
+							
+							<c:otherwise>
+							
+							</c:otherwise>
+						</c:choose>
 						</ul>
 
             <c:choose>

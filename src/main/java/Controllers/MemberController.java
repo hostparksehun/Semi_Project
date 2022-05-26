@@ -80,23 +80,25 @@ public class MemberController extends HttpServlet {
 			} else if (uri.equals("/kakaologin.member")){
 				response.setCharacterEncoding("UTF-8");
 				HttpSession session = request.getSession(); 
-				String id = request.getParameter("id"); //임의 숫자값
+				String id = request.getParameter("id"); //임의숫자값 할당(변동없는 듯)
 				String name = request.getParameter("name"); //닉네임
 				String email = request.getParameter("email");
 				String birthday = request.getParameter("birthday"); //(생년없이)월일
 				System.out.println("임의id:"+id+" 닉네임:"+name+" 이메일:"+email+" 생일:"+birthday);
 				//System.out.println(result);
+				PrintWriter pw = response.getWriter();
+				pw.append(g.toJson(id));
 				String result = dao.kakaoLogin(email);
 				if(result == null) {
 					dao.kakaoInsert(new MemberDTO(id, name, birthday, email));
 					session.setAttribute("kakaoemail", email); 
+					System.out.println("신규 카카오 이메일: "+email);
 					response.sendRedirect("index.jsp");
 				} else {
 					session.setAttribute("kakaoemail", email); 
+					System.out.println("이미 있는 카카오 이메일: "+email);
 					response.sendRedirect("index.jsp");
 				}
-				PrintWriter pw = response.getWriter();
-				pw.append(id);
 				
 			//로그아웃
 			} else if (uri.equals("/logout.member")) {

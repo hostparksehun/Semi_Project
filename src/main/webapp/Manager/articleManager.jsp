@@ -7,7 +7,7 @@
 
 <head>
 <!-- CSS -->
-<link rel="stylesheet" href="/CSS/manager.css">
+<link rel="stylesheet" href="/CSS/productAdd.css">
 <!-- 경로 수정 고려 -->
 
 <meta charset="UTF-8">
@@ -34,14 +34,14 @@
 <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js"
 	charset="utf-8"></script>
 
-<title>상품 등록</title>
+<title>게시글 관리</title>
 <body>
 	<div class="container">
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-light bg-white">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<a class="navbar-brand" href="/index.jsp"> <img alt=""
+						<a class="navbar-brand" href="index.jsp"> <img alt=""
 							src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
 						</a>
 					</div>
@@ -80,21 +80,21 @@
 
 
 							<li class="nav-item"><a
-								class="nav-link mx-0 mx-md-2 mx-xl-5" href="#" id="board">술꾼술꾼</a>
-							</li>
-							
-						<c:choose>
-							<c:when test="${loginID eq 'admin'}">
-							<li class="nav-item">
-								<a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Manager/manager.jsp" id="board">관리자 페이지</a>
-							</li>
-							</c:when>
-							
-							<c:otherwise>
-							
-							</c:otherwise>
-						</c:choose>
+								class="nav-link mx-0 mx-md-2 mx-xl-5" href="/boardList.board"
+								id="board">술꾼술꾼</a></li>
+							<c:choose>
+								<c:when test="${loginID eq 'admin'}">
+									<li class="nav-item"><a
+										class="nav-link mx-0 mx-md-2 mx-xl-5"
+										href="/Manager/manager.jsp" id="board">관리자 페이지</a></li>
+								</c:when>
+
+								<c:otherwise>
+
+								</c:otherwise>
+							</c:choose>
 						</ul>
+
 						<form action="/mini.search" class="d-flex">
 							<input class="form-control me-1" type="search"
 								placeholder="Search" aria-label="Search" name="search_text"
@@ -108,6 +108,7 @@
                                 </svg>
 							</button>
 						</form>
+
 
 						<c:choose>
 							<c:when test="${loginID !=null}">
@@ -129,13 +130,13 @@
 									class="mx-1 btn btn-dark navbar-btn">회원가입</button>
 
 								<script>
-					  $("#joinBtn").on("click",function(){
-					      location.href="/Member/joinView.jsp";
-					   })
-					  $("#loginBtn").on("click",function(){
-					     location.href="/Member/loginView.jsp"
-					  })
-					</script>
+									$("#joinBtn").on("click", function() {
+										location.href = "/Member/joinView.jsp";
+									})
+									$("#loginBtn").on("click", function() {
+										location.href = "/Member/loginView.jsp"
+									})
+								</script>
 							</c:otherwise>
 						</c:choose>
 
@@ -151,9 +152,7 @@
 					<h2>관리 페이지</h2>
 				</div>
 			</div>
-
-			<div class="row" id="content">
-
+			<div class="row my-2" id="content">
 				<div class="col-12 col-md-3" id="mypage list">
 					<ul class="list-group list-group-flush">
 						<a href="/add.ProductController"
@@ -169,29 +168,99 @@
 						</a>
 					</ul>
 				</div>
+				<div class="col-12 col-md-9">
 
-				<div class="col-12 col-md-9"></div>
+					<span id="title">
+						<h3 class="mt-2">게시글 관리</h3>
+					</span>
+
+					<div class="container">
+						<div class="row">
+
+							<div class="col-12 mb-2 mt-1">총 게시물 : ${count} 건</div>
+
+
+
+							<form action="/delAcl.manager">
+								<div class="col-3 mb-2 mt-2 ">신고된 게시글</div>
+
+
+								<div class="col-12">
+
+									<table class="table">
+
+										<thead class="table-danger" style="text-align: center;">
+											<th>
+											<td colspan="1">#</td>
+											<td colspan="6">제목</td>
+											<td colspan="2">작성자</td>
+											<td colspan="3">날짜</td>
+											</th>
+										</thead>
+
+										<!-- 반복문 돌릴 예정 : board_num이 value임 -->
+										<c:forEach var="i" items="${list}">
+
+											<tbody style="text-align: center;">
+												<th>
+												<td colspan="1"><input type="checkbox"
+													value="${i.board_num}" id="flexCheckIndeterminate" name="del">
+												</td>
+												<td colspan="6"><a
+													href="/boardSelect.board?num=${i.board_num}"> ${ i.title }
+												</a></td>
+												<td colspan="2">${ i.writer }</td>
+												<td colspan="3">${ i.formedDate }</td>
+												</th>
+											</tbody>
+
+										</c:forEach>
+									</table>
+
+									<div class="col-12 d-md-flex mb-2 mt-1 justify-content-md-end">
+
+										<button type="submit" class="btn btn-outline-danger">삭제</button>
+
+									</div>
+							</form>
+
+							<div class="col-12 mb-2 mt-1">
+
+								<nav aria-label="Page navigation example">
+									<ul class="pagination justify-content-center">${navi}
+									</ul>
+								</nav>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
 			</div>
 		</div>
+	</div>
 
-		<!--//////////////////////////////////////////////////////////////////////////////////-->
-		<footer class="py-3 my-4">
-			<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">Home</a></li>
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">Features</a></li>
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">Pricing</a></li>
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">FAQs</a></li>
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">About</a></li>
-			</ul>
-			<p class="text-center text-muted">&copy; 2022 Company, Inc</p>
-		</footer>
+
+	<!--//////////////////////////////////////////////////////////////////////////////////-->
+	<footer class="py-3 my-4">
+		<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">Home</a></li>
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">Features</a></li>
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">Pricing</a></li>
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">FAQs</a></li>
+			<li class="nav-item"><a href="#"
+				class="nav-link px-2 text-muted">About</a></li>
+		</ul>
+		<p class="text-center text-muted">&copy; 2022 Company, Inc</p>
+	</footer>
 
 	</div>
+
 
 </body>
 

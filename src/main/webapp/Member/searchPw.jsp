@@ -87,41 +87,51 @@
               </button>
             </form>
 
-			<c:choose>
-	        	<c:when test="${loginID !=null}">
-					${loginID }
-		               <button type="button" id="mypage">마이페이지</button>
-		               <button type="button" id="logout">로그아웃</button>
-	
-			        <script>
-			            $("#mypage").on("click",function(){
-			               location.href="/mypage.member";
-			            })
-			            $("#logout").on("click",function(){
-			               location.href="/logout.member";
-			            })
-		            </script>
-		            
-				</c:when>
-				<c:otherwise>
-					<button id="login" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-					<button id="join" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
-				</c:otherwise>
-			</c:choose>
+						<c:choose>
+							<c:when test="${loginID !=null}">
+								<div class="btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${loginID }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+									</ul>
+								</div>
+							</c:when>
+
+							<c:when test="${kakaoemail !=null}">
+								<div id="test"></div>
+									<div class="btn-group">
+										<button type="button" class="btn btn-warning dropdown-toggle"
+											data-bs-toggle="dropdown" aria-expanded="false">
+											${kakaoemail }</button>
+										<ul class="dropdown-menu">
+											<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+											<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+										</ul>
+									</div>
+							</c:when>
+											
+							<c:otherwise>
+								<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+								
+								<script>
+									$("#loginBtn").on("click",function(){
+										location.href="/Member/loginView.jsp";
+									})
+									$("#joinBtn").on("click",function(){
+										location.href="/Member/joinView.jsp";
+									})
+								</script>
+							</c:otherwise>
+						</c:choose>
 			
           </div>
         </div>
       </nav>
     </header>
-    
-      <script>
-		  $("#join").on("click",function(){
-		      location.href="/Member/joinView.jsp";
-		   })
-		  $("#login").on("click",function(){
-		     location.href="/Member/loginView.jsp"
-		  })
-	  </script>
 
 
     <!----------------------------------- Content ----------------------------------->
@@ -146,15 +156,12 @@
             <input type="button" class="btn btn-outline-secondary" id="next" value="다음">
             <input type="button" class="btn btn-outline-secondary" id="change" value="변경" style="display:none;">
 		</form>
-            <hr>
-            <div class="sns">
-                <div id="naver">
-                    <img src="/img/loginFile/btnG_완성형.png">
-                </div>
-                <div id="kakao">
-                    <img src="/img/loginFile/kakao_login_medium_narrow.png">
-                </div>
-            </div>
+<!--             <hr> -->
+<!--             <div class="sns"> -->
+<!--                 <div id="kakao"> -->
+<!--                     <img src="/img/loginFile/kakao_login_medium_narrow.png"> -->
+<!--                 </div> -->
+<!--             </div> -->
     	</div>
     
  		<script>
@@ -167,7 +174,7 @@
 					let result = JSON.parse(resp);
 					//console.log(result);
 					if(result == null){
-						alert("해당하는 정보가 없습니다. 다시 확인해주세요.");
+						alert("해당하는 정보가 없습니다. 입력된 정보를 다시 확인해주세요.");
 					}else{
 						$("#changetext").show();
 						$("#change").show();

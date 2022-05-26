@@ -110,13 +110,33 @@
 										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
 									</ul>
 								</div>
-
 							</c:when>
+
+							<c:when test="${kakaoemail !=null}">
+								<div id="test"></div>
+									<div class="btn-group">
+										<button type="button" class="btn btn-warning dropdown-toggle"
+											data-bs-toggle="dropdown" aria-expanded="false">
+											${kakaoemail }</button>
+										<ul class="dropdown-menu">
+											<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+											<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+										</ul>
+									</div>
+							</c:when>
+											
 							<c:otherwise>
-								<button id=login type="button"
-									class="mx-1 btn btn-warning navbar-btn">로그인</button>
-								<button id=join type="button"
-									class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+								<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+								
+								<script>
+									$("#loginBtn").on("click",function(){
+										location.href="/Member/loginView.jsp";
+									})
+									$("#joinBtn").on("click",function(){
+										location.href="/Member/joinView.jsp";
+									})
+								</script>
 							</c:otherwise>
 						</c:choose>
 
@@ -125,14 +145,6 @@
 			</nav>
 		</header>
 
-		<script>
-		  $("#join").on("click",function(){
-		      location.href="/Member/joinView.jsp";
-		   })
-		  $("#login").on("click",function(){
-		     location.href="/Member/loginView.jsp"
-		  })
-	  </script>
 
 		<div class="row" id="main">
 			<div class="col-12" id="contents">

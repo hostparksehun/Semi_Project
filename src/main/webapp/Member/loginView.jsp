@@ -95,31 +95,41 @@
 
             <c:choose>
 	        	<c:when test="${loginID !=null}">
-					<div>${loginID }</div>
-		               <button type="button" id="mypage">마이페이지</button>
-		               <button type="button" id="logout">로그아웃</button>
-	
-			        <script>
-			            $("#mypage").on("click",function(){
-			               location.href="/mypage.member";
-			            })
-			            $("#logout").on("click",function(){
-			               location.href="/logout.member";
-			            })
-		            </script>
-		            
+					<div class="btn-group">
+						<button type="button" class="btn btn-warning dropdown-toggle"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							${loginID }</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+							<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+						</ul>
+					</div>
 				</c:when>
+				
+				<c:when test="${kakaoemail !=null}">
+					<div id="test"></div>
+						<div class="btn-group">
+							<button type="button" class="btn btn-warning dropdown-toggle"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								${kakaoemail }</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+								<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+							</ul>
+						</div>
+				</c:when>
+				
 				<c:otherwise>
 					<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
 					<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
 					
 					<script>
-					  $("#joinBtn").on("click",function(){
-					      location.href="/Member/joinView.jsp";
-					   })
-					  $("#loginBtn").on("click",function(){
-					     location.href="/Member/loginView.jsp"
-					  })
+						$("#loginBtn").on("click",function(){
+							location.href="/Member/loginView.jsp";
+						})
+						$("#joinBtn").on("click",function(){
+							location.href="/Member/joinView.jsp";
+						})
 					</script>
 				</c:otherwise>
 			</c:choose>
@@ -128,17 +138,6 @@
         </div>
       </nav>
     </header>
-
-  <script>
-  $("#join12").on("click",function(){
-		location.href="/Member/joinView.jsp";
-	})
-  $("#login12").on("click",function(){
-	  location.href="/Member/loginView.jsp"
-  })
-  </script>
-    
-
 
 
     <!----------------------------------- Content ----------------------------------->
@@ -157,102 +156,80 @@
             <a href="/Member/searchPw.jsp">비밀번호 찾기</a>
              </div>
              <div>
-            <input type="submit" class="btn btn-outline-secondary" id="loginBtn" value="로그인하기">
-            <input type="button" class="btn btn-outline-secondary" id="joinBtn" value="회원가입">
+            <input type="submit" class="btn btn-outline-secondary" id="loginBtn_in" value="로그인하기">
+            <input type="button" class="btn btn-outline-secondary" id="joinBtn_in" value="회원가입">
             </div>
     	</form>
+   	 		<script>
+	 			$("#loginBtn_in").on("click",function(){
+	 				if($("#id").val() ==""){
+	 					alert("아이디를 입력해주세요.");
+	 					return false;
+	 				}
+	 				if($("#pw").val() == ""){
+	 					alert("비밀번호를 입력해주세요.");
+	 					return false;
+	 				}
+	 				location.href="/Member/loginView.jsp";
+	 			})
+	 			
+	 			$("#joinBtn_in").on("click",function(){
+	 				location.href="/Member/joinView.jsp";
+	 			})
+ 			</script>
             <hr>
             <div class="sns">
-
-                <div id="naver">
-                    <img src="/img/loginFile/btnG_완성형.png">
-                </div>
                 <div id="kakao">
                 <a id="kakao-login-btn" >
-    <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="83%" height ="50px" />
-    </a>
-<!--                     <img src="/img/loginFile/kakao_login_medium_narrow.png"></a> -->
+                    <img src="/img/loginFile/kakao_login_medium_narrow.png"></a>
 				
-                    <a href="javascript:secession();">연결 끊기?</a>
+                    <a href="javascript:secession();">카카오 연동 해제</a>
                 </div>
                 <div id="test">
                 </div>
             </div>
     	</div>
     
- 		<script>
- 			$("#loginBtn").on("click",function(){
- 				location.href="/Member/loginView.jsp";
- 				
- 			})
  			
- 			$("#joinBtn").on("click",function(){
- 				location.href="/Member/joinView.jsp";
- 			})
- 			
- 			
+		<script>
  			//카카오 로그인
 			//a90276ed357ed7ce1c45d0863f399e1d 키값
-// 			window.Kakao.init("a90276ed357ed7ce1c45d0863f399e1d");
-// 			function kakaoLogin(){
-// 				window.Kakao.Auth.login({
-// 					scope:'account_email, birthday',
-// 	                success: function(response) {
-// 	                    console.log(response) // 로그인 성공하면 받는 데이터
-// 	                    window.Kakao.API.request({ // 사용자 정보 가져오기 
-// 	                        url: '/v2/user/me',
-// 	                        success: (res) => {
-// 	                            const kakao_account = res.kakao_account;
-// 	                            console.log(kakao_account)
-// 	                        }
-// 	                    });
-// 	                    // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
-// 	                },
-// 	                fail: function(error) {
-// 	                    console.log(error);
-// 	                }
-// 	            });
-// 	        }
-			// 카카오 초기화
 			Kakao.init('a90276ed357ed7ce1c45d0863f399e1d');
 			
 			$("#kakao-login-btn").on("click", function(){
 			    //1. 로그인 시도
 			    Kakao.Auth.login({
 			        success: function(authObj) {
-			         
 			          //2. 로그인 성공시, API 호출
 			          Kakao.API.request({
 			            url: '/v2/user/me',
-// 			            data: {
-// 			                property_keys: ["kakao_account.email","kakao_account.gender"]
-// 			            },
 			            success: function(res) {
-						console.log(res);
-						//scope : 'account_email';
-						let id = res.id;
-						let name = res.properties.nickname; 
-						let email = res.kakao_account.email;
-						let birthday = res.kakao_account.birthday;
-						console.log(id);
-						console.log(name);
-						console.log(email);
-						console.log(birthday);
-						//alert('로그인성공');
-						//location.href="http://localhost/index.jsp";
-						
-						$.ajax({
-							url:"/kakaologin.member",
-// 							contentType : "application/json; charset:UTF-8",
-							data: {id:id, name:name, email:email, birthday:birthday},
-							type:"POST",
-							dataType:"json",
-						}).done(function(resp){
-							console.log(resp);
-							$("#test").text(resp);
-						})
-			        }
-			          })
+							console.log(res);
+							//scope : 'account_email';
+							let id = res.id;
+							let name = res.properties.nickname; 
+							let email = res.kakao_account.email;
+							let birthday = res.kakao_account.birthday;
+							console.log(id);
+							console.log(name);
+							console.log(email);
+							console.log(birthday);
+							//alert('로그인성공');
+							
+							$.ajax({
+								url:"/kakaologin.member",
+	// 							contentType : "application/json; charset:UTF-8",
+								data: {id:id, name:name, email:email, birthday:birthday},
+								type:"POST",
+								dataType:"json",
+							}).done(function(resp){
+								console.log(resp);
+								$("#test").text(resp);
+								})
+								alert("카카오계정으로 로그인 되었습니다.");
+								location.href="/index.jsp";
+			       		}
+					})
 			          console.log(authObj);
 			          var token = authObj.access_token;
 			        },
@@ -260,8 +237,7 @@
 			          alert(JSON.stringify(err));
 			        }
 			      });
-			        
-			}) //
+			})
 
 			//카카오 연결 끊기
 			function secession() {

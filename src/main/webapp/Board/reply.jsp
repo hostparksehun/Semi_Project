@@ -76,12 +76,25 @@
 
 
 							<li class="nav-item"><a
-								class="nav-link mx-0 mx-md-2 mx-xl-5" href="#">술꾼술꾼</a></li>
+								class="nav-link mx-0 mx-md-2 mx-xl-5" href="/boardList.board">술꾼술꾼</a></li>
+
+							<c:choose>
+								<c:when test="${loginID eq 'admin'}">
+									<li class="nav-item"><a
+										class="nav-link mx-0 mx-md-2 mx-xl-5"
+										href="/Manager/manager.jsp" id="board">관리자 페이지</a></li>
+								</c:when>
+
+								<c:otherwise>
+
+								</c:otherwise>
+							</c:choose>
 
 						</ul>
-						<form class="d-flex">
+						<form action="/mini.search" class="d-flex">
 							<input class="form-control me-1" type="search"
-								placeholder="Search" aria-label="Search">
+								placeholder="Search" aria-label="Search" name="search_text"
+								required>
 							<button class="btn btn-outline-success me-1" type="submit"
 								id="search_btn">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -91,7 +104,7 @@
                                 </svg>
 							</button>
 						</form>
-						
+
 						<c:choose>
 							<c:when test="${loginID !=null}">
 								<div class="btn-group">
@@ -139,24 +152,24 @@
 								<div class="board_title">글 제목 : ${board.title}</div>
 							</c:otherwise>
 						</c:choose>
-						
+
 						<c:choose>
 							<c:when test="${board.score == '1'}">
 								<div>평점 : ★ (${board.score})</div>
 							</c:when>
-							
+
 							<c:when test="${board.score == '2'}">
 								<div>평점 : ★★ (${board.score})</div>
 							</c:when>
-							
+
 							<c:when test="${board.score == '3'}">
 								<div>평점 : ★★★ (${board.score})</div>
 							</c:when>
-							
+
 							<c:when test="${board.score == '4'}">
 								<div>평점 : ★★★★ (${board.score})</div>
 							</c:when>
-							
+
 							<c:otherwise>
 								<div>평점 : ★★★★★ (${board.score})</div>
 							</c:otherwise>
@@ -184,7 +197,10 @@
 
 
 					<div id="head5" style="position: relative;">
-						<div class="reply_cont">총 댓글 : <c:out value="${replyCount}"/></div>
+						<div class="reply_cont">
+							총 댓글 :
+							<c:out value="${replyCount}" />
+						</div>
 						<c:forEach var="reply" items="${reply}" varStatus="stat">
 							<script class="scriptDelte">
 								$(".reply_cont").text("총 댓글 : ${stat.count}");
@@ -200,7 +216,7 @@
 							</c:when>
 							<c:otherwise>
 								<input type="button" class="like_btn" value="추천하기"
-								onclick="location.href='/boardLike.board?num=${board.boardNum}'">
+									onclick="location.href='/boardLike.board?num=${board.boardNum}'">
 							</c:otherwise>
 						</c:choose>
 						<input type="button" class="like_btn" value="신고하기"
@@ -237,18 +253,21 @@
 						<c:otherwise>
 							<c:forEach var="i" items="${reply}">
 
-								<form action="modify.board?pseq=${board.boardNum}&seq=${i.replySeq}"
+								<form
+									action="modify.board?pseq=${board.boardNum}&seq=${i.replySeq}"
 									method="post" id="modifyFrm" enctype="multipart/form-data">
-		
-									<div class="reply_view">${i.writer} | ${i.wirteDate}</div>
-		
+
+									<div class="reply_view">${i.writer}|${i.wirteDate}</div>
+
 									<div class="head6">
-										<div class="reply_contents">${i.cotents}</div> 
+										<div class="reply_contents">${i.cotents}</div>
 										<!-- $(this).siblings(".reply_contents") 여기까지가  <div class="reply_contents">${i.cotents}</div>  이걸 선택한 상태 -->
-										<input name='contents' value="${i.cotents}" style="display: none; width:50%;">
+										<input name='contents' value="${i.cotents}"
+											style="display: none; width: 50%;">
 										<!-- $(this).siblings(".reply_contents").next() 여기는 <input name='contents' value="${i.cotents}" style="display: none; width:50%;"> 이걸 선택한 상태에요 -->
-										<br> <input type="hidden" id="contentsInput" name="reply_contents">
-	
+										<br> <input type="hidden" id="contentsInput"
+											name="reply_contents">
+
 										<c:choose>
 
 											<c:when test="${loginID == i.writer}">
@@ -270,9 +289,9 @@
 								</form>
 
 							</c:forEach>
-							
+
 						</c:otherwise>
-						
+
 					</c:choose>
 
 				</div>
@@ -302,7 +321,7 @@
 
 	<script>
 		$(".modify").on("click", function(){
-			//$(this).siblings(".reply_contents").attr("contenteditable","true");
+
 			$(this).siblings(".reply_contents").next().show(); 
 			$(this).siblings(".reply_contents").hide();
 			$(this).css("display", "none");

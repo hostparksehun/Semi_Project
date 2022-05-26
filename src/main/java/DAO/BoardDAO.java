@@ -34,8 +34,8 @@ public class BoardDAO {
 	}
 
 	// DB의 총 record 개수를 알아내기 위한 메소드
-	private int getRecordTotalCount(String typeSql, String where) throws Exception{
-		String sql = "select count(*) from board where board_status IN (0,2) "+ where + typeSql;
+	private int getRecordTotalCount(String typeSql, String whereSub) throws Exception{
+		String sql = "select count(*) from board where board_status IN (0,2) "+ whereSub + typeSql;
 
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
@@ -46,8 +46,8 @@ public class BoardDAO {
 	}
 
 	// Page Navigator
-	public String getPageNavi(int currentPage,String typeSql, int type, String where, int selectType, String search) throws Exception{
-		int recordTotalCount = this.getRecordTotalCount(typeSql,where);	// 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
+	public String getPageNavi(int currentPage,String typeSql, int type, String whereSub, int selectType, String search) throws Exception{
+		int recordTotalCount = this.getRecordTotalCount(typeSql,whereSub);	// 총 게시글의 개수 -> 향후 실제 데이터베이스의 개수를 세어와야함
 
 		int recordCountPerPage = 10;	// 한 페이지에 몇 개의 게시글을 보여줄 건지
 
@@ -116,9 +116,7 @@ public class BoardDAO {
 		int end = cpage * 10; // 10
 
 		// 한 페이지에 게시글이 10개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		System.out.println(where);
-		String sql = "select * from (select row_number() over("+typeSql+") line, board.* from\n board) where board_status IN (0,2) "+ where +" and line between ? and ?";
-		System.out.println(sql);
+		String sql = "select * from (select row_number() over("+typeSql+") line, board.* from\n board "+ where +") where board_status IN (0,2) and line between ? and ?";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setInt(1, start);
@@ -215,20 +213,20 @@ public class BoardDAO {
 			}
 		}
 	}
-	
+
 	// 추천하기 누르면 좋아요 증가
 	public int boardLike(int num) throws Exception {
 		String sql = "update board set board_like = board_like +1 where board_num = ?";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setInt(1, num);
-			
+
 			try(ResultSet rs = pstat.executeQuery();){
 				return 1;
 			}
 		}
 	}
-	
+
 	// 게시판 삭제
 	public int boardDelete(int num, int stat) throws Exception{
 		String sql = "update board set board_status = ? where board_num = ?";

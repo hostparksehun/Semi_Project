@@ -10,10 +10,12 @@
 <link rel="stylesheet" type="text/css" href="../CSS/board.css">
 <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
-<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js"
+	charset="utf-8"></script>
 </head>
 <body>
-	<form id='target' action="/boardAdd.board" method="post" enctype="multipart/form-data">
+	<form id='target' action="/boardAdd.board" method="post"
+		enctype="multipart/form-data">
 		<div class='boardCreateBody'>
 			<h5>우리술 리뷰 쓰기</h5>
 			<hr>
@@ -35,32 +37,36 @@
 			<hr>
 			<div class='boardSet'>
 				<div class='boardUser'>평가</div>
-				<input type="hidden" id='score' name='score' value='1'>
-				<input type="radio" class='score' id='scoreOne' name='boardScore' value='1' checked><label for="scoreOne">★</label> 
-				<input type="radio" class='score' id='scoreTwe' name='boardScore' value='2'><label for="scoreTwe">★★</label>
-				<input type="radio" class='score' id='scoreThree' name='boardScore' value='3'><label for="scoreThree">★★★</label> 
-				<input type="radio" class='score' id='scoreFore' name='boardScore' value='4'><label for="scoreFore">★★★★</label>
-				<input type="radio" class='score' id='scoreFive' name='boardScore' value='5'><label for="scoreFive">★★★★★</label>
+				<input type="hidden" id='score' name='score' value='1'> <input
+					type="radio" class='score' id='scoreOne' name='boardScore'
+					value='1' checked><label for="scoreOne">★</label> <input
+					type="radio" class='score' id='scoreTwe' name='boardScore'
+					value='2'><label for="scoreTwe">★★</label> <input
+					type="radio" class='score' id='scoreThree' name='boardScore'
+					value='3'><label for="scoreThree">★★★</label> <input
+					type="radio" class='score' id='scoreFore' name='boardScore'
+					value='4'><label for="scoreFore">★★★★</label> <input
+					type="radio" class='score' id='scoreFive' name='boardScore'
+					value='5'><label for="scoreFive">★★★★★</label>
 			</div>
 			<hr>
 			<div class='boardSet'>
 				<div class='boardUser'>제목</div>
-				<input id='boardTitle' name='title' type="text" maxlength="35"
+				<input id='boardTitle' name='title' type="text" maxlength="20"
 					placeholder="제목을 입력하세요.">
 			</div>
 			<hr>
-			
+
 			<div class='boardSet'>
-				<div class='boardUser'">내용</div><br>
+				<div class='boardUser'">내용</div>
+				<br>
 				<!-- <input id='boardDetail' name='boardExp' type="text" maxlength="35"
 					placeholder="내용을 입력하세요." style="height: 300px; "> -->
-				 <div id="smarteditor" style="width: 100%; display: inline-block;">
-			        <textarea name="editorTxt" id="editorTxt"
-			                  rows="20" cols="10" 
-			                  placeholder="내용을 입력해주세요"
-			                  style="width: 100%">
+				<div id="smarteditor" style="width: 100%; display: inline-block;">
+					<textarea name="editorTxt" id="editorTxt" rows="20" cols="10"
+						placeholder="내용을 입력해주세요" style="width: 100%">
 			        </textarea>
-			     </div>
+				</div>
 			</div>
 			<hr>
 			<!-- <div class='boardSet'>
@@ -69,11 +75,11 @@
 			<hr> -->
 			<div class='boardLastBtn'>
 				<button type="submit" onclick="submitAdd()">등록</button>
-				<button type='button'>취소</button>	
+				<button type='button'>취소</button>
 			</div>
 		</div>
 	</form>
- 	<%-- <script>
+	<%-- <script>
 		$(document).ready(function() {
 			$('#summernote').summernote({
 				 height: 250,
@@ -98,7 +104,7 @@
 			  });
 	    });	
 	</script>--%>
-	
+
 	<script>
 	    let oEditors = []
 	
@@ -125,6 +131,6 @@
 		});
 
   </script>
-	<jsp:include page="common/footer.jsp" /> 
+	<jsp:include page="common/footer.jsp" />
 </body>
 </html>

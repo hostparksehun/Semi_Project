@@ -55,8 +55,8 @@
 
 .btn_write {
 	position: absolute;
-   	top: 0;
-    right: 0px;
+	top: 0;
+	right: 0px;
 }
 
 .down_write {
@@ -154,38 +154,37 @@
 	width: 100%;
 }
 
-.btn_wirte{
+.btn_wirte {
 	
 }
 
 #alcohoImg {
 	width: 100%;
-    max-width: 70px;
-    height: 70px;
-    background-color: #c5c5c5;
-    display: inline-block;
+	max-width: 70px;
+	height: 70px;
+	background-color: #c5c5c5;
+	display: inline-block;
 }
 
-#alcohoImg img{
-	width:100%;
+#alcohoImg img {
+	width: 100%;
 	height: 100%;
 }
 
 #alcohoContent {
 	width: 70%;
 	height: 75px;
-	display: inline-block;	
+	display: inline-block;
 }
 
-
-.boardUser, .boardTitle , .boardContent {
+.boardUser, .boardTitle, .boardContent {
 	width: 100%;
-    max-width: 70px;
-    height: 30px;
-    background-color: #c5c5c5;
-    display: inline-block;
-    text-align: center;
-    line-height: 30px;
+	max-width: 70px;
+	height: 30px;
+	background-color: #c5c5c5;
+	display: inline-block;
+	text-align: center;
+	line-height: 30px;
 }
 
 #userName {
@@ -195,7 +194,7 @@
 }
 
 .score {
-	margin-left: 10px;	
+	margin-left: 10px;
 }
 
 #boardTitle {
@@ -210,7 +209,7 @@
 }
 
 #boardImgAdd {
-	display: inline-block;	
+	display: inline-block;
 }
 
 .boardLastBtn {
@@ -220,14 +219,28 @@
 
 .boardLastBtn button {
 	color: white;
-    background-color: #70e0f6;
-    border: 0px;
-    border-radius: 4px;
-    font-size: 1.3em;
+	background-color: #70e0f6;
+	border: 0px;
+	border-radius: 4px;
+	font-size: 1.3em;
 }
 
 .boardSearchBtn {
-    background-color: #70e0f6; 
-    color: white; border: 0px; 
-    font-size: 18px;
+	background-color: #70e0f6;
+	color: white;
+	border: 0px;
+	font-size: 18px;
+}
+
+.boardTitleTd {
+	width: 50%;
+	text-align: left;
+	cursor: pointer;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.boardTitleTd:hover {
+	padding-left: 4px;
 }

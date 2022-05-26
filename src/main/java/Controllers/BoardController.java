@@ -27,9 +27,9 @@ import DAO.ReplyDAO;
 public class BoardController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String uri = request.getRequestURI();
 
 
@@ -47,6 +47,7 @@ public class BoardController extends HttpServlet {
 				int selectType = 0;
 				String search = "";
 				String where = "";
+				String whereSub = "";
 				// 게시판 리스트 가져오기
 				if(request.getParameter("cpage") != null && request.getParameter("cpage") != "") {
 					cpage = Integer.parseInt(request.getParameter("cpage"));
@@ -68,9 +69,11 @@ public class BoardController extends HttpServlet {
 				}
 
 				if(selectType == 1) {
-					where = " and title like '%"+search+"%'";
+					where = " where title like '%"+search+"%'";
+					whereSub = " and title like '%"+search+"%'";
 				}else if(selectType == 2) {
-					where = " and writer like '%"+search+"%'";
+					where = " where writer like '%"+search+"%'";
+					whereSub = " and writer like '%"+search+"%'";
 				}			
 				HttpSession session = request.getSession();
 				session.setAttribute("cpage", cpage);
@@ -83,11 +86,11 @@ public class BoardController extends HttpServlet {
 				case 3 : typeSql = " ORDER BY BOARD_LIKE DESC"; break;
 				default : typeSql = "ORDER BY BOARD_NUM DESC";break;
 				}
-				
+
 				List<BoardDTO> list = dao.selectByPage(cpage,typeSql,where);	// 한 페이지에 보여지는 게시글의 개수를 정하기 위해 새로운 메소드가 필요함.
 
 				//List<BoardDTO> list = dao.selectAll();
-				String pageNavi = dao.getPageNavi(cpage,typeSql,type,where,selectType,search);
+				String pageNavi = dao.getPageNavi(cpage,typeSql,type,whereSub,selectType,search);
 				request.setAttribute("list", list);
 				request.setAttribute("navi", pageNavi);
 				request.getRequestDispatcher("/Board/boardList.jsp").forward(request, response);
@@ -152,11 +155,15 @@ public class BoardController extends HttpServlet {
 
 				// 게시글 설정 (1= 삭제, 2= 신고됨)
 			}else if(uri.equals("/boardSet.board")) {
-
 				int num = Integer.parseInt(request.getParameter("num"));
 				int stat = Integer.parseInt(request.getParameter("stat"));
 				int result = dao.boardDelete(num,stat);
-				request.getRequestDispatcher("/boardSelect.board?num="+num).forward(request, response);
+
+				if(stat == 1) {
+					request.getRequestDispatcher("/boardList.board?cpage=1").forward(request, response);
+				}else if(stat == 2) {
+					request.getRequestDispatcher("/boardSelect.board?num="+num).forward(request, response);
+				}
 
 			}else if(uri.equals("/boardUpdate.board")) {
 
@@ -225,25 +232,25 @@ public class BoardController extends HttpServlet {
 				pw.append("1");
 				request.getRequestDispatcher("/boardSelect.board?num="+seq).forward(request, response);
 
-		         // 수정   
-	         } else if (uri.equals("/modify.board")) {
+				// 수정   
+			} else if (uri.equals("/modify.board")) {
 
-	            request.setCharacterEncoding("utf-8");
-	            String path = request.getServletContext().getRealPath("files");
-	            File filePath = new File(path);
-	            if(!filePath.exists()) {
-	               filePath.mkdir();
-	            }
-	            
-	            MultipartRequest multi = new MultipartRequest(request, path, 1024*1024*10,"UTF8",new DefaultFileRenamePolicy());
-	            
-	            int pseq = Integer.parseInt(request.getParameter("pseq"));
-	            int seq = Integer.parseInt(request.getParameter("seq"));
-	            String content = multi.getParameter("contents");
-	            int result = rdao.updateReply(pseq, seq, content);
+				request.setCharacterEncoding("utf-8");
+				String path = request.getServletContext().getRealPath("files");
+				File filePath = new File(path);
+				if(!filePath.exists()) {
+					filePath.mkdir();
+				}
 
-	            request.getRequestDispatcher("/boardSelect.board?num="+pseq).forward(request, response);
-	         }
+				MultipartRequest multi = new MultipartRequest(request, path, 1024*1024*10,"UTF8",new DefaultFileRenamePolicy());
+
+				int pseq = Integer.parseInt(request.getParameter("pseq"));
+				int seq = Integer.parseInt(request.getParameter("seq"));
+				String content = multi.getParameter("contents");
+				int result = rdao.updateReply(pseq, seq, content);
+
+				request.getRequestDispatcher("/boardSelect.board?num="+pseq).forward(request, response);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

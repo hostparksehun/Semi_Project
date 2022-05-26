@@ -41,7 +41,7 @@
 								<tr class='boardSelect' data-id='${list.boardNum}'>
 									<td>${list.boardNum}</td>
 									<td>${list.writer}</td>
-									<td>${list.title}</td>
+									<td class="boardTitleTd">${list.title}</td>
 									<td>${list.boardCount}</td>
 									<td>${list.boardLike}</td>
 									<td>${list.writeDate}</td>
@@ -67,14 +67,15 @@
 						onclick="if(${loginID != null}) {location.href='/Board/boardAdd.jsp'}else{alert('로그인 후 작성할 수 있습니다')};">글쓰기</button>
 				</div>
 			</div>
-				<form action=/boardList.board align="center">
-					<select name="selectType">
-						<option value="1">제목</option>
-						<option value="2">작성자</option>
-					</select> 
-					<input type="text" class='boardSearch' name="boardSearch"> 
-					<button style="background-color: #70e0f6; color: white; border: 0px; font-size: 18px; " class='boardSearchBtn'>검색하기</button>
-				</form>
+			<form action=/boardList.board align="center">
+				<select name="selectType">
+					<option value="1">제목</option>
+					<option value="2">작성자</option>
+				</select> <input type="text" class='boardSearch' name="boardSearch">
+				<button
+					style="background-color: #70e0f6; color: white; border: 0px; font-size: 18px;"
+					class='boardSearchBtn'>검색하기</button>
+			</form>
 			<div class="row bd nav">
 				<div class="col">${navi}</div>
 			</div>

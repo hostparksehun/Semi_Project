@@ -180,14 +180,22 @@
 
 											<tbody style="text-align: center;">
 												<th>
-												<td colspan="1">
-													${i.board_num}
+												<td colspan="1"><a
+													href="/boardSelect.board?num=${i.board_num}"
+													style="color:black;text-decoration-line: none;">
+													${i.board_num}</a>
 												</td>
 												<td colspan="6"><a
-													href="/boardSelect.board?num=${i.board_num}"> ${ i.title }
+													href="/boardSelect.board?num=${i.board_num}"
+													style="color:black;text-decoration-line: none;"> ${ i.title }
 												</a></td>
-												<td colspan="2">${ i.writer }</td>
-												<td colspan="3">${ i.formedDate }</td>
+												<td colspan="2">
+												<a
+													href="/boardSelect.board?num=${i.board_num}"
+													style="color:black;text-decoration-line: none;">${ i.writer }</a></td>
+												<td colspan="3"><a
+													href="/boardSelect.board?num=${i.board_num}"
+													style="color:black;text-decoration-line: none;">${ i.formedDate }</a></td>
 												</th>
 											</tbody>
 

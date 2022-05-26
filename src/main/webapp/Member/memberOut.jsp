@@ -202,24 +202,21 @@
 			</div>
 			<br>
 		</div>
-<<<<<<< HEAD
-		<div id="btn" style="text-align: center">
+
+		<div id="btn" style="text-align: center;padding-bottom: 20px;">
 					<button type="button" class="btn btn-danger" id="ok">확인</button>
 				</div>
-=======
+
 
 		<!----------------------------------------script------------------------------------>
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
+
 		<script>
 			$("#ok").on("click", function() {
 				location.href = "/memberout.member"
 			})
 		</script>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
 		<!----------------------------------- footer ----------------------------------->
 
 

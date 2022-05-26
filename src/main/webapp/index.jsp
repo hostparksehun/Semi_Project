@@ -262,12 +262,9 @@
 			<div class="row mt-5 m-auto" id="bti text">
 				<div class="col-12 m-auto" style=" text-decoration: none;">
 					<a href="https://ktestone.com/kapable.github.io/dringkingHabit/">
-<<<<<<< HEAD
-						<img src="/img/indexFile/술BTI.png"
-						style="width: 100%; height: auto;">
-=======
+
 						<img src="/img/indexFile/술BTI.png" class="d-block w-100 h-auto">
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
+
 					</a>
 				</div>
 			</div>
@@ -342,7 +339,7 @@
 		})
 	</script>
 
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
+
 </body>
 
 </html>

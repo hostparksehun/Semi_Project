@@ -11,9 +11,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import org.apache.catalina.webresources.Cache;
-
-import DTO.BoardDTO;
 import DTO.ManagerDTO;
 
 public class ManagerDAO {

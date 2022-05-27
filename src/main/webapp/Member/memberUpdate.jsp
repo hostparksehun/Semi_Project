@@ -175,28 +175,24 @@
 		<form method="post" action="/update.member" id="frm">
 			<c:forEach var="i" items="${list }">
 				<div class="box" style="width: 360px;">
-					<div style="text-align: center;">
+					<div style="text-align: center;padding-bottom: 30px;">
 						<h3>회원정보 수정</h3>
 					</div>
-					<div class="join-box">
-						<div class="title">
-							이름<br>
-						</div>
-						<div>${i.name}</div>
-
-					</div>
-					<div class="join-box">
-						<div class="title">
-							아이디<br>
-						</div>
-						<div>${i.id }</div>
-
-					</div>
-					<div class="join-box">
-						<div class="title">
-							생년월일<br>
-						</div>
-						<div>${i.birthday }</div>
+					<div id="info">
+						<table class="table table-borderless ">
+						<tr>
+							<th>이름
+							<td>${i.name}
+						</tr>
+						<tr>
+							<th>아이디
+							<td>${i.id}
+						</tr>
+						<tr>
+							<th>생일
+							<td>${i.birthday}
+						</td>
+						</table>
 
 					</div>
 					<div class="join-box">
@@ -205,7 +201,7 @@
 						</div>
 						<div>
 							<input type="text" id="email" name="email" class="join-input">
-							<button type="button" class="btn btn-secondary" id="emailCheck">인증</button>
+							
 						</div>
 					</div>
 					<div class="join-box">
@@ -216,7 +212,7 @@
 							<input type="text" id="phone" name="phone"
 								placeholder="ex)01012349876" class="join-input">
 						</div>
-						<div class="check" id="phoneCheckinfo">확인용</div>
+						
 					</div>
 					<div class="join-box">
 						<div class="title">
@@ -224,8 +220,8 @@
 						</div>
 						<div>
 							<input type="text" name="zipcode" id="zipcode" class="join-input" />
-							<button type="button" onclick="execDaumPostcode()"
-								class="btn btn-secondary" id="zipcode_find">찾기</button>
+	<button type="button" onclick="execDaumPostcode()" class="btn btn-success" id="zipcode_find">
+								찾기</button>
 						</div>
 					</div>
 					<div class="join-box">
@@ -246,8 +242,8 @@
 								class="join-input">
 						</div>
 					</div>
-					<input type="submit" class="btn btn-outline-primary" id="update"
-						value="수정완료">
+				<input type="submit" class="btn btn-outline-success" id="join"
+					value="수정완료">
 
 				</div>
 			</c:forEach>

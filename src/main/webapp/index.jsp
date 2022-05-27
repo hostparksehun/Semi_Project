@@ -146,16 +146,15 @@
 							</c:when>
 
 							<c:when test="${kakaoemail !=null}">
-								<div id="test"></div>
-									<div class="btn-group">
-										<button type="button" class="btn btn-warning dropdown-toggle"
-											data-bs-toggle="dropdown" aria-expanded="false">
-											${kakaoemail }</button>
-										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
-											<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
-										</ul>
-									</div>
+								<div class="d-none d-lg-inline btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${kakaoemail }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+									</ul>
+								</div>
 							</c:when>
 											
 							<c:otherwise>

@@ -105,19 +105,6 @@
 								</c:otherwise>
 							</c:choose>
 
-<<<<<<< HEAD
-						<c:choose>
-							<c:when test="${loginID eq 'admin'}">
-							<li class="nav-item">
-								<a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Manager/manager.jsp" id="board">관리자 페이지</a>
-							</li>
-							</c:when>
-							
-							<c:otherwise>
-							
-							</c:otherwise>
-						</c:choose>
-=======
 							<c:choose>
 								<c:when test="${loginID eq 'admin'}">
 									<li class="nav-item"><a
@@ -130,7 +117,6 @@
 								</c:otherwise>
 							</c:choose>
 
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
 						</ul>
 						<form action="/mini.search" class="d-flex">
 							<input id="search_input" class="form-control mx-1" type="search"
@@ -148,11 +134,7 @@
 
 						<c:choose>
 							<c:when test="${loginID != null}">
-<<<<<<< HEAD
-								<div class="btn-group">
-=======
 								<div class="d-none d-lg-inline btn-group">
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
 									<button type="button" class="btn btn-warning dropdown-toggle"
 										data-bs-toggle="dropdown" aria-expanded="false">
 										${loginID }</button>
@@ -161,10 +143,6 @@
 										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
 									</ul>
 								</div>
-<<<<<<< HEAD
-=======
-
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
 							</c:when>
 
 							<c:when test="${kakaoemail !=null}">
@@ -181,7 +159,6 @@
 							</c:when>
 											
 							<c:otherwise>
-<<<<<<< HEAD
 								<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
 								<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
 								
@@ -193,12 +170,6 @@
 										location.href="/Member/joinView.jsp";
 									})
 								</script>
-=======
-								<button id=login type="button"
-									class="d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
-								<button id=join type="button"
-									class="d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
 							</c:otherwise>
 						</c:choose>
 
@@ -207,42 +178,28 @@
 			</nav>
 		</header>
 
-<<<<<<< HEAD
-=======
-		<script>
-			$("#join").on("click", function() {
-				location.href = "/Member/joinView.jsp";
-			})
-			$("#login").on("click", function() {
-				location.href = "/Member/loginView.jsp"
-			})
-		</script>
-
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
-
 		<!----------------------------------- Content ----------------------------------->
 
 		<div class="container" style="width: 360px;">
-			<div style="text-align: center;">
-				<h3>비밀번호 재설정</h3>
-			</div>
-			<div class="idline">
-				<div>
-					<input type="text" class="textBox" id="id" name="id" placeholder="아이디">
-					<input type="text" class="textBox" id="name" name="name" placeholder="이름">
-					<input type="text" class="textBox" id="phone" name="phone" placeholder="핸드폰번호">
-				</div>
-			</div>
+			<div style="text-align: center;"><h4>비밀번호 재설정</h4></div>
+<!-- 			<div class="idline"> -->
+				<div><input type="text" class="textBox idline" id="id" name="id" placeholder="아이디"></div>
+				<div><input type="text" class="textBox idline" id="name" name="name" placeholder="이름"></div>
+				<div><input type="text" class="textBox idline" id="phone" name="phone" placeholder="휴대폰번호 (-없이)"></div>
+<!-- 			</div> -->
 			
-		<form action="/updatePw.member" method="post">
-			<div id="changetext" style="display:none;">변경하실 비밀번호를 입력하세요.</div>
-            <input type="password" class="pwBox" id="pw" name="pw" placeholder="비밀번호 재설정" style="display:none;">
-            <div id="pwinfo"></div>
-            <input type="password" class="pwBox" id="pwcheck" name="pwcheck" placeholder="비밀번호 재설정 확인" style="display:none;">
-            <div id="pwcheckinfo"></div>
-            <input type="button" class="btn btn-outline-secondary" id="next" value="다음">
-            <input type="button" class="btn btn-outline-secondary" id="change" value="변경" style="display:none;">
-		</form>
+			<form action="/updatePw.member" method="post">
+				<div style="text-align: center;">
+					<div id="changetext" style="display:none;"><h6>변경하실 비밀번호를 입력하세요.</h6></div>
+		            	<input type="password" class="pwBox" id="pw" name="pw" placeholder="비밀번호 재설정" style="display:none;">
+		            	<div id="pwinfo"></div>
+			            <input type="password" class="pwBox" id="pwcheck" name="pwcheck" placeholder="비밀번호 재설정 확인" style="display:none;">
+			            <div id="pwcheckinfo"></div>
+			            <input type="button" class="btn btn-outline-success" id="next" value="다음">
+			            <input type="button" class="btn btn-outline-success" id="change" value="변경" style="display:none;">
+	    		</div>
+			</form>
+    		</div>
     	</div>
     
  		<script>
@@ -256,6 +213,10 @@
 					//console.log(result);
 					if(result == null){
 						alert("해당하는 정보가 없습니다. 입력된 정보를 다시 확인해주세요.");
+						$("#id").val("");
+						$("#name").val("");
+						$("#phone").val("");
+						$("#id").focus();
 					}else{
 						$("#changetext").show();
 						$("#change").show();
@@ -263,13 +224,26 @@
 						$(".pwBox").show();
 					}
 				});
+ 			
  			$("#change").on("click", function(){
+ 				let pw = $("#pw").val();
+ 				let pwcheck = $("#pwcheck").val();
+ 				if(pw==""){
+ 					alert("변경할 비밀번호를 입력하세요.");
+ 					$("#pw").focus();
+ 					return false;
+ 				}
+ 				if(pw!=pwcheck){
+ 					alert("비밀번호가 일치하지 않습니다.");
+ 					$("#pw").focus();
+ 					return false;
+ 				}
  				$.ajax({
  					url:"/updatePw.member",
- 					data:{pw:$("#pw").val()}
+ 					data:{id:$("#id").val(), pw:$("#pw").val()}
  				}).done(function(resp){
  					let result = JSON.parse(resp);
- 					//console.log(result);
+ 					console.log(result);
  					alert("변경이 완료됐습니다.");
  					location.href = "/Member/loginView.jsp";
  				})
@@ -310,6 +284,7 @@
 					$("#pwcheckinfo").text("비밀번호가 일치하지 않습니다.");
 				}
 			})
+			
  		</script>
 
 		<!----------------------------------- footer ----------------------------------->

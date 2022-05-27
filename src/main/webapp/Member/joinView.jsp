@@ -136,63 +136,42 @@
 						</form>
 
 						<c:choose>
-							<c:when test="${loginID !=null}">
-								<div>${loginID }</div>
-								<button type="button" id="mypage">마이페이지</button>
-								<button type="button" id="logout">로그아웃</button>
+							<c:when test="${loginID != null}">
+								<div class="d-none d-lg-inline btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${loginID }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+									</ul>
+								</div>
+							</c:when>
 
-								<script>
-			            $("#mypage").on("click",function(){
-			               location.href="/mypage.member";
-			            })
-			            $("#logout").on("click",function(){
-			               location.href="/logout.member";
-			            })
-		            </script>
-				</c:when>
-				
-				<c:when test="${kakaoemail !=null}">
-					<div id="test"></div>
-						<div class="btn-group">
-							<button type="button" class="btn btn-warning dropdown-toggle"
-								data-bs-toggle="dropdown" aria-expanded="false">
-								${kakaoemail }</button>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
-								<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
-							</ul>
-						</div>
-				</c:when>
+							<c:when test="${kakaoemail !=null}">
+								<div class="d-none d-lg-inline btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${kakaoemail }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+									</ul>
+								</div>
+							</c:when>
+											
+							<c:otherwise>
+								<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
 								
-				<c:otherwise>
-					<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-					<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
-					
-					<script>
-						$("#loginBtn").on("click",function(){
-							location.href="/Member/loginView.jsp";
-						})
-						$("#joinBtn").on("click",function(){
-							location.href="/Member/joinView.jsp";
-						})
-					</script>
-<%-- 							<c:when test="${loginID != null}"> --%>
-<!-- 								<div class="d-none d-lg-inline btn-group"> -->
-<!-- 									<button type="button" class="btn btn-warning dropdown-toggle" -->
-<!-- 										data-bs-toggle="dropdown" aria-expanded="false"> -->
-<%-- 										${loginID }</button> --%>
-<!-- 									<ul class="dropdown-menu"> -->
-<!-- 										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li> -->
-<!-- 										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li> -->
-<!-- 									</ul> -->
-<!-- 								</div> -->
-
-<%-- 							</c:when> --%>
-<%-- 							<c:otherwise> --%>
-<!-- 								<button id=login type="button" -->
-<!-- 									class="d-none d-lg-inline btn btn-warning navbar-btn">로그인</button> -->
-<!-- 								<button id=join type="button" -->
-<!-- 									class="d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button> -->
+								<script>
+									$("#loginBtn").on("click",function(){
+										location.href="/Member/loginView.jsp";
+									})
+									$("#joinBtn").on("click",function(){
+										location.href="/Member/joinView.jsp";
+									})
+								</script>
 							</c:otherwise>
 						</c:choose>
 
@@ -200,16 +179,6 @@
 				</div>
 			</nav>
 		</header>
-
-		<script>
-			$("#join").on("click", function() {
-				location.href = "/Member/joinView.jsp";
-			})
-			$("#login").on("click", function() {
-				location.href = "/Member/loginView.jsp"
-			})
-		</script>
-
 
 
 		<!----------------------------------- Content ----------------------------------->
@@ -224,9 +193,8 @@
 					<div class="title">이름</div>
 					<div>
 						<input type="text" id="name" name="name" placeholder="2~6자"
-							class="join-input searchinput">
+							class="join-input searchinput"></div>
 					<span class="searchclear">X</span>
-					</div>
 					<div class="check" id="nameinfo"></div>
 				</div>
 				<div class="join-box">
@@ -362,12 +330,12 @@
 	$clearIpt = $('.searchclear');
 	
 	$ipt.keyup(function(){
-	  $(".searchclear").toggle(Boolean($(this).val()));
+	  $("#searchclear").toggle(Boolean($(this).val()));
 	});
 	
 	$clearIpt.toggle(Boolean($ipt.val()));
 	$clearIpt.click(function(){
-	  $(".searchinput").val('').focus();
+	  $("#searchinput").val('').focus();
 	  $(this).hide();
 	});
 		

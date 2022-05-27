@@ -9,14 +9,17 @@
 * {
   box-sizing: border-box;
 }
-h3{
+h3, h4, h6{
     font-family: 'Hahmlet', serif;
 }
 #logo {
 	width: 150px;
 	height: auto;
 }
-
+.check{
+/*     font-family: 'Hahmlet', serif; */
+    font-size: 10pt;
+}
 #content {
 	width: 100%;
 	height: auto;
@@ -34,6 +37,8 @@ h3{
 
 .textBox{
     width:330px;
+    height: 30px;
+    margin-bottom: 15px;
 }
 
 .idline, .pwline{
@@ -44,15 +49,13 @@ h3{
     font-family: 'Hahmlet', serif;
     font-size: 13pt;
 }
-#search{
+#search, #searchPw{
     font-family: 'Hahmlet', serif;
     font-size: 11pt;
     margin: 3px 0px 15px 0px;
 }
-
-#naver>img{
-    overflow: hidden;
-    width: 165px;
+#btns{
+	text-align: center;
 }
 #kakao>img{
     overflow: hidden;

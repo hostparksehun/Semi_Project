@@ -128,6 +128,7 @@ public class MemberDAO {
 			
 			int result = pstat.executeUpdate();
 			String pw = dto.getPw();
+			System.out.println("비번: "+pw);
 			con.commit();
 			return result;
 		}

@@ -105,20 +105,6 @@
 								</c:otherwise>
 							</c:choose>
 
-<<<<<<< HEAD
-						<c:choose>
-							<c:when test="${loginID eq 'admin'}">
-							<li class="nav-item">
-								<a class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Manager/manager.jsp" id="board">관리자 페이지</a>
-							</li>
-							</c:when>
-							
-							<c:otherwise>
-							
-							</c:otherwise>
-						</c:choose>
-							
-=======
 							<c:choose>
 								<c:when test="${loginID eq 'admin'}">
 									<li class="nav-item"><a
@@ -131,7 +117,6 @@
 								</c:otherwise>
 							</c:choose>
 
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
 						</ul>
 						<form action="/mini.search" class="d-flex">
 							<input id="search_input" class="form-control mx-1" type="search"
@@ -149,11 +134,7 @@
 
 						<c:choose>
 							<c:when test="${loginID != null}">
-<<<<<<< HEAD
-								<div class="btn-group">
-=======
 								<div class="d-none d-lg-inline btn-group">
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
 									<button type="button" class="btn btn-warning dropdown-toggle"
 										data-bs-toggle="dropdown" aria-expanded="false">
 										${loginID }</button>
@@ -162,10 +143,6 @@
 										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
 									</ul>
 								</div>
-<<<<<<< HEAD
-=======
-
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
 							</c:when>
 
 							<c:when test="${kakaoemail !=null}">
@@ -182,7 +159,6 @@
 							</c:when>
 											
 							<c:otherwise>
-<<<<<<< HEAD
 								<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
 								<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
 								
@@ -194,12 +170,6 @@
 										location.href="/Member/joinView.jsp";
 									})
 								</script>
-=======
-								<button id=login type="button"
-									class="d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
-								<button id=join type="button"
-									class="d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
 							</c:otherwise>
 						</c:choose>
 			
@@ -213,34 +183,23 @@
 			</nav>
 		</header>
 
-<<<<<<< HEAD
-=======
-		<script>
-			$("#join").on("click", function() {
-				location.href = "/Member/joinView.jsp";
-			})
-			$("#login").on("click", function() {
-				location.href = "/Member/loginView.jsp"
-			})
-		</script>
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
-
 
 		<!----------------------------------- Content ----------------------------------->
 
     <div class="container" style="width: 360px;">
-        <div style="text-align: center;"><h3>아이디 찾기</h3></div>
+        <div style="text-align: center;"><h4>아이디 찾기</h4></div>
              <div id="searchResult"></div>
-            <div class="idline">
+<!--             <div class="idline"> -->
                 <div><input type="text" class="textBox" id="name" name="name" placeholder="이름"></div>
-            </div>
-            <div class="pwline"></div>
-				<div><input type="text" class="textBox" id="phone" name="phone" placeholder="휴대폰번호"></div>
-             <div>
-            <input type="button" class="btn btn-outline-secondary" id="search" value="찾기">
-            <input type="button" class="btn btn-outline-secondary" id="searchPw" value="비밀번호 찾기">
-            <input type="button" class="btn btn-outline-secondary" id="gologin" value="로그인" style="display:none;">
-            <input type="button" class="btn btn-outline-secondary" id="gomain" value="메인으로" style="display:none;">
+<!--                 <div class="check" id="nameinfo"></div> -->
+<!--             <div class="idline"> -->
+				<div><input type="text" class="textBox" id="phone" name="phone" placeholder="휴대폰번호 (-없이)"></div>
+<!-- 				<div class="check" id="phoneinfo"></div> -->
+             <div style="text-align: center;">
+            <input type="button" class="btn btn-outline-success" id="search" value="찾기">
+            <input type="button" class="btn btn-outline-success" id="searchPw" value="비밀번호 찾기">
+            <input type="button" class="btn btn-outline-success" id="gologin" value="로그인" style="display:none;">
+            <input type="button" class="btn btn-outline-success" id="gomain" value="메인으로" style="display:none;">
             </div>
 		</div>
 
@@ -250,10 +209,14 @@
 					url:"/searchId.member",
 					data:{name:$("#name").val(), phone:$("#phone").val()} 
 				}).done(function(resp){ 
+					console.log(resp);
 					let result = JSON.parse(resp);
 					console.log(result);
-					if(result == null){
+	 				if(result == null){
 						alert("해당하는 정보가 없습니다. 입력된 정보를 다시 확인해주세요.");
+						$("#name").val("");
+						$("#phone").val("");
+						$("#name").focus();
 					}else{
 						$(".textBox").remove();
 						$("#searchResult").css("font-size", "15pt");
@@ -275,6 +238,33 @@
  			$("#searchPw").on("click", function(){
  				location.href="/Member/searchPw.jsp";
  			});
+ 			
+ 			//이름 유효성
+ 			$("#name").on("keyup",function(){
+ 				let name = $("#name").val();
+ 				let nameRegex = /^[가-힣]{2,6}$/;//2~6글자 한글
+ 				let nameResult = nameRegex.test(name);
+ 				
+ 				if(!nameResult){
+ 					$("#nameinfo").css("color", "red");
+ 					$("#nameinfo").text("2~6자 한글을 입력해주세요.");
+ 				} else{
+ 					$("#nameinfo").text("");
+ 				}
+ 			})
+			
+ 			//휴대폰번호 유효성 검사
+			$("#phone").on("keyup",function(){
+				let phone = $("#phone").val();
+			    let phoneRegex = /^010[0-9]{8}$/; //핸드폰 11자리
+				let phoneResult = phoneRegex.test(phone);
+				if(!phoneResult){
+					$("#phoneinfo").css("color", "red");
+					$("#phoneinfo").text("핸드폰번호 11자리를 작성해주세요.");
+				} else{
+					$("#phoneinfo").text("");
+				}
+			})
  		</script>
 
 		<!----------------------------------- footer ----------------------------------->

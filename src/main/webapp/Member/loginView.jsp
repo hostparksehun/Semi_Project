@@ -142,20 +142,20 @@
 						</form>
 
             <c:choose>
-	        	<c:when test="${loginID !=null}">
-					<div class="btn-group">
+	        	<c:when test="${loginID != null}">
+					<div class="d-none d-lg-inline btn-group">
 						<button type="button" class="btn btn-warning dropdown-toggle"
 							data-bs-toggle="dropdown" aria-expanded="false">
 							${loginID }</button>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
-							<li><a class="dropdown-item" href="/logout.member" id="kakaologout">로그아웃</a></li>
+							<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
 						</ul>
 					</div>
 				</c:when>
 				
 				<c:when test="${kakaoemail !=null}">
-						<div class="btn-group">
+						<div class="d-none d-lg-inline btn-group">
 							<button type="button" class="btn btn-warning dropdown-toggle"
 								data-bs-toggle="dropdown" aria-expanded="false">
 								${kakaoemail }</button>
@@ -181,26 +181,6 @@
 					</script>
 				</c:otherwise>
 				</c:choose>
-<%-- 						<c:choose> --%>
-<%-- 							<c:when test="${loginID != null}"> --%>
-<!-- 								<div class="d-none d-lg-inline btn-group"> -->
-<!-- 									<button type="button" class="btn btn-warning dropdown-toggle" -->
-<!-- 										data-bs-toggle="dropdown" aria-expanded="false"> -->
-<%-- 										${loginID }</button> --%>
-<!-- 									<ul class="dropdown-menu"> -->
-<!-- 										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li> -->
-<!-- 										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li> -->
-<!-- 									</ul> -->
-<!-- 								</div> -->
-
-<%-- 							</c:when> --%>
-<%-- 							<c:otherwise> --%>
-<!-- 								<button id=login type="button" -->
-<!-- 									class="d-none d-lg-inline btn btn-warning navbar-btn">로그인</button> -->
-<!-- 								<button id=join type="button" -->
-<!-- 									class="d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button> -->
-<%-- 							</c:otherwise> --%>
-<%-- 						</c:choose> --%>
 
 					</div>
 				</div>
@@ -214,38 +194,53 @@
 				<div style="text-align: center;">
 					<h3>로그인</h3>
 				</div>
-				<div id="background">
 			
-				<div class="idline">
+<!-- 				<div class="idline"> -->
 <!-- 					<div class="title">아이디</div> -->
 					<div>
 						<input type="text" class="textBox" id="id" name="id"
 							placeholder="아이디">
 					</div>
-				</div>
-				<div class="pwline"></div>
+<!-- 				</div> -->
+<!-- 				<div class="pwline"> -->
 <!-- 				<div class="title">비밀번호</div> -->
 				<div><input type="password" class="textBox" id="pw" name="pw" placeholder="비밀번호"></div>
+<!-- 				</div> -->
             <div id="search">
             <a href="/Member/searchId.jsp" id="searchIdbtn">아이디 찾기</a>
             <a href="/Member/searchPw.jsp" id="searchPwbtn">비밀번호 찾기</a>
              </div>
-             <div>
+             <div style="text-align: center;">
             <input type="submit" class="btn btn-outline-success" id="loginBtn_in" value="로그인하기">
             <input type="button" class="btn btn-outline-success" id="joinBtn_in" value="회원가입">
             </div>
     	</form>
    	 		<script>
 	 			$("#loginBtn_in").on("click",function(){
+// 	 				$.ajax({
+//  						url:"/login.member",
+//  						type: "post",
+// 						data: {id:$("#id").val(), pw:$("#pw").val()}
+//  					}).done(function(resp){
+//  						let result = JSON.parse(resp);
+//  						console.log(result);
+//  						if(!result){
+//  							alert("아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.");
+//  							return false;
+//  						}
+//  					})
 	 				if($("#id").val() ==""){
 	 					alert("아이디를 입력해주세요.");
 	 					return false;
-	 				}
-	 				if($("#pw").val() == ""){
+	 				}else if($("#pw").val() == ""){
 	 					alert("비밀번호를 입력해주세요.");
 	 					return false;
+	 				}else{
+	 					alert("아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.");
+	 					$("#id").val("");
+	 					$("#pw").val("");
+	 					$("#id").focus();
 	 				}
-	 				location.href="/Member/loginView.jsp";
 	 			})
 	 			
 	 			$("#joinBtn_in").on("click",function(){

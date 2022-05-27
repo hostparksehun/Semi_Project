@@ -33,10 +33,10 @@ h3{
 }
 .join-box{
     margin:5px 10px 0px 0px;
+    position: relative;
 }
 .title{
     font-family: 'Hahmlet', serif;
-    /* padding-bottom: 4px; */
     font-size: 13pt;
 }
 .check{
@@ -58,7 +58,7 @@ input {
 	border-left-width:0; 
 	border-right-width:0; 
 	border-top-width:0; 
-	border-bottom-width:1;
+	border-bottom-width:1px;
 }
 
 input:focus {
@@ -67,4 +67,22 @@ input:focus {
 #pwcheck{
     padding: 7px 5px 3px 3px;
     margin-bottom: 0px 0px 7px 50px;
+}
+
+input[type=text]:-ms-clear{
+    display: none;
+}
+
+.searchclear {
+    position: absolute;
+    right: 3px;
+    top: 0;
+    bottom: 0;
+    width: 15px;
+    height: 15px;
+    margin: auto;
+    font-size: 12px;
+    cursor: pointer;
+    color: #ccc;
+    background-color: #fff;
 }

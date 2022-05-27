@@ -168,12 +168,11 @@
 					<h3>회원정보 입력</h3>
 				</div>
 				<div class="join-box">
-					<div class="title">
-						이름<br>
-					</div>
+					<div class="title">이름</div>
 					<div>
 						<input type="text" id="name" name="name" placeholder="2~6자"
-							class="join-input">
+							class="join-input searchinput">
+					<span class="searchclear">X</span>
 					</div>
 					<div class="check" id="nameinfo"></div>
 				</div>
@@ -183,7 +182,7 @@
 					</div>
 					<div>
 						<input type="text" id="id" name="id"
-							placeholder="영문(소문자), 숫자 8~13자" class="join-input">
+							placeholder="영문(소문자), 숫자 8~13자" class="join-input searchinput">
 					</div>
 					<div class="check" id="idinfo"></div>
 				</div>
@@ -192,12 +191,12 @@
 						비밀번호<br>
 					</div>
 					<input type="password" id="pw" name="pw"
-						placeholder="숫자, 영문 조합 최소 8자" class="join-input">
+						placeholder="숫자, 영문 조합 최소 8자" class="join-input searchinput">
 					<div class="check" id="pwinfo"></div>
 				</div>
 				<div class="join-box">
 					<input type="password" id="pwcheck" name="pwcheck"
-						placeholder="비밀번호 재입력" class="join-input">
+						placeholder="비밀번호 재입력" class="join-input searchinput">
 					<div class="check" id="pwcheckinfo"></div>
 				</div>
 				<div class="join-box">
@@ -206,7 +205,7 @@
 					</div>
 					<div>
 						<input type="text" id="birthday" name="birthday"
-							placeholder="990322" class="join-input">
+							placeholder="990322" class="join-input searchinput">
 					</div>
 					<div class="check" id="birthdayinfo"></div>
 				</div>
@@ -216,7 +215,7 @@
 					</div>
 					<div>
 						<input type="text" id="email" name="email" class="join-input"
-							placeholder="example@naver.com">
+							placeholder="example@naver.com searchinput">
 						<div class="check" id="emailinfo"></div>
 					</div>
 				</div>
@@ -226,7 +225,7 @@
 					</div>
 					<div>
 						<input type="text" id="phone" name="phone"
-							placeholder="01012349876" class="join-input">
+							placeholder="01012349876" class="join-input searchinput">
 					</div>
 					<div class="check" id="phoneinfo"></div>
 				</div>
@@ -235,7 +234,7 @@
 						우편번호<br>
 					</div>
 					<div>
-						<input type="text" name="zipcode" id="zipcode" class="join-input" />
+						<input type="text" name="zipcode" id="zipcode" class="join-input searchinput" />
 						<button type="button" onclick="execDaumPostcode()"
 							class="btn btn-success" id="zipcode_find">찾기</button>
 					</div>
@@ -246,7 +245,7 @@
 					</div>
 					<div>
 						<input type="text" name="address1" id="address1"
-							class="join-input">
+							class="join-input searchinput">
 					</div>
 				</div>
 				<div class="join-box">
@@ -255,7 +254,7 @@
 					</div>
 					<div>
 						<input type="text" name="address2" id="address2"
-							class="join-input">
+							class="join-input searchinput">
 					</div>
 				</div>
 				<input type="submit" class="btn btn-outline-success" id="join"
@@ -287,6 +286,19 @@
 
 
 	<script>
+	let $ipt = $('.searchinput'),
+	$clearIpt = $('.searchclear');
+	
+	$ipt.keyup(function(){
+	  $(".searchclear").toggle(Boolean($(this).val()));
+	});
+	
+	$clearIpt.toggle(Boolean($ipt.val()));
+	$clearIpt.click(function(){
+	  $(".searchinput").val('').focus();
+	  $(this).hide();
+	});
+		
 	//이름 유효성 검사
 	$("#name").on("keyup",function(){
 		let name = $("#name").val();

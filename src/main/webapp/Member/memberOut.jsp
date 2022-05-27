@@ -35,18 +35,14 @@
 
 <body>
 	<div class="container">
-		<header>
+		<header class="mb-5 pt-3">
 			<nav class="navbar navbar-expand-lg navbar-light bg-white">
 				<div class="container-fluid">
-					<div class="navbar-header">
+					<div class="navbar-header mx-2">
 						<a class="navbar-brand" href="/index.jsp"> <img alt=""
 							src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
 						</a>
 					</div>
-
-					<!-- <a class="navbar-brand" href="#">
-          <img src="/img/logo2.jpg" id="logo">
-        </a> -->
 
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -57,32 +53,58 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle mx-0 mx-md-2 mx-xl-5" href="#"
-								id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-								aria-expanded="false"> 우리술 정보 </a>
+								class="nav-link dropdown-toggle mx-0 mx-md-0 mx-lg-3" href="#"
+								id="navbarDropdown" role="button" href=""
+								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<li><a class="dropdown-item" href="#">막걸리</a></li>
-									<li><a class="dropdown-item" href="#">증류주</a></li>
-									<li><a class="dropdown-item" href="#">담금주</a></li>
+									<li><a class="dropdown-item" href="#">전통 소주</a></li>
+									<li><a class="dropdown-item" href="#">약주</a></li>
+									<li><a class="dropdown-item" href="#">과실주</a></li>
+									<li><a class="dropdown-item" href="#">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
 									<li><a class="dropdown-item" href="#">전체보기</a></li>
 								</ul></li>
 
-							<li class="nav-item"><a
-								class="nav-link mx-0 mx-md-2 mx-xl-5" href="/Search/search.jsp">우리
-									술 검색</a></li>
+							<li class="nav-item"><a href="/Search/search.jsp"
+								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리 술 검색</a></li>
 
 
 							<li class="nav-item"><a
-								class="nav-link mx-0 mx-md-2 mx-xl-5" href="/boardList.board">술꾼술꾼</a>
-							</li>
+								class="nav-link mx-0 mx-md-0 mx-lg-3" href="/boardList.board"
+								id="board">술꾼 술꾼</a></li>
+							<c:choose>
+								<c:when test="${loginID != null}">
+
+									<li class="nav-item d-lg-none"><a
+										class="nav-link mx-0 mx-md-0 mx-lg-3" href="/mypage.member"
+										id="board">내 정보</a></li>
+
+									<li class="nav-item d-lg-none"><a
+										class="nav-link mx-0 mx-md-0 mx-lg-3" href="/logout.member"
+										id="board">로그아웃</a></li>
+
+								</c:when>
+
+								<c:otherwise>
+
+									<li class="nav-item d-lg-none"><a
+										class="nav-link mx-0 mx-md-0 mx-lg-3"
+										href="/Member/loginView.jsp" id="board">로그인</a></li>
+
+									<li class="nav-item d-lg-none"><a
+										class="nav-link mx-0 mx-md-0 mx-lg-3"
+										href="/Member/joinView.jsp" id="board">회원가입</a></li>
+
+								</c:otherwise>
+							</c:choose>
 
 							<c:choose>
 								<c:when test="${loginID eq 'admin'}">
 									<li class="nav-item"><a
-										class="nav-link mx-0 mx-md-2 mx-xl-5"
+										class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3"
 										href="/Manager/manager.jsp" id="board">관리자 페이지</a></li>
 								</c:when>
 
@@ -93,23 +115,22 @@
 
 						</ul>
 						<form action="/mini.search" class="d-flex">
-							<input class="form-control me-1" type="search"
+							<input id="search_input" class="form-control mx-1" type="search"
 								placeholder="Search" aria-label="Search" name="search_text"
 								required>
 							<button class="btn btn-outline-success me-1" type="submit"
 								id="search_btn">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 									fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                    <path
+									<path
 										d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                </svg>
+								</svg>
 							</button>
 						</form>
 
-
 						<c:choose>
-							<c:when test="${loginID !=null}">
-								<div class="btn-group">
+							<c:when test="${loginID != null}">
+								<div class="d-none d-lg-inline btn-group">
 									<button type="button" class="btn btn-warning dropdown-toggle"
 										data-bs-toggle="dropdown" aria-expanded="false">
 										${loginID }</button>
@@ -121,19 +142,10 @@
 
 							</c:when>
 							<c:otherwise>
-								<button id="loginBtn" type="button"
-									class="mx-1 btn btn-warning navbar-btn">로그인</button>
-								<button id="joinBtn" type="button"
-									class="mx-1 btn btn-dark navbar-btn">회원가입</button>
-
-								<script>
-					  $("#joinBtn").on("click",function(){
-					      location.href="/Member/joinView.jsp";
-					   })
-					  $("#loginBtn").on("click",function(){
-					     location.href="/Member/loginView.jsp"
-					  })
-					</script>
+								<button id=login type="button"
+									class="d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
+								<button id=join type="button"
+									class="d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
 							</c:otherwise>
 						</c:choose>
 
@@ -141,6 +153,15 @@
 				</div>
 			</nav>
 		</header>
+
+		<script>
+			$("#join").on("click", function() {
+				location.href = "/Member/joinView.jsp";
+			})
+			$("#login").on("click", function() {
+				location.href = "/Member/loginView.jsp"
+			})
+		</script>
 
 
 
@@ -180,39 +201,50 @@
 				</div>
 			</div>
 		</div>
-		<<<<<<< HEAD
-		<!-------------------------------------  script부분---------------------------------->
-		<script>
-$("#ok").on("click",function(){
-	location.href="/memberout.member";
-})
-</script>
-		=======
+
 		<!----------------------------------------script------------------------------------>
 		<script>
-$("#ok").on("click",function(){
-	location.href="/memberout.member"
-})
-</script>
+			$("#ok").on("click", function() {
+				location.href = "/memberout.member"
+			})
+		</script>
 
-		>>>>>>> f40701aef485cf7403f70f5a073388cc30379f57
 		<!----------------------------------- footer ----------------------------------->
 
 
-		<footer class="py-3 my-4">
-			<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">Home</a></li>
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">Features</a></li>
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">Pricing</a></li>
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">FAQs</a></li>
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">About</a></li>
-			</ul>
-			<p class="text-center text-muted">&copy; 2022 Company, Inc</p>
+		<hr>
+		<footer class="site-footer">
+
+			<div class="container">
+				<div class="row">
+					<div class="d-none d-lg-block col-md-8 col-sm-6 col-xs-12">
+						<p class="copyright-text">
+							Copyright &copy; 2022 All Rights Reserved by <a href="#"
+								style="text-decoration: none;">아이코올</a>.
+						</p>
+					</div>
+
+					<div class="d-lg-none col-md-8 col-sm-6 col-xs-12">
+						<p class="copyright-text">Copyright &copy;</p>
+						<p class="copyright-text">
+							2022 All Rights Reserved by <a href="#"
+								style="text-decoration: none;">아이코올</a>.
+						</p>
+					</div>
+
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<ul class="social-icons">
+							<li><a class="facebook" href="#"><i
+									class="fa fa-facebook"></i></a></li>
+							<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a class="dribbble" href="#"><i
+									class="fa fa-dribbble"></i></a></li>
+							<li><a class="linkedin" href="#"><i
+									class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</footer>
 	</div>
 

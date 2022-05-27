@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 <!-- CSS -->
-<link rel="stylesheet" href="/CSS/myBoardList.css">
+<link rel="stylesheet" href="/CSS/myPage.css">
 <!-- 경로 수정 고려 -->
 
 <meta charset="UTF-8">
@@ -169,27 +168,76 @@
 
 
 
-		<!----------------------------------- Content ----------------------------------->
-		<div class="row" id="mypage">
-			<div class="col-12" id="mypage_text">
-				<h1>게시판 모아보기</h1>
-			</div>
-		</div>
-		<div class="row" id="content">
-			<div class="col-12 col-md-3" id="mypage list">
+
+    <!----------------------------------- Content ----------------------------------->
+    <div class="row" id="mypage">
+      <div class="col-12" id="mypage_text">
+          <h1>게시판 모아보기</h1>
+      </div>
+    </div>
+    <div class="row" id="content">
+     <div class="col-12 col-md-3 d-none d-lg-block" id="mypage list">
 				<ul class="list-group list-group-flush">
 					<a href="/mypage.member"
 						class="list-group-item list-group-item-action">회원정보 수정</a>
-					<a href="memberOut.jsp"
+					<a href="/Member/memberOut.jsp"
 						class="list-group-item list-group-item-action">회원탈퇴</a>
-					<a href="myBoardList.jsp"
+					<a href="/myboard.board?cpage=1"
 						class="list-group-item list-group-item-action">게시글 모아보기</a>
 
 				</ul>
 
 			</div>
+			<div class="col-12 d-lg-none" id="navmenu">
+			<nav class="nav nav-pills nav-fill" >
+  				<a class="nav-link" href="/mypage.member">회원정보 수정</a>
+ 				<a class="nav-link" href="/Member/memberOut.jsp">회원탈퇴</a>
+  				<a class="nav-link" href="/myboard.board?cpage=1">게시글 모아보기</a>
+ 
+			</nav>
+			</div>
+    <div class="col-12 col-md-9" id="myboard list">
+    	<table class="table table-hover">
 
-		</div>
+										<thead class="table-success " style="text-align: center;">
+											<th>
+											<td colspan="1">#</td>
+											<td colspan="6">제목</td>
+											<td colspan="2">작성자</td>
+											<td colspan="3">날짜</td>
+											</th>
+										</thead>
+
+										<!-- 반복문 돌릴 예정 : board_num이 value임 -->
+										<c:forEach var="i" items="${list}">
+
+											<tbody style="text-align: center;">
+												<th>
+												<td colspan="1"><a
+													href="/boardSelect.board?num=${i.board_num}"
+													style="color:black;text-decoration-line: none;">
+													${i.board_num}</a>
+												</td>
+												<td colspan="6"><a
+													href="/boardSelect.board?num=${i.board_num}"
+													style="color:black;text-decoration-line: none;"> ${ i.title }
+												</a></td>
+												<td colspan="2">
+												<a
+													href="/boardSelect.board?num=${i.board_num}"
+													style="color:black;text-decoration-line: none;">${ i.writer }</a></td>
+												<td colspan="3"><a
+													href="/boardSelect.board?num=${i.board_num}"
+													style="color:black;text-decoration-line: none;">${ i.formedDate }</a></td>
+												</th>
+											</tbody>
+
+										</c:forEach>
+									</table>
+    </div>
+    </div>
+
+	
 
 		<!----------------------------------- footer ----------------------------------->
 

@@ -3,6 +3,8 @@
 
 * {
   box-sizing: border-box;
+  font-family: 'Hahmlet', serif;
+  
 }
 
 #logo {
@@ -14,6 +16,8 @@
 	width: 100%;
 	height: auto;
 }
+
+
 
 #search img {
 	height: 30px;
@@ -37,37 +41,30 @@
 	margin: auto;
 }
 
-.join-input {
-	width: 320px;
-	padding: 5px 20px 5px 10px;
-}
-
-.join-box {
-	margin: 5px 10px 0px 0px;
-}
-
-.title {
-	padding-bottom: 4px;
-	font-size: 13pt;
-}
-
-.check {
-	font-size: 10.5pt;
-}
-
-#pw {
-	margin-bottom: 2px;
-}
-
-#email, #zipcode {
-	width: 260px;
-}
-
-#join {
-	margin: 20px 10px 0px 0px;
-	width: 320px;
-}
-
+.join-input{
+      width: 320px;
+      padding: 5px 20px 5px 10px;
+   }
+   .join-box{
+      margin:5px 10px 0px 0px;
+   }
+   .title{
+      padding-bottom: 4px;
+      font-size: 13pt;
+   }
+   .check{
+      font-size: 10.5pt;
+   }
+   #pw{
+      margin-bottom:2px;
+   }
+   #zipcode{
+      width: 260px;
+   }
+   #join{
+      margin: 20px 10px 0px 0px;
+      width: 320px;
+   }
 /* header부분 */
 header {
 	font-family: 'Hahmlet', serif;

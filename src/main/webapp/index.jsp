@@ -262,7 +262,9 @@
 			<div class="row mt-5 m-auto" id="bti text">
 				<div class="col-12 m-auto" style=" text-decoration: none;">
 					<a href="https://ktestone.com/kapable.github.io/dringkingHabit/">
+
 						<img src="/img/indexFile/술BTI.png" class="d-block w-100 h-auto">
+
 					</a>
 				</div>
 			</div>
@@ -321,6 +323,9 @@
 
 	</div>
 
+<<<<<<< HEAD
+	
+=======
 	<script>
 		$("#join").on("click", function() {
 			location.href = "/Member/joinView.jsp";
@@ -333,6 +338,7 @@
 			location.href = "/Board/boardList.jsp";
 		})
 	</script>
+
 
 </body>
 

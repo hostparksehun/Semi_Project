@@ -7,7 +7,7 @@
 
 <head>
 <!-- CSS -->
-<link rel="stylesheet" href="/CSS/memberOut.css">
+<link rel="stylesheet" href="/CSS/myPage.css">
 <!-- 경로 수정 고려 -->
 
 <meta charset="UTF-8">
@@ -172,17 +172,25 @@
 			</div>
 		</div>
 		<div class="row" id="content">
-			<div class="col-12 col-md-3" id="mypage list">
+			 <div class="col-12 col-md-3 d-none d-lg-block" id="mypage list">
 				<ul class="list-group list-group-flush">
 					<a href="/mypage.member"
 						class="list-group-item list-group-item-action">회원정보 수정</a>
-					<a href="memberOut.jsp"
+					<a href="/Member/memberOut.jsp"
 						class="list-group-item list-group-item-action">회원탈퇴</a>
-					<a href="myBoardList.jsp"
+					<a href="/myboard.board?cpage=1"
 						class="list-group-item list-group-item-action">게시글 모아보기</a>
 
 				</ul>
 
+			</div>
+			<div class="col-12 d-lg-none" id="navmenu">
+			<nav class="nav nav-pills nav-fill" >
+  				<a class="nav-link" href="/mypage.member">회원정보 수정</a>
+ 				<a class="nav-link" href="/Member/memberOut.jsp">회원탈퇴</a>
+  				<a class="nav-link" href="/myboard.board?cpage=1">게시글 모아보기</a>
+ 
+			</nav>
 			</div>
 			<div class="col-12 col-md-9">
 				<span><h3>회원탈퇴 안내</h3></span>
@@ -191,23 +199,23 @@
 					불편하셨던 점이나 불만사항이 없도록 불편함을 해결해 드리도록 노력하겠습니다.<br> <br> <span
 						style="color: red;"> ※탈퇴시 회원님의 모든 정보는 삭제됩니다.※</span> <br> <br>
 					그동안 저희 우리술夜를 사랑해주셔서 감사합니다.
-
-				</div>
-				<div id="real_out">
-					<h3>정말 회원탈퇴 하시겠습니까?</h3>
-				</div>
-				<div id="btn">
-					<button id="ok">확인</button>
-				</div>
 			</div>
+			<br>
 		</div>
 
+		<div id="btn" style="text-align: center;padding-bottom: 20px;">
+					<button type="button" class="btn btn-danger" id="ok">확인</button>
+				</div>
+
+
 		<!----------------------------------------script------------------------------------>
+
 		<script>
 			$("#ok").on("click", function() {
 				location.href = "/memberout.member"
 			})
 		</script>
+
 
 		<!----------------------------------- footer ----------------------------------->
 

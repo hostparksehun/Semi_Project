@@ -143,66 +143,64 @@
 										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
 									</ul>
 								</div>
-
 							</c:when>
+
+							<c:when test="${kakaoemail !=null}">
+								<div id="test"></div>
+									<div class="btn-group">
+										<button type="button" class="btn btn-warning dropdown-toggle"
+											data-bs-toggle="dropdown" aria-expanded="false">
+											${kakaoemail }</button>
+										<ul class="dropdown-menu">
+											<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+											<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+										</ul>
+									</div>
+							</c:when>
+											
 							<c:otherwise>
-								<button id=login type="button"
-									class="d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
-								<button id=join type="button"
-									class="d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+								<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+								
+								<script>
+									$("#loginBtn").on("click",function(){
+										location.href="/Member/loginView.jsp";
+									})
+									$("#joinBtn").on("click",function(){
+										location.href="/Member/joinView.jsp";
+									})
+								</script>
 							</c:otherwise>
 						</c:choose>
+			
+          </div>
+        </div>
+      </nav>
+    </header>
 
 					</div>
 				</div>
 			</nav>
 		</header>
 
-		<script>
-			$("#join").on("click", function() {
-				location.href = "/Member/joinView.jsp";
-			})
-			$("#login").on("click", function() {
-				location.href = "/Member/loginView.jsp"
-			})
-		</script>
-
 
 		<!----------------------------------- Content ----------------------------------->
 
-		<div class="container" style="width: 360px;">
-			<div style="text-align: center;">
-				<h3>아이디 찾기</h3>
-			</div>
-			<div id="searchResult"></div>
-			<div class="idline">
-				<div>
-					<input type="text" class="textBox" id="name" name="name"
-						placeholder="이름">
-				</div>
-			</div>
-			<div class="pwline"></div>
-			<div>
-				<input type="text" class="textBox" id="phone" name="phone"
-					placeholder="휴대폰번호">
-			</div>
-			<div>
-				<input type="button" class="btn btn-outline-secondary" id="search"
-					value="찾기"> <input type="button"
-					class="btn btn-outline-secondary" id="gologin" value="로그인"
-					style="display: none;"> <input type="button"
-					class="btn btn-outline-secondary" id="gomain" value="메인으로"
-					style="display: none;">
-			</div>
-			<hr>
-			<div class="sns">
-				<div id="naver">
-					<img src="/img/loginFile/btnG_완성형.png">
-				</div>
-				<div id="kakao">
-					<img src="/img/loginFile/kakao_login_medium_narrow.png">
-				</div>
-			</div>
+    <div class="container" style="width: 360px;">
+        <div style="text-align: center;"><h4>아이디 찾기</h4></div>
+             <div id="searchResult"></div>
+<!--             <div class="idline"> -->
+                <div><input type="text" class="textBox" id="name" name="name" placeholder="이름"></div>
+<!--                 <div class="check" id="nameinfo"></div> -->
+<!--             <div class="idline"> -->
+				<div><input type="text" class="textBox" id="phone" name="phone" placeholder="휴대폰번호 (-없이)"></div>
+<!-- 				<div class="check" id="phoneinfo"></div> -->
+             <div style="text-align: center;">
+            <input type="button" class="btn btn-outline-success" id="search" value="찾기">
+            <input type="button" class="btn btn-outline-success" id="searchPw" value="비밀번호 찾기">
+            <input type="button" class="btn btn-outline-success" id="gologin" value="로그인" style="display:none;">
+            <input type="button" class="btn btn-outline-success" id="gomain" value="메인으로" style="display:none;">
+            </div>
 		</div>
 
 		<script>
@@ -211,10 +209,14 @@
 					url:"/searchId.member",
 					data:{name:$("#name").val(), phone:$("#phone").val()} 
 				}).done(function(resp){ 
+					console.log(resp);
 					let result = JSON.parse(resp);
 					console.log(result);
-					if(result == null){
-						alert("해당하는 정보가 없습니다. 다시 확인해주세요.");
+	 				if(result == null){
+						alert("해당하는 정보가 없습니다. 입력된 정보를 다시 확인해주세요.");
+						$("#name").val("");
+						$("#phone").val("");
+						$("#name").focus();
 					}else{
 						$(".textBox").remove();
 						$("#searchResult").css("font-size", "15pt");
@@ -233,6 +235,36 @@
 				});
  			})
  			
+ 			$("#searchPw").on("click", function(){
+ 				location.href="/Member/searchPw.jsp";
+ 			});
+ 			
+ 			//이름 유효성
+ 			$("#name").on("keyup",function(){
+ 				let name = $("#name").val();
+ 				let nameRegex = /^[가-힣]{2,6}$/;//2~6글자 한글
+ 				let nameResult = nameRegex.test(name);
+ 				
+ 				if(!nameResult){
+ 					$("#nameinfo").css("color", "red");
+ 					$("#nameinfo").text("2~6자 한글을 입력해주세요.");
+ 				} else{
+ 					$("#nameinfo").text("");
+ 				}
+ 			})
+			
+ 			//휴대폰번호 유효성 검사
+			$("#phone").on("keyup",function(){
+				let phone = $("#phone").val();
+			    let phoneRegex = /^010[0-9]{8}$/; //핸드폰 11자리
+				let phoneResult = phoneRegex.test(phone);
+				if(!phoneResult){
+					$("#phoneinfo").css("color", "red");
+					$("#phoneinfo").text("핸드폰번호 11자리를 작성해주세요.");
+				} else{
+					$("#phoneinfo").text("");
+				}
+			})
  		</script>
 
 		<!----------------------------------- footer ----------------------------------->

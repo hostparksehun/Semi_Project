@@ -61,19 +61,47 @@ public class MemberController extends HttpServlet {
 				
 				
 //-------------------- 로그인-----------------------------
+			//로그인
 			}else if (uri.equals("/login.member")) {
 				String id = request.getParameter("id"); 
-				String pw = EncryptUtils.SHA256(request.getParameter("pw"));
+				String pwd = EncryptUtils.SHA256(request.getParameter("pw"));
 				
-				boolean result = dao.login(id, pw); 
-				System.out.println(result);
+				boolean result = dao.login(id, pwd); 
+				System.out.println("아디:"+id+" 비번:"+pwd+" 결과:"+result);
 				if (result) {
 					HttpSession session = request.getSession(); 
-					session.setAttribute("loginID", id); 
+					session.setAttribute("loginID", id);
 					response.sendRedirect("index.jsp");	
-			} else {
-				response.sendRedirect("/Member/loginView.jsp");
+				} else {
+					//PrintWriter pw = response.getWriter();
+					response.getWriter().append(String.valueOf(result));
+					response.sendRedirect("/Member/loginView.jsp");
 			}
+				
+			//카카오 로그인-이메일 확인 후 없다면 DB,session 저장
+			} else if (uri.equals("/kakaologin.member")){
+				response.setCharacterEncoding("UTF-8");
+				HttpSession session = request.getSession(); 
+				String id = request.getParameter("id"); //임의숫자값 할당(변동없는 듯)
+				String name = request.getParameter("name"); //닉네임
+				String email = request.getParameter("email");
+				String birthday = request.getParameter("birthday"); //(생년없이)월일
+				System.out.println("임의id:"+id+" 닉네임:"+name+" 이메일:"+email+" 생일:"+birthday);
+				//System.out.println(result);
+				PrintWriter pw = response.getWriter();
+				pw.append(g.toJson(id));
+				String result = dao.kakaoLogin(email);
+				if(result == null) {
+					dao.kakaoInsert(new MemberDTO(id, name, birthday, email));
+					session.setAttribute("kakaoemail", email); 
+					System.out.println("신규 카카오 이메일: "+email);
+					response.sendRedirect("index.jsp");
+				} else {
+					session.setAttribute("kakaoemail", email); 
+					System.out.println("이미 있는 카카오 이메일: "+email);
+					response.sendRedirect("index.jsp");
+				}
+				
 			//로그아웃
 			} else if (uri.equals("/logout.member")) {
 				request.getSession().invalidate();
@@ -110,37 +138,11 @@ public class MemberController extends HttpServlet {
 				String id = request.getParameter("id");
 				String pwd = EncryptUtils.SHA256(request.getParameter("pw"));
 				PrintWriter pw = response.getWriter();
-				//System.out.println("바뀐거: "+pwd);
+				System.out.println("아이디: "+id+"바뀐거: "+pwd);
 				pw.append(g.toJson(pwd));
-				dao.updatePw(new MemberDTO(id, pwd, null, null,null, null, null, null, null));
-				//System.out.println("변경 성공");
+				dao.updatePw(new MemberDTO(id, pwd,null,null,null,null,null,null,null));
+				System.out.println("변경 성공");
 				
-			//카카오 로그인 도전...ing	
-			} else if (uri.equals("/kakaologin.member")){
-				HttpSession session = request.getSession(); 
-				response.setCharacterEncoding("UTF-8");
-				//+아이디 +생일 //주소-핸드폰- //널값 대신에 " "넣기..
-				String id = request.getParameter("id");
-				String name = request.getParameter("name");
-				String email = request.getParameter("email");
-				String birthday = request.getParameter("birthday");
-				PrintWriter pw = response.getWriter();
-				System.out.println(id);
-				boolean result = dao.kakaoLogin(email);
-				System.out.println(result);
-				if(result==false) {
-					dao.kakaoInsert(new MemberDTO(id, name, birthday, email));
-					session.setAttribute("kakaoemail", email); 
-					//response.sendRedirect("/index.jsp");
-				} else {
-					session.setAttribute("kakaoemail", email); 
-					//response.sendRedirect("/index.jsp");
-				}
-				
-				
-				//String result1 = g.toJson(email);
-				//System.out.println(result);
-				//pw.append(result);
 				
 //--------------------마이페이지------------------------------------
 		}else if(uri.equals("/mypage.member")) {

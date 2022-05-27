@@ -146,13 +146,32 @@
 										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
 									</ul>
 								</div>
-
 							</c:when>
+
+							<c:when test="${kakaoemail !=null}">
+								<div class="d-none d-lg-inline btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${kakaoemail }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+									</ul>
+								</div>
+							</c:when>
+											
 							<c:otherwise>
-								<button id=login type="button"
-									class="d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
-								<button id=join type="button"
-									class="d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+								<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+								
+								<script>
+									$("#loginBtn").on("click",function(){
+										location.href="/Member/loginView.jsp";
+									})
+									$("#joinBtn").on("click",function(){
+										location.href="/Member/joinView.jsp";
+									})
+								</script>
 							</c:otherwise>
 						</c:choose>
 
@@ -160,16 +179,6 @@
 				</div>
 			</nav>
 		</header>
-
-		<script>
-			$("#join").on("click", function() {
-				location.href = "/Member/joinView.jsp";
-			})
-			$("#login").on("click", function() {
-				location.href = "/Member/loginView.jsp"
-			})
-		</script>
-
 
 
 		<!----------------------------------- Content ----------------------------------->
@@ -181,13 +190,11 @@
 					<h3>회원정보 입력</h3>
 				</div>
 				<div class="join-box">
-					<div class="title">
-						이름<br>
-					</div>
+					<div class="title">이름</div>
 					<div>
 						<input type="text" id="name" name="name" placeholder="2~6자"
-							class="join-input">
-					</div>
+							class="join-input searchinput"></div>
+					<span class="searchclear">X</span>
 					<div class="check" id="nameinfo"></div>
 				</div>
 				<div class="join-box">
@@ -196,7 +203,7 @@
 					</div>
 					<div>
 						<input type="text" id="id" name="id"
-							placeholder="영문(소문자), 숫자 8~13자" class="join-input">
+							placeholder="영문(소문자), 숫자 8~13자" class="join-input searchinput">
 					</div>
 					<div class="check" id="idinfo"></div>
 				</div>
@@ -205,12 +212,12 @@
 						비밀번호<br>
 					</div>
 					<input type="password" id="pw" name="pw"
-						placeholder="숫자, 영문 조합 최소 8자" class="join-input">
+						placeholder="숫자, 영문 조합 최소 8자" class="join-input searchinput">
 					<div class="check" id="pwinfo"></div>
 				</div>
 				<div class="join-box">
 					<input type="password" id="pwcheck" name="pwcheck"
-						placeholder="비밀번호 재입력" class="join-input">
+						placeholder="비밀번호 재입력" class="join-input searchinput">
 					<div class="check" id="pwcheckinfo"></div>
 				</div>
 				<div class="join-box">
@@ -219,7 +226,7 @@
 					</div>
 					<div>
 						<input type="text" id="birthday" name="birthday"
-							placeholder="990322" class="join-input">
+							placeholder="990322" class="join-input searchinput">
 					</div>
 					<div class="check" id="birthdayinfo"></div>
 				</div>
@@ -229,8 +236,7 @@
 					</div>
 					<div>
 						<input type="text" id="email" name="email" class="join-input"
-							placeholder="example@naver.com">
-						<!--           <button type="button" class="btn btn-secondary" id="emailAuth">인증</button> -->
+							placeholder="example@naver.com searchinput">
 						<div class="check" id="emailinfo"></div>
 					</div>
 				</div>
@@ -240,7 +246,7 @@
 					</div>
 					<div>
 						<input type="text" id="phone" name="phone"
-							placeholder="01012349876" class="join-input">
+							placeholder="01012349876" class="join-input searchinput">
 					</div>
 					<div class="check" id="phoneinfo"></div>
 				</div>
@@ -249,9 +255,9 @@
 						우편번호<br>
 					</div>
 					<div>
-						<input type="text" name="zipcode" id="zipcode" class="join-input" />
+						<input type="text" name="zipcode" id="zipcode" class="join-input searchinput" />
 						<button type="button" onclick="execDaumPostcode()"
-							class="btn btn-secondary" id="zipcode_find">찾기</button>
+							class="btn btn-success" id="zipcode_find">찾기</button>
 					</div>
 				</div>
 				<div class="join-box">
@@ -260,7 +266,7 @@
 					</div>
 					<div>
 						<input type="text" name="address1" id="address1"
-							class="join-input">
+							class="join-input searchinput">
 					</div>
 				</div>
 				<div class="join-box">
@@ -269,10 +275,10 @@
 					</div>
 					<div>
 						<input type="text" name="address2" id="address2"
-							class="join-input">
+							class="join-input searchinput">
 					</div>
 				</div>
-				<input type="submit" class="btn btn-outline-primary" id="join"
+				<input type="submit" class="btn btn-outline-success" id="join"
 					value="가입하기">
 			</div>
 		</form>
@@ -320,6 +326,19 @@
 
 
 	<script>
+	let $ipt = $('.searchinput'),
+	$clearIpt = $('.searchclear');
+	
+	$ipt.keyup(function(){
+	  $("#searchclear").toggle(Boolean($(this).val()));
+	});
+	
+	$clearIpt.toggle(Boolean($ipt.val()));
+	$clearIpt.click(function(){
+	  $("#searchinput").val('').focus();
+	  $(this).hide();
+	});
+		
 	//이름 유효성 검사
 	$("#name").on("keyup",function(){
 		let name = $("#name").val();
@@ -465,11 +484,7 @@
 			return false;
 		}
 		alert("가입이 완료되었습니다 :) 환영합니다!");
-<<<<<<< HEAD
-		 
-=======
->>>>>>> db0489e9aa2479a1af9839616e872d328624e4dc
-	});
+		});
 	
 	//우편번호
 	function execDaumPostcode() {

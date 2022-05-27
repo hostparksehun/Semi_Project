@@ -143,13 +143,33 @@
 										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
 									</ul>
 								</div>
-
 							</c:when>
+
+							<c:when test="${kakaoemail !=null}">
+								<div id="test"></div>
+									<div class="btn-group">
+										<button type="button" class="btn btn-warning dropdown-toggle"
+											data-bs-toggle="dropdown" aria-expanded="false">
+											${kakaoemail }</button>
+										<ul class="dropdown-menu">
+											<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+											<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+										</ul>
+									</div>
+							</c:when>
+											
 							<c:otherwise>
-								<button id=login type="button"
-									class="d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
-								<button id=join type="button"
-									class="d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+								<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+								
+								<script>
+									$("#loginBtn").on("click",function(){
+										location.href="/Member/loginView.jsp";
+									})
+									$("#joinBtn").on("click",function(){
+										location.href="/Member/joinView.jsp";
+									})
+								</script>
 							</c:otherwise>
 						</c:choose>
 
@@ -158,65 +178,31 @@
 			</nav>
 		</header>
 
-		<script>
-			$("#join").on("click", function() {
-				location.href = "/Member/joinView.jsp";
-			})
-			$("#login").on("click", function() {
-				location.href = "/Member/loginView.jsp"
-			})
-		</script>
-
-
 		<!----------------------------------- Content ----------------------------------->
 
 		<div class="container" style="width: 360px;">
-			<div style="text-align: center;">
-				<h3>비밀번호 재설정</h3>
-			</div>
-			<div class="idline">
-				<div>
-					<input type="text" class="textBox" id="id" name="id"
-						placeholder="아이디">
-				</div>
-			</div>
-			<div class="nameline">
-				<div>
-					<input type="text" class="textBox" id="name" name="name"
-						placeholder="이름">
-				</div>
-			</div>
-			<div class="phoneline">
-				<div>
-					<input type="text" class="textBox" id="phone" name="phone"
-						placeholder="휴대폰번호">
-				</div>
-			</div>
+			<div style="text-align: center;"><h4>비밀번호 재설정</h4></div>
+<!-- 			<div class="idline"> -->
+				<div><input type="text" class="textBox idline" id="id" name="id" placeholder="아이디"></div>
+				<div><input type="text" class="textBox idline" id="name" name="name" placeholder="이름"></div>
+				<div><input type="text" class="textBox idline" id="phone" name="phone" placeholder="휴대폰번호 (-없이)"></div>
+<!-- 			</div> -->
+			
 			<form action="/updatePw.member" method="post">
-				<div id="changetext" style="display: none;">변경하실 비밀번호를 입력하세요.</div>
-				<input type="password" class="pwBox" id="pw" name="pw"
-					placeholder="비밀번호 재설정" style="display: none;">
-				<div id="pwinfo"></div>
-				<input type="password" class="pwBox" id="pwcheck" name="pwcheck"
-					placeholder="비밀번호 재설정 확인" style="display: none;">
-				<div id="pwcheckinfo"></div>
-				<input type="button" class="btn btn-outline-secondary" id="next"
-					value="다음"> <input type="button"
-					class="btn btn-outline-secondary" id="change" value="변경"
-					style="display: none;">
+				<div style="text-align: center;">
+					<div id="changetext" style="display:none;"><h6>변경하실 비밀번호를 입력하세요.</h6></div>
+		            	<input type="password" class="pwBox" id="pw" name="pw" placeholder="비밀번호 재설정" style="display:none;">
+		            	<div id="pwinfo"></div>
+			            <input type="password" class="pwBox" id="pwcheck" name="pwcheck" placeholder="비밀번호 재설정 확인" style="display:none;">
+			            <div id="pwcheckinfo"></div>
+			            <input type="button" class="btn btn-outline-success" id="next" value="다음">
+			            <input type="button" class="btn btn-outline-success" id="change" value="변경" style="display:none;">
+	    		</div>
 			</form>
-			<hr>
-			<div class="sns">
-				<div id="naver">
-					<img src="/img/loginFile/btnG_완성형.png">
-				</div>
-				<div id="kakao">
-					<img src="/img/loginFile/kakao_login_medium_narrow.png">
-				</div>
-			</div>
-		</div>
-
-		<script>
+    		</div>
+    	</div>
+    
+ 		<script>
  		//다음 버튼 누르면 비번 설정창 뜨게하기
  			$("#next").on("click",function(){
 				$.ajax({
@@ -226,7 +212,11 @@
 					let result = JSON.parse(resp);
 					//console.log(result);
 					if(result == null){
-						alert("해당하는 정보가 없습니다. 다시 확인해주세요.");
+						alert("해당하는 정보가 없습니다. 입력된 정보를 다시 확인해주세요.");
+						$("#id").val("");
+						$("#name").val("");
+						$("#phone").val("");
+						$("#id").focus();
 					}else{
 						$("#changetext").show();
 						$("#change").show();
@@ -234,13 +224,26 @@
 						$(".pwBox").show();
 					}
 				});
+ 			
  			$("#change").on("click", function(){
+ 				let pw = $("#pw").val();
+ 				let pwcheck = $("#pwcheck").val();
+ 				if(pw==""){
+ 					alert("변경할 비밀번호를 입력하세요.");
+ 					$("#pw").focus();
+ 					return false;
+ 				}
+ 				if(pw!=pwcheck){
+ 					alert("비밀번호가 일치하지 않습니다.");
+ 					$("#pw").focus();
+ 					return false;
+ 				}
  				$.ajax({
  					url:"/updatePw.member",
- 					data:{pw:$("#pw").val()}
+ 					data:{id:$("#id").val(), pw:$("#pw").val()}
  				}).done(function(resp){
  					let result = JSON.parse(resp);
- 					//console.log(result);
+ 					console.log(result);
  					alert("변경이 완료됐습니다.");
  					location.href = "/Member/loginView.jsp";
  				})
@@ -281,6 +284,7 @@
 					$("#pwcheckinfo").text("비밀번호가 일치하지 않습니다.");
 				}
 			})
+			
  		</script>
 
 		<!----------------------------------- footer ----------------------------------->

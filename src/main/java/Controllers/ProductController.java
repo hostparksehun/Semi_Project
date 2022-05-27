@@ -75,7 +75,7 @@ public class ProductController extends HttpServlet {
 			
 			request.setAttribute("list", list);
 			request.setAttribute("navi", PageNavi);
-			request.getRequestDispatcher("/Product/productA10.jsp").forward(request, response);
+			request.getRequestDispatcher("/Product/productA20.jsp").forward(request, response);
 			
 			
 			}else if(uri.equals("/productA30.ProductController")){
@@ -91,7 +91,7 @@ public class ProductController extends HttpServlet {
 				
 				request.setAttribute("list", list);
 				request.setAttribute("navi", PageNavi);
-				request.getRequestDispatcher("/Product/productA10.jsp").forward(request, response);
+				request.getRequestDispatcher("/Product/productA30.jsp").forward(request, response);
 				
 			}else if(uri.equals("/productA40.ProductController")){
 				
@@ -106,7 +106,7 @@ public class ProductController extends HttpServlet {
 				
 				request.setAttribute("list", list);
 				request.setAttribute("navi", PageNavi);
-				request.getRequestDispatcher("/Product/productA10.jsp").forward(request, response);
+				request.getRequestDispatcher("/Product/productA40.jsp").forward(request, response);
 				
 			}else if(uri.equals("/productA50.ProductController")){
 			
@@ -121,7 +121,7 @@ public class ProductController extends HttpServlet {
 				
 				request.setAttribute("list", list);
 				request.setAttribute("navi", PageNavi);
-				request.getRequestDispatcher("/Product/productA10.jsp").forward(request, response);
+				request.getRequestDispatcher("/Product/productA50.jsp").forward(request, response);
 			
 			}else if(uri.equals("/add.ProductController")) {
 			

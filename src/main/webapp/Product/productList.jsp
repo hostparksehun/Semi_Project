@@ -32,13 +32,181 @@
 
 <style>
  
+ /* div{border:1px solid black;}  */
+
+#logo {
+  width: 150px;
+  height: auto;
+}
+
+/* 검색바 */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
 
-   .categor_box{
+
+body, a, p, input, button, span {
+	font-size: 14px;
+	text-decoration: none;
+	color: #36384f;
+}
+
+button {
+	cursor: pointer;
+	border: 0;
+}
+
+.main_con_form {
+	text-align: left;
+}
+
+.main_con_form span {
+	color: #000000;
+}
+
+.form_inner {
+	width: 100%;
+	height: 100%;
+}
+
+.main_con_form h1 {
+	font-size: 28px;
+}
+
+.form_list_input input {
+	width: 90%;
+	padding: 0 1em;
+	border: 0;
+	height: 60px;
+	border-radius: 30px;
+	box-shadow: 0 0 0 3px #000000;
+}
+
+.form_list_input input:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px #e96c7c;
+}
+
+.form_list_input input::placeholder {
+	font-weight: 300;
+	color: #aaa;
+}
+
+.form_list_input label {
+	float: left;
+	display: none;
+
+}
+
+/*---------검색-----------*/
+.banner_top {
+font-size: 2rem;
+	}
+.banner_bot {
+	font-size: 1.5rem;
+}
+
+#search_icon {
+	background-color: white;
+}
+
+#detail_box {
+	width: 100%;
+	height: 300px;
+	border: 4px solid black;
+	border-radius: 10px;
+}
+
+.title {
+	font-size: larger;
+	font-weight: bold;
+}
+
+/*---------best상품-----------*/
+.banner{
+  background-color: rgb(233, 229, 229);
+  border-radius: 20px;
+}
+.best{
+  margin-top: 20px;
+}
+.best_list {
+	padding-top: 30px;
+	text-align: center;
+	list-style: none;
+	overflow: hidden;
+}
+
+.best_item {
+	float: left;
+	width: 30%;
+	text-align: center;
+	margin-left: 21px;
+}
+
+.best_img {
+	width: 100%;
+}
+
+.txt_box {
+  background-color: white;
+	margin-top: 15px;
+}
+
+.bname_ellipsis {
+	font-size: 30px;
+}
+
+.best {
+	border: 4px solid #2c6246;
+	border-radius: 10px;
+}
+
+/*---------전체보기-----------*/
+.area_btn {
+	overflow: hidden;
+	margin-top: 60px;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 50px;
+	margin-top: 30px;
+}
+
+.h_btn {
+	padding-top: 18px;
+	padding-right: 50px;
+	padding-bottom: 18px;
+	padding-left: 50px;
+	font-size: 18px;
+	border: 1px solid #000;
+	border-radius: 30px;
+	box-sizing: border-box;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.list_box{
+  border: 2px solid #2c6246;
+  border-radius: 20px;
+}
+
+
+
+/*---------카테고리-----------*/
+
+
+ .categor_box{
+
+  margin-top: 35px;
   padding: 60px;
   text-align: center;
-  
-} 
+
+}  
+
 .categor_list{
   width: 90%;
   display: inline-block;
@@ -54,10 +222,191 @@
   border: 1px solid #000;
   font-size: 20px;
   border-radius: 30px;
-  color:black;
+  font-weight:bold;
+  color:black
 }
 
 
+@media (max-width: 992px) {
+    .best_list {
+	padding-top: 30px;
+	text-align: center;
+	list-style: none;
+	overflow: hidden;
+
+}
+.best_item {
+	float: left;
+	width: 41%;
+	text-align: center;
+	margin-left: 21px;
+}
+
+.best_img {
+	width: 100%;
+}
+
+.txt_box {
+	margin-top: 15px;
+}
+
+.bname_ellipsis {
+	font-size: 30px;
+}
+
+.best {
+	border: 4px solid black;
+	border-radius: 10px;
+}
+
+
+.categor_box{
+  padding: 60px;
+  text-align: center;
+  
+} 
+.categor_list{
+  width: 90%;
+  display: inline-block;
+}
+.categor_list_btn{
+  float: left;
+  list-style: none;
+  width: 30%;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  border: 1px solid #000;
+  font-size: 20px;
+  border-radius: 30px;
+  color:black;
+  display: inline-block;
+}
+
+}
+
+@media (max-width: 767px) {
+
+    .best_list {
+	padding-top: 30px;
+	text-align: center;
+	list-style: none;
+	overflow: hidden;
+}
+
+.best_item {
+	float: left;
+	width: 80%;
+	text-align: center;
+	margin-left: 21px;
+}
+
+.best_img {
+	width: 100%;
+}
+
+.txt_box {
+	margin-top: 15px;
+}
+
+.bname_ellipsis {
+	font-size: 20px;
+    margin-bottom: 0px;
+}
+.exple_box{
+    margin-bottom: 0px;
+}
+
+.best {
+	border: 4px solid black;
+	border-radius: 10px;
+}
+
+  
+  .categor_box{
+    padding: 60px;
+    text-align: center;
+    
+  } 
+  .categor_list{
+    width: 90%;
+    display: inline-block;
+  }
+  .categor_list_btn{
+    float: left;
+    list-style: none;
+    width: 45%;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    border: 1px solid #000;
+    font-size: 20px;
+    border-radius: 30px;
+    color:black;
+    display: inline-block;
+  }
+  
+  }
+
+@media (max-width: 530px) {
+  
+  .categor_box{
+    padding: 60px;
+    text-align: center;
+    
+  } 
+  .categor_list{
+    width: 90%;
+    display: inline-block;
+  }
+  .categor_list_btn{
+    float: left;
+    list-style: none;
+    width: 45%;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    border: 1px solid #000;
+    font-size: 20px;
+    border-radius: 30px;
+    color:black;
+  }
+  
+  }
+
+  @media (max-width: 463px) {
+  
+  .categor_box{
+  
+    padding: 60px;
+    text-align: center;
+    
+  } 
+  .categor_list{
+    width: 90%;
+    display: inline-block;
+  }
+  .categor_list_btn{
+    float: left;
+    list-style: none;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    border: 1px solid #000;
+    font-size: 20px;
+    border-radius: 30px;
+    color:black;
+  }
+  
+  }
+  
+  
+  
 </style>
 
 
@@ -159,7 +508,7 @@
                 <div class="col-1 "></div>
 
                 
-                    <div class="col-12">
+                    <div class="col-12 banner">
                         <p class="m-auto banner_top">MD의 추천 술!</p>
                     </div>
 
@@ -206,7 +555,7 @@
 				<div class="categor_box">
 
 					<ul calss="categor_list">
-						<a href="#"><li class="categor_list_btn" style="background-color:dodgerblue; color:white;">전체상품</li></a>
+						<a href="#"><li class="categor_list_btn" style="background-color:#2c6246; color:white;">전체상품</li></a>
 						<a href="/productA10.ProductController?cpage=1"><li class="categor_list_btn">막걸리</li></a>
 						<a href="/productA20.ProductController?cpage=1"><li class="categor_list_btn">전통소주</li></a>
 						<a href="/productA30.ProductController?cpage=1"><li class="categor_list_btn">약주</li></a>
@@ -229,7 +578,7 @@
 
 
             <div class="row">
-                <div class="col-1 "></div>
+                <div class="col-1"></div>
                 <div class="col-10">
                     <div class="col-12">
 
@@ -240,15 +589,12 @@
                     <!----------------------------------- Result  ----------------------------------->
                 
                     <div class="row m-auto">
-                 
-              
-
-
-             
+                
                      <c:forEach var="i" items="${list }">            
-                        <div class="col-4">
+                        <div class="col-lg-4 col-sm-12 list_box">
                             <a href="Detail.ProductController?seq=${i.seq }">
                                 <div class="Result_img">
+                          
                                     <img src="../thumbnail/${i.sysName}" style="width: 100%;">
                                 </div>
                                 <div class="Result_txt">
@@ -261,31 +607,9 @@
                                 </div>
                             </a>
                         </div>
-                  
+  
                      </c:forEach>
-                  
-                  <div class="row bd nav">
-					   <div class="col">${navi }</div>
-				</div>
-								
-								</div>
-
-<!--              <div class="col-12 w-100 mb-2 mt-3" id="pagination"> -->
-<!--                             <nav aria-label="..."> -->
-<!--                                 <ul class="pagination pagination-sm justify-content-center m-auto"> -->
-<!--                                     <li class="page-item active" aria-current="page"> -->
-<!--                                         <span class="page-link">1</span> -->
-<!--                                     </li> -->
-<!--                                     <li class="page-item"><a class="page-link" href="#">2</a></li> -->
-<!--                                     <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-<!--                                 </ul> -->
-<!--                             </nav> -->
-<!--                         </div> -->
-
-
-<!--                     </div> -->
-
-
+            
 								
 <!----------------------------------- footer ----------------------------------->
 

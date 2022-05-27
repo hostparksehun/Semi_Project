@@ -8,7 +8,7 @@
 
 <head>
     <!-- CSS -->
-    <link rel="stylesheet" href="/CSS/productList.css"> <!-- 경로 수정 고려 -->
+     <link rel="stylesheet" href="/CSS/productList.css"> <!-- 경로 수정 고려 -->
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,43 +27,296 @@
 
     <script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
 
+
     <title>우리술 목록</title>
 
+<style>
+ 
+ /* div{border:1px solid black;}  */
 
-    <style>
+#logo {
+  width: 150px;
+  height: auto;
+}
+
+/* 검색바 */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+body, a, p, input, button, span {
+	font-size: 14px;
+	text-decoration: none;
+	color: #36384f;
+}
+
+button {
+	cursor: pointer;
+	border: 0;
+}
+
+.main_con_form {
+	text-align: left;
+}
+
+.main_con_form span {
+	color: #000000;
+}
+
+.form_inner {
+	width: 100%;
+	height: 100%;
+}
+
+.main_con_form h1 {
+	font-size: 28px;
+}
+
+.form_list_input input {
+	width: 90%;
+	padding: 0 1em;
+	border: 0;
+	height: 60px;
+	border-radius: 30px;
+	box-shadow: 0 0 0 3px #000000;
+}
+
+.form_list_input input:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px #e96c7c;
+}
+
+.form_list_input input::placeholder {
+	font-weight: 300;
+	color: #aaa;
+}
+
+.form_list_input label {
+	float: left;
+	display: none;
+
+}
+
+/*---------검색-----------*/
+.banner_top {
+font-size: 2rem;
+	}
+.banner_bot {
+	font-size: 1.5rem;
+}
+
+#search_icon {
+	background-color: white;
+}
+
+#detail_box {
+	width: 100%;
+	height: 300px;
+	border: 4px solid black;
+	border-radius: 10px;
+}
+
+.title {
+	font-size: larger;
+	font-weight: bold;
+}
+
+
+
+/*---------전체보기-----------*/
+.area_btn {
+	overflow: hidden;
+	margin-top: 60px;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 50px;
+	margin-top: 30px;
+}
+
+.h_btn {
+	padding-top: 18px;
+	padding-right: 50px;
+	padding-bottom: 18px;
+	padding-left: 50px;
+	font-size: 18px;
+	border: 1px solid #000;
+	border-radius: 30px;
+	box-sizing: border-box;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.list_box{
+  border: 2px solid #2c6246;
+  border-radius: 20px;
+}
+
+
+
+/*---------카테고리-----------*/
+
+
+ .categor_box{
+
+  margin-top: 35px;
+  padding: 60px;
+  text-align: center;
+
+}  
+
+.categor_list{
+  width: 90%;
+  display: inline-block;
+}
+.categor_list_btn{
+  float: left;
+  list-style: none;
+  width: 15.1%;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  border: 1px solid #000;
+  font-size: 20px;
+  border-radius: 30px;
+  font-weight:bold;
+  color:black
+  
+  
+}
+
+
+@media (max-width: 992px) {
+  
+
+
+.categor_box{
+  padding: 60px;
+  text-align: center;
+  
+} 
+.categor_list{
+  width: 90%;
+  display: inline-block;
+}
+.categor_list_btn{
+  float: left;
+  list-style: none;
+  width: 30%;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  border: 1px solid #000;
+  font-size: 20px;
+  border-radius: 30px;
+  color:black;
+  display: inline-block;
+}
+
+}
+
+
+@media (max-width: 767px) {
+
+
+  
+  .categor_box{
+    padding: 60px;
+    text-align: center;
+    
+  } 
+  .categor_list{
+    width: 90%;
+    display: inline-block;
+  }
+  .categor_list_btn{
+    float: left;
+    list-style: none;
+    width: 45%;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    border: 1px solid #000;
+    font-size: 20px;
+    border-radius: 30px;
+    color:black;
+    display: inline-block;
+  }
+
+  
+  
+  }
+
+@media (max-width: 530px) {
+  
+  .categor_box{
+    padding: 60px;
+    text-align: center;
+    
+  } 
+  .categor_list{
+    width: 90%;
+    display: inline-block;
+  }
+  .categor_list_btn{
+    float: left;
+    list-style: none;
+    width: 45%;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    border: 1px solid #000;
+    font-size: 20px;
+    border-radius: 30px;
+    color:black;
+  }
  
 
-
-        .categor_box{
-       padding: 60px;
-       text-align: center;
-       
-     } 
-     .categor_list{
-       width: 90%;
-       display: inline-block;
-     }
-     .categor_list_btn{
-       float: left;
-       list-style: none;
-       width: 15.1%;
-       height: 50px;
-       line-height: 50px;
-       margin-left: 0.5%;
-       margin-right: 0.5%;
-       border: 1px solid #000;
-       font-size: 20px;
-       border-radius: 30px;
-       color:black;
-     }
-     
-     
-     </style>
-
+  @media (max-width: 463px) {
+  
+  .categor_box{
+  
+    padding: 60px;
+    text-align: center;
+    
+  } 
+  .categor_list{
+    width: 90%;
+    display: inline-block;
+  }
+  .categor_list_btn{
+    float: left;
+    list-style: none;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    border: 1px solid #000;
+    font-size: 20px;
+    border-radius: 30px;
+    color:black;
+  }
+  
+ 
+  
+  
+  
+</style>
 
 
 
 </head>
+
+
 
 <body>
     <div class="container">
@@ -76,12 +329,12 @@
                         </a>
                     </div>
 
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle mx-0 mx-md-2 mx-xl-5" href="#"
@@ -117,22 +370,63 @@
 
                         </ul>
 
-
-                        <button type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-                        <button type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+            <c:choose>
+	        	<c:when test="${loginID !=null}">
+					        	<div class="btn-group">
+  <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    ${loginID } 
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+    <li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+  </ul>
+</div>
+		            
+				</c:when>
+				<c:otherwise>
+					<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
+					<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+					
+					<script>
+					  $("#joinBtn").on("click",function(){
+					      location.href="/Member/joinView.jsp";
+					   })
+					  $("#loginBtn").on("click",function(){
+					     location.href="/Member/loginView.jsp"
+					  })
+					</script>
+				</c:otherwise>
+			</c:choose>
                     </div>
                 </div>
             </nav>
         </header>
 
-        
-                    <!----------------------------------- Categori---------------------------------->
+
+				<!----------------------------------- Search-Result  ----------------------------------->
+
+
+  
+        <div class="container px-5 mt-4" id="search_box">
+
+            <div class="row">
+                <div class="col-1 "></div>
+
+                
+                   
+
+               
+               
+                   
+
+
+<!----------------------------------- Categori---------------------------------->
 
 				<div class="categor_box">
 
 					<ul calss="categor_list">
 						<a href="/list.ProductController?cpage=1"><li class="categor_list_btn">전체상품</li></a>
-						<a href="#"><li class="categor_list_btn" style="background-color:dodgerblue; color:white;">막걸리</li></a>
+						<a href="#"><li class="categor_list_btn" style="background-color:#2c6246; color:white;">막걸리</li></a>
 						<a href="/productA20.ProductController?cpage=1"><li class="categor_list_btn">전통소주</li></a>
 						<a href="/productA30.ProductController?cpage=1"><li class="categor_list_btn">약주</li></a>
 						<a href="/productA40.ProductController?cpage=1"><li class="categor_list_btn">과실주</li></a>
@@ -141,76 +435,58 @@
 					
 				</div>
 
-<!----------------------------------- Search-Result  ----------------------------------->
+
+	<!----------------------------------- Search-Result  ----------------------------------->
+
+
+
 
         <div class="container px-5 mt-4" id="Result_box">
         <hr>
 
 
             <div class="row">
-                <div class="col-1 "></div>
+                <div class="col-1"></div>
                 <div class="col-10">
                     <div class="col-12">
 
                         <p class="m-auto Result_banner"></p>
 
                     </div>
-    
 
+      
 
+       
+
+     
                     <!----------------------------------- Result  ----------------------------------->
                 
                     <div class="row m-auto">
-                 
-              
-         
+                
                      <c:forEach var="i" items="${list }"> 
                      
-                      
-                            
-                       <c:if test="${i.product_code eq 'A10' }">   
-                        <div class="col-4">
-                           <a href="Detail.ProductController?seq=${i.seq }">
+                     <c:if test="${i.product_code eq 'A10' }">              
+                        <div class="col-lg-4 col-sm-12 list_box">
+                            <a href="Detail.ProductController?seq=${i.seq }">
                                 <div class="Result_img">
-                                   <img src="../thumbnail/${i.sysName}" style="width: 100%;">
+                          
+                                    <img src="../thumbnail/${i.sysName}" style="width: 100%;">
                                 </div>
                                 <div class="Result_txt">
                                     <div class="review"></div>
                                     
                                     <p class="Result_name">${i.product_name }</p>
-                                    <p class="Result_decs">${i.smry}</p>
+                               
+                                    <p class="Result_decs">${i.smry }</p>
                                   
                                 </div>
                             </a>
                         </div>
-                        </c:if>  
-                     
-                    </c:forEach>
-                    
-                    <div class="row bd nav">
-							<div class="col">${navi }</div>
-					</div>
-                     
-      
-<!--              <div class="col-12 w-100 mb-2 mt-3" id="pagination"> -->
-<!--                             <nav aria-label="..."> -->
-<!--                                 <ul class="pagination pagination-sm justify-content-center m-auto"> -->
-<!--                                     <li class="page-item active" aria-current="page"> -->
-<!--                                         <span class="page-link">1</span> -->
-<!--                                     </li> -->
-<!--                                     <li class="page-item"><a class="page-link" href="#">2</a></li> -->
-<!--                                     <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-<!--                                 </ul> -->
-<!--                             </nav> -->
-<!--                         </div> -->
-
-
-<!--                     </div> -->
-
-
-						
-
-		<!----------------------------------- footer ----------------------------------->
+                         </c:if>  
+                     </c:forEach>
+            
+								
+<!----------------------------------- footer ----------------------------------->
 
 
         <footer class="py-3 my-4">

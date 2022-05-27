@@ -2,13 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
 <!-- CSS -->
-<link rel="stylesheet" href="/CSS/productDetail.css">
+<!-- <link rel="stylesheet" href="/CSS/productDetail.css"> -->
 <!-- 경로 수정 고려 -->
 
 
@@ -32,7 +33,7 @@
 	crossorigin="anonymous"></script>
 
 <style>
-/* div {
+  /*div { 
     border: 1px solid black;
 } */
 
@@ -52,7 +53,7 @@
 
 
   .section_s01{
-    background-color: rgb(235, 228, 228);
+    
     padding-top: 40px;
     padding-bottom: 40px;
     width: 100%;
@@ -70,7 +71,10 @@
     float: left;
     width: 500px;
     height: 500px;
-	padding: 30px;
+	padding: 30px; 
+	border: 2px solid #2c6246;
+	border-radius: 30px;
+/* 	background-color: rgb(233, 229, 229); */
 }
 
 
@@ -78,22 +82,28 @@
 	width: 500px;
 	height: 500px; 
 	float:left; 
-	display : inline-block
-   
+	display : inline-block;
+    margin-left: 120px;
+	
 }
 
 .img{
 	width: 100%;
+	height: 100%;
 }
 
 /* 텍스트 CSS */
 
 .txt_box{
   
-  margin-left: 30px;
-  width: 750px;
+  
+  width: 600px;
   float: left;
-  overflow: hidden;}
+  margin-left: 40px;
+  overflow: hidden;
+  padding-top: 30px;
+  padding-left: 40px; 
+}
 
   .product_name{
      font-size: 30px;
@@ -135,6 +145,9 @@
 
 
 @media (max-width: 1400px) {
+
+
+
 .img_box{
   float: left;
   width: 450px;
@@ -143,14 +156,15 @@
   }
 
   .main_img{
-	width: 450px; 
+	width: 450px;
 	height: 500px; 
+	float:left; 
 	display : inline-block;
-   
+    margin-left: 80px;
 }
 .img{
-	width: 100%;
-	height: 100%;
+   width: 100%;
+   height:100%;
 }
 
   /* 텍스트 */
@@ -158,9 +172,12 @@
  .txt_box{
   
  
-  width: 600px;
+  width: 500px;
   float: left;
-  overflow: hidden;}
+  margin-left: 40px;
+  overflow: hidden;
+  padding-top: 30px;
+  padding-left: 40px; }
 
   .product_name{
      font-size: 30px;
@@ -179,16 +196,17 @@
 @media (max-width: 1200px) {
 .img_box{
   float: left;
-  width: 350px;
+  width: 400px;
   height: 500px;
   padding: 30px;
   }
 
   .main_img{
-	width: 350px; 
+	width: 400px;
 	height: 500px; 
+	float:left; 
 	display : inline-block;
-   
+    margin-left: 50px;
 }
 .img{
 	width: 100%;
@@ -198,9 +216,10 @@
   /* 텍스트 */
 
  .txt_box{
-  
- 
-  width: 500px;
+  padding-top: 30px;
+  padding-left: 30px;
+  margin-left: 20px;
+  width: 450px;
   float: left;
   overflow: hidden;}
 
@@ -225,17 +244,18 @@
 	/* 이미지 */
 
 .img_box{
-  float: left;
-  width: 300px;
+ 
+  width: 600px;
   height: 500px;
   padding: 30px;
   }
 
   .main_img{
-	width: 300px; 
+	width: 600px;
 	height: 500px; 
+	float:left; 
 	display : inline-block;
-   
+    margin-left: 30px;
 }
 .img{
 	width: 100%;
@@ -247,8 +267,8 @@
  .txt_box{
   padding-left:30px;
   margin-left: 30px;
-  width: 300px;
-  float: left;
+  width: 600px;
+  float:left;
   overflow: hidden;}
 
   .product_name{
@@ -256,11 +276,13 @@
      font-weight: 300px;
 
    }
-  dt{
-  float:left;
-  display: inline-block;
-  width: 130px;
-  } 
+   
+   dt{
+   float:left; 
+   display: inline-block; 
+   width: 130px; 
+   }  
+
 }
 
 @media (max-width: 768px) {
@@ -268,17 +290,17 @@
 /* 이미지 */
 
 .img_box{
-float: left;
-width: 200px;
+width: 400px;
 height: 400px;
 padding: 30px;
 }
 
 .main_img{
-width: 200px; 
-height: 400px; 
-display : inline-block;
-
+	width: 400px;
+	height: 400px; 
+	float:left; 
+	display : inline-block;
+    margin-left: 40px;
 }
 .img{
 width: 100%;
@@ -288,53 +310,9 @@ height: 100%;
  /* 텍스트 */
 
 .txt_box{
-margin-left: 30px;
-width: 250px;
-float: left;
-overflow: hidden;}
-
-.product_name{
- font-size: 30px;
- font-weight: 300px;
-
-}
-dt{
-float:left;
-display: inline-block;
-width: 95px;
-} 
-
-}
-
-@media (max-width: 530px) {
-
-/* 이미지 */
-
-.img_box{
-
-width: 450px;
-height: 400px;
-padding: 30px;
-
-}
-
-.main_img{
-width: 450px; 
-height: 400px; 
-display : inline-block;
-
-}
-.img{
-width: 100%;
-height: 100%;
-}
-
- /* 텍스트 */
-
-.txt_box{
-margin-left: 0px;
 margin-top: 30px;
-width: 450px;
+margin-left: 40px;
+width: 400px;
 float: left;
 overflow: hidden;}
 
@@ -351,20 +329,70 @@ width: 130px;
 
 }
 
-@media (max-width: 390px) {
+@media (max-width: 530px) {
 
 /* 이미지 */
 
 .img_box{
 
-width: 350px;
+width: 400px;
+height: 400px;
+
+padding: 30px;
+
+}
+
+.main_img{
+	width: 400px;
+	height: 400px; 
+	float:left; 
+	display : inline-block;
+    margin-left: 30px;
+	
+
+}
+.img{
+width: 100%;
+height: 100%;
+}
+
+ /* 텍스트 */
+
+.txt_box{
+
+margin-top: 30px;
+margin-left: 40px;
+width: 400px;
+float: left;
+overflow: hidden;}
+
+.product_name{
+ font-size: 30px;
+ font-weight: 300px;
+
+}
+dt{
+float:left;
+display: inline-block;
+width: 130px;
+} 
+
+}
+
+@media (max-width: 474px) {
+
+/* 이미지 */
+
+.img_box{
+
+width: 300px;
 height: 400px;
 padding: 30px;
 
 }
 
 .main_img{
-width: 350px; 
+width: 300px; 
 height: 400px; 
 display : inline-block;
 
@@ -377,9 +405,9 @@ height: 100%;
  /* 텍스트 */
 
 .txt_box{
-margin-left: 0px;
+
 margin-top: 30px;
-width: 350px;
+width: 300px;
 float: left;
 overflow: hidden;}
 
@@ -512,129 +540,39 @@ width: 130px;
 
       
       
-<%--            <c:forEach var="i" items="${list }">  --%>
 
-<%--              <c:if test="${i.seq == 16 }"> --%>
                 <div class="main_img">
 				
 					<div class="img_box">
-						<img src="../thumbnail/${dto.sysName}" class="img">
+                        <img src="../thumbnail/${dto.sysName }" class="img">
+						
 					</div>
 				
 				</div>
 					
-				 
-
+			
 					<div class="txt_box">
 
 						<div class="product_name">${dto.product_name }</div>
                         
-						<div style="width: 500px; margin-top: 30px; margin-bottom: 30px;" ></div>
+						<hr style="border: 1px solid black; margin-top: 30px; margin-bottom: 60px;">
 					<dl>
-					<dt>짧은 설명</dt> <dd class="smry">${dto.smry }</dd>
-					<dt>가격</dt> 	<dd class="price">${dto.price }</dd>
-					<dt>상품 코드</dt> <dd class="product_code">${dto.product_code }</dd>
-					<dt>유형</dt> <dd class="kind">${dto.kind }</dd>
-					<dt>도수(%)</dt> <dd class="abv">${dto.abv }</dd>
-					<dt>용량(ml)</dt> <dd class="capacity">${dto.capacity }</dd>
-					<dt>양조장</dt> <dd class="brewery">${dto.brewery }</dd>
-					<dt>판매처</dt> <dd class="adress1">${dto.adress1 } ${dto.adress2 }</dd>
+					<dt class="smry">짧은 설명</dt> <dd>${dto.smry }</dd>
+					<dt class="price">가격</dt> 	<dd>${dto.price }</dd>
+					<dt class="product_code">상품 코드</dt> <dd>${dto.product_code }</dd>
+					<dt class="kind">유형</dt> <dd>${dto.kind }</dd>
+					<dt class="abv">도수(%)</dt> <dd>${dto.abv }</dd>
+					<dt class="capacity">용량(ml)</dt> <dd>${dto.capacity }</dd>
+					<dt class="brewery">양조장</dt> <dd>${dto.brewery }</dd>
+					<dt class="adress1">판매처</dt> <dd>${dto.adress1 } ${dto.adress2 }</dd>
                     <dt>유저 평가</dt> <dd><span>*</span> <span>*</span> <span>*</span> <span>*</span> <span>*</span></dd>
 
 					</dl>
-					
-<%-- 					</c:if> --%>
-<%--               </c:forEach>  --%>
-			
-						<!-- <div class="box_user_rating">
-							<div class="rating">
-								<p>
-									<span>유저평가</span>
-								</p>
-								<div class="num_5">
-									<span></span> <span></span> <span></span> <span></span>
-								</div>
-								<table class="tbl">
-									<colgroup>
-										<col width="30"%>
-										<col width="30"%>
-										<col width="30"%>
-										<col width="30"%>
-
-									</colgroup>
-									<tr>
-										<th scope="col">용량(ml)</th>
-										<th scope="col">도수(%)</th>
-										<th scope="col">유형</th>
-										<th scope="col">생산지역</th>
-									</tr>
-									<tr>
-										<td>추후 추가</td>
-										<td>추후 추가</td>
-										<td>추후 추가</td>
-										<td>추후 추가</td>
-									</tr>
-								</table>
-
-							</div>
-						</div> -->
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="seciton_s02">
-			<div class="drink_description_box">
-				<div style="margin-bottom: 50px; font-size: 25px; color: aqua;">술
-					설명</div>
-				<ul class="description">
-					<div class="descr_1">
-						<p style="font-size: 30px;">
-							<strong>술이름, 어떤 술인가요?</strong>
-						</p>
-						<P>
-							우리나라 최초의 요리책, &lt;산가요록&gt;에 실린 주방문을 토대로 박흥선 명인이 복원한 역사 깊은 우리술이에요.
-							<br> <br> 잔에 담긴 모습이 거울에 비친 푸른 파도같이 맑다 하여 '녹파'라는 이름이
-							붙었다고 해요. <br> <br> 이름처럼 맑은 빛깔과 담백하고 드라이한 맛이 매력적이지요. <br>
-							<br> 녹파주를 즐기던 옛 선조들처럼 술 한잔에 담긴 은은한 기품을 느껴보세요.
-
-						</P>
-						<p style="font-size: 30px;">
-							<strong>술이름, 어떻게 만드나요?</strong>
-						</p>
-						<p>
-							text<br> text<br> text<br> text<br>
-						</p>
-					</div>
-					<div class="descr_2">
-
-						<div>
-							<div style="margin-bottom: 50px; font-size: 25px; color: aqua;">양조장</div>
-							<p style="font-size: 30px;">
-								<strong>생산자</strong>
-							</p>
-							<p>
-								text<br> text<br> text<br> text<br> text<br>
-							</p>
-						</div>
-
+                    </div>
+                    </div>
 					</div>
 
-					<div class="descr_3">
-						<div style="margin-bottom: 50px; font-size: 25px; color: aqua;">판매처</div>
-						<P>
-							text<br> text
-						</P>
-					</div>
-				</ul>
-			</div>
-
-
-		</div>
-
-	</div>
-	</div>
+				
 
 	<!----------------------------------- footer ----------------------------------->
 

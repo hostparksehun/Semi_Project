@@ -85,7 +85,17 @@
 										id="board">로그아웃</a></li>
 
 								</c:when>
+								<c:when test="${kakaoemail != null}">
 
+									<li class="nav-item d-lg-none"><a
+										class="nav-link mx-0 mx-md-0 mx-lg-3" href="/mypage.member"
+										id="board">내 정보</a></li>
+
+									<li class="nav-item d-lg-none"><a
+										class="nav-link mx-0 mx-md-0 mx-lg-3" href="/logout.member"
+										id="board">로그아웃</a></li>
+
+								</c:when>
 								<c:otherwise>
 
 									<li class="nav-item d-lg-none"><a

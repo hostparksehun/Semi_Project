@@ -238,7 +238,7 @@
 					</div>
 					<div>
 						<input type="text" id="email" name="email" class="join-input"
-							placeholder="example@naver.com searchinput">
+							placeholder="example@naver.com">
 						<div class="check" id="emailinfo"></div>
 					</div>
 				</div>
@@ -393,7 +393,7 @@
 		
 		if(!pwResult){
 			$("#pwinfo").css("color", "red");
-			$("#pwinfo").text("영문, 숫자를 하나 이상 포함한 8~16자");
+			$("#pwinfo").text("영문, 숫자를 각각 하나 이상 포함한 8~16자");
 		} else{
 			$("#pwinfo").text("");
 		}
@@ -407,7 +407,7 @@
 		
 		if(!pwcheckResult){
 			$("#pwcheckinfo").css("color", "red");
-			$("#pwcheckinfo").text("영문, 숫자를 하나 이상 포함한 8~16자");
+			$("#pwcheckinfo").text("영문, 숫자를 각각 하나 이상 포함한 8~16자");
 		} else if(pw == pwcheck){
 			$("#pwcheckinfo").css("color", "dodgerblue");
 			$("#pwcheckinfo").text("비밀번호가 일치합니다.");

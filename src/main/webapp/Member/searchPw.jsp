@@ -191,14 +191,16 @@
 			
 			<form action="/updatePw.member" method="post">
 				<div style="text-align: center;">
-					<div id="changetext" style="display:none;"><h6>변경하실 비밀번호를 입력하세요.</h6></div>
-		            	<input type="password" class="pwBox" id="pw" name="pw" placeholder="비밀번호 재설정" style="display:none;">
-		            	<div id="pwinfo"></div>
-			            <input type="password" class="pwBox" id="pwcheck" name="pwcheck" placeholder="비밀번호 재설정 확인" style="display:none;">
-			            <div id="pwcheckinfo"></div>
-			            <input type="button" class="btn btn-outline-success" id="next" value="다음">
-			            <input type="button" class="btn btn-outline-success" id="change" value="변경" style="display:none;">
+					<div id="changetext" style="display:none;"><p>변경하실 비밀번호를 입력하세요.</p></div>
 	    		</div>
+	            	<input type="password" class="pwBox" id="pw" name="pw" placeholder="비밀번호 재설정" style="display:none;">
+	            	<div id="pwinfo"></div>
+		            <input type="password" class="pwBox" id="pwcheck" name="pwcheck" placeholder="비밀번호 재설정 확인" style="display:none;">
+		            <div id="pwcheckinfo"></div>
+		            <div style="text-align:center;">
+		            <input type="button" class="btn btn-outline-success" id="next" value="다음">
+		            <input type="button" class="btn btn-outline-success" id="change" value="변경" style="display:none;">
+		            </div>
 			</form>
     		</div>
     	</div>
@@ -219,6 +221,7 @@
 						$("#phone").val("");
 						$("#id").focus();
 					}else{
+						$("#next").hide();
 						$("#changetext").show();
 						$("#change").show();
 						$(".textBox").css("display","none");
@@ -259,7 +262,7 @@
 				if(!pwResult){
 					$("#pwinfo").css("color", "red");
 					$("#pwinfo").css("font-size", "10.5pt");
-					$("#pwinfo").text("영문, 숫자를 하나 이상 포함한 8~16자");
+					$("#pwinfo").text("영문, 숫자를 각각 하나 이상 포함한 8~16자");
 				} else{
 					$("#pwinfo").text("");
 				}
@@ -274,7 +277,7 @@
 				if(!pwcheckResult){
 					$("#pwcheckinfo").css("color", "red");
 					$("#pwcheckinfo").css("font-size", "10.5pt");
-					$("#pwcheckinfo").text("영문, 숫자를 하나 이상 포함한 8~16자");
+					$("#pwcheckinfo").text("영문, 숫자를 각각 하나 이상 포함한 8~16자");
 				} else if(pw == pwcheck){
 					$("#pwcheckinfo").css("color", "dodgerblue");
 					$("#pwcheckinfo").css("font-size", "10.5pt");

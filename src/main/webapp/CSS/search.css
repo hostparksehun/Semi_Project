@@ -1,8 +1,8 @@
 @charset "utf-8";
 
 @import
-	url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@700&family=Song+Myung&display=swap')
-	;
+	url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@700&family=Song+Myung&display=swap');
+
 
 #logo {
 	width: 150px;
@@ -74,7 +74,7 @@ button {
 
 .form_list_input input:focus {
 	outline: none;
-	box-shadow: 0 0 0 3px #e96c7c;
+	box-shadow: 0 0 0 3px #ffae00;
 }
 
 .form_list_input input::placeholder {
@@ -87,13 +87,22 @@ button {
 	display: none;
 }
 
+#search_text{
+	font-family: 'Hahmlet', serif;
+	text-align: center;
+}
+
 /*---------검색-----------*/
 .banner_top {
 	font-size: 2rem;
+	font-family: 'Hahmlet', serif;
+	color: #2c6246;
 }
 
 .banner_bot {
 	font-size: 1.5rem;
+	font-family: 'Hahmlet', serif;
+	color: #2c6246;
 }
 
 #search_icon {
@@ -105,6 +114,7 @@ button {
 	height: 300px;
 	border: 4px solid black;
 	border-radius: 10px;
+	font-family: 'Hahmlet', serif;
 }
 
 .title {
@@ -119,8 +129,22 @@ button {
 	color: #36384f;
 }
 
-.Result_banner {
+.Result_banner1 {
 	font-size: 1.5rem;
+	font-family: 'Hahmlet', serif;
+	color: #278f59;
+}
+
+.Result_banner2 {
+	font-size: 1rem;
+	font-family: 'Hahmlet', serif;
+	text-align: center;
+}
+
+.Result_grade{
+	font-family: 'Hahmlet', serif;
+	font-size: 14px;
+	color: #f8bc3b;
 }
 
 .Result_txt {
@@ -131,7 +155,21 @@ button {
 	font-size: 17px;
 	text-align: center;
 	color: black;
+	font-family: 'Hahmlet', serif;
 }
+
+.Result_price {
+	margin-top: 5px;
+	font-size: 13px;
+	font-family: 'Hahmlet', serif;
+}
+
+.Result_decs {
+	font-size: 14px;
+	font-family: 'Hahmlet', serif;
+}
+
+
 
 /* header부분 */
 header {

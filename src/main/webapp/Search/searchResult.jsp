@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,19 +65,26 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
-									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
-									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
-									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
-									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
+									<li><a class="dropdown-item"
+										href="/productA10.ProductController">막걸리</a></li>
+									<li><a class="dropdown-item"
+										href="/productA20.ProductController">전통 소주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA30.ProductController">약주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA40.ProductController">과실주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA50.ProductController">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
+									<li><a class="dropdown-item"
+										href="/list.ProductController">전체보기</a></li>
 								</ul></li>
 
-							<li class="d-none d-lg-block nav-item"><a href="/Search/search.jsp"
-								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3" >우리술 검색</a></li>
+							<li class="d-none d-lg-block nav-item"><a
+								href="/Search/search.jsp"
+								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리술 검색</a></li>
 
 
 							<li class="nav-item"><a
@@ -99,7 +107,7 @@
 
 									<li class="nav-item d-lg-none"><a
 										class="nav-link mx-0 mx-md-0 mx-lg-3"
-										href="/Member/loginView.jsp" id="board" >로그인</a></li>
+										href="/Member/loginView.jsp" id="board">로그인</a></li>
 
 									<li class="nav-item d-lg-none"><a
 										class="nav-link mx-0 mx-md-0 mx-lg-3"
@@ -112,7 +120,7 @@
 								<c:when test="${loginID eq 'admin'}">
 									<li class="nav-item"><a
 										class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3"
-										href="/Manager/manager.jsp" id="board" >관리자 페이지</a></li>
+										href="/Manager/manager.jsp" id="board">관리자 페이지</a></li>
 								</c:when>
 
 								<c:otherwise>
@@ -187,7 +195,7 @@
 						<div class="main_con_form col-12 mt-3">
 							<div class="form_inner form_list_input">
 								<input type="text" id="search_text" name="search_text"
-									placeholder="입력하세요">
+									placeholder="군침도는 술을 찾아보자구~">
 								<button type="submit"
 									style="background-color: white; margin-left: 2%;">
 									<svg id="search_icon" xmlns="http://www.w3.org/2000/svg"
@@ -201,7 +209,7 @@
 						</div>
 						<!----------------------------------- Detail-Search  ----------------------------------->
 						<div class="d-none d-lg-block col-12 mt-3 mb-1">
-							<p class="m-auto banner_bot">필요한 조건을 선택하세요</p>
+							<p class="m-auto banner_bot">섬세한 검색을 해보죠</p>
 						</div>
 
 						<div class="col-12" id="detail_box">
@@ -209,7 +217,7 @@
 								<div class="row">
 									<!-- 주종 -->
 									<div class="col-12 mb-1">
-										<p class="m-auto title">술 종류</p>
+										<p class="m-auto title" style="color: #160052;">술 종류</p>
 									</div>
 
 									<div class="col-2 form-check" style="padding-left: 5%;">
@@ -223,14 +231,13 @@
 										<input class="form-check-input" type="checkbox" value="전통소주"
 											id="flexCheckDefault" name="alchol"> <label
 											class="form-check-label" for="flexCheckDefault"> 전통소주
-											</label>
+										</label>
 									</div>
 
 									<div class="col-2 form-check" style="padding-left: 5%;">
 										<input class="form-check-input" type="checkbox" value="약주"
 											id="flexCheckDefault" name="alchol"> <label
-											class="form-check-label" for="flexCheckDefault"> 약주
-										</label>
+											class="form-check-label" for="flexCheckDefault"> 약주 </label>
 									</div>
 
 									<div class="col-2 form-check" style="padding-left: 5%;">
@@ -249,14 +256,13 @@
 
 									<!-- 지역 -->
 									<div class="col-12 mb-1">
-										<p class="m-auto title">지역</p>
+										<p class="m-auto title" style="color: #160052;">지역</p>
 									</div>
 
 									<div class="col-2 form-check mb-1" style="padding-left: 5%;">
 										<input class="form-check-input" type="checkbox" value="서울"
 											id="flexCheckDefault" name="area"> <label
-											class="form-check-label" for="flexCheckDefault"> 서울
-										</label>
+											class="form-check-label" for="flexCheckDefault"> 서울 </label>
 									</div>
 
 									<div class="col-2 form-check" style="padding-left: 5%;">
@@ -294,49 +300,44 @@
 										</label>
 									</div>
 
-                                   <!-- 평점 -->
-                                    <div class="col-12 mb-1">
-                                        <p class="m-auto title">평점</p>
-                                    </div>
+									<!-- 평점 -->
+									<div class="col-12 mb-1">
+										<p class="m-auto title" style="color: #160052;">평점</p>
+									</div>
 
-                                    <div class="col-2 form-check mb-1" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="radio" value="1" id="flexCheckDefault" name="grade">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            1
-                                        </label>
-                                    </div>
+									<div class="col-2 form-check mb-1" style="padding-left: 5%;">
+										<input class="form-check-input" type="radio" value="1"
+											id="flexCheckDefault" name="grade"> <label
+											class="form-check-label" for="flexCheckDefault"> 1 </label>
+									</div>
 
-                                    <div class="col-2 form-check" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="radio" value="2" id="flexCheckDefault" name="grade">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            2
-                                        </label>
-                                    </div>
+									<div class="col-2 form-check" style="padding-left: 5%;">
+										<input class="form-check-input" type="radio" value="2"
+											id="flexCheckDefault" name="grade"> <label
+											class="form-check-label" for="flexCheckDefault"> 2 </label>
+									</div>
 
-                                    <div class="col-2 form-check" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="radio" value="3" id="flexCheckDefault" name="grade">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            3
-                                        </label>
-                                    </div>
+									<div class="col-2 form-check" style="padding-left: 5%;">
+										<input class="form-check-input" type="radio" value="3"
+											id="flexCheckDefault" name="grade"> <label
+											class="form-check-label" for="flexCheckDefault"> 3 </label>
+									</div>
 
-                                    <div class="col-2 form-check" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="radio" value="4" id="flexCheckDefault" name="grade">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            4
-                                        </label>
-                                    </div>
+									<div class="col-2 form-check" style="padding-left: 5%;">
+										<input class="form-check-input" type="radio" value="4"
+											id="flexCheckDefault" name="grade"> <label
+											class="form-check-label" for="flexCheckDefault"> 4 </label>
+									</div>
 
-                                    <div class="col-2 form-check" style="padding-left: 5%;">
-                                        <input class="form-check-input" type="radio" value="5" id="flexCheckDefault" name="grade">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            5
-                                        </label>
-                                    </div>
+									<div class="col-2 form-check" style="padding-left: 5%;">
+										<input class="form-check-input" type="radio" value="5"
+											id="flexCheckDefault" name="grade"> <label
+											class="form-check-label" for="flexCheckDefault"> 5 </label>
+									</div>
 
 									<!-- 도수 -->
 									<div class="col-12 mb-1">
-										<p class="m-auto title">도수</p>
+										<p class="m-auto title" style="color: #160052;">도수</p>
 									</div>
 
 									<div class="input-group" style="padding-left: 1%;">
@@ -358,6 +359,7 @@
 		<!----------------------------------- Search-Result  ----------------------------------->
 
 
+		<p class="d-lg-none m-auto Result_banner2">검색 결과 : ${ count }건</p>
 		<hr>
 
 		<div class="container px-5 mt-4" id="Result_box">
@@ -366,44 +368,59 @@
 				<div class="col-1 "></div>
 				<div class="col-10">
 					<div class="col-12 mb-2">
-						<p class="m-auto Result_banner">총 ${ count }건이 검색되었습니다.</p>
+						<p class="d-none d-lg-block mx-2 mx-lg-0 m-auto Result_banner1">총
+							${ count }건이 검색되었습니다.</p>
 					</div>
-
 					<!----------------------------------- Result  ----------------------------------->
 
 					<div class="row m-auto">
-					
-					<!-- a태그 처리해야 상세 페이지 볼 수 있음 -->
-					
-					<c:forEach var="i" items="${list}">
 
-						<div class="col-4 Result_box">
-							<a href="/Detail.ProductController?seq=${i.seq}">
-								<div class="Result_img">
-									<img src="../thumbnail/${i.sysName}" class="w-100">
-								</div>
-								<div class="Result_txt" style="text-align:center;">
-									<div class="review"></div>
-									<p class="Result_name">${i.product_name}</p>
-									<p class="Result_decs">${i.smry}</p>
-								</div>
-							</a>
-						</div>
-						<c:choose>
-							<c:when test="${i.index mod 3 == 0}">
-						
-								<div class="col-12 w-100 mb-3"></div>
-						
-							</c:when>
-						
-						
-							<c:otherwise>
-							
-							</c:otherwise>
-						
-						</c:choose>
-						
-					</c:forEach>
+						<!-- a태그 처리해야 상세 페이지 볼 수 있음 -->
+
+						<c:forEach var="i" items="${list}">
+
+							<div class="col-12 col-lg-4 Result_box">
+								<a href="/Detail.ProductController?seq=${i.seq}">
+									<div class="Result_img">
+										<img src="../thumbnail/${i.sysName}" class="w-100" style="border-radius: 5px; border: border: 0.5px solid rgba(128, 128, 128);">
+									</div>
+									<div class="Result_txt" style="text-align: center;">
+										<div class="row Result_grade">
+											<div class="col-6 px-0" style="text-align: right;">
+												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+  <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+</svg>
+											</div>
+
+											<div class="col-6 px-1" style="text-align: left; line-height: 23px;">
+												${i.grade}
+											</div>
+										</div>
+										<p class="Result_name my-0">${i.product_name}</p>
+										<p class="Result_price my-1">
+											<fmt:formatNumber value="${i.price }" type="currency" />
+										</p>
+										<p class="Result_decs mb-4 mb-lg-0">${i.smry}</p>
+									</div>
+								</a>
+							</div>
+
+
+							<c:choose>
+								<c:when test="${i.index mod 3 == 0}">
+
+									<div class="col-12 w-100 mb-4 d-none d-lg-block"></div>
+
+								</c:when>
+
+
+								<c:otherwise>
+
+								</c:otherwise>
+
+							</c:choose>
+
+						</c:forEach>
 
 					</div>
 
@@ -461,7 +478,7 @@
         
         let avb = $("#avb").val();
 
-        let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]*{0,20}$/gs;
+        let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{0,20}$/gs;
         
         let regexAvb = /^[0-9]{0,2}.?[0-9]{0,5}$/g;
 

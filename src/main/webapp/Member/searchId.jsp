@@ -160,8 +160,8 @@
 							</c:when>
 											
 							<c:otherwise>
-								<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-								<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+								<button id="loginBtn" type="button" class="mx-1 d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button" class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
 								
 								<script>
 									$("#loginBtn").on("click",function(){

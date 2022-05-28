@@ -33,7 +33,7 @@
 <script src="https://kit.fontawesome.com/7f0130da7d.js"
 	crossorigin="anonymous"></script>
 
-<title>우리술 검색</title>
+<title>우리술 검색결과</title>
 
 </head>
 
@@ -209,7 +209,7 @@
 						</div>
 						<!----------------------------------- Detail-Search  ----------------------------------->
 						<div class="d-none d-lg-block col-12 mt-3 mb-1">
-							<p class="m-auto banner_bot">섬세한 검색을 해보죠</p>
+							<p class="m-auto banner_bot">상세 검색</p>
 						</div>
 
 						<div class="col-12" id="detail_box">
@@ -341,7 +341,7 @@
 									</div>
 
 									<div class="input-group" style="padding-left: 1%;">
-										<input type="text" class="form-control" placeholder="입력값 이상"
+										<input id="abv" type="text" class="form-control" placeholder="입력값 이상"
 											aria-label="Recipient's username"
 											aria-describedby="basic-addon2" name="avb"> <span
 											class="input-group-text" id="basic-addon2">% ABV</span>
@@ -392,7 +392,7 @@
 </svg>
 											</div>
 
-											<div class="col-6 px-1" style="text-align: left; line-height: 23px;">
+											<div class="col-6 px-1" style="text-align: left; line-height: 24px;">
 												${i.grade}
 											</div>
 										</div>
@@ -467,6 +467,8 @@
 				</div>
 			</div>
 		</footer>
+
+<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
 	</div>
 
 	<script>
@@ -476,11 +478,12 @@
         let search_text = $("#search_text").val();
         console.log(search_text);
         
-        let avb = $("#avb").val();
+        let avb = $("#abv").val();
+        console.log(abv);
 
-        let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{0,20}$/gs;
+        let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{0,20}$/g;
         
-        let regexAvb = /^[0-9]{0,2}.?[0-9]{0,5}$/g;
+        let regexAvb = /^[\d]{0,2}.?[\d]{0,5}$/g;
 
         if (!(regexSearch.test(search_text))) {
             alert("한글만 입력해주세요");
@@ -500,6 +503,27 @@
         }
         
     });
+    
+    $(document).ready(function(){
+        $(window).scroll(function () {
+               if ($(this).scrollTop() > 50) {
+                   $('#back-to-top').fadeIn();
+               } else {
+                   $('#back-to-top').fadeOut();
+               }
+           });
+           // scroll body to 0px on click
+           $('#back-to-top').click(function () {
+               $('#back-to-top').tooltip('hide');
+               $('body,html').animate({
+                   scrollTop: 0
+               }, 800);
+               return false;
+           });
+           
+           $('#back-to-top').tooltip('show');
+
+   });
 
     </script>
 </body>

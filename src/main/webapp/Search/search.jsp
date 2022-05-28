@@ -177,179 +177,195 @@
 		</header>
 
 
- 		<!----------------------------------- Search-Bar ----------------------------------->
+        <!----------------------------------- Search-Bar ----------------------------------->
 
-		<div class="container px-5 mt-4" id="search_box">
+        <div class="container px-5 mt-4" id="search_box">
 
-			<div class="row">
-				<div class="col-1 "></div>
+            <div class="row">
+                <div class="col-1 "></div>
 
-				<div class="d-none d-lg-block col-10">
-					<div class="col-12">
-						<p class="m-auto banner_top">요즘 핫한 우리 술을 검색하세요!</p>
-					</div>
-					<form action="/search.search" id="search">
-						<div class="main_con_form col-12 mt-3">
-							<div class="form_inner form_list_input">
-								<input type="text" id="search_text" name="search_text"
-									placeholder="군침도는 술을 찾아보자구~">
-								<button type="submit"
-									style="background-color: white; margin-left: 2%;">
-									<svg id="search_icon" xmlns="http://www.w3.org/2000/svg"
-										width="50" height="50" fill="currentColor"
-										class="bi bi-search" viewBox="0 0 16 16">
+                <div class="d-none d-lg-block col-10">
+                    <div class="col-12">
+                        <p class="m-auto banner_top">요즘 핫한 우리 술을 검색하세요!</p>
+                    </div>
+                    <form action="/search.search" id="search">
+                        <div class="main_con_form col-12 mt-3">
+                            <div class="form_inner form_list_input">
+                                <input type="text" id="search_text" name="search_text" placeholder="오늘은 어떤 술을 먹어볼까요?">
+                                <button type="submit" style="background-color: white; margin-left: 2%;">
+                                    <svg id="search_icon" xmlns="http://www.w3.org/2000/svg" width="50" height="50"
+                                        fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                         <path
-											d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                     </svg>
-								</button>
-							</div>
-						</div>
-						<!----------------------------------- Detail-Search  ----------------------------------->
-						<div class="d-none d-lg-block col-12 mt-3 mb-1">
-							<p class="m-auto banner_bot">섬세한 검색을 해보죠</p>
-						</div>
+                                </button>
+                            </div>
+                        </div>
+                        <!----------------------------------- Detail-Search  ----------------------------------->
+                        <div class="d-none d-lg-block col-12 mt-3 mb-1">
+                            <p class="m-auto banner_bot">상세 검색</p>
+                        </div>
 
-						<div class="col-12" id="detail_box">
-							<div class="container pt-3">
-								<div class="row">
-									<!-- 주종 -->
-									<div class="col-12 mb-1">
-										<p class="m-auto title" style="color: #160052;">술 종류</p>
-									</div>
+                        <div class="col-12" id="detail_box">
+                            <div class="container pt-3">
+                                <div class="row">
+                                    <!-- 주종 -->
+                                    <div class="col-12 mb-1">
+                                        <p class="m-auto title">술 종류</p>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="막걸리"
-											id="flexCheckDefault" name="alchol"> <label
-											class="form-check-label" for="flexCheckDefault"> 막걸리
-										</label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="checkbox" value="막걸리"
+                                            id="flexCheckDefault" name="alchol">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            막걸리
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="전통소주"
-											id="flexCheckDefault" name="alchol"> <label
-											class="form-check-label" for="flexCheckDefault"> 전통소주
-										</label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="checkbox" value="전통소주"
+                                            id="flexCheckDefault" name="alchol">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            전통 소주
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="약주"
-											id="flexCheckDefault" name="alchol"> <label
-											class="form-check-label" for="flexCheckDefault"> 약주 </label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="checkbox" value="약주"
+                                            id="flexCheckDefault" name="alchol">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            약주
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="과실주"
-											id="flexCheckDefault" name="alchol"> <label
-											class="form-check-label" for="flexCheckDefault"> 과실주
-										</label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="checkbox" value="과실주"
+                                            id="flexCheckDefault" name="alchol">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            과실주
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check mb-1" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="리큐르"
-											id="flexCheckDefault" name="alchol"> <label
-											class="form-check-label" for="flexCheckDefault"> 리큐르
-										</label>
-									</div>
+                                    <div class="col-2 form-check mb-1" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="checkbox" value="리큐르"
+                                            id="flexCheckDefault" name="alchol">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            리큐르
+                                        </label>
+                                    </div>
 
-									<!-- 지역 -->
-									<div class="col-12 mb-1">
-										<p class="m-auto title" style="color: #160052;">지역</p>
-									</div>
+                                    <!-- 지역 -->
+                                    <div class="col-12 mb-1">
+                                        <p class="m-auto title">지역</p>
+                                    </div>
 
-									<div class="col-2 form-check mb-1" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="서울"
-											id="flexCheckDefault" name="area"> <label
-											class="form-check-label" for="flexCheckDefault"> 서울 </label>
-									</div>
+                                    <div class="col-2 form-check mb-1" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="checkbox" value="서울"
+                                            id="flexCheckDefault" name="area">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            서울
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="경기도"
-											id="flexCheckDefault" name="area"> <label
-											class="form-check-label" for="flexCheckDefault"> 경기도
-										</label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="checkbox" value="경기도"
+                                            id="flexCheckDefault" name="area">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            경기도
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="경상도"
-											id="flexCheckDefault" name="area"> <label
-											class="form-check-label" for="flexCheckDefault"> 경상도
-										</label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="checkbox" value="경상도"
+                                            id="flexCheckDefault" name="area">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            경상도
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="강원도"
-											id="flexCheckDefault" name="area"> <label
-											class="form-check-label" for="flexCheckDefault"> 강원도
-										</label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="checkbox" value="강원도"
+                                            id="flexCheckDefault" name="area">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            강원도
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="전라도"
-											id="flexCheckDefault" name="area"> <label
-											class="form-check-label" for="flexCheckDefault"> 전라도
-										</label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="checkbox" value="전라도"
+                                            id="flexCheckDefault" name="area">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            전라도
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="checkbox" value="충청도"
-											id="flexCheckDefault" name="area"> <label
-											class="form-check-label" for="flexCheckDefault"> 충청도
-										</label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="checkbox" value="충청도"
+                                            id="flexCheckDefault" name="area">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            충청도
+                                        </label>
+                                    </div>
 
-									<!-- 평점 -->
-									<div class="col-12 mb-1">
-										<p class="m-auto title" style="color: #160052;">평점</p>
-									</div>
+                                    <!-- 평점 -->
+                                    <div class="col-12 mb-1">
+                                        <p class="m-auto title">평점</p>
+                                    </div>
 
-									<div class="col-2 form-check mb-1" style="padding-left: 5%;">
-										<input class="form-check-input" type="radio" value="1"
-											id="flexCheckDefault" name="grade"> <label
-											class="form-check-label" for="flexCheckDefault"> 1 </label>
-									</div>
+                                    <div class="col-2 form-check mb-1" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="radio" value="1" id="flexCheckDefault" name="grade">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            1
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="radio" value="2"
-											id="flexCheckDefault" name="grade"> <label
-											class="form-check-label" for="flexCheckDefault"> 2 </label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="radio" value="2" id="flexCheckDefault" name="grade">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            2
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="radio" value="3"
-											id="flexCheckDefault" name="grade"> <label
-											class="form-check-label" for="flexCheckDefault"> 3 </label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="radio" value="3" id="flexCheckDefault" name="grade">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            3
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="radio" value="4"
-											id="flexCheckDefault" name="grade"> <label
-											class="form-check-label" for="flexCheckDefault"> 4 </label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="radio" value="4" id="flexCheckDefault" name="grade">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            4
+                                        </label>
+                                    </div>
 
-									<div class="col-2 form-check" style="padding-left: 5%;">
-										<input class="form-check-input" type="radio" value="5"
-											id="flexCheckDefault" name="grade"> <label
-											class="form-check-label" for="flexCheckDefault"> 5 </label>
-									</div>
+                                    <div class="col-2 form-check" style="padding-left: 5%;">
+                                        <input class="form-check-input" type="radio" value="5" id="flexCheckDefault" name="grade">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            5
+                                        </label>
+                                    </div>
 
-									<!-- 도수 -->
-									<div class="col-12 mb-1">
-										<p class="m-auto title" style="color: #160052;">도수</p>
-									</div>
+                                    <!-- 도수 -->
+                                    <div class="col-12 mb-1">
+                                        <p class="m-auto title">도수</p>
+                                    </div>
 
-									<div class="input-group" style="padding-left: 1%;">
-										<input type="text" class="form-control" placeholder="입력값 이상"
-											aria-label="Recipient's username"
-											aria-describedby="basic-addon2" name="avb"> <span
-											class="input-group-text" id="basic-addon2">% ABV</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
+                                    <div class="input-group" style="padding-left: 1%;">
+                                        <input id="avb" type="text" class="form-control" placeholder="입력값 이상"
+                                            aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                            name="avb">
+                                        <span class="input-group-text" id="basic-addon2">% ABV</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
 
 
         <!----------------------------------- Detail-Search  ----------------------------------->
@@ -399,35 +415,35 @@
 
     <script>
 
-    $("#search").on("submit", function () {
+        $("#search").on("submit", function () {
 
-        let search_text = $("#search_text").val();
-        console.log(search_text);
-        
-        let avb = $("#avb").val();
+            let search_text = $("#search_text").val();
+            console.log(search_text);
+            
+            let avb = $("#avb").val();
 
-        let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{0,20}$/gs;
-        
-        let regexAvb = /^[0-9]{0,2}.?[0-9]{0,5}$/g;
+            let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{0,20}$/gs;
+            
+            let regexAvb = /^[\d]{0,2}.?[\d]{0,5}$/g;
 
-        if (!(regexSearch.test(search_text))) {
-            alert("한글만 입력해주세요");
-            $("#search_text").val('')
-            $("#search_text").focus();
+            if (!(regexSearch.test(search_text))) {
+                alert("한글만 입력해주세요");
+                $("#search_text").val('')
+                $("#search_text").focus();
 
-            return false
-        }
-        
-        
-        if (!(regexAvb.test(avb))) {
-            alert("10의 자리, 소수점 5번째까지 숫자만");
-            $("#avb").val('')
-            $("#avb").focus();
+                return false
+            }
+            
+            
+            if (!(regexAvb.test(avb))) {
+                alert("10의 자리, 소수점 5번째까지 숫자만");
+                $("#avb").val('')
+                $("#avb").focus();
 
-            return false
-        }
-        
-    });
+                return false
+            }
+            
+        });
 
     </script>
 </body>

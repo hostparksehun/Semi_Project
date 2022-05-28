@@ -188,7 +188,7 @@
 
     <div class="container" style="width: 360px;">
         <div style="text-align: center;"><h4>아이디 찾기</h4></div>
-             <div id="searchResult"></div>
+             <div id="searchResult" style="text-align: center;"><h5></h5></div>
 <!--             <div class="idline"> -->
                 <div><input type="text" class="textBox" id="name" name="name" placeholder="이름"></div>
 <!--                 <div class="check" id="nameinfo"></div> -->

@@ -190,14 +190,14 @@
 			
 			<form action="/updatePw.member" method="post">
 				<div style="text-align: center;">
-					<div id="changetext" style="display:none;"><h6>변경하실 비밀번호를 입력하세요.</h6></div>
-		            	<input type="password" class="pwBox" id="pw" name="pw" placeholder="비밀번호 재설정" style="display:none;">
-		            	<div id="pwinfo"></div>
-			            <input type="password" class="pwBox" id="pwcheck" name="pwcheck" placeholder="비밀번호 재설정 확인" style="display:none;">
-			            <div id="pwcheckinfo"></div>
-			            <input type="button" class="btn btn-outline-success" id="next" value="다음">
-			            <input type="button" class="btn btn-outline-success" id="change" value="변경" style="display:none;">
+					<div id="changetext" style="display:none;"><p>변경하실 비밀번호를 입력하세요.</p></div>
 	    		</div>
+	            	<input type="password" class="pwBox textBox" id="pw" name="pw" placeholder="비밀번호 재설정" style="display:none;">
+	            	<div id="pwinfo"></div>
+		            <input type="password" class="pwBox textBox" id="pwcheck" name="pwcheck" placeholder="비밀번호 재설정 확인" style="display:none;">
+		            <div id="pwcheckinfo"></div>
+		            <input type="button" class="btn btn-outline-success" id="next" value="다음">
+		            <input type="button" class="btn btn-outline-success" id="change" value="변경" style="display:none;">
 			</form>
     		</div>
     	</div>

@@ -1,28 +1,16 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@700&family=Song+Myung&display=swap');
 
-* {
-  box-sizing: border-box;
-}
-
 #logo {
-	width: 150px;
-	height: auto;
+    width: 150px;
+    height: auto;
 }
 
-#content {
-	width: 100%;
-	height: auto;
-}
-
-#search img {
-	height: 30px;
-	width: 30px;
-}
-
-#contents img {
-	width: 100%;
-	height: 500px;
+#content2 {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /* Reply */
@@ -43,31 +31,39 @@
     border-radius: 5px;
     height: 100%;
     padding: 1%;
+    margin-left: 0.1%;
     margin-bottom: 1%;
     position: relative;
 }
 
-#reply_box >textarea {
-margin: 10px;
+.textarea {
+margin: 3%;
+padding-left: 3%;
 padding: 1%;
 line-height: 150%;
-width: 90%;
+width: 95%;
 border: 1px solid gray;
 border-radius: 5px;
 resize: none;
 text-align: left;
 }
 
+.rebt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 5vh;
+}
+
 .reply_btn{
-    position: absolute;
-    left: 92%;
-    top: 22%;
     text-align: center;
-    width: 5%;
-    height: 50%;
+    width: 50%;
+    height: 50px;
+    line-height: 50%;
     border: 1px solid gray;
     border-radius: 5px;
     background-color: white;
+    
 }
 
 .title_num{
@@ -91,20 +87,20 @@ text-align: left;
 .board_title{
     margin-top: 1%;
     margin-bottom: 1%;
-    width:50%;
+    width:20%;
     height:100%;
 }
 
 .board_writer{
     float:left;
-    width: 30%;
+    width: 50%;
     height:100%;
     text-align: left;
 }
 
 .board_date{
     float:left;
-    width:70%;
+    width:50%;
     height:100%;
 }
 
@@ -147,7 +143,7 @@ text-align: left;
 
 .reply_cont{
     float: left;
-    width: 10%;
+    width: 20%;
     height: 100%;
 }
 
@@ -182,7 +178,8 @@ text-align: left;
     background-color: white;
     border: 1px solid gray;
     border-radius: 5px;
-    width: 5%;
+    width: 50px;
+    height: 50px;
 }
 
 
@@ -192,6 +189,14 @@ text-align: left;
     border: 1px solid gray;
     border-radius: 5px;
 }
+
+@media (max-width :992px) {
+    .disnone{
+        display: none;
+    }
+    
+}
+
 
 /* header부분 */
 header {

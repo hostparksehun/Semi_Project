@@ -29,7 +29,8 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
-<script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/7f0130da7d.js"
+	crossorigin="anonymous"></script>
 
 <title>우리술夜</title>
 </head>
@@ -62,18 +63,25 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
-									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
-									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
-									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
-									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
+									<li><a class="dropdown-item"
+										href="/productA10.ProductController">막걸리</a></li>
+									<li><a class="dropdown-item"
+										href="/productA20.ProductController">전통 소주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA30.ProductController">약주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA40.ProductController">과실주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA50.ProductController">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
+									<li><a class="dropdown-item"
+										href="/list.ProductController">전체보기</a></li>
 								</ul></li>
 
-							<li class="d-none d-lg-block nav-item"><a href="/Search/search.jsp"
+							<li class="d-none d-lg-block nav-item"><a
+								href="/Search/search.jsp"
 								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리술 검색</a></li>
 
 
@@ -121,8 +129,8 @@
 						</ul>
 						<form action="/mini.search" class="d-flex">
 							<input id="search_input" class="form-control mx-1" type="search"
-								placeholder="아이디말고 술을 찾으세요!" aria-label="Search" name="search_text"
-								required>
+								placeholder="아이디말고 술을 찾으세요!" aria-label="Search"
+								name="search_text" required>
 							<button class="btn btn-outline-success me-1" type="submit"
 								id="search_btn">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -147,21 +155,21 @@
 							</c:when>
 
 							<c:when test="${kakaoemail !=null}">
-								<div id="test"></div>
-									<div class="btn-group">
-										<button type="button" class="btn btn-warning dropdown-toggle"
-											data-bs-toggle="dropdown" aria-expanded="false">
-											${kakaoemail }</button>
-										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
-											<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
-										</ul>
-									</div>
+								<div class="d-none d-lg-inline btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${kakaoemail }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item" href="/logout.member"
+											id="kakaologout">로그아웃</a></li>
+									</ul>
+								</div>
 							</c:when>
-											
+														
 							<c:otherwise>
-								<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-								<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
+								<button id="loginBtn" type="button" class="mx-1 d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button" class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
 								
 								<script>
 									$("#loginBtn").on("click",function(){
@@ -173,11 +181,6 @@
 								</script>
 							</c:otherwise>
 						</c:choose>
-			
-          </div>
-        </div>
-      </nav>
-    </header>
 
 					</div>
 				</div>
@@ -185,88 +188,105 @@
 		</header>
 
 
+
 		<!----------------------------------- Content ----------------------------------->
 
-    <div class="container" style="width: 360px;">
-        <div style="text-align: center;"><h4>아이디 찾기</h4></div>
-             <div id="searchResult" style="text-align: center;"><h5></h5></div>
-<!--             <div class="idline"> -->
-                <div><input type="text" class="textBox" id="name" name="name" placeholder="이름"></div>
-<!--                 <div class="check" id="nameinfo"></div> -->
-<!--             <div class="idline"> -->
-				<div><input type="text" class="textBox" id="phone" name="phone" placeholder="휴대폰번호 (-없이)"></div>
-<!-- 				<div class="check" id="phoneinfo"></div> -->
-             <div style="text-align: center;">
-            <input type="button" class="btn btn-outline-success" id="search" value="찾기">
-            <input type="button" class="btn btn-outline-success" id="searchPw" value="비밀번호 찾기">
-            <input type="button" class="btn btn-outline-success" id="gologin" value="로그인" style="display:none;">
-            <input type="button" class="btn btn-outline-success" id="gomain" value="메인으로" style="display:none;">
-            </div>
+		<div class="container" style="width: 360px;">
+			<div style="text-align: center;">
+				<h4>아이디 찾기</h4>
+			</div>
+			<div id="searchResult" style="text-align: center;">
+				<h5></h5>
+			</div>
+			<!--             <div class="idline"> -->
+			<div>
+				<input type="text" class="textBox" id="name" name="name"
+					placeholder="이름">
+			</div>
+			<!--                 <div class="check" id="nameinfo"></div> -->
+			<!--             <div class="idline"> -->
+			<div>
+				<input type="text" class="textBox" id="phone" name="phone"
+					placeholder="휴대폰번호 (-없이)">
+			</div>
+			<!-- 				<div class="check" id="phoneinfo"></div> -->
+			<div style="text-align: center;">
+				<input type="button" class="btn btn-outline-success" id="search"
+					value="찾기"> <input type="button"
+					class="btn btn-outline-success" id="searchPw" value="비밀번호 찾기">
+				<input type="button" class="btn btn-outline-success" id="gologin"
+					value="로그인" style="display: none;"> <input type="button"
+					class="btn btn-outline-success" id="gomain" value="메인으로"
+					style="display: none;">
+			</div>
 		</div>
 
 		<script>
- 			$("#search").on("click",function(){
+			$("#search").on("click", function() {
 				$.ajax({
-					url:"/searchId.member",
-					data:{name:$("#name").val(), phone:$("#phone").val()} 
-				}).done(function(resp){ 
+					url : "/searchId.member",
+					data : {
+						name : $("#name").val(),
+						phone : $("#phone").val()
+					}
+				}).done(function(resp) {
 					console.log(resp);
 					let result = JSON.parse(resp);
 					console.log(result);
-	 				if(result == null){
+					if (result == null) {
 						alert("해당하는 정보가 없습니다. 입력된 정보를 다시 확인해주세요.");
 						$("#name").val("");
 						$("#phone").val("");
 						$("#name").focus();
-					}else{
+					} else {
 						$(".textBox").remove();
 						$("#searchResult").css("font-size", "15pt");
-						$("#searchResult").text("아이디는 "+result+"입니다.");
+						$("#searchResult").text("아이디는 " + result + "입니다.");
 						$("#search").hide();
 						$("#gomain").show();
 						$("#gologin").show();
 					}
-						
-						$("#gomain").on("click",function(){
-							location.href="/index.jsp";
-						}) 
-						$("#gologin").on("click",function(){
-							location.href="/Member/loginView.jsp";
-						})
+
+					$("#gomain").on("click", function() {
+						location.href = "/index.jsp";
+					})
+					$("#gologin").on("click", function() {
+						location.href = "/Member/loginView.jsp";
+					})
 				});
- 			})
- 			
- 			$("#searchPw").on("click", function(){
- 				location.href="/Member/searchPw.jsp";
- 			});
- 			
- 			//이름 유효성
- 			$("#name").on("keyup",function(){
- 				let name = $("#name").val();
- 				let nameRegex = /^[가-힣]{2,6}$/;//2~6글자 한글
- 				let nameResult = nameRegex.test(name);
- 				
- 				if(!nameResult){
- 					$("#nameinfo").css("color", "red");
- 					$("#nameinfo").text("2~6자 한글을 입력해주세요.");
- 				} else{
- 					$("#nameinfo").text("");
- 				}
- 			})
-			
- 			//휴대폰번호 유효성 검사
-			$("#phone").on("keyup",function(){
+			})
+
+			$("#searchPw").on("click", function() {
+				location.href = "/Member/searchPw.jsp";
+			});
+
+			//이름 유효성
+			$("#name").on("keyup", function() {
+				let name = $("#name").val();
+				let nameRegex = /^[가-힣]{2,6}$/;//2~6글자 한글
+				let nameResult = nameRegex.test(name);
+
+				if (!nameResult) {
+					$("#nameinfo").css("color", "red");
+					$("#nameinfo").text("2~6자 한글을 입력해주세요.");
+				} else {
+					$("#nameinfo").text("");
+				}
+			})
+
+			//휴대폰번호 유효성 검사
+			$("#phone").on("keyup", function() {
 				let phone = $("#phone").val();
-			    let phoneRegex = /^010[0-9]{8}$/; //핸드폰 11자리
+				let phoneRegex = /^010[0-9]{8}$/; //핸드폰 11자리
 				let phoneResult = phoneRegex.test(phone);
-				if(!phoneResult){
+				if (!phoneResult) {
 					$("#phoneinfo").css("color", "red");
 					$("#phoneinfo").text("휴대폰번호 11자리를 작성해주세요.");
 				} else{
 					$("#phoneinfo").text("");
 				}
 			})
- 		</script>
+		</script>
 
 		<!----------------------------------- footer ----------------------------------->
 

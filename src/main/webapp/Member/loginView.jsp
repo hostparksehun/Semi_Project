@@ -29,7 +29,8 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
-<script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/7f0130da7d.js"
+	crossorigin="anonymous"></script>
 
 <!-- 카카오 API -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -72,18 +73,25 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
-									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
-									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
-									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
-									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
+									<li><a class="dropdown-item"
+										href="/productA10.ProductController">막걸리</a></li>
+									<li><a class="dropdown-item"
+										href="/productA20.ProductController">전통 소주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA30.ProductController">약주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA40.ProductController">과실주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA50.ProductController">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
+									<li><a class="dropdown-item"
+										href="/list.ProductController">전체보기</a></li>
 								</ul></li>
 
-							<li class="d-none d-lg-block nav-item"><a href="/Search/search.jsp"
+							<li class="d-none d-lg-block nav-item"><a
+								href="/Search/search.jsp"
 								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리술 검색</a></li>
 
 
@@ -131,8 +139,8 @@
 						</ul>
 						<form action="/mini.search" class="d-flex">
 							<input id="search_input" class="form-control mx-1" type="search"
-								placeholder="로그인하지 말고 술 찾아요" aria-label="Search" name="search_text"
-								required>
+								placeholder="로그인하지 말고 술 찾아요" aria-label="Search"
+								name="search_text" required>
 							<button class="btn btn-outline-success me-1" type="submit"
 								id="search_btn">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -143,49 +151,52 @@
 							</button>
 						</form>
 
-            <c:choose>
-	        	<c:when test="${loginID != null}">
-					<div class="d-none d-lg-inline btn-group">
-						<button type="button" class="btn btn-warning dropdown-toggle"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							${loginID }</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
-							<li><a class="dropdown-item" href="javascript:secession();">로그아웃</a></li>
-						</ul>
-					</div>
-				</c:when>
-				
-				<c:when test="${kakaoemail !=null}">
-						<div class="d-none d-lg-inline btn-group">
-							<button type="button" class="btn btn-warning dropdown-toggle"
-								data-bs-toggle="dropdown" aria-expanded="false">
-								${kakaoemail }</button>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
-								<li><a class="dropdown-item" href="/logout.member" id="kakaologout">로그아웃</a></li>
-							</ul>
-						</div>
-				</c:when>
-				
-				<c:otherwise>
-					<button id="loginBtn" type="button" class="mx-1 d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
-					<button id="joinBtn" type="button" class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
-					
-					<script>
-						$("#logoutbtn").on("click", function(){
-							location.href="/logout.member";
-						})
-						$("#loginBtn").on("click",function(){
-							location.href="/Member/loginView.jsp";
-						})
-						$("#joinBtn").on("click",function(){
-							location.href="/Member/joinView.jsp";
-						})
-									
-					</script>
-				</c:otherwise>
-				</c:choose>
+						<c:choose>
+							<c:when test="${loginID != null}">
+								<div class="d-none d-lg-inline btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${loginID }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item"
+											href="javascript:secession();">로그아웃</a></li>
+									</ul>
+								</div>
+							</c:when>
+
+							<c:when test="${kakaoemail !=null}">
+								<div class="d-none d-lg-inline btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${kakaoemail }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item" href="/logout.member"
+											id="kakaologout">로그아웃</a></li>
+									</ul>
+								</div>
+							</c:when>
+
+							<c:otherwise>
+								<button id="loginBtn" type="button"
+									class="mx-1 d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button"
+									class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+
+								<script>
+									$("#logoutbtn").on("click", function() {
+										location.href = "/logout.member";
+									})
+									$("#loginBtn").on("click",function(){
+										location.href="/Member/loginView.jsp";
+									})
+									$("#joinBtn").on("click",function(){
+										location.href="/Member/joinView.jsp";
+									})
+								</script>
+							</c:otherwise>
+						</c:choose>
 
 					</div>
 				</div>
@@ -195,7 +206,7 @@
 
 		<!----------------------------------- Content ----------------------------------->
 		<div class="container" style="width: 360px;">
-			<form action="/login.member" method=post>
+			<form action="/login.member" method="post">
 				<div style="text-align: center;">
 					<h3>로그인</h3>
 				</div>
@@ -229,12 +240,13 @@
 	 					return false;
 	 				//아이디나 비번이 유효성에 맞지 않을 때
 	 				} else if(!idResult||!pwResult){
-	 					if(id="admin"){
-	 					}else {
-	 					alert("아이디 또는 비밀번호를 형식에 맞게 입력해주세요.");
-	 					$("id").val("");
-	 					$("pw").val("");
-	 					$("id").focus();
+	 					if($("#id").val()=="admin"){
+	 						alert("관리자 계정입니다.");
+	 					} else {
+		 					alert("아이디 또는 비밀번호를 형식에 맞게 입력해주세요.");
+		 					$("id").val("");
+		 					$("pw").val("");
+		 					$("id").focus();
 	 					}
 	 				}
 	 				//아이디나 비번이 유효성은 맞는데 틀렸을 때
@@ -244,7 +256,6 @@
 	 						type: "post",
 							data: {id:$("#id").val(), pw:$("#pw").val()}
 	 					}).done(function(resp){
-	 						console.log("받은 값은 "+resp);
 	 						if(resp=="false"){
 	 							alert("아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.");
 	 							location.href="/Member/loginView.jsp";
@@ -270,74 +281,77 @@
             </div>
             	</div>
     	</div>
-    
- 			
+
 		<script>
- 			//카카오 로그인
+			//카카오 로그인
 			//a90276ed357ed7ce1c45d0863f399e1d 키값
 			Kakao.init('a90276ed357ed7ce1c45d0863f399e1d');
-			
-			$("#kakao-login-btn").on("click", function(){
-			    //1. 로그인 시도
-			    Kakao.Auth.login({
-			        success: function(authObj) {
-			          //2. 로그인 성공시, API 호출
-			          Kakao.API.request({
-			            url: '/v2/user/me',
-			            success: function(res) {
-							console.log(res);
-				            let accessToken = Kakao.Auth.getAccessToken(); // 액세스 토큰 할당
-				            Kakao.Auth.setAccessToken(accessToken); // 액세스 토큰 사용하게 등록
-							//scope : 'account_email';
-							let id = res.id;
-							let name = res.properties.nickname; 
-							let email = res.kakao_account.email;
-							let birthday = res.kakao_account.birthday;
-							console.log(accessToken);
-// 							console.log(id);
-// 							console.log(name);
-// 							console.log(email);
-// 							console.log(birthday);
-							
-							$.ajax({
-								url:"/kakaologin.member",
-	// 							contentType : "application/json; charset:UTF-8",
-								data: {id:id, name:name, email:email, birthday:birthday},
-								type:"POST",
-								dataType:"json",
-							}).done(function(resp){
-								console.log(resp);
+
+			$("#kakao-login-btn").on("click", function() {
+				//1. 로그인 시도
+				Kakao.Auth.login({
+					success : function(authObj) {
+						//2. 로그인 성공시, API 호출
+						Kakao.API.request({
+							url : '/v2/user/me',
+							success : function(res) {
+								console.log(res);
+								let accessToken = Kakao.Auth.getAccessToken(); // 액세스 토큰 할당
+								Kakao.Auth.setAccessToken(accessToken); // 액세스 토큰 사용하게 등록
+								//scope : 'account_email';
+								let id = res.id;
+								let name = res.properties.nickname;
+								let email = res.kakao_account.email;
+								let birthday = res.kakao_account.birthday;
+								console.log(accessToken);
+								// 							console.log(id);
+								// 							console.log(name);
+								// 							console.log(email);
+								// 							console.log(birthday);
+
+								$.ajax({
+									url : "/kakaologin.member",
+									// 							contentType : "application/json; charset:UTF-8",
+									data : {
+										id : id,
+										name : name,
+										email : email,
+										birthday : birthday
+									},
+									type : "POST",
+									dataType : "json",
+								}).done(function(resp) {
+									console.log(resp);
 								})
 								alert("카카오계정으로 로그인 되었습니다.");
-								location.href="/index.jsp";
+								location.href = "/index.jsp";
 							}
-					})
-			          console.log(authObj);
-			          var token = authObj.access_token;
-			        },
-			        fail: function(err) {
-			          alert(JSON.stringify(err));
-			        }
-			      });
+						})
+						console.log(authObj);
+						var token = authObj.access_token;
+					},
+					fail : function(err) {
+						alert(JSON.stringify(err));
+					}
+				});
 			})
 			//카카오 연결 끊기
 			function secession() {
 				Kakao.API.request({
-			    	url: '/v1/user/unlink',
-			    	success: function(response) {
-			    		console.log(response);
-			    		//callback(); //연결끊기 성공시 서버에서 처리할 함수
-			    		alert("카카오 연결해제 O");
-			    		window.location.href='/index.jsp';
-			    	},
-			    	fail: function(error) {
-			  		console.log("카카오 연결해제 X");
-			    		console.log(error);
-			    	},
+					url : '/v1/user/unlink',
+					success : function(response) {
+						console.log(response);
+						//callback(); //연결끊기 성공시 서버에서 처리할 함수
+						alert("카카오 연결해제 O");
+						window.location.href = '/index.jsp';
+					},
+					fail : function(error) {
+						console.log("카카오 연결해제 X");
+						console.log(error);
+					},
 				});
 			};
-
- 		</script>
+		</script>
 
 		<!----------------------------------- footer ----------------------------------->
 

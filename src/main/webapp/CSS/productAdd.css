@@ -3,6 +3,7 @@
 
 * {
   box-sizing: border-box;
+  font-family: 'Hahmlet', serif;
 }
 
 #logo {
@@ -42,7 +43,10 @@
 
 /* Content */
 #manager_head {
-    padding-top: 5%;
+   text-align: center;
+   padding-top: 5%;
+   border-bottom: 1px solid black;
+   padding-bottom: 20px;
 }
 
 #input_box {
@@ -230,4 +234,14 @@ ul {
 		margin-right: 0;
 		font-weight: 600
 	}
+}
+
+/*반응형 처리*/
+#navmenu nav a{
+	 background-color: white;
+	 color:#198754;
+}
+#navmenu nav a:hover{
+	background-color: #198754;
+	 color:white;
 }

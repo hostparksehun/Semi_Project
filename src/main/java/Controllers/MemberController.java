@@ -101,14 +101,20 @@ public class MemberController extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(id));
 				String result = dao.kakaoLogin(email);
+				
 				if(result == null) {
+					dao.insert(new MemberDTO(id, " ", name, birthday, " ", email, " ", " ", " ")); // 마이페이지 데이터 입력용  0530 종호
 					dao.kakaoInsert(new MemberDTO(id, name, birthday, email));
 					session.setAttribute("kakaoemail", email); 
+					session.setAttribute("loginID", id);  // 로그인 아이디 0530 종호
 					//System.out.println("신규 카카오 이메일: "+email);
+					System.out.println("이곳 1");
 					response.sendRedirect("index.jsp");
 				} else {
 					session.setAttribute("kakaoemail", email); 
+					session.setAttribute("loginID", id);  // 로그인 아이디 0530 종호
 					//System.out.println("이미 있는 카카오 이메일: "+email);
+					System.out.println("이곳 2");
 					response.sendRedirect("index.jsp");
 				}
 				
@@ -187,8 +193,12 @@ public class MemberController extends HttpServlet {
 //--------------------회원탈퇴--------------------------------------				
 			}else if(uri.equals("/memberout.member")) {
 				String id= (String) (request.getSession().getAttribute("loginID"));
+				String email=(String) (request.getSession().getAttribute("kakaoemail"));
 				int result = mydao.memberout(id);
+				int result2 = dao.kakaoOut(email); // 카카오테이블 삭제도 함께 삭제됨 0530 종호
 				request.getSession().invalidate();
+				System.out.println((String)request.getSession().getAttribute("kakaoemail"));
+				System.out.println((String)request.getSession().getAttribute("loginID"));
 				response.sendRedirect("index.jsp");
 				
 			//카카오 탈퇴

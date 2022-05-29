@@ -7,7 +7,7 @@
 
 <head>
 <!-- CSS -->
-<link rel="stylesheet" href="/CSS/manager.css">
+<link rel="stylesheet" href="/CSS/productAdd.css">
 <!-- 경로 수정 고려 -->
 
 <meta charset="UTF-8">
@@ -34,7 +34,7 @@
 <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js"
 	charset="utf-8"></script>
 
-<title>관리자 페이지</title>
+<title>회원 관리</title>
 <body>
 	<div class="container">
 		<header class="mb-5 pt-3">
@@ -63,25 +63,18 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item"
-										href="/productA10.ProductController">막걸리</a></li>
-									<li><a class="dropdown-item"
-										href="/productA20.ProductController">전통 소주</a></li>
-									<li><a class="dropdown-item"
-										href="/productA30.ProductController">약주</a></li>
-									<li><a class="dropdown-item"
-										href="/productA40.ProductController">과실주</a></li>
-									<li><a class="dropdown-item"
-										href="/productA50.ProductController">리큐르</a></li>
+									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
+									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
+									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
+									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
+									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item"
-										href="/list.ProductController">전체보기</a></li>
+									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
 								</ul></li>
 
-							<li class="d-none d-lg-block nav-item"><a
-								href="/Search/search.jsp"
+							<li class="d-none d-lg-block nav-item"><a href="/Search/search.jsp"
 								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리술 검색</a></li>
 
 
@@ -129,7 +122,7 @@
 						</ul>
 						<form action="/mini.search" class="d-flex">
 							<input id="search_input" class="form-control mx-1" type="search"
-								placeholder="퇴근하고 전통소주?" aria-label="Search" name="search_text"
+								placeholder="관리자도 술먹어야지" aria-label="Search" name="search_text"
 								required>
 							<button class="btn btn-outline-success me-1" type="submit"
 								id="search_btn">
@@ -153,7 +146,7 @@
 									</ul>
 								</div>
 							</c:when>
-
+							
 							<c:when test="${kakaoemail !=null}">
 								<div class="d-none d-lg-inline btn-group">
 									<button type="button" class="btn btn-warning dropdown-toggle"
@@ -166,22 +159,17 @@
 									</ul>
 								</div>
 							</c:when>
-
+														
 							<c:otherwise>
-								<button id="loginBtn" type="button"
-									class="mx-1 d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
-								<button id="joinBtn" type="button"
-									class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
-
+								<button id="loginBtn" type="button" class="mx-1 d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button" class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+								
 								<script>
-									$("#loginBtn")
-											.on(
-													"click",
-													function() {
-														location.href = "/Member/loginView.jsp";
-													})
-									$("#joinBtn").on("click", function() {
-										location.href = "/Member/joinView.jsp";
+									$("#loginBtn").on("click",function(){
+										location.href="/Member/loginView.jsp";
+									})
+									$("#joinBtn").on("click",function(){
+										location.href="/Member/joinView.jsp";
 									})
 								</script>
 							</c:otherwise>
@@ -196,13 +184,11 @@
 		<div class="container mt-3">
 			<div class="row" id="manager">
 				<div class="col-12" id="manager_head">
-					<h1>관리 페이지</h1>
+					<h2>관리 페이지</h2>
 				</div>
 			</div>
-
-			<div class="row" id="content">
-
-				<div class="col-12 col-md-3 d-none d-lg-block" id="mypage list">
+			<div class="row my-2" id="content">
+				<div class="col-12 col-lg-3 d-none d-lg-block" id="mypage list">
 					<ul class="list-group list-group-flush">
 						<a href="/add.ProductController"
 							class="list-group-item list-group-item-action"> 상품 등록 </a>
@@ -215,7 +201,7 @@
 
 					</ul>
 				</div>
-
+				
 				<div class="col-12 d-lg-none" id="navmenu">
 					<nav class="nav nav-pills nav-fill">
 						<a class="nav-link" href="/add.ProductController">상품 등록</a> <a
@@ -224,50 +210,108 @@
 
 					</nav>
 				</div>
+				
+				<div class="col-12 col-lg-9">
+
+					<span id="title">
+						<h3 class="mt-3 d-none d-lg-block" style="padding-left: 25px;">회원 관리</h3>
+					</span>
+
+					<div class="container">
+						<div class="row">
+
+								<div class="col-12 mb-2 mt-2 d-none d-lg-block" style="font-size:1.4rem;">총 회원 수 : ${count}명</div>
+								<div class="col-12 d-none d-lg-block">
+
+									<table class="table">
+
+										<thead class="table-dark" style="text-align: center;">
+											<th>
+											<td colspan="1">ID</td>
+											<td colspan="1">이름</td>
+											<td colspan="3">연락처</td>
+											<td colspan="3">이메일</td>
+											<td colspan="4">주소</td>
+											</th>
+										</thead>
+
+										<!-- 반복문 돌릴 예정 : board_num이 value임 -->
+										<c:forEach var="i" items="${list}">
+
+											<tbody style="text-align: center;">
+												<th>
+											<td colspan="1">${i.id}</td>
+											<td colspan="1">${i.name}</td>
+											<td colspan="3">${i.phone}</td>
+											<td colspan="3">${i.email}</td>
+											<td colspan="4">${i.address1}</td>
+												</th>
+											</tbody>
+
+										</c:forEach>
+									</table>
+
+									</div>
+									
+									<div class="col-12 d-lg-none my-4" style="text-align:center; font-size:2rem; color:#2c6246;">
+										모바일 환경에선 <br>
+										확인할 수 없습니다.
+									</div>
+
+							<div class="col-12 mb-2 mt-1 d-none d-lg-block">
+
+								<nav aria-label="Page navigation example">
+									<ul class="pagination justify-content-center">${navi}</ul>
+								</nav>
+							</div>
+
+						</div>
+					</div>
+				</div>
 
 
-
-				<div class="col-12 col-md-9"></div>
 			</div>
 		</div>
 
-		<!--//////////////////////////////////////////////////////////////////////////////////-->
-		<hr>
-		<footer class="site-footer">
 
-			<div class="container">
-				<div class="row">
-					<div class="d-none d-lg-block col-md-8 col-sm-6 col-xs-12">
-						<p class="copyright-text">
-							Copyright &copy; 2022 All Rights Reserved by <a href="#"
-								style="text-decoration: none;">아이코올</a>.
-						</p>
-					</div>
+	<!--//////////////////////////////////////////////////////////////////////////////////-->
+	<hr>
+	<footer class="site-footer">
 
-					<div class="d-lg-none col-md-8 col-sm-6 col-xs-12">
-						<p class="copyright-text">Copyright &copy;</p>
-						<p class="copyright-text">
-							2022 All Rights Reserved by <a href="#"
-								style="text-decoration: none;">아이코올</a>.
-						</p>
-					</div>
+		<div class="container">
+			<div class="row">
+				<div class="d-none d-lg-block col-md-8 col-sm-6 col-xs-12">
+					<p class="copyright-text">
+						Copyright &copy; 2022 All Rights Reserved by <a href="#"
+							style="text-decoration: none;">아이코올</a>.
+					</p>
+				</div>
 
-					<div class="col-md-4 col-sm-6 col-xs-12 my-3 my-lg-0">
-						<ul class="social-icons">
-							<li><a class="facebook" href="#"><i
-									class="fa fa-facebook"></i></a></li>
-							<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a class="dribbble" href="#"><i
-									class="fa fa-dribbble"></i></a></li>
-							<li><a class="linkedin" href="#"><i
-									class="fa fa-linkedin"></i></a></li>
-						</ul>
-					</div>
+				<div class="d-lg-none col-md-8 col-sm-6 col-xs-12">
+					<p class="copyright-text">Copyright &copy;</p>
+					<p class="copyright-text">
+						2022 All Rights Reserved by <a href="#"
+							style="text-decoration: none;">아이코올</a>.
+					</p>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12 my-3 my-lg-0">
+					<ul class="social-icons">
+						<li><a class="facebook" href="#"><i
+								class="fa fa-facebook"></i></a></li>
+						<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a class="dribbble" href="#"><i
+								class="fa fa-dribbble"></i></a></li>
+						<li><a class="linkedin" href="#"><i
+								class="fa fa-linkedin"></i></a></li>
+					</ul>
 				</div>
 			</div>
-		</footer>
+		</div>
+	</footer>
 
 	</div>
+
 
 </body>
 

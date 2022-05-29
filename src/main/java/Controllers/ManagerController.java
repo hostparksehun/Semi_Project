@@ -13,6 +13,7 @@ import DAO.BoardDAO;
 import DAO.ManagerDAO;
 import DTO.BoardDTO;
 import DTO.ManagerDTO;
+import DTO.MemberDTO;
 
 @WebServlet("*.manager")
 public class ManagerController extends HttpServlet {
@@ -75,6 +76,22 @@ public class ManagerController extends HttpServlet {
 				
 			// 회원 관리	
 			} else if (uri.equals("/member.manager")) {
+				
+				int count = MgDAO.dataCountForMember();
+				
+				int cpage = Integer.parseInt(request.getParameter("cpage"));
+				
+				request.getSession().setAttribute("cpage", cpage);
+				
+				List<MemberDTO> list = MgDAO.selectByPageForMember(cpage);
+				
+				String pageNavi  = MgDAO.getPageNaviForMember(cpage);
+				
+				request.setAttribute("list", list);
+				request.setAttribute("count", count);
+				request.setAttribute("navi", pageNavi);
+				
+				request.getRequestDispatcher("/Manager/memberManager.jsp").forward(request, response);
 				
 				
 			}

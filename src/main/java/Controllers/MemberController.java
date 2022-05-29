@@ -96,7 +96,8 @@ public class MemberController extends HttpServlet {
 				String name = request.getParameter("name"); //닉네임
 				String email = request.getParameter("email");
 				String birthday = request.getParameter("birthday"); //(생년없이)월일
-				System.out.println("임의id:"+id+" 닉네임:"+name+" 이메일:"+email+" 생일:"+birthday);
+				//String token = request.getParameter("token");
+				System.out.println("임의id:"+id+" 닉:"+name+" 메일:"+email+" 생일:"+birthday);
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(id));
 				String result = dao.kakaoLogin(email);
@@ -187,6 +188,13 @@ public class MemberController extends HttpServlet {
 			}else if(uri.equals("/memberout.member")) {
 				String id= (String) (request.getSession().getAttribute("loginID"));
 				int result = mydao.memberout(id);
+				request.getSession().invalidate();
+				response.sendRedirect("index.jsp");
+				
+			//카카오 탈퇴
+			}else if(uri.equals("/kakaoout.member")) {
+				String email=(String) (request.getSession().getAttribute("kakaoemail"));
+				int result = dao.kakaoOut(email);
 				request.getSession().invalidate();
 				response.sendRedirect("index.jsp");
 			}

@@ -24,6 +24,9 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 
+<!-- 카카오 API -->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -212,11 +215,19 @@
 			</div>
 			<br>
 		</div>
-
-		<div id="btn" style="text-align: center;padding-bottom: 20px;">
-					<button type="button" class="btn btn-danger" id="ok">확인</button>
+ 		<c:choose>
+	  		<c:when test="${loginID !=null}">
+				<div id="btn" style="text-align: center;padding-bottom: 20px;">
+				<button type="button" class="btn btn-danger" id="ok">확인</button>
 				</div>
-
+			</c:when>
+	  		<c:when test="${kakaoemail !=null}">
+				<div id="btn" style="text-align: center;padding-bottom: 20px;">
+				<button type="button" class="btn btn-danger" id="kakaoout">
+				<a href="javascript:secession();">확인</a></button>
+				</div>
+	  		</c:when>
+  		</c:choose>
 
 		<!----------------------------------------script------------------------------------>
 
@@ -224,6 +235,30 @@
 			$("#ok").on("click", function() {
 				location.href = "/memberout.member"
 			})
+
+			function secession() {
+				Kakao.init('a90276ed357ed7ce1c45d0863f399e1d');
+				Kakao.isInitialized();
+				console.log(Kakao.Auth.getAccessToken());
+				
+				if (Kakao.Auth.getAccessToken()) {
+					Kakao.API.request({
+						url : '/v1/user/unlink',
+						success : function(response) {
+							alert("카카오 계정이 연결해제 되었습니다.");
+							console.log(response);
+							//callback(); //연결끊기 성공시 서버에서 처리할 함수
+							window.location.href = "/kakaoout.member";
+						},
+						fail : function(error) {
+							console.log("카카오 연결해제 X");
+							console.log(error);
+						},
+					});
+				}
+				
+			}
+			//})
 		</script>
 
 

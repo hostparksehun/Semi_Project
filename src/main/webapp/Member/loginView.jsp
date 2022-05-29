@@ -270,11 +270,11 @@
  			</script>
             <hr>
             <div class="sns">
-                <div id="kakao">
+                <div id="kakao" style="text-align: center;">
                 <a id="kakao-login-btn" >
                     <img src="/img/loginFile/kakao_login_medium_narrow.png"></a>
 				
-                    <a href="javascript:secession();">카카오 연동 해제</a>
+<!--                     <a href="javascript:secession();">카카오 연동 해제</a> -->
                 </div>
                 <div id="test">
                 </div>
@@ -304,10 +304,6 @@
 								let email = res.kakao_account.email;
 								let birthday = res.kakao_account.birthday;
 								console.log(accessToken);
-								// 							console.log(id);
-								// 							console.log(name);
-								// 							console.log(email);
-								// 							console.log(birthday);
 
 								$.ajax({
 									url : "/kakaologin.member",
@@ -316,7 +312,8 @@
 										id : id,
 										name : name,
 										email : email,
-										birthday : birthday
+										birthday : birthday,
+										token: accessToken
 									},
 									type : "POST",
 									dataType : "json",
@@ -337,6 +334,7 @@
 			})
 			//카카오 연결 끊기
 			function secession() {
+				if (Kakao.Auth.getAccessToken()) {
 				Kakao.API.request({
 					url : '/v1/user/unlink',
 					success : function(response) {
@@ -348,9 +346,10 @@
 					fail : function(error) {
 						console.log("카카오 연결해제 X");
 						console.log(error);
-					},
-				});
-			};
+						},
+					});
+				}
+			}
 		</script>
 
 		<!----------------------------------- footer ----------------------------------->

@@ -197,11 +197,11 @@
 				<div id="container">
 					<div id="top_line"></div>
 					<div id="head">
-						<div class="title_num">글번호 : ${board.boardNum}</div>
-						<div class="board_like">조회수 : ${board.boardCount}</div>
+						<div class="title_num" style="font-family: 'Hahmlet', serif;">글번호 : ${board.boardNum}</div>
+						<div class="board_like" style="font-family: 'Hahmlet', serif;">조회수 : ${board.boardCount}</div>
 					</div>
 
-					<div style="min-height: 70px;">
+					<div style="min-height: 70px; font-family: 'Hahmlet', serif;">
 						<c:choose>
 							<c:when test="${board.boardSatus == 2}">
 								<div class="row col-12">
@@ -328,10 +328,8 @@
 
 									<div class="head6">
 										<div class="reply_contents">${i.cotents}</div>
-										<!-- $(this).siblings(".reply_contents") 여기까지가  <div class="reply_contents">${i.cotents}</div>  이걸 선택한 상태 -->
 										<input name='contents' value="${i.cotents}"
 											style="display: none; width: 50%;">
-										<!-- $(this).siblings(".reply_contents").next() 여기는 <input name='contents' value="${i.cotents}" style="display: none; width:50%;"> 이걸 선택한 상태에요 -->
 										<br> <input type="hidden" id="contentsInput"
 											name="reply_contents">
 
@@ -351,8 +349,6 @@
 									</c:otherwise>
 					</c:choose>
 
-				</div>
-
 				</form>
 
 				</c:forEach>
@@ -360,6 +356,8 @@
 				</c:otherwise>
 
 				</c:choose>
+				
+				</div>
 
 			</div>
 

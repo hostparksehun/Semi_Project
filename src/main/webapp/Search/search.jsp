@@ -58,19 +58,19 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="#">막걸리</a></li>
-									<li><a class="dropdown-item" href="#">전통 소주</a></li>
-									<li><a class="dropdown-item" href="#">약주</a></li>
-									<li><a class="dropdown-item" href="#">과실주</a></li>
-									<li><a class="dropdown-item" href="#">리큐르</a></li>
+									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
+									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
+									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
+									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
+									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="#">전체보기</a></li>
+									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
 								</ul></li>
 
 							<li class="nav-item"><a href="/Search/search.jsp"
-								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리 술 검색</a></li>
+								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리술 검색</a></li>
 
 
 							<li class="nav-item"><a
@@ -115,7 +115,20 @@
 							</c:choose>
 
 						</ul>
-
+						
+						<form action="/mini.search" class="d-flex d-lg-none">
+							<input id="search_input" class="form-control mx-1" type="search"
+								placeholder="우리술을 검색하세요!" aria-label="Search" name="search_text"
+								required>
+							<button class="btn btn-outline-success me-1" type="submit"
+								id="search_btn">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+									fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+									<path
+										d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+								</svg>
+							</button>
+						</form>
 
 						<c:choose>
 							<c:when test="${loginID != null}">
@@ -128,35 +141,35 @@
 										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
 									</ul>
 								</div>
-
 							</c:when>
+							
 							<c:when test="${kakaoemail !=null}">
-					<div id="test"></div>
-						<div class="btn-group">
-							<button type="button" class="btn btn-warning dropdown-toggle"
-								data-bs-toggle="dropdown" aria-expanded="false">
-								${kakaoemail }</button>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
-								<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
-							</ul>
-						</div>
-				</c:when>
-				
-				<c:otherwise>
-					<button id="loginBtn" type="button" class="mx-1 btn btn-warning navbar-btn">로그인</button>
-					<button id="joinBtn" type="button" class="mx-1 btn btn-dark navbar-btn">회원가입</button>
-					
-					<script>
-					  $("#joinBtn").on("click",function(){
-					      location.href="/Member/joinView.jsp";
-					   })
-					  $("#loginBtn").on("click",function(){
-					     location.href="/Member/loginView.jsp"
-					  })
-					</script>
-				</c:otherwise>
-			</c:choose>
+								<div class="d-none d-lg-inline btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${kakaoemail }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item" href="/logout.member"
+											id="kakaologout">로그아웃</a></li>
+									</ul>
+								</div>
+							</c:when>
+														
+							<c:otherwise>
+								<button id="loginBtn" type="button" class="mx-1 d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button" class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+								
+								<script>
+									$("#loginBtn").on("click",function(){
+										location.href="/Member/loginView.jsp";
+									})
+									$("#joinBtn").on("click",function(){
+										location.href="/Member/joinView.jsp";
+									})
+								</script>
+							</c:otherwise>
+						</c:choose>
 
 					</div>
 				</div>
@@ -171,14 +184,14 @@
             <div class="row">
                 <div class="col-1 "></div>
 
-                <div class="col-10">
+                <div class="d-none d-lg-block col-10">
                     <div class="col-12">
                         <p class="m-auto banner_top">요즘 핫한 우리 술을 검색하세요!</p>
                     </div>
                     <form action="/search.search" id="search">
                         <div class="main_con_form col-12 mt-3">
                             <div class="form_inner form_list_input">
-                                <input type="text" id="search_text" name="search_text" placeholder="입력하세요">
+                                <input type="text" id="search_text" name="search_text" placeholder="오늘은 어떤 술을 먹어볼까요?">
                                 <button type="submit" style="background-color: white; margin-left: 2%;">
                                     <svg id="search_icon" xmlns="http://www.w3.org/2000/svg" width="50" height="50"
                                         fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -189,8 +202,8 @@
                             </div>
                         </div>
                         <!----------------------------------- Detail-Search  ----------------------------------->
-                        <div class="col-12 mt-3 mb-1">
-                            <p class="m-auto banner_bot">필요한 조건을 선택하세요</p>
+                        <div class="d-none d-lg-block col-12 mt-3 mb-1">
+                            <p class="m-auto banner_bot">상세 검색</p>
                         </div>
 
                         <div class="col-12" id="detail_box">
@@ -381,7 +394,7 @@
 						</p>
 					</div>
 
-					<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="col-md-4 col-sm-6 col-xs-12 my-3 my-lg-0">
 						<ul class="social-icons">
 							<li><a class="facebook" href="#"><i
 									class="fa fa-facebook"></i></a></li>
@@ -411,7 +424,7 @@
 
             let regexSearch = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{0,20}$/gs;
             
-            let regexAvb = /^[0-9]{0,2}.?[0-9]{0,5}$/g;
+            let regexAvb = /^[\d]{0,2}.?[\d]{0,5}$/g;
 
             if (!(regexSearch.test(search_text))) {
                 alert("한글만 입력해주세요");

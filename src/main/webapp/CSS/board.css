@@ -5,9 +5,13 @@
 	position: relative;
 }
 
+.active {
+	overflow: hidden;
+}
+
 .boardBody {
 	width: 100%;
-	height: 1000px;
+	height: auto;
 	margin: 0px auto;
 }
 
@@ -34,10 +38,12 @@
 	position: absolute;
 	left: 0px;
 	border: 0px;
-	height: 24px;
+	height: 30px;
+	margin: -10px;
 	color: white;
-	background-color: #87ecf9;
-	font-size: 16px;
+	background-color: #2c6246;
+	font-size: 18px;
+	border-radius: 7px;
 }
 
 .btn_under {
@@ -50,14 +56,15 @@
 	border: 0px;
 	height: 30px;
 	color: white;
-	background-color: #87ecf9;
+	background-color: #2c6246;
 	font-size: 20px;
+	border-radius: 7px;
 }
 
 .btn_write {
 	position: absolute;
-   	top: 0;
-    right: 0px;
+	top: 0;
+	right: 0px;
 }
 
 .down_write {
@@ -65,13 +72,21 @@
 	border: 0px;
 	height: 30px;
 	color: white;
-	background-color: #87ecf9;
+	background-color: #2c6246;
 	font-size: 20px;
+	border-radius: 7px;
+}
+
+.boardSearchBtn {
+	background-color: #2c6246; 
+	color: white; 
+	border: 0px; 
+	font-size: 18px; 
 }
 
 .top_board:hover, .down_board:hover, .down_write:hover {
 	cursor: pointer;
-	background-color: #b6f3fc;
+	background-color: #008040;
 }
 
 .page {
@@ -155,38 +170,33 @@
 	width: 100%;
 }
 
-.btn_wirte{
-	
-}
-
 #alcohoImg {
 	width: 100%;
-    max-width: 70px;
-    height: 70px;
-    background-color: #c5c5c5;
-    display: inline-block;
+	max-width: 70px;
+	height: 70px;
+	background-color: #c5c5c5;
+	display: inline-block;
 }
 
-#alcohoImg img{
-	width:100%;
+#alcohoImg img {
+	width: 100%;
 	height: 100%;
 }
 
 #alcohoContent {
 	width: 70%;
 	height: 75px;
-	display: inline-block;	
+	display: inline-block;
 }
 
-
-.boardUser, .boardTitle , .boardContent {
+.boardUser, .boardTitle, .boardContent {
 	width: 100%;
-    max-width: 70px;
-    height: 30px;
-    background-color: #c5c5c5;
-    display: inline-block;
-    text-align: center;
-    line-height: 30px;
+	max-width: 70px;
+	height: 30px;
+	background-color: #c5c5c5;
+	display: inline-block;
+	text-align: center;
+	line-height: 30px;
 }
 
 #userName {
@@ -196,7 +206,7 @@
 }
 
 .score {
-	margin-left: 10px;	
+	margin-left: 10px;
 }
 
 #boardTitle {
@@ -211,7 +221,7 @@
 }
 
 #boardImgAdd {
-	display: inline-block;	
+	display: inline-block;
 }
 
 .boardLastBtn {
@@ -221,197 +231,129 @@
 
 .boardLastBtn button {
 	color: white;
-    background-color: #70e0f6;
-    border: 0px;
-    border-radius: 4px;
-    font-size: 1.3em;
+	background-color: #2c6246;
+	border: 0px;
+	border-radius: 4px;
+	font-size: 1.3em;
 }
 
 .boardSearchBtn {
-    background-color: #70e0f6; 
-    color: white; border: 0px; 
-    font-size: 18px;
+	background-color: white;
+    color: black;
+    border: 0px;
+    font-size: 16px;
+    border: 1px solid;
+}
+
+.boardSearchBtn:hover {
+	cursor: pointer;
+	background-color: #c0c0c0;
 }
 
 
-/* header부분 */
-header {
-	font-family: 'Hahmlet', serif;
-	font-size: larger;
-	font-weight: 700;
+.boardTitleTd {
+	width: 50%;
+	text-align: left;
+	cursor: pointer;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
-ul {
-	margin-left: auto;
-	margin-right: auto;
+.boardlist1 {
+	margin:0%;
+	padding: 0%;
+}
+.boardlist2 {
+	background: #008000;
+	color: white;
 }
 
-#login {
-	margin-right: 1px;
+.boardTitleTd:hover {
+	padding-left: 4px;
 }
 
-#search_input {
-	width: 100%;
+.col-12 {
+    flex: auto;
+    width: 100%;
+    border: 1px solid;
 }
 
-/* footer 부분 */
-.site-footer {
-	background-color: #ffffff;
-	padding: 10px 0 20px;
-	font-size: 15px;
-	line-height: 24px;
-	color: #737373;
-	font-family: 'Hahmlet', serif;
+.background_box {
+	position: fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index: 11;
 }
 
-.site-footer hr {
-	border-top-color: #bbb;
-	opacity: 0.5
+.background_box .backgroun_main {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 100px 20px;
+	background-color: rgba(0, 0, 0, .75);
+	overflow: auto;
+	height: auto;
 }
 
-.site-footer hr.small {
-	margin: 20px 0
-}
+.product_option_select {
+	position: relative;
+	max-width: 800px;
+	background: #fff;
+	border-radius: 8px;
+	padding: 20px;
+	margin: 0 auto;
+	z-index: 11;
+} 
 
-.site-footer h6 {
-	color: #fff;
-	font-size: 16px;
-	text-transform: uppercase;
-	margin-top: 5px;
-	letter-spacing: 2px
-}
-
-.site-footer a {
-	color: #737373;
-}
-
-.site-footer a:hover {
-	color: #3366cc;
-	text-decoration: none;
-}
-
-.footer-links {
-	padding-left: 0;
-	list-style: none
-}
-
-.footer-links li {
-	display: block
-}
-
-.footer-links a {
-	color: #737373
-}
-
-.footer-links a:active, .footer-links a:focus, .footer-links a:hover {
-	color: #3366cc;
-	text-decoration: none;
-}
-
-.footer-links.inline li {
-	display: inline-block
-}
-
-.site-footer .social-icons {
-	text-align: right
-}
-
-.site-footer .social-icons a {
-	width: 40px;
-	height: 40px;
-	line-height: 40px;
-	margin-left: 6px;
-	margin-right: 0;
-	border-radius: 100%;
-	background-color: #33353d
-}
-
-.copyright-text {
-	margin: 0
-}
-
-@media ( max-width :991px) {
-	.site-footer [class^=col-] {
-		margin-bottom: 30px
-	}
-}
-
-@media ( max-width :767px) {
-	.site-footer {
-		padding-bottom: 0
-	}
-	.site-footer .copyright-text, .site-footer .social-icons {
-		text-align: center
-	}
-}
-
-.social-icons {
-	padding-left: 0;
-	margin-bottom: 0;
-	list-style: none
-}
-
-.social-icons li {
+.product_show_box {
+	width: 45%;
 	display: inline-block;
-	margin-bottom: 4px
+	margin-bottom: 10px;
 }
 
-.social-icons li.title {
-	margin-right: 15px;
-	text-transform: uppercase;
-	color: #96a2b2;
-	font-weight: 700;
-	font-size: 13px
+.product_show_box:hover {
+	cursor: pointer;
+	color: white;
+	background-color: black;
 }
 
-.social-icons a {
-	background-color: #eceeef;
-	color: #818a91;
-	font-size: 16px;
+.product_img {
+	width: 60px;
+	height: 60px;
 	display: inline-block;
-	line-height: 44px;
-	width: 44px;
-	height: 44px;
-	text-align: center;
-	margin-right: 8px;
-	border-radius: 100%;
-	-webkit-transition: all .2s linear;
-	-o-transition: all .2s linear;
-	transition: all .2s linear
 }
 
-.social-icons a:active, .social-icons a:focus, .social-icons a:hover {
-	color: #fff;
-	background-color: #29aafe
+.product_name {
+	display: inline-block;
+	width:80%;
 }
 
-.social-icons.size-sm a {
-	line-height: 34px;
-	height: 34px;
-	width: 34px;
-	font-size: 14px
+.product_img img{
+	width:100%;
+	height: 100%;
+	object-fit : cover; /* 정사각형 유지 였나 (이미지 깔끔하게 나오기) */
 }
 
-.social-icons a.facebook:hover {
-	background-color: #3b5998
-}
-
-.social-icons a.twitter:hover {
-	background-color: #00aced
-}
-
-.social-icons a.linkedin:hover {
-	background-color: #007bb6
-}
-
-.social-icons a.dribbble:hover {
-	background-color: #ea4c89
-}
-
-@media ( max-width :767px) {
-	.social-icons li.title {
-		display: block;
-		margin-right: 0;
-		font-weight: 600
+@media (max-width:992px){
+	.listoff{
+	display:none;
+	
+	}
+	
+	.product_show_box {
+		width: 90%;
+		display: inline-block;
+		margin-bottom: 10px;
+	}
+	
+	.product_name {
+		display: inline-block;
+		width:60%;
 	}
 }
+

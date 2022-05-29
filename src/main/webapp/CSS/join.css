@@ -9,7 +9,7 @@
     box-sizing: border-box;
     
 }
-h3{
+h3, .btn{
     font-family: 'Hahmlet', serif;
 }
 #logo {

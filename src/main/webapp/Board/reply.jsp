@@ -29,12 +29,14 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
+<script src="https://kit.fontawesome.com/7f0130da7d.js"
+	crossorigin="anonymous"></script>
 
 <title>우리술夜</title>
 </head>
 
 <body>
-	<div class="container" style="border: 1px solid black;">
+	<div class="container">
 		<header class="mb-5 pt-3">
 			<nav class="navbar navbar-expand-lg navbar-light bg-white">
 				<div class="container-fluid">
@@ -61,24 +63,32 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="#">막걸리</a></li>
-									<li><a class="dropdown-item" href="#">전통 소주</a></li>
-									<li><a class="dropdown-item" href="#">약주</a></li>
-									<li><a class="dropdown-item" href="#">과실주</a></li>
-									<li><a class="dropdown-item" href="#">리큐르</a></li>
+									<li><a class="dropdown-item"
+										href="/productA10.ProductController">막걸리</a></li>
+									<li><a class="dropdown-item"
+										href="/productA20.ProductController">전통 소주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA30.ProductController">약주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA40.ProductController">과실주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA50.ProductController">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="#">전체보기</a></li>
+									<li><a class="dropdown-item"
+										href="/list.ProductController">전체보기</a></li>
 								</ul></li>
 
-							<li class="nav-item"><a href="/Search/search.jsp"
+							<li class="d-none d-lg-block nav-item"><a
+								href="/Search/search.jsp"
 								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리 술 검색</a></li>
 
 
 							<li class="nav-item"><a
-								class="nav-link mx-0 mx-md-0 mx-lg-3" href="/boardList.board"
-								id="board">술꾼 술꾼</a></li>
+								class="nav-link mx-0 mx-md-0
+									mx-lg-3"
+								href="/boardList.board" id="board">술꾼 술꾼</a></li>
 							<c:choose>
 								<c:when test="${loginID != null}">
 
@@ -143,13 +153,34 @@
 										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
 									</ul>
 								</div>
-
 							</c:when>
+							<c:when test="${kakaoemail !=null}">
+								<div class="d-none d-lg-inline btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${kakaoemail }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item" href="/logout.member"
+											id="kakaologout">로그아웃</a></li>
+									</ul>
+								</div>
+							</c:when>
+
 							<c:otherwise>
-								<button id=login type="button"
-									class="d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
-								<button id=join type="button"
-									class="d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+								<button id="loginBtn" type="button"
+									class="mx-1 d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button"
+									class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+
+								<script>
+									$("#loginBtn").on("click",function(){
+										location.href="/Member/loginView.jsp";
+									})
+									$("#joinBtn").on("click",function(){
+										location.href="/Member/joinView.jsp";
+									})
+								</script>
 							</c:otherwise>
 						</c:choose>
 
@@ -173,8 +204,10 @@
 					<div style="min-height: 70px;">
 						<c:choose>
 							<c:when test="${board.boardSatus == 2}">
-								<div class="board_title">
-									글 제목 : ${board.title} <span style="color: red">[신고된게시글]</span>
+								<div class="row col-12">
+									<div class="board_title col-lg-10 col-md-12">글 제목 :
+										${board.title}</div>
+									<div style="color: red" class="col-lg-2 col-md-12">[신고된게시글]</div>
 								</div>
 							</c:when>
 							<c:otherwise>
@@ -206,9 +239,9 @@
 					</div>
 					<div id="top_line"></div>
 
-					<div id="head2">
-						<div class="board_writer">작성자 : ${board.writer}</div>
-						<div class="board_date">작성일 : ${board.writeDate}</div>
+					<div id="head2" class="row.col-12">
+						<div class="board_writer .col-6">작성자 : ${board.writer}</div>
+						<div class="board_date .col-6">작성일 : ${board.writeDate}</div>
 					</div>
 
 					<div id="head3">
@@ -218,27 +251,26 @@
 					<div id="top_line"></div>
 
 					<div class="board_select">
-						여기가 이전 글 리스트 링크 거는 곳입니다<br> 여기가 이전 글 리스트 링크 거는 곳입니다<br>
-						여기가 이전 글 리스트 링크 거는 곳입니다<br>
+						이전 게시글<br> 현재 보여지는 게시글<br> 다음 게시글<br>
 					</div>
 
 					<div id="top_line"></div>
 
 
 					<div id="head5" style="position: relative;">
-						<div class="reply_cont">
+						<div class="reply_cont disnone">
 							총 댓글 :
 							<c:out value="${replyCount}" />
 						</div>
 						<c:forEach var="reply" items="${reply}" varStatus="stat">
 							<script class="scriptDelte">
 								$(".reply_cont").text("총 댓글 : ${stat.count}");
-								if(${stat.last}){
+								if (${ stat.last }) {
 									$(".scriptDelte").remove();
 								}
 							</script>
 						</c:forEach>
-						<div class="like_cont">추천 : ${board.boardLike}</div>
+						<div class="like_cont disnone">추천 : ${board.boardLike}</div>
 						<c:choose>
 							<c:when test="${boardLike > 0}">
 								<input type="button" class="like_btn" value="추천완료">
@@ -266,9 +298,15 @@
 						action="/add.board?parent_seq=${board.boardNum}&writer=${loginID}"
 						method="post">
 
-						<div id="reply_box">
-							<textarea placeholder="댓글 내용을 입력하세요." name='content'></textarea>
-							<input id="reply" type="submit" class="reply_btn" value="확인">
+						<div id="reply_box" class="row col-lg-12">
+							<div class="col-lg-10 col-md-8 col-xs-6" style="resize: none;">
+								<textarea placeholder="댓글 내용을 입력하세요." name='content'
+									class="textarea"></textarea>
+							</div>
+							<div class="rebt col-lg-2 col-md-4 col-xs-6"
+								style="margin: auto;">
+								<input id="reply" type="submit" class="reply_btn" value="확인">
+							</div>
 						</div>
 
 					</form>
@@ -286,7 +324,7 @@
 									action="modify.board?pseq=${board.boardNum}&seq=${i.replySeq}"
 									method="post" id="modifyFrm" enctype="multipart/form-data">
 
-									<div class="reply_view">${i.writer}| ${i.wirteDate}</div>
+									<div class="reply_view">${i.writer}|${i.wirteDate}</div>
 
 									<div class="head6">
 										<div class="reply_contents">${i.cotents}</div>
@@ -301,33 +339,32 @@
 
 											<c:when test="${loginID == i.writer}">
 
+
 												<input type="hidden" class="reply_seq" value="${i.replySeq}">
 												<button class="head6_btn modify" type="button">수정</button>
 												<button class="head6_btn delRbtn" type="button">삭제</button>
-
-											</c:when>
-
-											<c:otherwise>
-
-											</c:otherwise>
-
-										</c:choose>
-
 									</div>
+									</c:when>
 
-								</form>
+									<c:otherwise>
 
-							</c:forEach>
-
-						</c:otherwise>
-
+									</c:otherwise>
 					</c:choose>
 
 				</div>
 
+				</form>
+
+				</c:forEach>
+
+				</c:otherwise>
+
+				</c:choose>
+
 			</div>
 
 		</div>
+
 
 		<hr>
 		<footer class="site-footer">
@@ -349,7 +386,7 @@
 						</p>
 					</div>
 
-					<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="col-md-4 col-sm-6 col-xs-12 my-3 my-lg-0">
 						<ul class="social-icons">
 							<li><a class="facebook" href="#"><i
 									class="fa fa-facebook"></i></a></li>
@@ -368,56 +405,57 @@
 	<!-- 댓글 관련 스크립트 작성 -->
 
 	<script>
-		$(".modify").on("click", function(){
+		$(".modify").on("click", function () {
 
-			$(this).siblings(".reply_contents").next().show(); 
+			$(this).siblings(".reply_contents").next().show();
 			$(this).siblings(".reply_contents").hide();
 			$(this).css("display", "none");
 			$(this).siblings(".delRbtn").css("display", "none");
-			
+
 			let okBtn = $("<button>");
 			okBtn.text("수정완료");
-			okBtn.attr("type","submit");
-			okBtn.attr("class","head6_btn");
-			
+			okBtn.attr("type", "submit");
+			okBtn.attr("class", "head6_btn");
+
 			let cancelBtn = $("<button>");
-			cancelBtn.attr("type","button");
-			cancelBtn.attr("class","head6_btn");
+			cancelBtn.attr("type", "button");
+			cancelBtn.attr("class", "head6_btn");
 			cancelBtn.text("취소");
-			
-			cancelBtn.on("click", function(){
+
+			cancelBtn.on("click", function () {
 				location.reload();
 			})
-			
+
 			$(this).parent().append(okBtn);
 			$(this).parent().append(cancelBtn);
-			
+
 		});
-			
-		$("#modifyFrm").on("submit",function(){
+
+		$("#modifyFrm").on("submit", function () {
 			$("#contentsInput").val($("#reply_contents").text());
 		});
-		
-			$(".delRbtn").on("click",function(){
-				
-				let result = confirm("댓글을 삭제하시겠습니까?");
-				let reply_seq = $(this).siblings(".reply_seq").val();
-				
-				if(result){
-					
-					$.ajax({
-						url: "/del.board",	
-						data: {"seq":reply_seq,"pseq": "${board.boardNum}"}
-					}).done(function(resp){
-						location.reload();
-					});
-					
-				} else{
-					
-				}
-				
-			});
-		</script>
+
+		$(".delRbtn").on("click", function () {
+
+			let result = confirm("댓글을 삭제하시겠습니까?");
+			let reply_seq = $(this).siblings(".reply_seq").val();
+
+			if (result) {
+
+				$.ajax({
+					url: "/del.board",
+					data: { "seq": reply_seq, "pseq": "${board.boardNum}" }
+				}).done(function (resp) {
+					location.reload();
+				});
+
+			} else {
+
+			}
+
+		});
+	</script>
+
 
 	<!----------------------------------- footer ----------------------------------->
 

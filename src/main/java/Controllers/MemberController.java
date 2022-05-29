@@ -64,19 +64,29 @@ public class MemberController extends HttpServlet {
 			//로그인
 			}else if (uri.equals("/login.member")) {
 				String id = request.getParameter("id"); 
-				String pwd = EncryptUtils.SHA256(request.getParameter("pw"));
+				String pw = EncryptUtils.SHA256(request.getParameter("pw"));
 				
-				boolean result = dao.login(id, pwd); 
-				System.out.println("아디:"+id+" 비번:"+pwd+" 결과:"+result);
+				boolean result = dao.login(id, pw); 
+				System.out.println("아디:"+id+" 비번:"+pw+" 결과:"+result);
 				if (result) {
 					HttpSession session = request.getSession(); 
 					session.setAttribute("loginID", id);
 					response.sendRedirect("index.jsp");	
-				} else {
-					//PrintWriter pw = response.getWriter();
-					response.getWriter().append(String.valueOf(result));
+				} else if(!result){
 					response.sendRedirect("/Member/loginView.jsp");
-			}
+				}
+			//아이디or비번 유효성은 맞는데 입력을 잘못했을 때
+			} else if(uri.equals("/logincheck.member")) {
+				String id = request.getParameter("id"); 
+				String pw = EncryptUtils.SHA256(request.getParameter("pw"));
+				boolean result = dao.login(id, pw); 
+				if (result) {
+					HttpSession session = request.getSession(); 
+					session.setAttribute("loginID", id);
+					response.sendRedirect("index.jsp");	
+				} else if(!result){
+					response.getWriter().append(String.valueOf(result));
+				}
 				
 			//카카오 로그인-이메일 확인 후 없다면 DB,session 저장
 			} else if (uri.equals("/kakaologin.member")){
@@ -86,19 +96,19 @@ public class MemberController extends HttpServlet {
 				String name = request.getParameter("name"); //닉네임
 				String email = request.getParameter("email");
 				String birthday = request.getParameter("birthday"); //(생년없이)월일
-				System.out.println("임의id:"+id+" 닉네임:"+name+" 이메일:"+email+" 생일:"+birthday);
-				//System.out.println(result);
+				//String token = request.getParameter("token");
+				System.out.println("임의id:"+id+" 닉:"+name+" 메일:"+email+" 생일:"+birthday);
 				PrintWriter pw = response.getWriter();
 				pw.append(g.toJson(id));
 				String result = dao.kakaoLogin(email);
 				if(result == null) {
 					dao.kakaoInsert(new MemberDTO(id, name, birthday, email));
 					session.setAttribute("kakaoemail", email); 
-					System.out.println("신규 카카오 이메일: "+email);
+					//System.out.println("신규 카카오 이메일: "+email);
 					response.sendRedirect("index.jsp");
 				} else {
 					session.setAttribute("kakaoemail", email); 
-					System.out.println("이미 있는 카카오 이메일: "+email);
+					//System.out.println("이미 있는 카카오 이메일: "+email);
 					response.sendRedirect("index.jsp");
 				}
 				
@@ -178,6 +188,13 @@ public class MemberController extends HttpServlet {
 			}else if(uri.equals("/memberout.member")) {
 				String id= (String) (request.getSession().getAttribute("loginID"));
 				int result = mydao.memberout(id);
+				request.getSession().invalidate();
+				response.sendRedirect("index.jsp");
+				
+			//카카오 탈퇴
+			}else if(uri.equals("/kakaoout.member")) {
+				String email=(String) (request.getSession().getAttribute("kakaoemail"));
+				int result = dao.kakaoOut(email);
 				request.getSession().invalidate();
 				response.sendRedirect("index.jsp");
 			}

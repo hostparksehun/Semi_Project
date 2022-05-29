@@ -47,6 +47,14 @@ public class ProductDTO {
 		this.oriName = oriName;
 		this.sysName = sysName;
 	}
+	
+	public ProductDTO(String product_name, int seq, String smry, String oriName) {
+		super();
+		this.product_name = product_name;
+		this.seq = seq;
+		this.smry = smry;
+		this.oriName = oriName;
+	}
 
 	public String getProduct_name() {
 		return product_name;

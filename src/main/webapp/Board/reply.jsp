@@ -339,6 +339,7 @@
 
 											<c:when test="${loginID == i.writer}">
 
+
 												<input type="hidden" class="reply_seq" value="${i.replySeq}">
 												<button class="head6_btn modify" type="button">수정</button>
 												<button class="head6_btn delRbtn" type="button">삭제</button>

@@ -214,7 +214,7 @@
 						비밀번호<br>
 					</div>
 					<input type="password" id="pw" name="pw"
-						placeholder="숫자, 영문 조합 최소 8자" class="join-input searchinput">
+						placeholder="영문, 숫자 각각 포함한 최소 8자" class="join-input searchinput">
 					<div class="check" id="pwinfo"></div>
 				</div>
 				<div class="join-box">
@@ -449,7 +449,7 @@
 		let phoneResult = phoneRegex.test(phone);
 		if(!phoneResult){
 			$("#phoneinfo").css("color", "red");
-			$("#phoneinfo").text("핸드폰번호 11자리를 작성해주세요.");
+			$("#phoneinfo").text("휴대폰번호 11자리를 작성해주세요.");
 		} else{
 			$("#phoneinfo").text("");
 		}

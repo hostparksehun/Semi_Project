@@ -188,14 +188,11 @@
 									$("#logoutbtn").on("click", function() {
 										location.href = "/logout.member";
 									})
-									$("#loginBtn")
-											.on(
-													"click",
-													function() {
-														location.href = "/Member/loginView.jsp";
-													})
-									$("#joinBtn").on("click", function() {
-										location.href = "/Member/joinView.jsp";
+									$("#loginBtn").on("click",function(){
+										location.href="/Member/loginView.jsp";
+									})
+									$("#joinBtn").on("click",function(){
+										location.href="/Member/joinView.jsp";
 									})
 								</script>
 							</c:otherwise>
@@ -209,92 +206,81 @@
 
 		<!----------------------------------- Content ----------------------------------->
 		<div class="container" style="width: 360px;">
-			<form action="/login.member" method=post>
+			<form action="/login.member" method="post">
 				<div style="text-align: center;">
 					<h3>로그인</h3>
 				</div>
-				<div>
-					<input type="text" class="textBox" id="id" name="id"
-						placeholder="아이디">
-				</div>
-				<div>
-					<input type="password" class="textBox" id="pw" name="pw"
-						placeholder="비밀번호">
-				</div>
-				<div id="search">
-					<a href="/Member/searchId.jsp" id="searchIdbtn">아이디 찾기</a> <a
-						href="/Member/searchPw.jsp" id="searchPwbtn">비밀번호 찾기</a>
-					<div id="why"></div>
-				</div>
-				<div style="text-align: center;">
-					<input type="submit" class="btn btn-outline-success"
-						id="loginBtn_in" value="로그인하기"> <input type="button"
-						class="btn btn-outline-success" id="joinBtn_in" value="회원가입">
-				</div>
-			</form>
-			<script>
-				$("#loginBtn_in")
-						.on(
-								"click",
-								function() {
-									let id = $("#id").val();
-									let idRegex = /^[\da-z_]{8,13}$/; //영어 소문자, 숫자, 언더바 8~13글자
-									let idResult = idRegex.test(id);
-									let pw = $("#pw").val();
-									let pwRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/; //영문, 숫자를 하나 이상 포함한 8~16자
-									let pwResult = pwRegex.test(pw);
-
-									//아이디나 비번 빈값일 때
-									if ($("#id").val() == ""
-											|| $("#pw").val() == "") {
-										alert("아이디 또는 비밀번호를 입력해주세요.");
-										return false;
-										//아이디나 비번이 유효성에 맞지 않을 때
-									} else if (!idResult || !pwResult) {
-										alert("아이디 또는 비밀번호를 형식에 맞게 입력해주세요.");
-										$("id").val("");
-										$("pw").val("");
-										$("id").focus();
-									}
-									//아이디나 비번이 유효성은 맞는데 틀렸을 때
-									if (idResult && pwResult) {
-										$
-												.ajax({
-													url : "/logincheck.member",
-													type : "post",
-													data : {
-														id : $("#id").val(),
-														pw : $("#pw").val()
-													}
-												})
-												.done(
-														function(resp) {
-															console
-																	.log("받은 값은 "
-																			+ resp);
-															if (resp == "false") {
-																alert("아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.");
-																location.href = "/Member/loginView.jsp";
-															}
-														})
-									}
-								});
-
-				$("#joinBtn_in").on("click", function() {
-					location.href = "/Member/joinView.jsp";
-				})
-			</script>
-			<hr>
-			<div class="sns">
-				<div id="kakao">
-					<a id="kakao-login-btn"> <img
-						src="/img/loginFile/kakao_login_medium_narrow.png"></a> <a
-						href="javascript:secession();">카카오 연동 해제</a>
-				</div>
-				<div id="test"></div>
-			</div>
-		</div>
-
+					<div>
+						<input type="text" class="textBox" id="id" name="id"
+							placeholder="아이디">
+					</div>
+				<div><input type="password" class="textBox" id="pw" name="pw" placeholder="비밀번호"></div>
+            <div id="search">
+            <a href="/Member/searchId.jsp" id="searchIdbtn">아이디 찾기</a>
+            <a href="/Member/searchPw.jsp" id="searchPwbtn">비밀번호 찾기</a>
+            <div id="why"></div>
+             </div>
+             <div style="text-align: center;">
+            <input type="submit" class="btn btn-outline-success" id="loginBtn_in" value="로그인하기">
+            <input type="button" class="btn btn-outline-success" id="joinBtn_in" value="회원가입">
+            </div>
+    	</form>
+   	 		<script>
+	 			$("#loginBtn_in").on("click",function(){
+	 				let id = $("#id").val();
+	 				let idRegex = /^[\da-z_]{8,13}$/; //영어 소문자, 숫자, 언더바 8~13글자
+	 				let idResult = idRegex.test(id);
+	 				let pw = $("#pw").val();
+	 				let pwRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/; //영문, 숫자를 하나 이상 포함한 8~16자
+	 				let pwResult = pwRegex.test(pw);
+	 				
+	 				//아이디나 비번 빈값일 때
+	 				if($("#id").val() ==""||$("#pw").val() == ""){
+	 					alert("아이디 또는 비밀번호를 입력해주세요.");
+	 					return false;
+	 				//아이디나 비번이 유효성에 맞지 않을 때
+	 				} else if(!idResult||!pwResult){
+	 					if($("#id").val()=="admin"){
+	 						alert("관리자 계정입니다.");
+	 					} else {
+		 					alert("아이디 또는 비밀번호를 형식에 맞게 입력해주세요.");
+		 					$("id").val("");
+		 					$("pw").val("");
+		 					$("id").focus();
+	 					}
+	 				}
+	 				//아이디나 비번이 유효성은 맞는데 틀렸을 때
+	 				if(idResult&&pwResult){
+		 				$.ajax({
+	 						url:"/logincheck.member",
+	 						type: "post",
+							data: {id:$("#id").val(), pw:$("#pw").val()}
+	 					}).done(function(resp){
+	 						if(resp=="false"){
+	 							alert("아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.");
+	 							location.href="/Member/loginView.jsp";
+	 						}
+	 					})
+		 				}
+	 			});
+	 			
+	 			$("#joinBtn_in").on("click",function(){
+	 				location.href="/Member/joinView.jsp";
+	 			})
+ 			</script>
+            <hr>
+            <div class="sns">
+                <div id="kakao">
+                <a id="kakao-login-btn" >
+                    <img src="/img/loginFile/kakao_login_medium_narrow.png"></a>
+				
+                    <a href="javascript:secession();">카카오 연동 해제</a>
+                </div>
+                <div id="test">
+                </div>
+            </div>
+            	</div>
+    	</div>
 
 		<script>
 			//카카오 로그인

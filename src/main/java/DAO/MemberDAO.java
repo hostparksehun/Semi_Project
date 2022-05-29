@@ -165,6 +165,15 @@ public class MemberDAO {
 					return result;
 				}
 			}
-	
-	
+	//카카오 회원 탈퇴
+	public int kakaoOut(String email) throws Exception {
+		String sql = "delete from kakaomember where email=?";
+		try(Connection con = this.getConnection();
+			PreparedStatement pstat = con.prepareStatement(sql)) {
+			pstat.setString(1, email);
+			int result = pstat.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
 }

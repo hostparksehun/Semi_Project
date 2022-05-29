@@ -27,11 +27,11 @@
     <script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
-    <title>상품 등록</title>
+    <title>회원 관리</title>
 
 <body>
     <div class="container">
-  		<header class="mb-5 pt-3">
+		<header class="mb-5 pt-3">
 			<nav class="navbar navbar-expand-lg navbar-light bg-white">
 				<div class="container-fluid">
 					<div class="navbar-header mx-2">
@@ -171,7 +171,7 @@
                 </div>
             </div>
             <div class="row my-2" id="content">
-    				<div class="col-12 col-md-3" id="mypage list">
+				<div class="col-12 col-md-3" id="mypage list">
 					<ul class="list-group list-group-flush">
 						<a href="/add.ProductController"
 							class="list-group-item list-group-item-action"> 상품 등록 </a>
@@ -350,98 +350,7 @@
 
     </div>
 
-    <script>
-
-        $("#product_add").on("submit", function () {
-
-            let product_name = $("#product_name").val();
-            let search_name = $("#search_name").val();
-            let price = $("#price").val();
-            console.log(price);
-            let abv = $("#abv").val();
-            console.log(abv);
-            let capacity = $("#capacity").val();
-            console.log(capacity);
-            let grade = $("#grade").val();
-            console.log(grade);
-            let adress1 = $("#adress1").val();
-            console.log(adress1);
-            let adress2 = $("#adress2").val();
-            console.log(adress2);
-            let smry = $("#smry").val();
-            console.log(smry);
-
-            // regex
-            let regexPname = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9a-zA-Z\s]{1,20}$/gs;
-            let regexSname = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣0-9a-zA-Z]{1,20}$/gs;
-            let regexPrice = /^[0-9]{1,6}$/g;
-            let regexAbv = /^[0-9]{1,2}.?[0-9]{0,5}$/g;
-            let regexCap = /^[0-9]{1,4}?$/g;
-            let regexGrade= /^[0-9]{1}.?[0-9]{0,2}$/g;
-
-            // 상품명 검사
-            if (!(regexPname.test(product_name))) {
-                alert("특수문자는 입력이 안 됩니다.");
-                $("#product_name").val('')
-                $("#product_name").focus();
-
-                return false
-            }
-
-            // 검색명 검사
-            if (!(regexSname.test(search_name))) {
-                alert("공백을 제거하고 한글과 숫자만 입력하세요");
-                $("#search_name").val('')
-                $("#search_name").focus();
-
-                return false
-            }
-
-            // 가격 검사
-            if (!(regexPrice.test(price))) {
-                alert("숫자만 입력이 가능합니다. (99만원까지)");
-                $("#price").val('')
-                $("#price").focus();
-
-                return false
-            }
-
-            // 알콜 도수 검사
-            if (!(regexAbv.test(abv))) {
-                alert("정수 : 1~99 | 소수 : 다섯째까지");
-                $("#avb").val('')
-                $("#avb").focus();
-
-                return false
-            }
-
-            // 용량 검사
-            if (!(regexCap.test(capacity))) {
-                
-                alert("숫자만 입력가능합니다.(1~1500)");
-
-
-                $("#capacity").val('');
-                $("#capacity").focus();
-
-                return false
-            }
-            
-            // 평점 검사
-            if (!(regexGrade.test(grade))) {
-                alert("1~5까지만 가능합니다.");
-                $("#grade").val('');
-                $("#grade").focus();
-
-                return false
-            }
-
-        });
-
-    </script>
-
 </body>
 
 </html>
 
-<!-- 여기가 HEAD -->

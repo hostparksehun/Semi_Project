@@ -12,16 +12,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import DAO.BoardDAO;
+import DAO.FileDAO;
+import DAO.MyPageDAO;
+import DAO.ReplyDAO;
 import DTO.BoardDTO;
 import DTO.FileDTO;
+import DTO.ManagerDTO;
 import DTO.ReplyDTO;
-import DAO.FileDAO;
-import DAO.ReplyDAO;
 
 @WebServlet("*.board")
 public class BoardController extends HttpServlet {
@@ -34,7 +35,7 @@ public class BoardController extends HttpServlet {
 
 
 		BoardDAO dao = BoardDAO.getInstance();
-
+		MyPageDAO mdao = MyPageDAO.getInstance();
 		FileDAO fdao = FileDAO.getInstance();
 		ReplyDAO rdao = ReplyDAO.getInstance();
 
@@ -243,6 +244,18 @@ public class BoardController extends HttpServlet {
 	            int result = rdao.updateReply(pseq, seq, content);
 
 	            request.getRequestDispatcher("/boardSelect.board?num="+pseq).forward(request, response);
+	         }else if(uri.equals("/myboard.board")) {
+	        		String id = (String) (request.getSession().getAttribute("loginID"));
+	 				int cpage = Integer.parseInt(request.getParameter("cpage"));
+	 				request.getSession().setAttribute("cpage", cpage);
+	 		
+	 				List<ManagerDTO> list = mdao.selectByPage(cpage, id);
+	 				String pageNavi = mdao.getPageNavi(cpage, id);
+	 				
+	 				
+	 				request.setAttribute("list", list);
+	 				request.setAttribute("navi",pageNavi);
+	 				request.getRequestDispatcher("/Member/myBoardList.jsp").forward(request, response);
 	         }
 
 		} catch (Exception e) {

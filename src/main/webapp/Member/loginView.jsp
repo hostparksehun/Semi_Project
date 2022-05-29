@@ -29,6 +29,9 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
+<script src="https://kit.fontawesome.com/7f0130da7d.js"
+	crossorigin="anonymous"></script>
+
 <!-- 카카오 API -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <!-- 네이버 API 관련 -->
@@ -70,19 +73,26 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="#">막걸리</a></li>
-									<li><a class="dropdown-item" href="#">전통 소주</a></li>
-									<li><a class="dropdown-item" href="#">약주</a></li>
-									<li><a class="dropdown-item" href="#">과실주</a></li>
-									<li><a class="dropdown-item" href="#">리큐르</a></li>
+									<li><a class="dropdown-item"
+										href="/productA10.ProductController">막걸리</a></li>
+									<li><a class="dropdown-item"
+										href="/productA20.ProductController">전통 소주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA30.ProductController">약주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA40.ProductController">과실주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA50.ProductController">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="#">전체보기</a></li>
+									<li><a class="dropdown-item"
+										href="/list.ProductController">전체보기</a></li>
 								</ul></li>
 
-							<li class="nav-item"><a href="/Search/search.jsp"
-								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리 술 검색</a></li>
+							<li class="d-none d-lg-block nav-item"><a
+								href="/Search/search.jsp"
+								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리술 검색</a></li>
 
 
 							<li class="nav-item"><a
@@ -129,8 +139,8 @@
 						</ul>
 						<form action="/mini.search" class="d-flex">
 							<input id="search_input" class="form-control mx-1" type="search"
-								placeholder="Search" aria-label="Search" name="search_text"
-								required>
+								placeholder="로그인하지 말고 술 찾아요" aria-label="Search"
+								name="search_text" required>
 							<button class="btn btn-outline-success me-1" type="submit"
 								id="search_btn">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -149,16 +159,45 @@
 										${loginID }</button>
 									<ul class="dropdown-menu">
 										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
-										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+										<li><a class="dropdown-item"
+											href="javascript:secession();">로그아웃</a></li>
 									</ul>
 								</div>
-
 							</c:when>
+
+							<c:when test="${kakaoemail !=null}">
+								<div class="d-none d-lg-inline btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${kakaoemail }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item" href="/logout.member"
+											id="kakaologout">로그아웃</a></li>
+									</ul>
+								</div>
+							</c:when>
+
 							<c:otherwise>
-								<button id=login type="button"
-									class="d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
-								<button id=join type="button"
-									class="d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+								<button id="loginBtn" type="button"
+									class="mx-1 d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button"
+									class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+
+								<script>
+									$("#logoutbtn").on("click", function() {
+										location.href = "/logout.member";
+									})
+									$("#loginBtn")
+											.on(
+													"click",
+													function() {
+														location.href = "/Member/loginView.jsp";
+													})
+									$("#joinBtn").on("click", function() {
+										location.href = "/Member/joinView.jsp";
+									})
+								</script>
 							</c:otherwise>
 						</c:choose>
 
@@ -167,26 +206,6 @@
 			</nav>
 		</header>
 
-		<script>
-			$("#join").on("click", function() {
-				location.href = "/Member/joinView.jsp";
-			})
-			$("#login").on("click", function() {
-				location.href = "/Member/loginView.jsp"
-			})
-		</script>
-
-		<script>
-  $("#join12").on("click",function(){
-		location.href="/Member/joinView.jsp";
-	})
-  $("#login12").on("click",function(){
-	  location.href="/Member/loginView.jsp"
-  })
-  </script>
-
-
-
 
 		<!----------------------------------- Content ----------------------------------->
 		<div class="container" style="width: 360px;">
@@ -194,149 +213,159 @@
 				<div style="text-align: center;">
 					<h3>로그인</h3>
 				</div>
-				<div class="idline">
-					<div class="title">아이디</div>
-					<div>
-						<input type="text" class="textBox" id="id" name="id"
-							placeholder="아이디를 입력하세요">
-					</div>
+				<div>
+					<input type="text" class="textBox" id="id" name="id"
+						placeholder="아이디">
 				</div>
-				<div class="pwline"></div>
-				<div class="title">비밀번호</div>
 				<div>
 					<input type="password" class="textBox" id="pw" name="pw"
-						placeholder="비밀번호를 입력하세요">
+						placeholder="비밀번호">
 				</div>
 				<div id="search">
-					<a href="/Member/searchId.jsp">아이디 찾기</a> <a
-						href="/Member/searchPw.jsp">비밀번호 찾기</a>
+					<a href="/Member/searchId.jsp" id="searchIdbtn">아이디 찾기</a> <a
+						href="/Member/searchPw.jsp" id="searchPwbtn">비밀번호 찾기</a>
+					<div id="why"></div>
 				</div>
-				<div>
-					<input type="submit" class="btn btn-outline-secondary"
-						id="loginBtn" value="로그인하기"> <input type="button"
-						class="btn btn-outline-secondary" id="joinBtn" value="회원가입">
+				<div style="text-align: center;">
+					<input type="submit" class="btn btn-outline-success"
+						id="loginBtn_in" value="로그인하기"> <input type="button"
+						class="btn btn-outline-success" id="joinBtn_in" value="회원가입">
 				</div>
 			</form>
+			<script>
+				$("#loginBtn_in")
+						.on(
+								"click",
+								function() {
+									let id = $("#id").val();
+									let idRegex = /^[\da-z_]{8,13}$/; //영어 소문자, 숫자, 언더바 8~13글자
+									let idResult = idRegex.test(id);
+									let pw = $("#pw").val();
+									let pwRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/; //영문, 숫자를 하나 이상 포함한 8~16자
+									let pwResult = pwRegex.test(pw);
+
+									//아이디나 비번 빈값일 때
+									if ($("#id").val() == ""
+											|| $("#pw").val() == "") {
+										alert("아이디 또는 비밀번호를 입력해주세요.");
+										return false;
+										//아이디나 비번이 유효성에 맞지 않을 때
+									} else if (!idResult || !pwResult) {
+										alert("아이디 또는 비밀번호를 형식에 맞게 입력해주세요.");
+										$("id").val("");
+										$("pw").val("");
+										$("id").focus();
+									}
+									//아이디나 비번이 유효성은 맞는데 틀렸을 때
+									if (idResult && pwResult) {
+										$
+												.ajax({
+													url : "/logincheck.member",
+													type : "post",
+													data : {
+														id : $("#id").val(),
+														pw : $("#pw").val()
+													}
+												})
+												.done(
+														function(resp) {
+															console
+																	.log("받은 값은 "
+																			+ resp);
+															if (resp == "false") {
+																alert("아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.");
+																location.href = "/Member/loginView.jsp";
+															}
+														})
+									}
+								});
+
+				$("#joinBtn_in").on("click", function() {
+					location.href = "/Member/joinView.jsp";
+				})
+			</script>
 			<hr>
 			<div class="sns">
-
-				<div id="naver">
-					<img src="/img/loginFile/btnG_완성형.png">
-				</div>
 				<div id="kakao">
 					<a id="kakao-login-btn"> <img
-						src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg"
-						width="83%" height="50px" />
-					</a>
-					<!--                     <img src="/img/loginFile/kakao_login_medium_narrow.png"></a> -->
-
-					<a href="javascript:secession();">연결 끊기?</a>
+						src="/img/loginFile/kakao_login_medium_narrow.png"></a> <a
+						href="javascript:secession();">카카오 연동 해제</a>
 				</div>
 				<div id="test"></div>
 			</div>
 		</div>
 
-		<script>
- 			$("#loginBtn").on("click",function(){
- 				location.href="/Member/loginView.jsp";
- 				
- 			})
- 			
- 			$("#joinBtn").on("click",function(){
- 				location.href="/Member/joinView.jsp";
- 			})
- 			
- 			
- 			//카카오 로그인
-			//a90276ed357ed7ce1c45d0863f399e1d 키값
-// 			window.Kakao.init("a90276ed357ed7ce1c45d0863f399e1d");
-// 			function kakaoLogin(){
-// 				window.Kakao.Auth.login({
-// 					scope:'account_email, birthday',
-// 	                success: function(response) {
-// 	                    console.log(response) // 로그인 성공하면 받는 데이터
-// 	                    window.Kakao.API.request({ // 사용자 정보 가져오기 
-// 	                        url: '/v2/user/me',
-// 	                        success: (res) => {
-// 	                            const kakao_account = res.kakao_account;
-// 	                            console.log(kakao_account)
-// 	                        }
-// 	                    });
-// 	                    // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
-// 	                },
-// 	                fail: function(error) {
-// 	                    console.log(error);
-// 	                }
-// 	            });
-// 	        }
-			// 카카오 초기화
-			Kakao.init('a90276ed357ed7ce1c45d0863f399e1d');
-			
-			$("#kakao-login-btn").on("click", function(){
-			    //1. 로그인 시도
-			    Kakao.Auth.login({
-			        success: function(authObj) {
-			         
-			          //2. 로그인 성공시, API 호출
-			          Kakao.API.request({
-			            url: '/v2/user/me',
-// 			            data: {
-// 			                property_keys: ["kakao_account.email","kakao_account.gender"]
-// 			            },
-			            success: function(res) {
-						console.log(res);
-						//scope : 'account_email';
-						let id = res.id;
-						let name = res.properties.nickname; 
-						let email = res.kakao_account.email;
-						let birthday = res.kakao_account.birthday;
-						console.log(id);
-						console.log(name);
-						console.log(email);
-						console.log(birthday);
-						//alert('로그인성공');
-						//location.href="http://localhost/index.jsp";
-						
-						$.ajax({
-							url:"/kakaologin.member",
-// 							contentType : "application/json; charset:UTF-8",
-							data: {id:id, name:name, email:email, birthday:birthday},
-							type:"POST",
-							dataType:"json",
-						}).done(function(resp){
-							console.log(resp);
-							$("#test").text(resp);
-						})
-			        }
-			          })
-			          console.log(authObj);
-			          var token = authObj.access_token;
-			        },
-			        fail: function(err) {
-			          alert(JSON.stringify(err));
-			        }
-			      });
-			        
-			}) //
 
+		<script>
+			//카카오 로그인
+			//a90276ed357ed7ce1c45d0863f399e1d 키값
+			Kakao.init('a90276ed357ed7ce1c45d0863f399e1d');
+
+			$("#kakao-login-btn").on("click", function() {
+				//1. 로그인 시도
+				Kakao.Auth.login({
+					success : function(authObj) {
+						//2. 로그인 성공시, API 호출
+						Kakao.API.request({
+							url : '/v2/user/me',
+							success : function(res) {
+								console.log(res);
+								let accessToken = Kakao.Auth.getAccessToken(); // 액세스 토큰 할당
+								Kakao.Auth.setAccessToken(accessToken); // 액세스 토큰 사용하게 등록
+								//scope : 'account_email';
+								let id = res.id;
+								let name = res.properties.nickname;
+								let email = res.kakao_account.email;
+								let birthday = res.kakao_account.birthday;
+								console.log(accessToken);
+								// 							console.log(id);
+								// 							console.log(name);
+								// 							console.log(email);
+								// 							console.log(birthday);
+
+								$.ajax({
+									url : "/kakaologin.member",
+									// 							contentType : "application/json; charset:UTF-8",
+									data : {
+										id : id,
+										name : name,
+										email : email,
+										birthday : birthday
+									},
+									type : "POST",
+									dataType : "json",
+								}).done(function(resp) {
+									console.log(resp);
+								})
+								alert("카카오계정으로 로그인 되었습니다.");
+								location.href = "/index.jsp";
+							}
+						})
+						console.log(authObj);
+						var token = authObj.access_token;
+					},
+					fail : function(err) {
+						alert(JSON.stringify(err));
+					}
+				});
+			})
 			//카카오 연결 끊기
 			function secession() {
 				Kakao.API.request({
-			    	url: '/v1/user/unlink',
-			    	success: function(response) {
-			    		console.log(response);
-			    		//callback(); //연결끊기 성공시 서버에서 처리할 함수
-			    		console.log("카카오 연결해제 O");
-			    		window.location.href='/index.jsp';
-			    		
-			    	},
-			    	fail: function(error) {
-			  		console.log("카카오 연결해제 X");
-			    		console.log(error);
-			    	},
+					url : '/v1/user/unlink',
+					success : function(response) {
+						console.log(response);
+						//callback(); //연결끊기 성공시 서버에서 처리할 함수
+						alert("카카오 연결해제 O");
+						window.location.href = '/index.jsp';
+					},
+					fail : function(error) {
+						console.log("카카오 연결해제 X");
+						console.log(error);
+					},
 				});
 			};
- 		</script>
+		</script>
 
 		<!----------------------------------- footer ----------------------------------->
 
@@ -361,7 +390,7 @@
 						</p>
 					</div>
 
-					<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="col-md-4 col-sm-6 col-xs-12 my-3 my-lg-0">
 						<ul class="social-icons">
 							<li><a class="facebook" href="#"><i
 									class="fa fa-facebook"></i></a></li>

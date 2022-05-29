@@ -2,15 +2,24 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@700&family=Song+Myung&display=swap');
 
+/* div {
+    border: 1px solid black;
+} */
+
 * {
   box-sizing: border-box;
 }
-
+h3, h4, h5, h6{
+    font-family: 'Hahmlet', serif;
+}
 #logo {
 	width: 150px;
 	height: auto;
 }
-
+.check{
+/*     font-family: 'Hahmlet', serif; */
+    font-size: 10pt;
+}
 #content {
 	width: 100%;
 	height: auto;
@@ -26,39 +35,69 @@
 	height: 500px;
 }
 
-
-.textBox{
+.textBox, .pwBox{
+    font-family: 'Hahmlet', serif;
     width:330px;
+    height: 30px;
+    margin-bottom: 15px;
 }
-
-.idline{
-    height: 50px;
+.pwBox{
+	margin-bottom: 7px;
+}
+.idline, .pwline{
+    height: 30px;
     margin-bottom: 15px;
 }
 .title{
+    font-family: 'Hahmlet', serif;
     font-size: 13pt;
 }
-#search{
+#search, #searchPw, .btn{
+    font-family: 'Hahmlet', serif;
     font-size: 11pt;
-    margin: 3px 0px 15px 0px;
+    margin-top: 7px;
+	margin-bottom: 7px;   
 }
-
-#naver>img{
-    overflow: hidden;
-    width: 165px;
+#searchResult{
+	font-family: 'Hahmlet', serif;
+	font-size: 11pt;
+	text-align: center;
+	margin: 18px 0px 13px 0px;
+}
+#changetext{
+	margin-top: 10px;
 }
 #kakao>img{
     overflow: hidden;
     width: 165px;
 }
-#naver{
-    display: inline-block;
+#search>a {
+    text-decoration: none;
+    color:#2c6246;
 }
-#kakao{
-    display: inline-block;
+#pwinfo, #pwcheckinfo{
+	font-family: 'Hahmlet', serif;
+}
+input { 
+	border-left-width:0; 
+	border-right-width:0; 
+	border-top-width:0; 
+	border-bottom-width:1;
 }
 
-
+input:focus {
+    outline: none;
+}
+#searchIdbtn{
+    padding-right: 10px;
+}
+p{
+	 font-family: 'Hahmlet', serif;
+	 font-size: 14pt;
+}
+#next, #change{
+	text-align:center;
+}
 /* header부분 */
 header {
 	font-family: 'Hahmlet', serif;

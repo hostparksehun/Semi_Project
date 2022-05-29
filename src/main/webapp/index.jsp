@@ -6,29 +6,26 @@
 <html lang="en">
 
 <head>
-<!-- CSS -->
-<link rel="stylesheet" href="/CSS/index.css">
-<!-- 경로 수정 고려 -->
+	<!-- CSS -->
+	<link rel="stylesheet" href="/CSS/index.css">
+	<!-- 경로 수정 고려 -->
 
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Jquery -->
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<!-- Jquery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
-<!-- Bootstrap ver 5.1  -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
+	<!-- Bootstrap ver 5.1  -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
+	<script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
 
 <title>우리술夜</title>
 </head>
@@ -44,10 +41,6 @@
 						</a>
 					</div>
 
-					<!-- <a class="navbar-brand" href="#">
-          <img src="/img/logo2.jpg" id="logo">
-        </a> -->
-
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -61,19 +54,20 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="#">막걸리</a></li>
-									<li><a class="dropdown-item" href="#">전통 소주</a></li>
-									<li><a class="dropdown-item" href="#">약주</a></li>
-									<li><a class="dropdown-item" href="#">과실주</a></li>
-									<li><a class="dropdown-item" href="#">리큐르</a></li>
+									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
+									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
+									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
+									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
+									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="#">전체보기</a></li>
+									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
 								</ul></li>
 
-							<li class="nav-item"><a href="/Search/search.jsp"
-								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리 술 검색</a></li>
+							<li class="d-none d-lg-block nav-item"><a
+								href="/Search/search.jsp"
+								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리술 검색</a></li>
 
 
 							<li class="nav-item"><a
@@ -91,7 +85,17 @@
 										id="board">로그아웃</a></li>
 
 								</c:when>
+								<c:when test="${kakaoemail != null}">
 
+									<li class="nav-item d-lg-none"><a
+										class="nav-link mx-0 mx-md-0 mx-lg-3" href="/mypage.member"
+										id="board">내 정보</a></li>
+
+									<li class="nav-item d-lg-none"><a
+										class="nav-link mx-0 mx-md-0 mx-lg-3" href="/logout.member"
+										id="board">로그아웃</a></li>
+
+								</c:when>
 								<c:otherwise>
 
 									<li class="nav-item d-lg-none"><a
@@ -120,7 +124,7 @@
 						</ul>
 						<form action="/mini.search" class="d-flex">
 							<input id="search_input" class="form-control mx-1" type="search"
-								placeholder="Search" aria-label="Search" name="search_text"
+								placeholder="우리술을 검색하세요!" aria-label="Search" name="search_text"
 								required>
 							<button class="btn btn-outline-success me-1" type="submit"
 								id="search_btn">
@@ -143,13 +147,37 @@
 										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
 									</ul>
 								</div>
-
 							</c:when>
+
+							<c:when test="${kakaoemail !=null}">
+								<div class="d-none d-lg-inline btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${kakaoemail }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+									</ul>
+								</div>
+							</c:when>
+
 							<c:otherwise>
-								<button id=login type="button"
-									class="d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
-								<button id=join type="button"
-									class="d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+								<button id="loginBtn" type="button"
+									class="mx-1 d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button"
+									class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+
+								<script>
+									$("#loginBtn")
+											.on(
+													"click",
+													function() {
+														location.href = "/Member/loginView.jsp";
+													})
+									$("#joinBtn").on("click", function() {
+										location.href = "/Member/joinView.jsp";
+									})
+								</script>
 							</c:otherwise>
 						</c:choose>
 
@@ -157,15 +185,6 @@
 				</div>
 			</nav>
 		</header>
-
-		<script>
-			$("#join").on("click", function() {
-				location.href = "/Member/joinView.jsp";
-			})
-			$("#login").on("click", function() {
-				location.href = "/Member/loginView.jsp"
-			})
-		</script>
 
 		<div class="row" id="main">
 			<div class="col-12" id="contents">
@@ -206,7 +225,7 @@
 					</button>
 				</div>
 			</div>
-			
+
 
 
 			<div class="row mb-3" id="popular text">
@@ -215,11 +234,11 @@
 					<h2>인기상품</h2>
 				</div>
 			</div>
-			
+
 			<div class="row m-auto">
 
 				<div class="col-12 col-lg-4">
-					<a class="tag_a" href="#"">
+					<a class="tag_a" href="/Detail.ProductController?seq=4">
 						<div class="Result_img">
 							<img src="../thumbnail/baekjae25.png" class="w-100">
 						</div>
@@ -232,7 +251,7 @@
 				</div>
 
 				<div class="col-12 col-lg-4">
-					<a class="tag_a" href="#">
+					<a class="tag_a" href="/Detail.ProductController?seq=2">
 						<div class="Result_img">
 							<img src="../thumbnail/albam.png" class="w-100">
 						</div>
@@ -245,7 +264,7 @@
 				</div>
 
 				<div class="col-12 col-lg-4">
-					<a class="tag_a" href="#">
+					<a class="tag_a" href="/Detail.ProductController?seq=34">
 						<div class="Result_img">
 							<img src="../thumbnail/ggulsam.png" class="w-100">
 						</div>
@@ -260,9 +279,11 @@
 
 
 			<div class="row mt-5 m-auto" id="bti text">
-				<div class="col-12 m-auto" style=" text-decoration: none;">
+				<div class="col-12 m-auto" style="text-decoration: none;">
 					<a href="https://ktestone.com/kapable.github.io/dringkingHabit/">
+
 						<img src="/img/indexFile/술BTI.png" class="d-block w-100 h-auto">
+
 					</a>
 				</div>
 			</div>
@@ -301,10 +322,9 @@
 							2022 All Rights Reserved by <a href="#"
 								style="text-decoration: none;">아이코올</a>.
 						</p>
-						</p>
 					</div>
 
-					<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="col-md-4 col-sm-6 col-xs-12 my-3 my-lg-0">
 						<ul class="social-icons">
 							<li><a class="facebook" href="#"><i
 									class="fa fa-facebook"></i></a></li>
@@ -333,6 +353,7 @@
 			location.href = "/Board/boardList.jsp";
 		})
 	</script>
+
 
 </body>
 

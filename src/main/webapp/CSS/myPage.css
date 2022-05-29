@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@700&family=Song+Myung&display=swap');
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Hahmlet', serif;
+
 }
 
 #logo {
@@ -28,17 +30,27 @@
 #mypage_text{
    text-align: center;
    padding-top: 100px;
+   border-bottom: 1px solid black;
+   padding-bottom: 20px;
 }
 table{
     width: 100%;
-    height: 400px;
     text-align: center;
-    border: 1px solid white;
-   
+    
+  
 }
+
 #title{
     text-align: center;
 
+}
+#navmenu nav a{
+	 background-color: white;
+	 color:#198754;
+}
+#navmenu nav a:hover{
+	background-color: #198754;
+	 color:white;
 }
 
 /* header부분 */

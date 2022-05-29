@@ -7,7 +7,7 @@
 
 <head>
 <!-- CSS -->
-<link rel="stylesheet" href="/CSS/memberOut.css">
+<link rel="stylesheet" href="/CSS/myPage.css">
 <!-- 경로 수정 고려 -->
 
 <meta charset="UTF-8">
@@ -29,6 +29,7 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
+<script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
 
 <title>우리술夜</title>
 </head>
@@ -57,19 +58,19 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="#">막걸리</a></li>
-									<li><a class="dropdown-item" href="#">전통 소주</a></li>
-									<li><a class="dropdown-item" href="#">약주</a></li>
-									<li><a class="dropdown-item" href="#">과실주</a></li>
-									<li><a class="dropdown-item" href="#">리큐르</a></li>
+									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
+									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
+									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
+									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
+									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="#">전체보기</a></li>
+									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
 								</ul></li>
 
-							<li class="nav-item"><a href="/Search/search.jsp"
-								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리 술 검색</a></li>
+							<li class="d-none d-lg-block nav-item"><a href="/Search/search.jsp"
+								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리술 검색</a></li>
 
 
 							<li class="nav-item"><a
@@ -116,7 +117,7 @@
 						</ul>
 						<form action="/mini.search" class="d-flex">
 							<input id="search_input" class="form-control mx-1" type="search"
-								placeholder="Search" aria-label="Search" name="search_text"
+								placeholder="아 술땡긴다~@@" aria-label="Search" name="search_text"
 								required>
 							<button class="btn btn-outline-success me-1" type="submit"
 								id="search_btn">
@@ -172,17 +173,25 @@
 			</div>
 		</div>
 		<div class="row" id="content">
-			<div class="col-12 col-md-3" id="mypage list">
+			 <div class="col-12 col-md-3 d-none d-lg-block" id="mypage list">
 				<ul class="list-group list-group-flush">
 					<a href="/mypage.member"
 						class="list-group-item list-group-item-action">회원정보 수정</a>
-					<a href="memberOut.jsp"
+					<a href="/Member/memberOut.jsp"
 						class="list-group-item list-group-item-action">회원탈퇴</a>
-					<a href="myBoardList.jsp"
+					<a href="/myboard.board?cpage=1"
 						class="list-group-item list-group-item-action">게시글 모아보기</a>
 
 				</ul>
 
+			</div>
+			<div class="col-12 d-lg-none" id="navmenu">
+			<nav class="nav nav-pills nav-fill" >
+  				<a class="nav-link" href="/mypage.member">회원정보 수정</a>
+ 				<a class="nav-link" href="/Member/memberOut.jsp">회원탈퇴</a>
+  				<a class="nav-link" href="/myboard.board?cpage=1">게시글 모아보기</a>
+ 
+			</nav>
 			</div>
 			<div class="col-12 col-md-9">
 				<span><h3>회원탈퇴 안내</h3></span>
@@ -191,23 +200,23 @@
 					불편하셨던 점이나 불만사항이 없도록 불편함을 해결해 드리도록 노력하겠습니다.<br> <br> <span
 						style="color: red;"> ※탈퇴시 회원님의 모든 정보는 삭제됩니다.※</span> <br> <br>
 					그동안 저희 우리술夜를 사랑해주셔서 감사합니다.
-
-				</div>
-				<div id="real_out">
-					<h3>정말 회원탈퇴 하시겠습니까?</h3>
-				</div>
-				<div id="btn">
-					<button id="ok">확인</button>
-				</div>
 			</div>
+			<br>
 		</div>
 
+		<div id="btn" style="text-align: center;padding-bottom: 20px;">
+					<button type="button" class="btn btn-danger" id="ok">확인</button>
+				</div>
+
+
 		<!----------------------------------------script------------------------------------>
+
 		<script>
 			$("#ok").on("click", function() {
 				location.href = "/memberout.member"
 			})
 		</script>
+
 
 		<!----------------------------------- footer ----------------------------------->
 
@@ -232,7 +241,7 @@
 						</p>
 					</div>
 
-					<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="col-md-4 col-sm-6 col-xs-12 my-3 my-lg-0">
 						<ul class="social-icons">
 							<li><a class="facebook" href="#"><i
 									class="fa fa-facebook"></i></a></li>

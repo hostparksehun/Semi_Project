@@ -29,6 +29,8 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
+<script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
+
 <!-- 주소 API -->
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -64,19 +66,19 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="#">막걸리</a></li>
-									<li><a class="dropdown-item" href="#">전통 소주</a></li>
-									<li><a class="dropdown-item" href="#">약주</a></li>
-									<li><a class="dropdown-item" href="#">과실주</a></li>
-									<li><a class="dropdown-item" href="#">리큐르</a></li>
+									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
+									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
+									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
+									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
+									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
 									<li><a class="dropdown-item" href="#">전체보기</a></li>
 								</ul></li>
 
-							<li class="nav-item"><a href="/Search/search.jsp"
-								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리 술 검색</a></li>
+							<li class="d-none d-lg-block nav-item"><a href="/Search/search.jsp"
+								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리술 검색</a></li>
 
 
 							<li class="nav-item"><a
@@ -123,7 +125,7 @@
 						</ul>
 						<form action="/mini.search" class="d-flex">
 							<input id="search_input" class="form-control mx-1" type="search"
-								placeholder="Search" aria-label="Search" name="search_text"
+								placeholder="술이 넘어간다 쭉쭉쭉!" aria-label="Search" name="search_text"
 								required>
 							<button class="btn btn-outline-success me-1" type="submit"
 								id="search_btn">
@@ -146,13 +148,32 @@
 										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
 									</ul>
 								</div>
-
 							</c:when>
+
+							<c:when test="${kakaoemail !=null}">
+								<div class="d-none d-lg-inline btn-group">
+									<button type="button" class="btn btn-warning dropdown-toggle"
+										data-bs-toggle="dropdown" aria-expanded="false">
+										${kakaoemail }</button>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/mypage.member">마이페이지</a></li>
+										<li><a class="dropdown-item" href="/logout.member">로그아웃</a></li>
+									</ul>
+								</div>
+							</c:when>
+											
 							<c:otherwise>
-								<button id=login type="button"
-									class="d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
-								<button id=join type="button"
-									class="d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+								<button id="loginBtn" type="button" class="mx-1 d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button" class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+								
+								<script>
+									$("#loginBtn").on("click",function(){
+										location.href="/Member/loginView.jsp";
+									})
+									$("#joinBtn").on("click",function(){
+										location.href="/Member/joinView.jsp";
+									})
+								</script>
 							</c:otherwise>
 						</c:choose>
 
@@ -160,16 +181,6 @@
 				</div>
 			</nav>
 		</header>
-
-		<script>
-			$("#join").on("click", function() {
-				location.href = "/Member/joinView.jsp";
-			})
-			$("#login").on("click", function() {
-				location.href = "/Member/loginView.jsp"
-			})
-		</script>
-
 
 
 		<!----------------------------------- Content ----------------------------------->
@@ -181,13 +192,11 @@
 					<h3>회원정보 입력</h3>
 				</div>
 				<div class="join-box">
-					<div class="title">
-						이름<br>
-					</div>
+					<div class="title">이름</div>
 					<div>
 						<input type="text" id="name" name="name" placeholder="2~6자"
-							class="join-input">
-					</div>
+							class="join-input searchinput"></div>
+					<span class="searchclear">X</span>
 					<div class="check" id="nameinfo"></div>
 				</div>
 				<div class="join-box">
@@ -196,7 +205,7 @@
 					</div>
 					<div>
 						<input type="text" id="id" name="id"
-							placeholder="영문(소문자), 숫자 8~13자" class="join-input">
+							placeholder="영문(소문자), 숫자 8~13자" class="join-input searchinput">
 					</div>
 					<div class="check" id="idinfo"></div>
 				</div>
@@ -205,12 +214,12 @@
 						비밀번호<br>
 					</div>
 					<input type="password" id="pw" name="pw"
-						placeholder="숫자, 영문 조합 최소 8자" class="join-input">
+						placeholder="숫자, 영문 조합 최소 8자" class="join-input searchinput">
 					<div class="check" id="pwinfo"></div>
 				</div>
 				<div class="join-box">
 					<input type="password" id="pwcheck" name="pwcheck"
-						placeholder="비밀번호 재입력" class="join-input">
+						placeholder="비밀번호 재입력" class="join-input searchinput">
 					<div class="check" id="pwcheckinfo"></div>
 				</div>
 				<div class="join-box">
@@ -219,7 +228,7 @@
 					</div>
 					<div>
 						<input type="text" id="birthday" name="birthday"
-							placeholder="990322" class="join-input">
+							placeholder="990322" class="join-input searchinput">
 					</div>
 					<div class="check" id="birthdayinfo"></div>
 				</div>
@@ -230,7 +239,6 @@
 					<div>
 						<input type="text" id="email" name="email" class="join-input"
 							placeholder="example@naver.com">
-						<!--           <button type="button" class="btn btn-secondary" id="emailAuth">인증</button> -->
 						<div class="check" id="emailinfo"></div>
 					</div>
 				</div>
@@ -240,7 +248,7 @@
 					</div>
 					<div>
 						<input type="text" id="phone" name="phone"
-							placeholder="01012349876" class="join-input">
+							placeholder="01012349876" class="join-input searchinput">
 					</div>
 					<div class="check" id="phoneinfo"></div>
 				</div>
@@ -249,9 +257,9 @@
 						우편번호<br>
 					</div>
 					<div>
-						<input type="text" name="zipcode" id="zipcode" class="join-input" />
+						<input type="text" name="zipcode" id="zipcode" class="join-input searchinput" />
 						<button type="button" onclick="execDaumPostcode()"
-							class="btn btn-secondary" id="zipcode_find">찾기</button>
+							class="btn btn-success" id="zipcode_find">찾기</button>
 					</div>
 				</div>
 				<div class="join-box">
@@ -260,7 +268,7 @@
 					</div>
 					<div>
 						<input type="text" name="address1" id="address1"
-							class="join-input">
+							class="join-input searchinput">
 					</div>
 				</div>
 				<div class="join-box">
@@ -269,10 +277,10 @@
 					</div>
 					<div>
 						<input type="text" name="address2" id="address2"
-							class="join-input">
+							class="join-input searchinput">
 					</div>
 				</div>
-				<input type="submit" class="btn btn-outline-primary" id="join"
+				<input type="submit" class="btn btn-outline-success" id="join"
 					value="가입하기">
 			</div>
 		</form>
@@ -301,7 +309,7 @@
 						</p>
 					</div>
 
-					<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="col-md-4 col-sm-6 col-xs-12 my-3 my-lg-0">
 						<ul class="social-icons">
 							<li><a class="facebook" href="#"><i
 									class="fa fa-facebook"></i></a></li>
@@ -320,6 +328,19 @@
 
 
 	<script>
+	let $ipt = $('.searchinput'),
+	$clearIpt = $('.searchclear');
+	
+	$ipt.keyup(function(){
+	  $("#searchclear").toggle(Boolean($(this).val()));
+	});
+	
+	$clearIpt.toggle(Boolean($ipt.val()));
+	$clearIpt.click(function(){
+	  $("#searchinput").val('').focus();
+	  $(this).hide();
+	});
+		
 	//이름 유효성 검사
 	$("#name").on("keyup",function(){
 		let name = $("#name").val();
@@ -372,7 +393,7 @@
 		
 		if(!pwResult){
 			$("#pwinfo").css("color", "red");
-			$("#pwinfo").text("영문, 숫자를 하나 이상 포함한 8~16자");
+			$("#pwinfo").text("영문, 숫자를 각각 하나 이상 포함한 8~16자");
 		} else{
 			$("#pwinfo").text("");
 		}
@@ -386,7 +407,7 @@
 		
 		if(!pwcheckResult){
 			$("#pwcheckinfo").css("color", "red");
-			$("#pwcheckinfo").text("영문, 숫자를 하나 이상 포함한 8~16자");
+			$("#pwcheckinfo").text("영문, 숫자를 각각 하나 이상 포함한 8~16자");
 		} else if(pw == pwcheck){
 			$("#pwcheckinfo").css("color", "dodgerblue");
 			$("#pwcheckinfo").text("비밀번호가 일치합니다.");
@@ -465,7 +486,7 @@
 			return false;
 		}
 		alert("가입이 완료되었습니다 :) 환영합니다!");
-	});
+		});
 	
 	//우편번호
 	function execDaumPostcode() {

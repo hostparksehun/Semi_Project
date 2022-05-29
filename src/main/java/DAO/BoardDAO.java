@@ -239,6 +239,7 @@ public class BoardDAO {
 				return 1;
 			}
 		}
+		
 	}
 
 	// 게시판 수정

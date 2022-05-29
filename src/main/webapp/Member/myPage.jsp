@@ -29,6 +29,7 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
+<script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
 
 <title>우리술夜</title>
 </head>
@@ -61,19 +62,19 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="#">막걸리</a></li>
-									<li><a class="dropdown-item" href="#">전통 소주</a></li>
-									<li><a class="dropdown-item" href="#">약주</a></li>
-									<li><a class="dropdown-item" href="#">과실주</a></li>
-									<li><a class="dropdown-item" href="#">리큐르</a></li>
+									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
+									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
+									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
+									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
+									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="#">전체보기</a></li>
+									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
 								</ul></li>
 
-							<li class="nav-item"><a href="/Search/search.jsp"
-								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리 술 검색</a></li>
+							<li class="d-none d-lg-block nav-item"><a href="/Search/search.jsp"
+								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리술 검색</a></li>
 
 
 							<li class="nav-item"><a
@@ -120,7 +121,7 @@
 						</ul>
 						<form action="/mini.search" class="d-flex">
 							<input id="search_input" class="form-control mx-1" type="search"
-								placeholder="Search" aria-label="Search" name="search_text"
+								placeholder="뭐 마시지?" aria-label="Search" name="search_text"
 								required>
 							<button class="btn btn-outline-success me-1" type="submit"
 								id="search_btn">
@@ -147,9 +148,9 @@
 							</c:when>
 							<c:otherwise>
 								<button id=login type="button"
-									class="d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
+									class="mx-1 d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
 								<button id=join type="button"
-									class="d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+									class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
 							</c:otherwise>
 						</c:choose>
 
@@ -176,22 +177,30 @@
 			</div>
 		</div>
 		<div class="row" id="content">
-			<div class="col-12 col-md-3" id="mypage list">
+			<div class="col-12 col-md-3 d-none d-lg-block" id="mypage list">
 				<ul class="list-group list-group-flush">
 					<a href="/mypage.member"
 						class="list-group-item list-group-item-action">회원정보 수정</a>
 					<a href="/Member/memberOut.jsp"
 						class="list-group-item list-group-item-action">회원탈퇴</a>
-					<a href="/Member/myBoardList.jsp"
+					<a href="/myboard.board?cpage=1"
 						class="list-group-item list-group-item-action">게시글 모아보기</a>
 
 				</ul>
 
 			</div>
+			<div class="col-12 d-lg-none" id="navmenu">
+			<nav class="nav nav-pills nav-fill" >
+  				<a class="nav-link" href="/mypage.member">회원정보 수정</a>
+ 				<a class="nav-link" href="/Member/memberOut.jsp">회원탈퇴</a>
+  				<a class="nav-link" href="/myboard.board?cpage=1">게시글 모아보기</a>
+ 
+			</nav>
+			</div>
 			<div class="col-12 col-md-9">
-				<span id="title"><h3>My page</h3></span>
+				<span id="title"><h3>   </h3></span>
 				<form action="/update.member" method="post">
-					<table border=1>
+					<table class="table table-borderless ">
 						<c:forEach var="i" items="${list}">
 							<tr>
 								<th>아이디
@@ -227,7 +236,7 @@
 							</tr>
 							<tr>
 								<td colspan=2 style="" id="btns">
-									<button type=button id=update>수정</button>
+									<button type="button" class="btn btn-outline-success" id="update">수정</button>
 								</td>
 					</table>
 					</c:forEach>
@@ -266,7 +275,7 @@
 						</p>
 					</div>
 
-					<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="col-md-4 col-sm-6 col-xs-12 my-3 my-lg-0">
 						<ul class="social-icons">
 							<li><a class="facebook" href="#"><i
 									class="fa fa-facebook"></i></a></li>

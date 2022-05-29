@@ -13,10 +13,15 @@
     margin-bottom: 10px;
 }
 
+div>*{
+	font-family: 'Hahmlet', serif;
+}
+
 /* Reply */
 
 #container {
     width: 100%;
+    height: auto;
     border: none;
 }
 
@@ -27,7 +32,7 @@
 }
 
 #reply_box{
-    background-color: lightgray;
+    background-color:#278f59;
     border-radius: 5px;
     height: 100%;
     padding: 1%;

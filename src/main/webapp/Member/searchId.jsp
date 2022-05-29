@@ -261,7 +261,7 @@
 				let phoneResult = phoneRegex.test(phone);
 				if(!phoneResult){
 					$("#phoneinfo").css("color", "red");
-					$("#phoneinfo").text("핸드폰번호 11자리를 작성해주세요.");
+					$("#phoneinfo").text("휴대폰번호 11자리를 작성해주세요.");
 				} else{
 					$("#phoneinfo").text("");
 				}

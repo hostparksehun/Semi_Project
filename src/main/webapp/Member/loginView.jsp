@@ -229,10 +229,13 @@
 	 					return false;
 	 				//아이디나 비번이 유효성에 맞지 않을 때
 	 				} else if(!idResult||!pwResult){
+	 					if(id="admin"){
+	 					}else {
 	 					alert("아이디 또는 비밀번호를 형식에 맞게 입력해주세요.");
 	 					$("id").val("");
 	 					$("pw").val("");
 	 					$("id").focus();
+	 					}
 	 				}
 	 				//아이디나 비번이 유효성은 맞는데 틀렸을 때
 	 				if(idResult&&pwResult){

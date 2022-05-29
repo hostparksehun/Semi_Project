@@ -1,7 +1,6 @@
 package DAO;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -13,8 +12,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import DTO.ReplyDTO;
-import DTO.SearchDTO;
-import DTO.BoardDTO;
 
 public class ReplyDAO {
 
@@ -38,7 +35,7 @@ public class ReplyDAO {
 	}
 	
 	// 댓글 등록 DAO
-	public int addReply(String writer, String cotents, int parentSeq) throws Exception{
+	public int addReply(String writer, String contents, int parentSeq) throws Exception{
 		
 		String sql = "insert into reply values(reply_seq.nextval, ?, ?, sysdate, ?, 0)";
 		
@@ -47,7 +44,7 @@ public class ReplyDAO {
 				PreparedStatement pstat = con.prepareStatement(sql);
 				){
 			pstat.setString(1, writer);
-			pstat.setString(2, cotents);
+			pstat.setString(2, contents);
 			pstat.setInt(3, parentSeq);
 			
 			int result = pstat.executeUpdate();

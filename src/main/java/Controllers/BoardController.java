@@ -21,8 +21,8 @@ import DAO.MyPageDAO;
 import DAO.ReplyDAO;
 import DTO.BoardDTO;
 import DTO.FileDTO;
-import DTO.ProductDTO;
 import DTO.ManagerDTO;
+import DTO.ProductDTO;
 import DTO.ReplyDTO;
 
 @WebServlet("*.board")
@@ -232,8 +232,8 @@ public class BoardController extends HttpServlet {
 				}
 
 				int result = rdao.addReply(writer, content, parentSeq);
-				request.getRequestDispatcher("/boardSelect.board?num="+parentSeq).forward(request, response);
-				// 확인 후 수정 필요 response.sendRedirect("/articleView.board?seq="+parentSeq);
+				//request.getRequestDispatcher("/boardSelect.board?num="+parentSeq).forward(request, response);
+				response.sendRedirect("boardSelect.board?num="+parentSeq);
 
 				// 삭제	
 			} else if (uri.equals("/del.board")) {
@@ -266,7 +266,20 @@ public class BoardController extends HttpServlet {
 				int result = rdao.updateReply(pseq, seq, content);
 
 				request.getRequestDispatcher("/boardSelect.board?num="+pseq).forward(request, response);
-			}
+				
+			} else if(uri.equals("/myboard.board")) {
+                String id = (String) (request.getSession().getAttribute("loginID"));
+               int cpage = Integer.parseInt(request.getParameter("cpage"));
+               request.getSession().setAttribute("cpage", cpage);
+         
+               List<ManagerDTO> list = mdao.selectByPage(cpage, id);
+               String pageNavi = mdao.getPageNavi(cpage, id);
+               
+               
+               request.setAttribute("list", list);
+               request.setAttribute("navi",pageNavi);
+               request.getRequestDispatcher("/Member/myBoardList.jsp").forward(request, response);
+           }
 
 		} catch (Exception e) {
 			e.printStackTrace();

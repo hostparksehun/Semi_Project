@@ -41,20 +41,7 @@
 						</a>
 					</div>
 
-<<<<<<< HEAD
-					<!-- <a class="navbar-brand" href="#">
-          <img src="/img/logo2.jpg" id="logo">
-        </a> -->
 
-
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-=======
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -63,7 +50,7 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
->>>>>>> 64b320f98bc109fb788862c5bc5bca79171d7c76
+
 							<li class="nav-item dropdown"><a
 							    class="nav-link dropdown-toggle mx-0 mx-md-0 mx-lg-3" href="#"
 								id="navbarDropdown" role="button" href=""

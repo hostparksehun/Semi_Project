@@ -73,23 +73,7 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
 
-									<li><a class="dropdown-item"
-										href="/productA10.ProductController?cpage=1">막걸리</a></li>
-									<li><a class="dropdown-item"
-										href="/productA20.ProductController?cpage=1">전통소주</a></li>
-									<li><a class="dropdown-item"
-										href="/productA30.ProductController?cpage=1">약주</a></li>
-									<li><a class="dropdown-item"
-										href="/productA40.ProductController?cpage=1">과실주</a></li>
-									<li><a class="dropdown-item"
-										href="/productA50.ProductController?cpage=1">리큐르</a></li>
-									<li>
-										<hr class="dropdown-divider">
-									</li>
-									<li><a class="dropdown-item" href="/list.ProductController?cpage=1">전체보기</a></li>
-=======
 									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
 									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
 									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
@@ -99,7 +83,7 @@
 										<hr class="dropdown-divider">
 									</li>
 									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
->>>>>>> 64b320f98bc109fb788862c5bc5bca79171d7c76
+
 								</ul></li>
 
 							<li class="d-none d-lg-block nav-item"><a href="/Search/search.jsp"

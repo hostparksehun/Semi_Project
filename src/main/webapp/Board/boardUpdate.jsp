@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,12 +26,13 @@
 			<div class='alcoholInfo'>
 				<!-- 술 정보 -->
 				<div id='alcohoImg'>
-					<img src=''>
+					<img src='/img/productFile/${productOne.oriName}'>
 				</div>
 				<div id='alcohoContent'>
-					<span id='alcohoName'>술 이름</span><br> <span id='alcohoExp'>술
-						설명</span>
+					<span id='alcohoName'>${productOne.product_name}</span><br> <span id='alcohoExp'>${productOne.smry}</span>
 				</div>
+				<input type="hidden" class='prodcutNum' name='prodcutNum' value='${productOne.seq}'>
+				<button class='type_change' style="position: absolute; right: 0px; bottom: 0px; color: white; background-color: #2c6246; border: 0px;" type="button">변경하기</button>
 			</div>
 			<hr>
 			<div class='boardSet'>
@@ -67,7 +69,7 @@
 			<hr>
 
 			<div class='boardSet'>
-				<div class='boardUser'">내용</div>
+				<div class='boardUser'>내용</div>
 				<br>
 				<!-- <input id='boardDetail' name='boardExp' type="text" maxlength="35"
 					placeholder="내용을 입력하세요." style="height: 300px; "> -->
@@ -78,10 +80,6 @@
 				</div>
 			</div>
 			<hr>
-			<!-- <div class='boardSet'>
-				<div class='boardUser'>이미지</div> <input id='file' name='file' type="file">
-			</div>
-			<hr> -->
 			<div class='boardLastBtn'>
 				<button type="submit" onclick="submitAdd()">수정</button>
 				<button type="button"
@@ -89,32 +87,23 @@
 			</div>
 		</div>
 	</form>
-	<%-- <script>
-		$(document).ready(function() {
-			$('#summernote').summernote({
-				 height: 250,
-				 minHeight: null,
-				 maxHeight: null, 
-				 focus: true,
-				 lang: "ko-KR",
-				 toolbar: [
-				    // [groupName, [list of button]]
-				    ['fontname', ['fontname']],
-				    ['fontsize', ['fontsize']],
-				    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-				    ['color', ['forecolor','color']],
-				    ['table', ['table']],
-				    ['para', ['ul', 'ol', 'paragraph']],
-				    ['height', ['height']],
-				    ['insert',['picture','link','video']],
-				    ['view', ['fullscreen', 'help']]
-				  ],
-				fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
-				fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-			  });
-	    });	
-	</script>--%>
-
+	<div class='background_box' style="display: none">
+		<div class='backgroun_main'>
+			<div class='product_option_select'>
+				<c:forEach var="product" items="${product}">
+					<div class='product_show_box' data-num="${product.seq}">
+						<div class='product_img' data-src = '${product.oriName }'>
+							<img src="/img/productFile/${product.oriName}">
+						</div>
+						<div class='product_name'>
+							<span>${product.product_name}</span>
+							<input type="hidden" value='${product.smry}'>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+	</div>
 
 	<script>
 		let oEditors = []
@@ -139,6 +128,22 @@
 	        //라디오 버튼 값을 가져온다.
 	        var noticeCat = this.value;
 	        $("#score").val(noticeCat);      
+		});
+		 
+		 $(document).on("click",".product_show_box",function(){
+			var num = $(this).data("num");
+			var src = $(this).children('.product_img').data('src');
+			$("#alcohoImg").children("img").attr("src",'/img/productFile/'+src);
+			$(".prodcutNum").val(num);
+			$(".background_box").hide();
+			$("#alcohoName").text($(this).children(".product_name").children("span").text());
+			$("#alcohoExp").text($(this).children(".product_name").children("input").val());
+			$("body").removeClass("active");
+		});
+		
+		$(document).on("click",".type_change",function(){
+			$(".background_box").show();
+			$("body").addClass("active");
 		});
 	</script>
 

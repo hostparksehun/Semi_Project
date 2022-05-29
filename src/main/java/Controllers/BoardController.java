@@ -19,6 +19,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import DAO.BoardDAO;
 import DTO.BoardDTO;
 import DTO.FileDTO;
+import DTO.ProductDTO;
 import DTO.ReplyDTO;
 import DAO.FileDAO;
 import DAO.ReplyDAO;
@@ -37,7 +38,7 @@ public class BoardController extends HttpServlet {
 
 		FileDAO fdao = FileDAO.getInstance();
 		ReplyDAO rdao = ReplyDAO.getInstance();
-
+		
 		try {
 			// 게시판 목록 불러오기
 			if(uri.equals("/boardList.board")) {
@@ -69,11 +70,9 @@ public class BoardController extends HttpServlet {
 				}
 
 				if(selectType == 1) {
-					where = " where title like '%"+search+"%'";
-					whereSub = " and title like '%"+search+"%'";
+					where = " and title like '%"+search+"%'";
 				}else if(selectType == 2) {
-					where = " where writer like '%"+search+"%'";
-					whereSub = " and writer like '%"+search+"%'";
+					where = " and writer like '%"+search+"%'";
 				}			
 				HttpSession session = request.getSession();
 				session.setAttribute("cpage", cpage);
@@ -90,12 +89,17 @@ public class BoardController extends HttpServlet {
 				List<BoardDTO> list = dao.selectByPage(cpage,typeSql,where);	// 한 페이지에 보여지는 게시글의 개수를 정하기 위해 새로운 메소드가 필요함.
 
 				//List<BoardDTO> list = dao.selectAll();
-				String pageNavi = dao.getPageNavi(cpage,typeSql,type,whereSub,selectType,search);
+				String pageNavi = dao.getPageNavi(cpage,typeSql,type,where,selectType,search);
 				request.setAttribute("list", list);
 				request.setAttribute("navi", pageNavi);
 				request.getRequestDispatcher("/Board/boardList.jsp").forward(request, response);
 
-				// 게시글 추가
+			// 게시글 페이지 이동
+			}else if(uri.equals("/boardAddPage.board")) {
+				List<ProductDTO> product = dao.productSelect();
+				request.setAttribute("product", product);
+				request.getRequestDispatcher("/Board/boardAdd.jsp").forward(request, response);
+			// 게시글 추가
 			}else if(uri.equals("/boardAdd.board")) {
 				String writer = (String)request.getSession().getAttribute("loginID");
 
@@ -109,6 +113,7 @@ public class BoardController extends HttpServlet {
 				MultipartRequest multi = new MultipartRequest(request, path, 1024*1024*10,"UTF8",new DefaultFileRenamePolicy());
 
 				String title = multi.getParameter("title");
+				int prodcutNum = Integer.parseInt(multi.getParameter("prodcutNum"));
 
 				String editorTxt = multi.getParameter("editorTxt");
 
@@ -116,7 +121,7 @@ public class BoardController extends HttpServlet {
 				String sysName = multi.getFilesystemName("file");
 				int score = Integer.parseInt(multi.getParameter("score"));
 				int seq = dao.getSeqNextVal();
-				int result = dao.insert(new BoardDTO(seq, 0, score,writer, title, editorTxt, 0, 0, null, 0));
+				int result = dao.insert(new BoardDTO(seq, prodcutNum, score,writer, title, editorTxt, 0, 0, null, 0));
 				if(oriName != null) {
 					fdao.insert(new FileDTO(0, oriName,sysName,seq));
 				}
@@ -165,11 +170,16 @@ public class BoardController extends HttpServlet {
 					request.getRequestDispatcher("/boardSelect.board?num="+num).forward(request, response);
 				}
 
+			// 게시글 수정 페이지 이동
 			}else if(uri.equals("/boardUpdate.board")) {
 
 				int num = Integer.parseInt(request.getParameter("num"));
+				List<ProductDTO> product = dao.productSelect();
 				BoardDTO board = dao.selectBoard(num);
+				ProductDTO productOne = dao.productOneSelect(board.getProductNum());
 				request.setAttribute("board", board);
+				request.setAttribute("productOne", productOne);
+				request.setAttribute("product", product);
 				request.getRequestDispatcher("/Board/boardUpdate.jsp").forward(request, response);
 
 				// 게시글 수정
@@ -189,17 +199,22 @@ public class BoardController extends HttpServlet {
 
 				int num = Integer.parseInt(multi.getParameter("num"));
 				String title = multi.getParameter("title");
+				
+				
+				int prodcutNum = Integer.parseInt(multi.getParameter("prodcutNum")); 
 
+				
 				String contents = multi.getParameter("editorTxt");
 
 				String oriName = multi.getOriginalFileName("file");
 				String sysName = multi.getFilesystemName("file");
 				int score = Integer.parseInt(multi.getParameter("score"));
 				int seq = num;
-				int result = dao.update(new BoardDTO(seq,0, score, writer, title, contents, 0, 0, null, 0));
-				/*if(oriName != null) {
+				int result = dao.update(new BoardDTO(seq,prodcutNum, score, writer, title, contents, 0, 0, null, 0));
+				if(oriName != null) {
 					fdao.insert(new FileDTO(0, oriName,sysName,seq));
-				}*/
+				}
+				
 				request.getRequestDispatcher("/boardSelect.board?num="+num).forward(request, response);
 			}
 

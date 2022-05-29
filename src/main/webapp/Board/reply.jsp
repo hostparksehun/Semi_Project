@@ -77,9 +77,8 @@
 								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리 술 검색</a></li>
 
 
-							<li class="nav-item"><a
-								class="nav-link mx-0 mx-md-0 mx-lg-3" href="/boardList.board"
-								id="board">술꾼 술꾼</a></li>
+							<li class="nav-item"><a class="nav-link mx-0 mx-md-0
+									mx-lg-3" href="/boardList.board" id="board">술꾼 술꾼</a></li>
 							<c:choose>
 								<c:when test="${loginID != null}">
 
@@ -306,7 +305,7 @@
 									action="modify.board?pseq=${board.boardNum}&seq=${i.replySeq}"
 									method="post" id="modifyFrm" enctype="multipart/form-data">
 
-									<div class="reply_view">${i.writer}| ${i.wirteDate}</div>
+									<div class="reply_view">${i.writer}|${i.wirteDate}</div>
 
 									<div class="head6">
 										<div class="reply_contents">${i.cotents}</div>

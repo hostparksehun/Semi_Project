@@ -15,42 +15,35 @@
 		<div class='boardDiv'>
 			<div class='btn_layer'>
 				<button class='top_board'
-					onclick="location.href='boardList.board?type=3&cpage=1'">인기글
-					모아보기</button>
+					onclick="location.href='boardList.board?type=3&cpage=1'">인기글모아보기</button>
 			</div>
-			<table class='boardTable'>
-				<thead>
-					<tr>
-						<th>번호</th>
-						<th>작성자</th>
-						<th>제목</th>
-						<th>조회</th>
-						<th>추천</th>
-						<th>날짜</th>
-					</tr>
-				</thead>
-				<tbody>
+			<div class='boardTable'>
+				<div class="boardlist2 row col-12 listoff">
+					<div class="col-lg-2 col-sm-3">번호</div>
+					<div class="col-lg-2 col-sm-3">작성자</div>
+					<div class="col-lg-2 col-sm-3">제목</div>
+					<div class="listoff col-lg-2">조회</div>
+					<div class="listoff col-lg-2">추천</div>
+					<div class="col-lg-2 col-sm-3">날짜</div>
+				</div>
 					<c:choose>
 						<c:when test="${empty list}">
-							<tr>
-								<td colspan="7">현재 등록된 게시글이 없습니다.</td>
-							</tr>
+							<div>현재 등록된 게시글이 없습니다.</div>
 						</c:when>
 						<c:otherwise>
 							<c:forEach var="list" items="${list}">
-								<tr class='boardSelect' data-id='${list.boardNum}'>
-									<td>${list.boardNum}</td>
-									<td>${list.writer}</td>
-									<td>${list.title}</td>
-									<td>${list.boardCount}</td>
-									<td>${list.boardLike}</td>
-									<td>${list.writeDate}</td>
-								</tr>
+									<div class='boardSelect boardlist row col-12' data-id='${list.boardNum}'>
+										<div class="col-lg-2 col-sm-3">${list.boardNum}</div>
+										<div class="col-lg-2 col-sm-3">${list.writer}</div>
+										<div class="boardTitleTd col-lg-2 col-sm-3">${list.title}</div>
+										<div class="listoff col-lg-2">${list.boardCount}</div>
+										<div class="listoff col-lg-2">${list.boardLike}</div>
+										<div class="col-lg-2 col-sm-3">${list.writeDate}</div>
+								</div>
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
-				</tbody>
-			</table>
+			</div>
 			<div class='btn_under'>
 				<button class='down_board'
 					onclick="location.href='boardList.board?type=0&cpage=1'">전체
@@ -64,17 +57,19 @@
 				<!-- <button class='down_board'>태그별 보기</button> -->
 				<div class='btn_write'>
 					<button class='down_write'
-						onclick="if(${loginID != null}) {location.href='/Board/boardAdd.jsp'}else{alert('로그인 후 작성할 수 있습니다')};">글쓰기</button>
+						onclick="if(${loginID != null}) {location.href='/boardAddPage.board'}else{alert('로그인 후 작성할 수 있습니다')};">글쓰기</button>
 				</div>
 			</div>
-				<form action=/boardList.board align="center">
-					<select name="selectType">
-						<option value="1">제목</option>
-						<option value="2">작성자</option>
-					</select> 
-					<input type="text" class='boardSearch' name="boardSearch"> 
-					<button style="background-color: #70e0f6; color: white; border: 0px; font-size: 18px; " class='boardSearchBtn'>검색하기</button>
-				</form>
+			<form action=/boardList.board align="center">
+				<select name="selectType">
+					<option value="1">제목</option>
+					<option value="2">작성자</option>
+				</select> 
+				<input type="text" class='boardSearch' name="boardSearch">
+				
+				<button class='boardSearchBtn'>검색하기</button>
+				
+			</form>
 			<div class="row bd nav">
 				<div class="col">${navi}</div>
 			</div>

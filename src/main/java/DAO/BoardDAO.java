@@ -14,6 +14,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import DTO.BoardDTO;
+import DTO.ProductDTO;
 import DTO.ReplyDTO;
 import DAO.SearchDAO;
 
@@ -36,7 +37,6 @@ public class BoardDAO {
 	// DB의 총 record 개수를 알아내기 위한 메소드
 	private int getRecordTotalCount(String typeSql, String where) throws Exception{
 		String sql = "select count(*) from board where board_status IN (0,2) "+ where + typeSql;
-
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
 				ResultSet rs = pstat.executeQuery();){
@@ -116,9 +116,7 @@ public class BoardDAO {
 		int end = cpage * 10; // 10
 
 		// 한 페이지에 게시글이 10개씩 보여지도록 하기 위해서 row_number를 활용하는데, 서브 쿼리를 활용해서 select 해준다.
-		System.out.println(where);
-		String sql = "select * from (select row_number() over("+typeSql+") line, board.* from\n board) where board_status IN (0,2) "+ where +" and line between ? and ?";
-		System.out.println(sql);
+		String sql = "select * from (select row_number() over("+typeSql+") line, board.* from\n board where board_status IN (0,2) "+ where +") where line between ? and ?";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setInt(1, start);
@@ -160,14 +158,15 @@ public class BoardDAO {
 
 	// 게시글 작성
 	public int insert(BoardDTO dto) throws Exception{	
-		String sql = "insert into board values(?, 0, ?, ?, ?, ?, 0, sysdate, 0, 0)";
+		String sql = "insert into board values(?, ?, ?, ?, ?, ?, 0, sysdate, 0, 0)";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setInt(1, dto.getBoardNum());
-			pstat.setInt(2, dto.getScore());
-			pstat.setString(3, dto.getWriter());;
-			pstat.setString(4, dto.getTitle());
-			pstat.setString(5, dto.getBoardExp());
+			pstat.setInt(2, dto.getProductNum());
+			pstat.setInt(3, dto.getScore());
+			pstat.setString(4, dto.getWriter());;
+			pstat.setString(5, dto.getTitle());
+			pstat.setString(6, dto.getBoardExp());
 
 			int result = pstat.executeUpdate();
 			con.commit();
@@ -215,20 +214,20 @@ public class BoardDAO {
 			}
 		}
 	}
-	
+
 	// 추천하기 누르면 좋아요 증가
 	public int boardLike(int num) throws Exception {
 		String sql = "update board set board_like = board_like +1 where board_num = ?";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setInt(1, num);
-			
+
 			try(ResultSet rs = pstat.executeQuery();){
 				return 1;
 			}
 		}
 	}
-	
+
 	// 게시판 삭제
 	public int boardDelete(int num, int stat) throws Exception{
 		String sql = "update board set board_status = ? where board_num = ?";
@@ -245,13 +244,14 @@ public class BoardDAO {
 
 	// 게시판 수정
 	public int update(BoardDTO dto) throws Exception{
-		String sql = "update board set title = ?, board_exp = ?, score =? where board_num = ?";
+		String sql = "update board set title = ?, product_Num =?, board_exp = ?, score =? where board_num = ?";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setString(1, dto.getTitle());
-			pstat.setString(2, dto.getBoardExp());
-			pstat.setInt(3, dto.getScore());
-			pstat.setInt(4, dto.getBoardNum());
+			pstat.setInt(2, dto.getProductNum());
+			pstat.setString(3, dto.getBoardExp());
+			pstat.setInt(4, dto.getScore());
+			pstat.setInt(5, dto.getBoardNum());
 
 			int result = pstat.executeUpdate();
 			con.commit();
@@ -283,6 +283,49 @@ public class BoardDAO {
 			ResultSet rs = pstat.executeQuery();{
 				rs.next();
 				return rs.getInt(1);
+			}
+		}
+	}
+
+	// 제품 목록 조회
+	public List<ProductDTO> productSelect() throws Exception {
+		String sql = "select * from product_info";
+
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+
+			try(ResultSet rs = pstat.executeQuery();){
+				List<ProductDTO> list = new ArrayList<ProductDTO>();
+				while(rs.next()) {
+					int seq = rs.getInt("SEQ");
+					String productName = rs.getString("PRODUCT_NAME");
+					String smry = rs.getString("SMRY");
+					String oriName = rs.getString("ORI_NAME");
+	
+					ProductDTO dto = new ProductDTO(productName, seq ,smry,oriName);
+					list.add(dto);
+				}
+				return list;
+			}
+		}
+	}
+
+	// 수정 페이지 선택한 제품 조회
+	public ProductDTO productOneSelect(int prodcutNum) throws Exception{
+		String sql = "select * from product_info where seq = ?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setInt(1, prodcutNum);
+
+			try(ResultSet rs = pstat.executeQuery();){
+				rs.next();
+				int seq = rs.getInt("SEQ");
+				String productName = rs.getString("PRODUCT_NAME");
+				String smry = rs.getString("SMRY");
+				String oriName = rs.getString("ORI_NAME");
+
+				ProductDTO dto = new ProductDTO(productName, seq, smry, oriName);
+				return dto;
 			}
 		}
 	}

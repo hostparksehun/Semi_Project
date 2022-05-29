@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 import DTO.BoardDTO;
 import DTO.ProductDTO;
 import DTO.ReplyDTO;
-import DAO.SearchDAO;
+import DAO.SearchDAO; 
 
 public class BoardDAO {
 	private static BoardDAO instance = null;

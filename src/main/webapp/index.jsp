@@ -355,10 +355,7 @@
 
 	</div>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 64b320f98bc109fb788862c5bc5bca79171d7c76
 	<script>
 		$("#join").on("click", function() {
 			location.href = "/Member/joinView.jsp";

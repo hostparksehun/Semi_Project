@@ -620,7 +620,55 @@ ul {
 	}
 }
 
+/* content */
 
+
+.Result_box a {
+	font-size: 14px;
+	text-decoration: none;
+	color: #36384f;
+}
+
+.Result_banner1 {
+	padding-left : 12px;
+	font-size: 1.5rem;
+	font-family: 'Hahmlet', serif;
+	color: #278f59;
+}
+
+.Result_banner2 {
+	font-size: 1rem;
+	font-family: 'Hahmlet', serif;
+	text-align: center;
+}
+
+.Result_grade{
+	font-family: 'Hahmlet', serif;
+	font-size: 14px;
+	color: #f8bc3b;
+}
+
+.Result_txt {
+	margin-top: 15px;
+}
+
+.Result_name {
+	font-size: 17px;
+	text-align: center;
+	color: black;
+	font-family: 'Hahmlet', serif;
+}
+
+.Result_price {
+	margin-top: 5px;
+	font-size: 13px;
+	font-family: 'Hahmlet', serif;
+}
+
+.Result_decs {
+	font-size: 14px;
+	font-family: 'Hahmlet', serif;
+}
 
 </style>
 
@@ -773,29 +821,45 @@ ul {
      
                     <!----------------------------------- Result  ----------------------------------->
                 
-                    <div class="row m-auto">
-                
-                     <c:forEach var="i" items="${list }"> 
-                     
-                     <c:if test="${i.product_code eq 'A10' }">              
-                        <div class="col-lg-4 col-sm-12 list_box">
-                            <a href="Detail.ProductController?seq=${i.seq }">
-                                <div class="Result_img">
-                          
-                                    <img src="../thumbnail/${i.sysName}" style="width: 100%;">
-                                </div>
-                                <div class="Result_txt">
-                                    <div class="review"></div>
-                                    
-                                    <p class="Result_name">${i.product_name }</p>
-                               
-                                    <p class="Result_decs">${i.smry }</p>
-                                  
-                                </div>
-                            </a>
-                        </div>
-                         </c:if>  
-                     </c:forEach>
+                    	<div class="row m-auto">
+
+						<!-- a태그 처리해야 상세 페이지 볼 수 있음 -->
+
+						<c:forEach var="i" items="${list}">
+
+							<div class="col-12 col-lg-4 Result_box">
+								<a href="/Detail.ProductController?seq=${i.seq}">
+									<div class="Result_img">
+										<img src="../thumbnail/${i.sysName}" class="w-100" style="border-radius: 5px; border: border: 0.5px solid rgba(128, 128, 128);">
+									</div>
+									<div class="Result_txt" style="text-align: center;">
+										<div class="row Result_grade">
+											<div class="col-6 px-0" style="text-align: right;">
+												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+  <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+</svg>
+											</div>
+
+											<div class="col-6 px-1" style="text-align: left; line-height: 24px;">
+												${i.grade}
+											</div>
+										</div>
+										<p class="Result_name my-0">${i.product_name}</p>
+										<p class="Result_price my-1">
+											<fmt:formatNumber value="${i.price }" type="currency" />
+										</p>
+										<p class="Result_decs mb-4 mb-lg-0">${i.smry}</p>
+									</div>
+								</a>
+							</div>
+
+						</c:forEach>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
             
 								
 <!----------------------------------- footer ----------------------------------->

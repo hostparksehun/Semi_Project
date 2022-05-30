@@ -252,7 +252,7 @@
 			<div class="row m-auto">
 
 				<div class="col-12 col-lg-4">
-					<a class="tag_a" href="/Detail.ProductController?seq=4">
+					<a class="tag_a" href="/Detail.ProductController?seq=19">
 						<div class="Result_img">
 							<img src="../thumbnail/baekjae25.png" class="w-100">
 						</div>
@@ -265,7 +265,7 @@
 				</div>
 
 				<div class="col-12 col-lg-4">
-					<a class="tag_a" href="/Detail.ProductController?seq=2">
+					<a class="tag_a" href="/Detail.ProductController?seq=17">
 						<div class="Result_img">
 							<img src="../thumbnail/albam.png" class="w-100">
 						</div>

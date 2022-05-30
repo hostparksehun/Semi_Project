@@ -72,7 +72,7 @@
 			<div class='boardSet'>
 				<div class='boardUser'>제목</div>
 				<input id='boardTitle' name='title' type="text" maxlength="20"
-					placeholder="제목을 입력하세요.">
+					placeholder="제목을 입력하세요." required="required">
 			</div>
 			<hr>
 
@@ -83,7 +83,7 @@
 					placeholder="내용을 입력하세요." style="height: 300px; "> -->
 				<div id="smarteditor" style="width: 100%; display: inline-block;">
 					<textarea name="editorTxt" id="editorTxt" rows="20" cols="10"
-						placeholder="내용을 입력해주세요" style="width: 100%">
+						placeholder="내용을 입력해주세요" style="width: 100%" required="required">
 			        </textarea>
 				</div>
 			</div>
@@ -94,7 +94,7 @@
 			<hr> -->
 			<div class='boardLastBtn'>
 				<button type="submit" onclick="submitAdd()">등록</button>
-				<button type='button'>취소</button>
+				<button type='button' onclick="if(confirm('정말로 취소 하시겠습니까?')){location.href='/boardList.board?cpage=1'}">취소</button>
 			</div>
 		</div>
 	</form>
@@ -127,6 +127,7 @@
 				fCreator : "createSEditor2"
 			})
 		}
+		
 		$(document).ready(function() {
 			smartEditor()
 		})
@@ -157,7 +158,13 @@
 			$("body").addClass("active");
 		});
 		
+		function pasteHTML(filepath){
+			var sHTML = '&lt;span style="color:#FF0000;"&gt;&lt;img src="'+filepath+'"&gt;&lt;/span&gt;';
+			alert(sHTML);
+			oEditors.getById["editorTxt"].exec("PASTE_HTML", [sHTML]);
+		}
 	</script>
+	<!-- <script type="text/javascript" src="./quick_photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script> -->
 	<jsp:include page="common/footer.jsp" />
 </body>
 </html>

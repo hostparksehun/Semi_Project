@@ -1,8 +1,10 @@
 package DAO;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,8 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import DTO.ProductDTO;
+
+
 
 public class ProductDAO {
 
@@ -35,6 +39,7 @@ public class ProductDAO {
 	public int insert(ProductDTO dto) throws Exception{
 
 		String sql = "insert into product_info values (product_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);) 
@@ -273,5 +278,7 @@ public class ProductDAO {
 			}
 		}
 
+
 	}
+
 }

@@ -293,69 +293,87 @@
 					</div>
 
 					<!--  댓글 입력 창 -->
-
-					<form
-						action="/add.board?parent_seq=${board.boardNum}&writer=${loginID}"
-						method="post">
-
-						<div id="reply_box" class="row col-lg-12">
-							<div class="col-lg-10 col-md-8 col-xs-6" style="resize: none;">
-								<textarea placeholder="댓글 내용을 입력하세요." name='content'
-									class="textarea"></textarea>
-							</div>
-							<div class="rebt col-lg-2 col-md-4 col-xs-6"
-								style="margin: auto;">
-								<input id="reply" type="submit" class="reply_btn" value="확인">
-							</div>
-						</div>
-
-					</form>
+					<c:choose>
+						<c:when test="${loginID == null}">
+							<div style="color:#278f59">로그인을 하셔야 댓글을 등록하실 수 있습니다.</div>
+						</c:when>
+						
+						<c:otherwise>						
+						 
+							<form
+								action="/add.board?parent_seq=${board.boardNum}&writer=${loginID}"
+								method="post">
+		
+								<div id="reply_box" class="row col-lg-12">
+									<div class="col-lg-10 col-md-8 col-xs-6" style="resize: none;">
+										<textarea placeholder="댓글 내용을 입력하세요." name='content'
+											class="textarea"></textarea>
+									</div>
+									<div class="rebt col-lg-2 col-md-4 col-xs-6"
+										style="margin: auto;">
+										<input id="reply" type="submit" class="reply_btn" value="확인">
+									</div>
+								</div>
+		
+							</form>
+						</c:otherwise>
+						
+						</c:choose>
 
 					<div id="top_line"></div>
 
 					<!-- 댓글 출력 및 편집 부분 -->
 					<c:choose>
+					
 						<c:when test="${empty reply}">
 						</c:when>
+						
 						<c:otherwise>
+						
 							<c:forEach var="i" items="${reply}">
-
+							
 								<form
 									action="modify.board?pseq=${board.boardNum}&seq=${i.replySeq}"
 									method="post" id="modifyFrm" enctype="multipart/form-data">
-
+									
 									<div class="reply_view">${i.writer}|${i.wirteDate}</div>
-
+									
 									<div class="head6">
-										<div class="reply_contents">${i.cotents}</div>
+									
+										<div class="reply_contents" style="border: none;">${i.cotents}</div>
+										
 										<input name='contents' value="${i.cotents}"
-											style="display: none; width: 50%;">
-										<br> <input type="hidden" id="contentsInput"
+											style="display: none; width: 50%;"><br>
+											
+										 <input type="hidden" id="contentsInput"
 											name="reply_contents">
-
+											
 										<c:choose>
-
+										
 											<c:when test="${loginID == i.writer}">
-
-
+											
 												<input type="hidden" class="reply_seq" value="${i.replySeq}">
 												<button class="head6_btn modify" type="button">수정</button>
 												<button class="head6_btn delRbtn" type="button">삭제</button>
+												
+											</c:when>
+											
+										</c:choose>
+										
 									</div>
-									</c:when>
+									
+								</form>
+								
+							</c:forEach>
+							
+						</c:otherwise>
 
-									<c:otherwise>
-
-									</c:otherwise>
 					</c:choose>
-
-				</form>
-
-				</c:forEach>
-
-				</c:otherwise>
-
-				</c:choose>
+					
+					<br>
+					
+					<input type="button" value="목록" class="list_btn" 
+					 style="width: 150px; height: 70px; margin-left: 45%; background-color:#278f59; border:none; color:white;">
 				
 				</div>
 
@@ -452,6 +470,11 @@
 			}
 
 		});
+		
+		$(".list_btn").on("click",function(){
+			location.href="/boardList.board";
+		})
+		
 	</script>
 
 

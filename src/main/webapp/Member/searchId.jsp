@@ -198,18 +198,14 @@
 			<div id="searchResult" style="text-align: center;">
 				<h5></h5>
 			</div>
-			<!--             <div class="idline"> -->
 			<div>
 				<input type="text" class="textBox" id="name" name="name"
 					placeholder="이름">
 			</div>
-			<!--                 <div class="check" id="nameinfo"></div> -->
-			<!--             <div class="idline"> -->
 			<div>
 				<input type="text" class="textBox" id="phone" name="phone"
 					placeholder="휴대폰번호 (-없이)">
 			</div>
-			<!-- 				<div class="check" id="phoneinfo"></div> -->
 			<div style="text-align: center;">
 				<input type="button" class="btn btn-outline-success" id="search"
 					value="찾기"> <input type="button"

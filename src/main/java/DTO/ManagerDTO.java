@@ -10,7 +10,7 @@ public class ManagerDTO {
 	private String writer;
 	private Date writeDate;
 	
-
+	
 	public ManagerDTO(int board_num, String title, String writer, Date writeDate) {
 		super();
 		this.board_num = board_num;
@@ -19,7 +19,9 @@ public class ManagerDTO {
 		this.writeDate = writeDate;
 	}
 
-	
+
+
+
 
 	public int getBoard_num() {
 		return board_num;
@@ -64,4 +66,5 @@ public class ManagerDTO {
 		return sdf.format(this.writeDate.getTime());
 	}
 
+	
 }

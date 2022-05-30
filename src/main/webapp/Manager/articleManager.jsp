@@ -63,11 +63,11 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
-									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
-									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
-									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
-									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
+									<li><a class="dropdown-item" href="/productA10.ProductController?cpage=1">막걸리</a></li>
+									<li><a class="dropdown-item" href="/productA20.ProductController?cpage=1">전통 소주</a></li>
+									<li><a class="dropdown-item" href="/productA30.ProductController?cpage=1">약주</a></li>
+									<li><a class="dropdown-item" href="/productA40.ProductController?cpage=1">과실주</a></li>
+									<li><a class="dropdown-item" href="/productA50.ProductController?cpage=1">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
@@ -188,7 +188,7 @@
 				</div>
 			</div>
 			<div class="row my-2" id="content">
-				<div class="col-12 col-md-3" id="mypage list">
+				<div class="col-12 col-lg-3 d-none d-lg-block" id="mypage list">
 					<ul class="list-group list-group-flush">
 						<a href="/add.ProductController"
 							class="list-group-item list-group-item-action"> 상품 등록 </a>
@@ -196,28 +196,33 @@
 						<a href="/article.manager?cpage=1"
 							class="list-group-item list-group-item-action"> 게시물 관리 </a>
 
-						<a href="/member.manager"
+						<a href="/member.manager?cpage=1"
 							class="list-group-item list-group-item-action"> 회원 관리 </a>
 
-						<a href="#" class="list-group-item list-group-item-action"> 통계
-						</a>
 					</ul>
 				</div>
-				<div class="col-12 col-md-9">
+				
+				<div class="col-12 d-lg-none" id="navmenu">
+					<nav class="nav nav-pills nav-fill">
+						<a class="nav-link" href="/add.ProductController">상품 등록</a> <a
+							class="nav-link" href="/article.manager?cpage=1">게시물 관리</a> <a
+							class="nav-link" href="/member.manager?cpage=1">회원 관리</a>
+
+					</nav>
+				</div>
+				
+				<div class="col-12 col-lg-9">
 
 					<span id="title">
-						<h3 class="mt-2">게시글 관리</h3>
+						<h3 class="mt-3 d-none d-lg-block" style="padding-left: 25px;">게시글 관리</h3>
 					</span>
 
 					<div class="container">
 						<div class="row">
 
-							<div class="col-12 mb-2 mt-1">총 게시물 : ${count} 건</div>
-
-
 
 							<form action="/delAcl.manager">
-								<div class="col-3 mb-2 mt-2 ">신고된 게시글</div>
+								<div class="col-12 mb-2 mt-2" style="font-size:1rem;">신고된 게시글 (총 게시물 : ${count} 건)</div>
 
 
 								<div class="col-12">
@@ -257,6 +262,7 @@
 										<button type="submit" class="btn btn-outline-danger">삭제</button>
 
 									</div>
+									</div>
 							</form>
 
 							<div class="col-12 mb-2 mt-1">
@@ -273,7 +279,6 @@
 
 			</div>
 		</div>
-	</div>
 
 
 	<!--//////////////////////////////////////////////////////////////////////////////////-->

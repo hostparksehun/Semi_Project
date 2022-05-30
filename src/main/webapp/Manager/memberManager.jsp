@@ -7,8 +7,9 @@
 
 <head>
 <!-- CSS -->
-<link rel="stylesheet" href="/CSS/memberUpdate.css">
+<link rel="stylesheet" href="/CSS/productAdd.css">
 <!-- 경로 수정 고려 -->
+
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,15 +29,12 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 
-<script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/7f0130da7d.js"
+	crossorigin="anonymous"></script>
+<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js"
+	charset="utf-8"></script>
 
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-<title>우리술夜</title>
-
-
-</head>
+<title>회원 관리</title>
 <body>
 	<div class="container">
 		<header class="mb-5 pt-3">
@@ -124,7 +122,7 @@
 						</ul>
 						<form action="/mini.search" class="d-flex">
 							<input id="search_input" class="form-control mx-1" type="search"
-								placeholder="파전의 막걸리? 콜?" aria-label="Search" name="search_text"
+								placeholder="관리자도 술먹어야지" aria-label="Search" name="search_text"
 								required>
 							<button class="btn btn-outline-success me-1" type="submit"
 								id="search_btn">
@@ -182,142 +180,139 @@
 			</nav>
 		</header>
 
-
-		<!---------------------------------------------헤더------------------------------------------>
-
-		<form method="post" action="/update.member" id="frm">
-			<c:forEach var="i" items="${list }">
-				<div class="box" style="width: 360px;">
-					<div style="text-align: center;padding-bottom: 30px;">
-						<h3>회원정보 수정</h3>
-					</div>
-					<div id="info">
-						<table class="table table-borderless ">
-						<tr>
-							<th>이름
-							<td>${i.name}
-						</tr>
-						<tr>
-							<th>아이디
-							<td>${i.id}
-						</tr>
-						<tr>
-							<th>생일
-							<td>${i.birthday}
-						</td>
-						</table>
-
-					</div>
-					<div class="join-box">
-						<div class="title">
-							이메일<br>
-						</div>
-						<div>
-							<input type="text" id="email" name="email" class="join-input">
-							
-						</div>
-					</div>
-					<div class="join-box">
-						<div class="title">
-							휴대폰번호<br>
-						</div>
-						<div>
-							<input type="text" id="phone" name="phone"
-								placeholder="ex)01012349876" class="join-input">
-						</div>
-						
-					</div>
-					<div class="join-box">
-						<div class="title">
-							우편번호<br>
-						</div>
-						<div>
-							<input type="text" name="zipcode" id="zipcode" class="join-input" />
-	<button type="button" onclick="execDaumPostcode()" class="btn btn-success" id="zipcode_find">
-								찾기</button>
-						</div>
-					</div>
-					<div class="join-box">
-						<div class="title">
-							주소<br>
-						</div>
-						<div>
-							<input type="text" name="address1" id="address1"
-								class="join-input">
-						</div>
-					</div>
-					<div class="join-box">
-						<div class="title">
-							상세주소<br>
-						</div>
-						<div>
-							<input type="text" name="address2" id="address2"
-								class="join-input">
-						</div>
-					</div>
-				<input type="submit" class="btn btn-outline-success" id="join"
-					value="수정완료">
-
-				</div>
-			</c:forEach>
-		</form>
-		<!------------------------------script부분 ------------------------------------------->
-
-		</script>
-		<!-------------------------------------------Footer-------------------------------------------->
-		<hr>
-		<footer class="site-footer">
-
-			<div class="container">
-				<div class="row">
-					<div class="d-none d-lg-block col-md-8 col-sm-6 col-xs-12">
-						<p class="copyright-text">
-							Copyright &copy; 2022 All Rights Reserved by <a href="#"
-								style="text-decoration: none;">아이코올</a>.
-						</p>
-					</div>
-
-					<div class="d-lg-none col-md-8 col-sm-6 col-xs-12">
-						<p class="copyright-text">Copyright &copy;</p>
-						<p class="copyright-text">
-							2022 All Rights Reserved by <a href="#"
-								style="text-decoration: none;">아이코올</a>.
-						</p>
-					</div>
-
-					<div class="col-md-4 col-sm-6 col-xs-12 my-3 my-lg-0">
-						<ul class="social-icons">
-							<li><a class="facebook" href="#"><i
-									class="fa fa-facebook"></i></a></li>
-							<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a class="dribbble" href="#"><i
-									class="fa fa-dribbble"></i></a></li>
-							<li><a class="linkedin" href="#"><i
-									class="fa fa-linkedin"></i></a></li>
-						</ul>
-					</div>
+		<!--//////////////////////////////////////////////////////////////////////////////////-->
+		<div class="container mt-3">
+			<div class="row" id="manager">
+				<div class="col-12" id="manager_head">
+					<h2>관리 페이지</h2>
 				</div>
 			</div>
-		</footer>
+			<div class="row my-2" id="content">
+				<div class="col-12 col-lg-3 d-none d-lg-block" id="mypage list">
+					<ul class="list-group list-group-flush">
+						<a href="/add.ProductController"
+							class="list-group-item list-group-item-action"> 상품 등록 </a>
 
-		<script>
-			//우편번호
-			function execDaumPostcode() {
-				new daum.Postcode(
-						{
-							oncomplete : function(data) {
-								var addr = "";
+						<a href="/article.manager?cpage=1"
+							class="list-group-item list-group-item-action"> 게시물 관리 </a>
 
-								if (data.userSelectedType === "R") {
-									addr = data.roadAddress;
-								}
+						<a href="/member.manager?cpage=1"
+							class="list-group-item list-group-item-action"> 회원 관리 </a>
 
-								document.getElementById("zipcode").value = data.zonecode;
-								document.getElementById("address1").value = addr;
-								document.getElementById("address2").focus();
-							},
-						}).open();
-			}
-		</script>
+					</ul>
+				</div>
+				
+				<div class="col-12 d-lg-none" id="navmenu">
+					<nav class="nav nav-pills nav-fill">
+						<a class="nav-link" href="/add.ProductController">상품 등록</a> <a
+							class="nav-link" href="/article.manager?cpage=1">게시물 관리</a> <a
+							class="nav-link" href="/member.manager?cpage=1">회원 관리</a>
+
+					</nav>
+				</div>
+				
+				<div class="col-12 col-lg-9">
+
+					<span id="title">
+						<h3 class="mt-3 d-none d-lg-block" style="padding-left: 25px;">회원 관리</h3>
+					</span>
+
+					<div class="container">
+						<div class="row">
+
+								<div class="col-12 mb-2 mt-2 d-none d-lg-block" style="font-size:1.4rem;">총 회원 수 : ${count}명</div>
+								<div class="col-12 d-none d-lg-block">
+
+									<table class="table">
+
+										<thead class="table-dark" style="text-align: center;">
+											<th>
+											<td colspan="1">ID</td>
+											<td colspan="1">이름</td>
+											<td colspan="3">연락처</td>
+											<td colspan="3">이메일</td>
+											<td colspan="4">주소</td>
+											</th>
+										</thead>
+
+										<!-- 반복문 돌릴 예정 : board_num이 value임 -->
+										<c:forEach var="i" items="${list}">
+
+											<tbody style="text-align: center;">
+												<th>
+											<td colspan="1">${i.id}</td>
+											<td colspan="1">${i.name}</td>
+											<td colspan="3">${i.phone}</td>
+											<td colspan="3">${i.email}</td>
+											<td colspan="4">${i.address1}</td>
+												</th>
+											</tbody>
+
+										</c:forEach>
+									</table>
+
+									</div>
+									
+									<div class="col-12 d-lg-none my-4" style="text-align:center; font-size:2rem; color:#2c6246;">
+										모바일 환경에선 <br>
+										확인할 수 없습니다.
+									</div>
+
+							<div class="col-12 mb-2 mt-1 d-none d-lg-block">
+
+								<nav aria-label="Page navigation example">
+									<ul class="pagination justify-content-center">${navi}</ul>
+								</nav>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+
+
+	<!--//////////////////////////////////////////////////////////////////////////////////-->
+	<hr>
+	<footer class="site-footer">
+
+		<div class="container">
+			<div class="row">
+				<div class="d-none d-lg-block col-md-8 col-sm-6 col-xs-12">
+					<p class="copyright-text">
+						Copyright &copy; 2022 All Rights Reserved by <a href="#"
+							style="text-decoration: none;">아이코올</a>.
+					</p>
+				</div>
+
+				<div class="d-lg-none col-md-8 col-sm-6 col-xs-12">
+					<p class="copyright-text">Copyright &copy;</p>
+					<p class="copyright-text">
+						2022 All Rights Reserved by <a href="#"
+							style="text-decoration: none;">아이코올</a>.
+					</p>
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-xs-12 my-3 my-lg-0">
+					<ul class="social-icons">
+						<li><a class="facebook" href="#"><i
+								class="fa fa-facebook"></i></a></li>
+						<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a class="dribbble" href="#"><i
+								class="fa fa-dribbble"></i></a></li>
+						<li><a class="linkedin" href="#"><i
+								class="fa fa-linkedin"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	</div>
+
+
 </body>
+
 </html>

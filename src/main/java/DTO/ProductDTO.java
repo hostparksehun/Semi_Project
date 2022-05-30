@@ -1,6 +1,7 @@
 package DTO;
 
 public class ProductDTO {
+
 	// 수정 -- 시작
 	private String product_name;
 	private String search_name;
@@ -63,7 +64,6 @@ public class ProductDTO {
 		this.product_name = product_name;
 	}
 
-	
 	public String getSearch_name() {
 		return search_name;
 	}
@@ -72,7 +72,6 @@ public class ProductDTO {
 		this.search_name = search_name;
 	}
 
-	
 	public String getProduct_area() {
 		return product_area;
 	}
@@ -128,14 +127,6 @@ public class ProductDTO {
 	public void setAbv(float abv) {
 		this.abv = abv;
 	}
-	
-	public String getBrewery() {
-		return brewery;
-	}
-
-	public void setBrewery(String brewery) {
-		this.brewery = brewery;
-	}
 
 	public String getAdress1() {
 		return adress1;
@@ -153,6 +144,14 @@ public class ProductDTO {
 		this.adress2 = adress2;
 	}
 
+	public String getBrewery() {
+		return brewery;
+	}
+
+	public void setBrewery(String brewery) {
+		this.brewery = brewery;
+	}
+
 	public int getCapacity() {
 		return capacity;
 	}
@@ -165,7 +164,7 @@ public class ProductDTO {
 		return grade;
 	}
 
-	public void setGrade(int grade) {
+	public void setGrade(float grade) {
 		this.grade = grade;
 	}
 
@@ -193,8 +192,11 @@ public class ProductDTO {
 		this.sysName = sysName;
 	}
 
+
+	
+
 	// ----> 수정 끝
-	
-	
+
 	
 }
+

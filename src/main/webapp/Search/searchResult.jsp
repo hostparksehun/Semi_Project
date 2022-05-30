@@ -66,20 +66,20 @@
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<li><a class="dropdown-item"
-										href="/productA10.ProductController">막걸리</a></li>
+										href="/productA10.ProductController?cpage=1">막걸리</a></li>
 									<li><a class="dropdown-item"
-										href="/productA20.ProductController">전통 소주</a></li>
+										href="/productA20.ProductController?cpage=1">전통 소주</a></li>
 									<li><a class="dropdown-item"
-										href="/productA30.ProductController">약주</a></li>
+										href="/productA30.ProductController?cpage=1">약주</a></li>
 									<li><a class="dropdown-item"
-										href="/productA40.ProductController">과실주</a></li>
+										href="/productA40.ProductController?cpage=1">과실주</a></li>
 									<li><a class="dropdown-item"
-										href="/productA50.ProductController">리큐르</a></li>
+										href="/productA50.ProductController?cpage=1">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
 									<li><a class="dropdown-item"
-										href="/list.ProductController">전체보기</a></li>
+										href="/list.ProductController?cpage=1">전체보기</a></li>
 								</ul></li>
 
 							<li class="d-none d-lg-block nav-item"><a
@@ -392,7 +392,7 @@
 							<div class="col-12 col-lg-4 Result_box">
 								<a href="/Detail.ProductController?seq=${i.seq}">
 									<div class="Result_img">
-										<img src="../thumbnail/${i.sysName}" class="w-100" style="border-radius: 5px; border: border: 0.5px solid rgba(128, 128, 128);">
+										<img src="../thumbnail/${i.sysName}" class="w-100" style="border-radius: 5px; border: 0.5px solid rgba(128, 128, 128);">
 									</div>
 									<div class="Result_txt" style="text-align: center;">
 										<div class="row Result_grade">
@@ -478,7 +478,7 @@
 			</div>
 		</footer>
 
-<a id="back-to-top" href="#" class="back-to-top" role="button" title="맨 위로" data-toggle="tooltip" data-placement="left">
+<a id="back-to-top" href="#" class="btn back-to-top" role="button" title="위로" data-toggle="tooltip" data-placement="left">
 
 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
   <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>

@@ -3,56 +3,23 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Hahmlet', serif;
 }
+
+/* content 작업 내용 */
 
 #logo {
-	width: 150px;
-	height: auto;
+  width: 150px;
+  height: auto;
 }
 
-#content {
-	width: 100%;
-	height: auto;
+/* 검색바 */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-#search img {
-	height: 30px;
-	width: 30px;
-}
-
-#contents img {
-	width: 100%;
-	height: 500px;
-}
-
-#drop img {
-    height: 30px;
-    width: 30px;
-}
-
-#search img {
-    height: 30px;
-    width: 30px;
-}
-
-#contents img {
-    width: 100%;
-    height: 500px;
-}
-
-/* Content */
-#manager_head {
-   text-align: center;
-   padding-top: 5%;
-   border-bottom: 1px solid black;
-   padding-bottom: 20px;
-}
-
-#input_box {
-    border-radius: 5px;
-    border: 1px solid black;
-}
 
 /* header부분 */
 header {
@@ -236,12 +203,77 @@ ul {
 	}
 }
 
+.categor_list_btn{
+     border: 2px solid #2c6246;
+     border-radius: 5px;
+}
+
 /*반응형 처리*/
 #navmenu nav a{
-	 background-color: white;
-	 color:#198754;
+    background-color: white;
+    color:#198754;
+    border: 2px solid #2c6246;
+    border-radius: 20px;
+    font-family: 'Hahmlet', serif;
 }
 #navmenu nav a:hover{
-	background-color: #198754;
-	 color:white;
+   background-color: #2c6246;
+    color:white;
+}
+
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display:none;
+}
+
+
+/*----------출력 결과----------*/
+.Result_box a {
+	font-size: 14px;
+	text-decoration: none;
+	color: #36384f;
+}
+
+.Result_banner1 {
+	padding-left : 12px;
+	font-size: 1.5rem;
+	font-family: 'Hahmlet', serif;
+	color: #278f59;
+}
+
+.Result_banner2 {
+	font-size: 1rem;
+	font-family: 'Hahmlet', serif;
+	text-align: center;
+}
+
+.Result_grade{
+	font-family: 'Hahmlet', serif;
+	font-size: 14px;
+	color: #f8bc3b;
+}
+
+.Result_txt {
+	margin-top: 15px;
+}
+
+.Result_name {
+	font-size: 17px;
+	text-align: center;
+	color: black;
+	font-family: 'Hahmlet', serif;
+}
+
+.Result_price {
+	margin-top: 5px;
+	font-size: 13px;
+	font-family: 'Hahmlet', serif;
+}
+
+.Result_decs {
+	font-size: 14px;
+	font-family: 'Hahmlet', serif;
 }

@@ -34,7 +34,7 @@
 <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js"
 	charset="utf-8"></script>
 
-<title>상품 등록</title>
+<title>관리자 페이지</title>
 <body>
 	<div class="container">
 		<header class="mb-5 pt-3">
@@ -63,18 +63,25 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
-									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
-									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
-									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
-									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
+									<li><a class="dropdown-item"
+										href="/productA10.ProductController?cpage=1">막걸리</a></li>
+									<li><a class="dropdown-item"
+										href="/productA20.ProductController?cpage=1">전통 소주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA30.ProductController?cpage=1">약주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA40.ProductController?cpage=1">과실주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA50.ProductController?cpage=1">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
+									<li><a class="dropdown-item"
+										href="/list.ProductController?cpage=1">전체보기</a></li>
 								</ul></li>
 
-							<li class="d-none d-lg-block nav-item"><a href="/Search/search.jsp"
+							<li class="d-none d-lg-block nav-item"><a
+								href="/Search/search.jsp"
 								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리술 검색</a></li>
 
 
@@ -167,11 +174,14 @@
 									class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
 
 								<script>
-									$("#loginBtn").on("click",function(){
-										location.href="/Member/loginView.jsp";
-									})
-									$("#joinBtn").on("click",function(){
-										location.href="/Member/joinView.jsp";
+									$("#loginBtn")
+											.on(
+													"click",
+													function() {
+														location.href = "/Member/loginView.jsp";
+													})
+									$("#joinBtn").on("click", function() {
+										location.href = "/Member/joinView.jsp";
 									})
 								</script>
 							</c:otherwise>
@@ -186,13 +196,13 @@
 		<div class="container mt-3">
 			<div class="row" id="manager">
 				<div class="col-12" id="manager_head">
-					<h2>관리 페이지</h2>
+					<h1>관리 페이지</h1>
 				</div>
 			</div>
 
 			<div class="row" id="content">
 
-				<div class="col-12 col-md-3" id="mypage list">
+				<div class="col-12 col-md-3 d-none d-lg-block" id="mypage list">
 					<ul class="list-group list-group-flush">
 						<a href="/add.ProductController"
 							class="list-group-item list-group-item-action"> 상품 등록 </a>
@@ -200,13 +210,22 @@
 						<a href="/article.manager?cpage=1"
 							class="list-group-item list-group-item-action"> 게시물 관리 </a>
 
-						<a href="/member.manager"
+						<a href="/member.manager?cpage=1"
 							class="list-group-item list-group-item-action"> 회원 관리 </a>
 
-						<a href="#" class="list-group-item list-group-item-action"> 통계
-						</a>
 					</ul>
 				</div>
+
+				<div class="col-12 d-lg-none" id="navmenu">
+					<nav class="nav nav-pills nav-fill">
+						<a class="nav-link" href="/add.ProductController">상품 등록</a> <a
+							class="nav-link" href="/article.manager?cpage=1">게시물 관리</a> <a
+							class="nav-link" href="/member.manager?cpage=1">회원 관리</a>
+
+					</nav>
+				</div>
+
+
 
 				<div class="col-12 col-md-9"></div>
 			</div>

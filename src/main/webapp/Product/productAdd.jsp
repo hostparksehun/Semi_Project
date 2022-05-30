@@ -1,37 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- CSS -->
-    <link rel="stylesheet" href="/CSS/productAdd.css"> <!-- 경로 수정 고려 -->
+<!-- CSS -->
+<link rel="stylesheet" href="/CSS/productAdd.css">
+<!-- 경로 수정 고려 -->
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
-    <!-- Bootstrap ver 5.1  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!-- Bootstrap ver 5.1  -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	crossorigin="anonymous"></script>
 
-    <script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script src="https://kit.fontawesome.com/7f0130da7d.js"
+	crossorigin="anonymous"></script>
+<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js"
+	charset="utf-8"></script>
 
-    <title>상품 등록</title>
-
+<title>상품 등록</title>
 <body>
-    <div class="container">
-  		<header class="mb-5 pt-3">
+	<div class="container">
+		<header class="mb-5 pt-3">
 			<nav class="navbar navbar-expand-lg navbar-light bg-white">
 				<div class="container-fluid">
 					<div class="navbar-header mx-2">
@@ -57,18 +63,25 @@
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
-									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
-									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
-									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
-									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
+									<li><a class="dropdown-item"
+										href="/productA10.ProductController?cpage=1">막걸리</a></li>
+									<li><a class="dropdown-item"
+										href="/productA20.ProductController?cpage=1">전통 소주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA30.ProductController?cpage=1">약주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA40.ProductController?cpage=1">과실주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA50.ProductController?cpage=1">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
+									<li><a class="dropdown-item"
+										href="/list.ProductController?cpage=1">전체보기</a></li>
 								</ul></li>
 
-							<li class="d-none d-lg-block nav-item"><a href="/Search/search.jsp"
+							<li class="d-none d-lg-block nav-item"><a
+								href="/Search/search.jsp"
 								class="nav-link mx-0 mx-0 mx-md-0 mx-lg-3">우리술 검색</a></li>
 
 
@@ -140,7 +153,7 @@
 									</ul>
 								</div>
 							</c:when>
-							
+
 							<c:when test="${kakaoemail !=null}">
 								<div class="d-none d-lg-inline btn-group">
 									<button type="button" class="btn btn-warning dropdown-toggle"
@@ -153,11 +166,13 @@
 									</ul>
 								</div>
 							</c:when>
-														
+
 							<c:otherwise>
-								<button id="loginBtn" type="button" class="mx-1 d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
-								<button id="joinBtn" type="button" class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
-								
+								<button id="loginBtn" type="button"
+									class="mx-1 d-none d-lg-inline btn btn-warning navbar-btn">로그인</button>
+								<button id="joinBtn" type="button"
+									class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
+
 								<script>
 									$("#loginBtn").on("click",function(){
 										location.href="/Member/loginView.jsp";
@@ -174,15 +189,14 @@
 			</nav>
 		</header>
 
-        <!--//////////////////////////////////////////////////////////////////////////////////-->
-        <div class="container mt-3">
-            <div class="row" id="manager">
-                <div class="col-12" id="manager_head">
-                    <h2>관리 페이지</h2>
-                </div>
-            </div>
-            <div class="row my-2" id="content">
-    				<div class="col-12 col-md-3" id="mypage list">
+		<!--//////////////////////////////////////////////////////////////////////////////////-->
+		<div class="container">
+			<div class="row" id="manager">
+				<div class="col-12" id="manager_head">
+					<h2>관리 페이지</h2>
+				</div>
+
+				<div class="col-12 col-lg-3 d-none d-lg-block" id="mypage list">
 					<ul class="list-group list-group-flush">
 						<a href="/add.ProductController"
 							class="list-group-item list-group-item-action"> 상품 등록 </a>
@@ -190,140 +204,267 @@
 						<a href="/article.manager?cpage=1"
 							class="list-group-item list-group-item-action"> 게시물 관리 </a>
 
-						<a href="/member.manager"
+						<a href="/member.manager?cpage=1"
 							class="list-group-item list-group-item-action"> 회원 관리 </a>
 
-						<a href="#" class="list-group-item list-group-item-action"> 통계
-						</a>
 					</ul>
 				</div>
-                <div class="col-12 col-md-9">
 
-                    <span id="title">
-                        <h3 class="mt-2"> 상품 등록 </h3>
-                    </span>
+				<div class="col-12 d-lg-none" id="navmenu">
+					<nav class="nav nav-pills nav-fill">
+						<a class="nav-link" href="/add.ProductController">상품 등록</a> <a
+							class="nav-link" href="/article.manager?cpage=1">게시물 관리</a> <a
+							class="nav-link" href="/member.manager?cpage=1">회원 관리</a>
 
-                    <form action="/input.ProductController" method="post" enctype="multipart/form-data"
-                        id="product_add">
-                        <div class="form-row pt-2">
+					</nav>
+				</div>
+				
+				<div class="col-12 col-lg-9">
 
-                            <div class="px-3 py-3" id="input_box">
-                                <div class="col-12 mb-1">기본 정보</div>
-                                <div class="input-group mb-3 ">
-                                    <span class="input-group-text" id="basic-addon">상품명</span>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Username"
-                                        aria-describedby="basic-addon1" name="product_name" required id="product_name">
+					<span id="title">
+						<h3 class="mt-3 d-none d-lg-block">상품 등록</h3>
+					</span>
 
-                                    <span class="input-group-text" id="basic-addon2">검색명</span>
-                                    <input type="text" class="form-control form-inline"
-                                        placeholder="공백을 제거하세요 ex) 밤 막걸리 -> 밤막걸리" aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2" name="search_name" required id="search_name">
-                                </div>
+					<form action="/input.ProductController" method="post"
+						enctype="multipart/form-data" id="product_add">
+						<div class="form-row pt-2">
 
-                                <hr>
+							<div class="px-3 py-3 d-none d-lg-block" id="input_box">
+								<div class="col-12 mb-1">기본 정보</div>
+								<div class="input-group mb-3 ">
+									<span class="input-group-text" id="basic-addon">상품명</span> <input
+										type="text" class="form-control" placeholder=""
+										aria-label="Username" aria-describedby="basic-addon1"
+										name="product_name" required id="product_name"> <span
+										class="input-group-text" id="basic-addon2">검색명</span> <input
+										type="text" class="form-control form-inline"
+										placeholder="공백을 제거하세요 ex) 밤 막걸리 -> 밤막걸리"
+										aria-label="Recipient's username"
+										aria-describedby="basic-addon2" name="search_name" required
+										id="search_name">
+								</div>
 
-                                <div class="col-12 mb-1">상세 정보</div>
-                                <div class="input-group mb-3">
-                                    <label class="input-group-text" for="inputGroupSelect01">생산지역</label>
-                                    <select class="form-select" id="inputGroupSelect01" name="product_area" required>
-                                        <option selected>지역을 선택하세요</option>
-                                        <option value="서울">서울</option>
-                                        <option value="경기도">경기도</option>
-                                        <option value="경상도">경상도</option>
-                                        <option value="강원도">강원도</option>
-                                        <option value="전라도">전라도</option>
-                                        <option value="충청도">충청도</option>
-                                    </select>
+								<hr>
 
-                                    <label class="input-group-text" for="inputGroupSelect01">술 종류</label>
-                                    <select class="form-select" id="inputGroupSelect01" name="kind" required>
-                                        <option selected>술 종류를 선택하세요</option>
-                                        <option value="막걸리">막걸리</option>
-                                        <option value="전통소주">전통 소주</option>
-                                        <option value="약주">약주</option>
-                                        <option value="과실주">과실주</option>
-                                        <option value="리큐르">리큐르</option>
-                                    </select>
+								<div class="col-12 mb-1">상세 정보</div>
+								<div class="input-group mb-3">
+									<label class="input-group-text" for="inputGroupSelect01">생산지역</label>
+									<select class="form-select" id="inputGroupSelect01"
+										name="product_area" required>
+										<option selected>지역을 선택하세요</option>
+										<option value="서울">서울</option>
+										<option value="경기도">경기도</option>
+										<option value="경상도">경상도</option>
+										<option value="강원도">강원도</option>
+										<option value="전라도">전라도</option>
+										<option value="충청도">충청도</option>
+									</select> <label class="input-group-text" for="inputGroupSelect01">술
+										종류</label> <select class="form-select" id="inputGroupSelect01"
+										name="kind" required>
+										<option selected>술 종류를 선택하세요</option>
+										<option value="막걸리">막걸리</option>
+										<option value="전통소주">전통 소주</option>
+										<option value="약주">약주</option>
+										<option value="과실주">과실주</option>
+										<option value="리큐르">리큐르</option>
+									</select> <label class="input-group-text" for="inputGroupSelect01">제품
+										코드</label> <select class="form-select" id="inputGroupSelect01"
+										name="product_code" required>
+										<option value="A10">A10 (막걸리)</option>
+										<option value="A20">A20 (전통 소주)</option>
+										<option value="A30">A30 (약주)</option>
+										<option value="A40">A40 (과실주)</option>
+										<option value="A50">A50 (리큐르)</option>
+									</select>
+								</div>
 
-                                    <label class="input-group-text" for="inputGroupSelect01">제품 코드</label>
-                                    <select class="form-select" id="inputGroupSelect01" name="product_code" required>
-                                        <option value="A10">A10 (막걸리)</option>
-                                        <option value="A20">A20 (전통 소주)</option>
-                                        <option value="A30">A30 (약주)</option>
-                                        <option value="A40">A40 (과실주)</option>
-                                        <option value="A50">A50 (리큐르)</option>
-                                    </select>
-                                </div>
+								<div class="input-group mb-2 ">
+									<span class="input-group-text" id="basic-addon">가격</span> <input
+										type="text" class="form-control" placeholder=""
+										aria-label="Username" aria-describedby="basic-addon1"
+										name="price" id="price" required> <span
+										class="input-group-text" id="basic-addon2">ABV</span> <input
+										type="text" class="form-control form-inline"
+										aria-label="Recipient's username"
+										aria-describedby="basic-addon2" name="abv" id="abv" required>
+									<span class="input-group-text">%</span>
+								</div>
 
-                                <div class="input-group mb-2 ">
-                                    <span class="input-group-text" id="basic-addon">가격</span>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Username"
-                                        aria-describedby="basic-addon1" name="price" id="price" required>
-
-                                    <span class="input-group-text" id="basic-addon2">ABV</span>
-                                    <input type="text" class="form-control form-inline"
-                                        aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2" name="abv"  id="abv" required>
-                                    <span class="input-group-text">%</span>
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="capacity" placeholder="용량을 입력하세요"
-                                        id="capacity">
-                                    <span class="input-group-text">ml</span>
-
-
-                                </div>
-
-                                <div class="col-12 mb-1">평점</div>
-                                <input type="text" class="form-control mb-3 w-50" name="grade" placeholder="1~5"
-                                    id="grade">
-
-
-                                <div class="col-12 mb-1">양조장</div>
-                                <div class="input-group mb-1 ">
-                                    <span class="input-group-text" id="basic-addon">양조장명</span>
-                                    <input type="text" class="form-control" placeholder="" aria-label="Username"
-                                        aria-describedby="basic-addon1" name="brewery" id="brewery" required>
-
-                                </div>
-
-                                <div class="input-group mb-2 ">
-                                    <span class="input-group-text" id="basic-addon3">주소</span>
-                                    <input type="text" class="form-control" id="adress1"
-                                        aria-describedby="basic-addon3" name="adress1" required>
-
-                                    <span class="input-group-text">상세주소</span>
-                                    <input type="text" class="form-control" name="adress2" id="adress2" required>
-                                </div>
-
-                                <hr>
-
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text">소개글</span>
-                                    <textarea class="form-control" aria-label="With textarea" name="smry"
-                                        id="smry" required> </textarea>
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <label class="input-group-text" for="inputGroupFile02">상품 사진</label>
-                                    <input type="file" class="form-control" id="inputGroupFile02" name="product_img" required>
-                                </div>
-                                <div class="col-12 text-end">
-                                    <button type='submit' id=update class="btn btn-outline-success">등록</button>
-                                    <button type='reset' id=update class="btn btn-outline-danger">초기화</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
+								<div class="input-group mb-3">
+									<input type="text" class="form-control" name="capacity"
+										placeholder="용량을 입력하세요" id="capacity"> <span
+										class="input-group-text">ml</span>
 
 
-        <!--//////////////////////////////////////////////////////////////////////////////////-->
+								</div>
+
+								<div class="col-12 mb-1">평점</div>
+								<input type="text" class="form-control mb-3 w-50" name="grade"
+									placeholder="1~5" id="grade">
+
+
+								<div class="col-12 mb-1">양조장</div>
+								<div class="input-group mb-1 ">
+									<span class="input-group-text" id="basic-addon">양조장명</span> <input
+										type="text" class="form-control" placeholder=""
+										aria-label="Username" aria-describedby="basic-addon1"
+										name="brewery" id="brewery" required>
+
+								</div>
+
+								<div class="input-group mb-2 ">
+									<span class="input-group-text" id="basic-addon3">주소</span> <input
+										type="text" class="form-control" id="adress1"
+										aria-describedby="basic-addon3" name="adress1" required>
+
+									<span class="input-group-text">상세주소</span> <input type="text"
+										class="form-control" name="adress2" id="adress2" required>
+								</div>
+
+								<hr>
+
+								<div class="input-group mb-3">
+									<span class="input-group-text">소개글</span>
+									<textarea class="form-control" aria-label="With textarea"
+										name="smry" id="smry" required> </textarea>
+								</div>
+
+								<div class="input-group mb-3">
+									<label class="input-group-text" for="inputGroupFile02">상품
+										사진</label> <input type="file" class="form-control"
+										id="inputGroupFile02" name="product_img" required>
+								</div>
+								<div class="col-12 text-end">
+									<button type='submit' id=update class="btn btn-outline-success">등록</button>
+									<button type='reset' id=update class="btn btn-outline-danger">초기화</button>
+								</div>
+							</div>
+
+					</form>
+					
+					<form action="/input.ProductController" method="post"
+						enctype="multipart/form-data" id="product_add">
+						<div class="form-row pt-2">
+
+							<div class="px-3 py-3 d-lg-none" id="input_box">
+								<div class="col-12 mb-1">기본 정보</div>
+								<div class="input-group mb-3 ">
+									<span class="input-group-text" id="basic-addon">상품명</span> 
+									<input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" name="product_name" required id="product_name"> 
+								</div>
+								<div class="input-group mb-3 ">
+									<span class="input-group-text" id="basic-addon2">검색명</span> 
+									<input type="text" class="form-control form-inline" placeholder="공백을 제거하세요" aria-label="Recipient's username" aria-describedby="basic-addon2" name="search_name" required id="search_name">
+								</div>
+								
+
+								<hr>
+
+								<div class="col-12 mb-1">상세 정보</div>
+								<div class="input-group mb-3">
+									<label class="input-group-text" for="inputGroupSelect01">생산지역</label>
+									<select class="form-select" id="inputGroupSelect01"
+										name="product_area" required>
+										<option selected>지역을 선택하세요</option>
+										<option value="서울">서울</option>
+										<option value="경기도">경기도</option>
+										<option value="경상도">경상도</option>
+										<option value="강원도">강원도</option>
+										<option value="전라도">전라도</option>
+										<option value="충청도">충청도</option>
+									</select> 
+								</div>
+								
+								<div class="input-group mb-3">
+									<label class="input-group-text" for="inputGroupSelect01">술종류</label> <select class="form-select" id="inputGroupSelect01" name="kind" required>
+										<option selected>술 종류를 선택하세요</option>
+										<option value="막걸리">막걸리</option>
+										<option value="전통소주">전통 소주</option>
+										<option value="약주">약주</option>
+										<option value="과실주">과실주</option>
+										<option value="리큐르">리큐르</option>
+									</select>
+								</div>
+								
+								<div class="input-group mb-3">
+									<label class="input-group-text" for="inputGroupSelect01">제품 코드</label> <select class="form-select" id="inputGroupSelect01" name="product_code" required>
+										<option value="A10">A10 (막걸리)</option>
+										<option value="A20">A20 (전통 소주)</option>
+										<option value="A30">A30 (약주)</option>
+										<option value="A40">A40 (과실주)</option>
+										<option value="A50">A50 (리큐르)</option>
+									</select>
+								</div>
+
+								<div class="input-group mb-2 ">
+									<span class="input-group-text" id="basic-addon">가격</span> <input
+										type="text" class="form-control" placeholder=""
+										aria-label="Username" aria-describedby="basic-addon1"
+										name="price" id="price" required> <span
+										class="input-group-text" id="basic-addon2">ABV</span> <input
+										type="text" class="form-control form-inline"
+										aria-label="Recipient's username"
+										aria-describedby="basic-addon2" name="abv" id="abv" required>
+									<span class="input-group-text">%</span>
+								</div>
+
+								<div class="input-group mb-3">
+									<input type="text" class="form-control" name="capacity"
+										placeholder="용량을 입력하세요" id="capacity"> <span
+										class="input-group-text">ml</span>
+
+
+								</div>
+
+								<div class="col-12 mb-1">평점</div>
+								<input type="text" class="form-control mb-3 w-50" name="grade"
+									placeholder="1~5" id="grade">
+
+
+								<div class="col-12 mb-1">양조장</div>
+								<div class="input-group mb-1 ">
+									<span class="input-group-text" id="basic-addon">양조장명</span> <input
+										type="text" class="form-control" placeholder=""
+										aria-label="Username" aria-describedby="basic-addon1"
+										name="brewery" id="brewery" required>
+
+								</div>
+
+								<div class="input-group mb-2 ">
+									<span class="input-group-text" id="basic-addon3">주소</span> <input
+										type="text" class="form-control" id="adress1"
+										aria-describedby="basic-addon3" name="adress1" required>
+
+									<span class="input-group-text">상세주소</span> <input type="text"
+										class="form-control" name="adress2" id="adress2" required>
+								</div>
+
+								<hr>
+
+								<div class="input-group mb-3">
+									<span class="input-group-text">소개글</span>
+									<textarea class="form-control" aria-label="With textarea"
+										name="smry" id="smry" required> </textarea>
+								</div>
+
+								<div class="input-group mb-3">
+									<label class="input-group-text" for="inputGroupFile02">상품
+										사진</label> <input type="file" class="form-control"
+										id="inputGroupFile02" name="product_img" required>
+								</div>
+								<div class="col-12 text-end">
+									<button type='submit' id=update class="btn btn-outline-success">등록</button>
+									<button type='reset' id=update class="btn btn-outline-danger">초기화</button>
+								</div>
+							</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+		<!--//////////////////////////////////////////////////////////////////////////////////-->
 		<hr>
 		<footer class="site-footer">
 
@@ -359,9 +500,9 @@
 			</div>
 		</footer>
 
-    </div>
+	</div>
 
-    <script>
+	<script>
 
         $("#product_add").on("submit", function () {
 

@@ -126,8 +126,9 @@ public class BoardController extends HttpServlet {
 				if(oriName != null) {
 					fdao.insert(new FileDTO(0, oriName,sysName,seq));
 				}
-				request.getRequestDispatcher("/boardList.board?cpage=1").forward(request, response);
-
+				//request.getRequestDispatcher("/boardList.board?cpage=1").forward(request, response);
+				response.sendRedirect("/boardList.board?cpage=1");
+				
 				// 게시글 상세 조회
 			}else if(uri.equals("/boardSelect.board")){
 
@@ -137,9 +138,11 @@ public class BoardController extends HttpServlet {
 				BoardDTO board = dao.selectBoard(num);
 				List<ReplyDTO> reply = rdao.selectReply(num);
 				int boardLike = dao.boardLikeCheck(num,id);
+				ProductDTO product = dao.productOneSelect(board.getProductNum());
 				request.setAttribute("board", board);
 				request.setAttribute("reply", reply);
 				request.setAttribute("boardLike", boardLike);
+				request.setAttribute("product", product);
 
 				request.getRequestDispatcher("/Board/reply.jsp").forward(request, response);
 

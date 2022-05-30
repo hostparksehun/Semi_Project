@@ -209,6 +209,7 @@ public class BoardDAO {
 			pstat.setInt(1, num);
 
 			try(ResultSet rs = pstat.executeQuery();){
+				con.commit();
 				return 1;
 			}
 		}
@@ -222,6 +223,7 @@ public class BoardDAO {
 			pstat.setInt(1, num);
 
 			try(ResultSet rs = pstat.executeQuery();){
+				con.commit();
 				return 1;
 			}
 		}
@@ -235,6 +237,7 @@ public class BoardDAO {
 			pstat.setInt(1, stat);
 			pstat.setInt(2, num);
 			try(ResultSet rs = pstat.executeQuery();){
+				con.commit();
 				return 1;
 			}
 		}

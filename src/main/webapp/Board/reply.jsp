@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -197,11 +198,6 @@
 				<div id="container">
 					<div id="top_line"></div>
 					<div id="head">
-						<div class="title_num" style="font-family: 'Hahmlet', serif;">글번호 : ${board.boardNum}</div>
-						<div class="board_like" style="font-family: 'Hahmlet', serif;">조회수 : ${board.boardCount}</div>
-					</div>
-
-					<div style="min-height: 70px; font-family: 'Hahmlet', serif;">
 						<c:choose>
 							<c:when test="${board.boardSatus == 2}">
 								<div class="row col-12">
@@ -214,44 +210,60 @@
 								<div class="board_title">글 제목 : ${board.title}</div>
 							</c:otherwise>
 						</c:choose>
+					</div>
+					<div id="top_line"></div>
+					
 
+					<div style="position:relative; min-height: 80px; font-family: 'Hahmlet', serif;">
+						<div id="head1" class="row.col-12">
+						<div class='product_img'>
+							<img src="/img/productFile/${product.oriName}">
+						</div>
+						<div class='product_name'>
+							${product.product_name}
+						</div>
+						<div class='product_exp'>
+							${product.smry}
+						</div>
 						<c:choose>
 							<c:when test="${board.score == '1'}">
-								<div>평점 : ★ (${board.score})</div>
+								<div class='pc'>평점 : ★ (${board.score})</div>
+								<div class='mo'>${board.score}점</div>
 							</c:when>
 
 							<c:when test="${board.score == '2'}">
-								<div>평점 : ★★ (${board.score})</div>
+								<div class='pc'>평점 : ★★ (${board.score})</div>
+								<div class='mo'>${board.score}점</div>
 							</c:when>
 
 							<c:when test="${board.score == '3'}">
-								<div>평점 : ★★★ (${board.score})</div>
+								<div class='pc'>평점 : ★★★ (${board.score})</div>
+								<div class='mo'>${board.score}점</div>
 							</c:when>
 
 							<c:when test="${board.score == '4'}">
-								<div>평점 : ★★★★ (${board.score})</div>
+								<div class='pc'>평점 : ★★★★ (${board.score})</div>
+								<div class='mo'>${board.score}점</div>
 							</c:when>
 
 							<c:otherwise>
-								<div>평점 : ★★★★★ (${board.score})</div>
+								<div class='pc'>평점 : ★★★★★ (${board.score})</div>
+								<div class='mo'>${board.score}점</div>
 							</c:otherwise>
 						</c:choose>
+						</div>
+						<div id="head2" class="row.col-12">
+							<div class="board_like .col-6">조회수 : ${board.boardCount}</div>
+							<div class="board_writer .col-6">작성자 : ${board.writer}</div>
+							<div class="board_date .col-6">작성일 : <fmt:formatDate pattern="yy년MM월dd일 hh시mm분" value="${board.writeDate}"/></div>
+						</div>
 					</div>
 					<div id="top_line"></div>
 
-					<div id="head2" class="row.col-12">
-						<div class="board_writer .col-6">작성자 : ${board.writer}</div>
-						<div class="board_date .col-6">작성일 : ${board.writeDate}</div>
-					</div>
+					
 
 					<div id="head3">
 						<div class="board_contents">${board.boardExp}</div>
-					</div>
-
-					<div id="top_line"></div>
-
-					<div class="board_select">
-						이전 게시글<br> 현재 보여지는 게시글<br> 다음 게시글<br>
 					</div>
 
 					<div id="top_line"></div>

@@ -195,89 +195,93 @@
 					<div class="title">이름</div>
 					<div>
 						<input type="text" id="name" name="name" placeholder="2~6자"
-							class="join-input searchinput"></div>
-					<span class="searchclear">X</span>
+							class="join-input">
+					<div class="searchclear" style="display: none;">X</div></div>
 					<div class="check" id="nameinfo"></div>
 				</div>
 				<div class="join-box">
 					<div class="title">
-						아이디<br>
+						아이디
 					</div>
 					<div>
 						<input type="text" id="id" name="id"
-							placeholder="영문(소문자), 숫자 8~13자" class="join-input searchinput">
-					</div>
+							placeholder="영문(소문자), 숫자 8~13자" class="join-input">
+					<span class="searchclear" style="display: none;">X</span></div>
 					<div class="check" id="idinfo"></div>
 				</div>
 				<div class="join-box">
 					<div class="title">
-						비밀번호<br>
+						비밀번호
 					</div>
+					<div>
 					<input type="password" id="pw" name="pw"
-						placeholder="영문, 숫자 각각 포함한 최소 8자" class="join-input searchinput">
+						placeholder="영문, 숫자 각각 포함한 최소 8자" class="join-input">
+					<span class="searchclear" style="display: none;">X</span></div>	
 					<div class="check" id="pwinfo"></div>
 				</div>
 				<div class="join-box">
+					<div>
 					<input type="password" id="pwcheck" name="pwcheck"
-						placeholder="비밀번호 재입력" class="join-input searchinput">
+						placeholder="비밀번호 재입력" class="join-input">
+					<span class="searchclear" style="display: none;" id="pwcheckclear">X</span></div>
 					<div class="check" id="pwcheckinfo"></div>
 				</div>
 				<div class="join-box">
 					<div class="title">
-						생년월일<br>
+						생년월일
 					</div>
 					<div>
 						<input type="text" id="birthday" name="birthday"
-							placeholder="990322" class="join-input searchinput">
-					</div>
+							placeholder="990322" class="join-input">
+					<span class="searchclear" style="display: none;">X</span></div>
 					<div class="check" id="birthdayinfo"></div>
 				</div>
 				<div class="join-box">
 					<div class="title">
-						이메일<br>
+						이메일
 					</div>
 					<div>
-						<input type="text" id="email" name="email" class="join-input"
-							placeholder="example@naver.com">
+						<input type="text" id="email" name="email"
+							placeholder="example@naver.com" class="join-input">
+						<span class="searchclear" style="display: none;">X</span></div>
 						<div class="check" id="emailinfo"></div>
-					</div>
 				</div>
 				<div class="join-box">
 					<div class="title">
-						휴대폰번호<br>
+						휴대폰번호
 					</div>
 					<div>
 						<input type="text" id="phone" name="phone"
-							placeholder="01012349876" class="join-input searchinput">
-					</div>
+							placeholder="01012349876" class="join-input">
+					<span class="searchclear" style="display: none;">X</span></div>
 					<div class="check" id="phoneinfo"></div>
 				</div>
 				<div class="join-box">
 					<div class="title">
-						우편번호<br>
+						우편번호
 					</div>
 					<div>
-						<input type="text" name="zipcode" id="zipcode" class="join-input searchinput" />
+						<input type="text" name="zipcode" id="zipcode" class="join-input" />
 						<button type="button" onclick="execDaumPostcode()"
 							class="btn btn-success" id="zipcode_find">찾기</button>
 					</div>
 				</div>
 				<div class="join-box">
 					<div class="title">
-						주소<br>
+						주소
 					</div>
 					<div>
 						<input type="text" name="address1" id="address1"
-							class="join-input searchinput">
+							class="join-input">
 					</div>
 				</div>
 				<div class="join-box">
 					<div class="title">
-						상세주소<br>
+						상세주소
 					</div>
 					<div>
 						<input type="text" name="address2" id="address2"
-							class="join-input searchinput">
+							class="join-input">
 					</div>
 				</div>
 				<input type="submit" class="btn btn-outline-success" id="join"
@@ -326,21 +330,24 @@
 	</div>
 
 
-
 	<script>
-	let $ipt = $('.searchinput'),
-	$clearIpt = $('.searchclear');
-	
-	$ipt.keyup(function(){
-	  $("#searchclear").toggle(Boolean($(this).val()));
+	//삭제버튼
+	$(".join-input").on("keyup", function(){
+		$(this).siblings(".searchclear").show();
 	});
-	
-	$clearIpt.toggle(Boolean($ipt.val()));
-	$clearIpt.click(function(){
-	  $("#searchinput").val('').focus();
-	  $(this).hide();
+	//text 비우기
+	$(".searchclear").click(function(){
+	  	$(this).siblings(".join-input").val("");
+	  	$(this).focus();
+	  	$(this).hide();
 	});
-		
+	//비번 재확인용 삭제버튼
+	$("#pwcheckclear").click(function(){
+	  	$(this).siblings(".join-input").val("");
+	  	$(this).focus();
+	  	$(this).hide();
+	});
+			
 	//이름 유효성 검사
 	$("#name").on("keyup",function(){
 		let name = $("#name").val();
@@ -359,8 +366,6 @@
 		let id = $("#id").val();
 		let idRegex = /^[\da-z_]{8,13}$/; //영어 소문자, 숫자, 언더바 8~13글자
 		let idResult = idRegex.test(id);
-		
-
 		
 		if(!idResult){
 			$("#idinfo").css("color", "red");
@@ -424,7 +429,7 @@
 		
 		if(!birthdayResult){
 			$("#birthdayinfo").css("color", "red");
-			$("#birthdayinfo").text("※미성년자 가입불가. 생일 6자리를 입력하세요.");
+			$("#birthdayinfo").text("※미성년자 가입불가. 생년월일 6자리를 입력하세요.");
 		} else{
 			$("#birthdayinfo").text("");
 		}
@@ -455,34 +460,76 @@
 		}
 	})		
 	
-	//회원가입 클릭시 비어있는 입력칸 alert
+	//회원가입 클릭시 유효성 검사+빈값 alert
 	$("#join").on("click", function(){
-		if($("#name").val()==""){
+		let name = $("#name").val();
+		let nameRegex = /^[가-힣]{2,6}$/;//2~6글자 한글
+		let nameResult = nameRegex.test(name);
+		if(name==""){
 			alert("이름을 입력해주세요.");
 			return false;
 		} 
-		if($("#id").val() ==""){
+		if(!nameResult){
+			alert("이름을 형식에 맞게 입력해주세요.");
+			return false;
+		}
+		let id = $("#id").val();
+		let idRegex = /^[\da-z_]{8,13}$/; //영어 소문자, 숫자, 언더바 8~13글자
+		let idResult = idRegex.test(id);
+		if(id ==""){
 			alert("아이디를 입력해주세요.");
 			return false;
 		}
-		if($("#pw").val() == ""){
+		if(!idResult){
+			alert("아이디를 형식에 맞게 입력해주세요.");
+			return false;
+		}
+		let pw = $("#pw").val();
+		let pwRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/; //영문, 숫자를 하나 이상 포함한 8~16자
+		let pwResult = pwRegex.test(pw);
+		if(pw == ""){
 			alert("비밀번호를 입력해주세요.");
 			return false;
 		}
 		if($("#pwcheck").val() == ""){
-			alert("비밀번호 확인을 입력해주세요.");
+			alert("비밀번호 재확인을 입력해주세요.");
 			return false;
 		}
-		if($("#birthday").val() == ""){
+		if(!pwResult){
+			alert("비밀번호를 형식에 맞게 입력해주세요.");
+			return false;
+		}
+		let birthday = $("#birthday").val();
+		let birthdayRegex = /^([0][0-3](0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1]))|([3-9][0-9](0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1]))/; //생일 6자리
+		let birthdayResult = birthdayRegex.test(birthday);
+		if(birthday == ""){
 			alert("생년월일을 입력해주세요.");
 			return false;
 		}
-		if($("#email").val() == ""){
+		if(!birthdayResult){
+			alert("생년월일을 형식에 맞게 입력해주세요.");
+			return false;
+		}
+		let email = $("#email").val();
+		let emailRegex = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/; //이메일
+		let emailResult = emailRegex.test(email);
+		if(email == ""){
 			alert("이메일을 입력해주세요.");
 			return false;
 		}
-		if($("#phone").val() == ""){
+		if(!emailResult){
+			alert("이메일을 형식에 맞게 입력해주세요.");
+			return false;
+		}
+		let phone = $("#phone").val();
+	    let phoneRegex = /^010[0-9]{8}$/; //핸드폰 11자리
+		let phoneResult = phoneRegex.test(phone);
+		if(phone == ""){
 			alert("휴대폰번호를 입력해주세요.");
+			return false;
+		}
+		if(!phoneResult){
+			alert("휴대폰번호를 형식에 맞게 입력해주세요.");
 			return false;
 		}
 		alert("가입이 완료되었습니다 :) 환영합니다!");

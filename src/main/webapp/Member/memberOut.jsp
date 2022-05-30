@@ -218,7 +218,7 @@
 			<br>
 		</div>
  		<c:choose>
-	  		<c:when test="${loginID != null}">
+	  		<c:when test="${loginID!=null && empty kakaoemail}">
 				<div id="btn" style="text-align: center;padding-bottom: 20px;">
 				<button type="button" class="btn btn-danger" id="ok">확인</button>
 				</div>

@@ -394,7 +394,7 @@
 							<div class="col-12 col-lg-4 Result_box">
 								<a href="/Detail.ProductController?seq=${i.seq}">
 									<div class="Result_img">
-										<img src="../thumbnail/${i.sysName}" class="w-100" style="border-radius: 5px; border: 0.5px solid rgba(128, 128, 128);">
+										<img src="../thumbnail/${i.sysName}" class="w-100" style="border-radius: 5px;">
 									</div>
 									<div class="Result_txt" style="text-align: center;">
 										<div class="row Result_grade">

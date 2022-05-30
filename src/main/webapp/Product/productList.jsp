@@ -259,6 +259,15 @@ button {
 	background-color: peru;
 	transform: rotate(45deg);
 }
+.p3{
+    border: 1px solid black;
+    position:absolute;
+	top:0%;
+    left:0%;
+	width: 100px;
+	height: 30px;
+	transform: rotate(-45deg);
+}
 
 @media ( max-width : 992px) {
 	/*---------best상품-----------*/
@@ -868,6 +877,7 @@ ul {
 
 				<div class="categor_box">
                    <div class=p1></div>
+                    <div class=p3>목차</div>
 					<ul calss="categor_list">
 						<a href="#"><li class="categor_list_btn" style="background-color:#2c6246; color:white;">전체상품</li></a>
 						<a href="/productA10.ProductController?cpage=1"><li class="categor_list_btn">막걸리</li></a>

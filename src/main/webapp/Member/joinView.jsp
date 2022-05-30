@@ -466,7 +466,7 @@
 		let name = $("#name").val();
 		let nameRegex = /^[가-힣]{2,6}$/;//2~6글자 한글
 		let nameResult = nameRegex.test(name);
-		if(name==""){
+		if(name.replace(/\s|　/gi, "").length == 0){
 			alert("이름을 입력해주세요.");
 			return false;
 		} 

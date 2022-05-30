@@ -185,9 +185,6 @@
 									class="mx-1 d-none d-lg-inline btn btn-dark navbar-btn">회원가입</button>
 
 								<script>
-									$("#logoutbtn").on("click", function() {
-										location.href = "/logout.member";
-									})
 									$("#loginBtn").on("click",function(){
 										location.href="/Member/loginView.jsp";
 									})

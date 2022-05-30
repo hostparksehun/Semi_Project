@@ -1,84 +1,87 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@700&family=Song+Myung&display=swap');
 
+
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 #logo {
-	width: 150px;
-	height: auto;
+    width: 150px;
+    height: auto;
 }
 
 #content {
-	width: 100%;
-	height: auto;
+    width: 100%;
+    height: 600px;
 }
 
-#search img {
-	height: 30px;
-	width: 30px;
-}
-
-#contents img {
-	width: 100%;
-	height: 500px;
-}
-
-/* �̹��� CSS */
 
   .section_s01{
-    background-color: rgb(235, 228, 228);
+    
     padding-top: 40px;
     padding-bottom: 40px;
     width: 100%;
-    height: 100%;
-    overflow: auto;
-    
+    height: auto;
+	 /* overflow: auto; */
+    display: inline-block; 
+    float:left;
+   
 }
+
+/* 이미지 CSS */
 
 .img_box{
   
     float: left;
-    width: 487px;
-}
-.img_drink{
-  position: relative;
-    width: 486px;
-    height: 486px;
-    border-radius: 50%;
-    background-color: white;
-    
-}
-#main_img{
-  width: 100%;
-    /* max-width: 486px;
-    max-height: 486px; */
-   
+    width: 500px;
+    height: 500px;
+	padding: 30px; 
+	border: 2px solid #2c6246;
+	border-radius: 30px;
+/* 	background-color: rgb(233, 229, 229); */
 }
 
-/* txt�� ǥ CSS */
+
+.main_img{
+	width: 500px;
+	height: 500px; 
+	float:left; 
+	display : inline-block;
+    margin-left: 120px;
+	
+}
+
+.img{
+	width: 100%;
+	height: 100%;
+}
+
+/* 텍스트 CSS */
 
 .txt_box{
-  padding-left:30px;
-  /*margin-left: 30px;*/
-  width: 55%;
+  
+  
+  width: 600px;
   float: left;
-  overflow: hidden;}
-h2 {
-  margin-bottom: 70px;
-  font-size: 30px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-  font-weight: 400px;
+  margin-left: 40px;
+  overflow: hidden;
+  padding-top: 30px;
+  padding-left: 40px; 
 }
-h3{
-  margin-bottom: 10px;
-    font-size: 36px;
-    font-weight: 700;
-}
-.ingredient{
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
+
+  .product_name{
+     font-size: 30px;
+     font-weight: 300px;
+
+   }
+  dt{
+  float:left;
+  display: inline-block;
+  width: 130px;
+  }
+
+
 .rating{
   padding-top: 30px;
   padding-bottom: 20px;
@@ -90,13 +93,11 @@ h3{
   }
 
 
-/* �� ����� �Ǹ�ó ���� */
-
-
 .seciton_s02{
     margin-top: 30px;
     width: 100%;
-    /* min-width: 1200px; */
+    
+
 }
 .drink_description_box{
   width: 100%;
@@ -106,6 +107,288 @@ h3{
      padding-bottom: 50px;
     }   
 .descr_2{margin-top: 60px;}
+
+
+@media (max-width: 1400px) {
+
+
+
+.img_box{
+  float: left;
+  width: 450px;
+  height: 500px;
+  padding: 30px;
+  }
+
+  .main_img{
+	width: 450px;
+	height: 500px; 
+	float:left; 
+	display : inline-block;
+    margin-left: 80px;
+}
+.img{
+   width: 100%;
+   height:100%;
+}
+
+  /* 텍스트 */
+
+ .txt_box{
+  
+ 
+  width: 500px;
+  float: left;
+  margin-left: 40px;
+  overflow: hidden;
+  padding-top: 30px;
+  padding-left: 40px; }
+
+  .product_name{
+     font-size: 30px;
+     font-weight: 300px;
+
+   }
+  dt{
+  float:left;
+  display: inline-block;
+  width: 130px;
+  } 
+
+
+}
+
+@media (max-width: 1200px) {
+.img_box{
+  float: left;
+  width: 400px;
+  height: 500px;
+  padding: 30px;
+  }
+
+  .main_img{
+	width: 400px;
+	height: 500px; 
+	float:left; 
+	display : inline-block;
+    margin-left: 50px;
+}
+.img{
+	width: 100%;
+	height: 100%;
+}
+
+  /* 텍스트 */
+
+ .txt_box{
+  padding-top: 30px;
+  padding-left: 30px;
+  margin-left: 20px;
+  width: 450px;
+  float: left;
+  overflow: hidden;}
+
+  .product_name{
+     font-size: 30px;
+     font-weight: 300px;
+
+   }
+  dt{
+  float:left;
+  display: inline-block;
+  width: 130px;
+  } 
+
+
+}
+
+
+
+@media (max-width: 992px) {
+
+	/* 이미지 */
+
+.img_box{
+ 
+  width: 600px;
+  height: 500px;
+  padding: 30px;
+  }
+
+  .main_img{
+	width: 600px;
+	height: 500px; 
+	float:left; 
+	display : inline-block;
+    margin-left: 30px;
+}
+.img{
+	width: 100%;
+	height: 100%;
+}
+
+     /* 텍스트 */
+
+ .txt_box{
+  padding-left:30px;
+  margin-left: 30px;
+  width: 600px;
+  float:left;
+  overflow: hidden;}
+
+  .product_name{
+     font-size: 30px;
+     font-weight: 300px;
+
+   }
+   
+   dt{
+   float:left; 
+   display: inline-block; 
+   width: 130px; 
+   }  
+
+}
+
+@media (max-width: 768px) {
+
+/* 이미지 */
+
+.img_box{
+width: 400px;
+height: 400px;
+padding: 30px;
+}
+
+.main_img{
+	width: 400px;
+	height: 400px; 
+	float:left; 
+	display : inline-block;
+    margin-left: 40px;
+}
+.img{
+width: 100%;
+height: 100%;
+}
+
+ /* 텍스트 */
+
+.txt_box{
+margin-top: 30px;
+margin-left: 40px;
+width: 400px;
+float: left;
+overflow: hidden;}
+
+.product_name{
+ font-size: 30px;
+ font-weight: 300px;
+
+}
+dt{
+float:left;
+display: inline-block;
+width: 130px;
+} 
+
+}
+
+@media (max-width: 530px) {
+
+/* 이미지 */
+
+.img_box{
+
+width: 400px;
+height: 400px;
+
+padding: 30px;
+
+}
+
+.main_img{
+	width: 400px;
+	height: 400px; 
+	float:left; 
+	display : inline-block;
+    margin-left: 30px;
+	
+
+}
+.img{
+width: 100%;
+height: 100%;
+}
+
+ /* 텍스트 */
+
+.txt_box{
+
+margin-top: 30px;
+margin-left: 40px;
+width: 400px;
+float: left;
+overflow: hidden;}
+
+.product_name{
+ font-size: 30px;
+ font-weight: 300px;
+
+}
+dt{
+float:left;
+display: inline-block;
+width: 130px;
+} 
+
+}
+
+@media (max-width: 474px) {
+
+/* 이미지 */
+
+.img_box{
+
+width: 300px;
+height: 400px;
+padding: 30px;
+
+}
+
+.main_img{
+width: 300px; 
+height: 400px; 
+display : inline-block;
+
+}
+.img{
+width: 100%;
+height: 100%;
+}
+
+ /* 텍스트 */
+
+.txt_box{
+
+margin-top: 30px;
+margin-left: 20px;
+width: 300px;
+float: left;
+overflow: hidden;}
+
+.product_name{
+ font-size: 30px;
+ font-weight: 300px;
+
+}
+dt{
+float:left;
+display: inline-block;
+width: 130px;
+} 
+
+}
 
 
 /* header부분 */

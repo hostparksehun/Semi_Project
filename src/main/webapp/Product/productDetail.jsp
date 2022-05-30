@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,9 +32,15 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 	
-<script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
 
-<title>우리술夜</title>
+	<script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
+
+
+
+	<title>우리술夜</title>
+
+
+
 </head>
 
 <body>
@@ -57,22 +64,30 @@
 						aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					
+
+
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle mx-0 mx-md-0 mx-lg-3" href="#"
-								id="navbarDropdown" role="button" href=""
-								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
+								class="nav-link dropdown-toggle mx-0 mx-md-2 mx-xl-5" href="#"
+								id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
-									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
-									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
-									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
-									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
+									<li><a class="dropdown-item"
+										href="/productA10.ProductController?cpage=1">막걸리</a></li>
+									<li><a class="dropdown-item"
+										href="/productA20.ProductController?cpage=1">전통소주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA30.ProductController?cpage=1">약주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA40.ProductController?cpage=1">과실주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA50.ProductController?cpage=1">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-																		<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
+									<li><a class="dropdown-item" href="/list.ProductController?cpage=1">전체보기</a></li>
 								</ul></li>
 
 							<li class="d-none d-lg-block nav-item"><a href="/Search/search.jsp"
@@ -182,115 +197,50 @@
 		</header>
 
 		<!----------------------------------- Content ----------------------------------->
+
+
 		<div class="row">
-			<div class="col-12" id="content">
+
+ 
+			<div class="col-12 col-xs-12" id="content" style="height: auto;">
 
 				<div class="section_s01">
 
+      
+      
 
+                <div class="main_img">
+				
 					<div class="img_box">
-						<div class="img_drink">
-							<img src="밤야.jp" id="main_img">
-						</div>
+                        <img src="../thumbnail/${dto.sysName }" class="img">
+						
 					</div>
+				
+				</div>
+					
+			
 					<div class="txt_box">
 
-						<h2>전체상품</h2>
-						<h3>술이름</h3>
-						<p>간단한 술 설명</p>
-						<div class="ingredient">
-							<strong style="margin-right: 30px;">주원료</strong> <span>정제수,
-								찹쌀, 백미, 기타 등등</span>
-						</div>
-						<div class="box_user_rating">
-							<div class="rating">
-								<p>
-									<span>유저평가</span>
-								</p>
-								<div class="num_5">
-									<span></span> <span></span> <span></span> <span></span>
-								</div>
-								<table class="tbl">
-									<colgroup>
-										<col width="30"%>
-										<col width="30"%>
-										<col width="30"%>
-										<col width="30"%>
+						<div class="product_name">${dto.product_name }</div>
+                        
+						<hr style="border: 1px solid black; margin-top: 30px; margin-bottom: 60px;">
+					<dl>
+					<dt class="smry">짧은 설명</dt> <dd>${dto.smry }</dd>
+					<dt class="price">가격</dt> 	<dd>${dto.price }</dd>
+					<dt class="product_code">상품 코드</dt> <dd>${dto.product_code }</dd>
+					<dt class="kind">유형</dt> <dd>${dto.kind }</dd>
+					<dt class="abv">도수(%)</dt> <dd>${dto.abv }</dd>
+					<dt class="capacity">용량(ml)</dt> <dd>${dto.capacity }</dd>
+					<dt class="brewery">양조장</dt> <dd>${dto.brewery }</dd>
+					<dt class="adress1">판매처</dt> <dd>${dto.adress1 } ${dto.adress2 }</dd>
+                    <dt>유저 평가</dt> <dd><span>*</span> <span>*</span> <span>*</span> <span>*</span> <span>*</span></dd>
 
-									</colgroup>
-									<tr>
-										<th scope="col">용량(ml)</th>
-										<th scope="col">도수(%)</th>
-										<th scope="col">유형</th>
-										<th scope="col">생산지역</th>
-									</tr>
-									<tr>
-										<td>추후 추가</td>
-										<td>추후 추가</td>
-										<td>추후 추가</td>
-										<td>추후 추가</td>
-									</tr>
-								</table>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<div class="seciton_s02">
-			<div class="drink_description_box">
-				<div style="margin-bottom: 50px; font-size: 25px; color: aqua;">술
-					설명</div>
-				<ul class="description">
-					<div class="descr_1">
-						<p style="font-size: 30px;">
-							<strong>술이름, 어떤 술인가요?</strong>
-						</p>
-						<P>
-							우리나라 최초의 요리책, &lt;산가요록&gt;에 실린 주방문을 토대로 박흥선 명인이 복원한 역사 깊은 우리술이에요.
-							<br> <br> 잔에 담긴 모습이 거울에 비친 푸른 파도같이 맑다 하여 '녹파'라는 이름이
-							붙었다고 해요. <br> <br> 이름처럼 맑은 빛깔과 담백하고 드라이한 맛이 매력적이지요. <br>
-							<br> 녹파주를 즐기던 옛 선조들처럼 술 한잔에 담긴 은은한 기품을 느껴보세요.
-
-						</P>
-						<p style="font-size: 30px;">
-							<strong>술이름, 어떻게 만드나요?</strong>
-						</p>
-						<p>
-							text<br> text<br> text<br> text<br>
-						</p>
-					</div>
-					<div class="descr_2">
-
-						<div>
-							<div style="margin-bottom: 50px; font-size: 25px; color: aqua;">양조장</div>
-							<p style="font-size: 30px;">
-								<strong>생산자</strong>
-							</p>
-							<p>
-								text<br> text<br> text<br> text<br> text<br>
-							</p>
-						</div>
-
+					</dl>
+                    </div>
+                    </div>
 					</div>
 
-					<div class="descr_3">
-						<div style="margin-bottom: 50px; font-size: 25px; color: aqua;">판매처</div>
-						<P>
-							text<br> text
-						</P>
-					</div>
-				</ul>
-			</div>
-
-
-		</div>
-
-	</div>
-	</div>
+				
 
 	<!----------------------------------- footer ----------------------------------->
 

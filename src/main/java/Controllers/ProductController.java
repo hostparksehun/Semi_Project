@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -24,6 +25,7 @@ public class ProductController extends HttpServlet {
 
 
 		String uri = request.getRequestURI();
+		
 		ProductDAO dao = ProductDAO.getInstance();
 
 		try {	
@@ -163,7 +165,6 @@ public class ProductController extends HttpServlet {
 				request.setAttribute("dto", dto);
 				request.getRequestDispatcher("/Product/productDetail.jsp").forward(request, response);
 			}
-
 
 		} catch(Exception e) {
 			e.printStackTrace();

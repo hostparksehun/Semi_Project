@@ -2,6 +2,7 @@ package DTO;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class ReplyDTO {
 
@@ -73,7 +74,6 @@ public class ReplyDTO {
 	public void setLikeFunc(int likeFunc) {
 		this.likeFunc = likeFunc;
 	}
-	
 	
 }
 

@@ -196,7 +196,7 @@
 					<div>
 						<input type="text" id="name" name="name" placeholder="2~6자"
 							class="join-input">
-					<span class="searchclear" style="display: none;">X</span></div>
+					<div class="searchclear" style="display: none;">X</div></div>
 					<div class="check" id="nameinfo"></div>
 				</div>
 				<div class="join-box">
@@ -241,8 +241,8 @@
 						이메일
 					</div>
 					<div>
-						<input type="text" id="email" name="email" class="join-input"
-							placeholder="example@naver.com">
+						<input type="text" id="email" name="email"
+							placeholder="example@naver.com" class="join-input">
 						<span class="searchclear" style="display: none;">X</span></div>
 						<div class="check" id="emailinfo"></div>
 				</div>

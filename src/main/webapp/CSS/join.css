@@ -79,11 +79,6 @@ input:focus {
     padding: 7px 5px 3px 3px;
     margin-bottom: 0px 0px 7px 50px;
 }
-
-/* input[type=text]:-ms-clear{ */
-/*     display: none; */
-/* } */
-
 .searchclear {
     position: absolute;
     right: 7px;
@@ -92,7 +87,7 @@ input:focus {
     width: 18px;
     height: 18px;
     line-height:16px;
-    margin: auto;
+    margin-top: 30px;
     font-weight: bold;
     font-size: 14px;
     text-align:center; 
@@ -119,6 +114,13 @@ input:focus {
     color: rgb(255, 255, 255);
     background-color: rgb(173, 173, 173);
     border-radius:50%;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000s;
+/* 	-webkit-text-fill-color: #fff !important; */
 }
 /* header부분 */
 header {

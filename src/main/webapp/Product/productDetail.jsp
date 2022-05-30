@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +39,586 @@
 
 	<title>우리술夜</title>
 
+<style>
 
+* {
+    box-sizing: border-box;
+}
+
+#logo {
+    width: 150px;
+    height: auto;
+}
+
+#content {
+    width: 100%;
+    height: 600px;
+}
+
+
+  .section_s01{
+    
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 100%;
+    height: auto;
+	 /* overflow: auto; */
+    display: inline-block; 
+    float:left;
+   
+}
+
+/* 이미지 CSS */
+
+.img_box{
+  
+    float: left;
+    width: 500px;
+    height: 500px;
+	padding: 30px; 
+	border: 2px solid #2c6246;
+	border-radius: 30px;
+/* 	background-color: rgb(233, 229, 229); */
+}
+
+
+.main_img{
+	width: 500px;
+	height: 500px; 
+	float:left; 
+	display : inline-block;
+    margin-left: 120px;
+	
+}
+
+.img{
+	width: 100%;
+	height: 100%;
+}
+
+/* 텍스트 CSS */
+
+.txt_box{
+  
+  
+  width: 600px;
+  float: left;
+  margin-left: 40px;
+  overflow: hidden;
+  padding-top: 30px;
+  padding-left: 40px; 
+}
+
+  .product_name{
+     font-size: 30px;
+     font-weight: 300px;
+
+   }
+  dt{
+  float:left;
+  display: inline-block;
+  width: 130px;
+  }
+
+
+.rating{
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+.tbl{
+     text-align: center;
+     width: 100%;
+     margin-top: 40px;
+  }
+
+
+.seciton_s02{
+    margin-top: 30px;
+    width: 100%;
+    
+
+}
+.drink_description_box{
+  width: 100%;
+}
+.description{    
+     padding-left:0px;
+     padding-bottom: 50px;
+    }   
+.descr_2{margin-top: 60px;}
+
+
+@media (max-width: 1400px) {
+
+
+
+.img_box{
+  float: left;
+  width: 450px;
+  height: 500px;
+  padding: 30px;
+  }
+
+  .main_img{
+	width: 450px;
+	height: 500px; 
+	float:left; 
+	display : inline-block;
+    margin-left: 80px;
+}
+.img{
+   width: 100%;
+   height:100%;
+}
+
+  /* 텍스트 */
+
+ .txt_box{
+  
+ 
+  width: 500px;
+  float: left;
+  margin-left: 40px;
+  overflow: hidden;
+  padding-top: 30px;
+  padding-left: 40px; }
+
+  .product_name{
+     font-size: 30px;
+     font-weight: 300px;
+
+   }
+  dt{
+  float:left;
+  display: inline-block;
+  width: 130px;
+  } 
+
+
+}
+
+@media (max-width: 1200px) {
+.img_box{
+  float: left;
+  width: 400px;
+  height: 500px;
+  padding: 30px;
+  }
+
+  .main_img{
+	width: 400px;
+	height: 500px; 
+	float:left; 
+	display : inline-block;
+    margin-left: 50px;
+}
+.img{
+	width: 100%;
+	height: 100%;
+}
+
+  /* 텍스트 */
+
+ .txt_box{
+  padding-top: 30px;
+  padding-left: 30px;
+  margin-left: 20px;
+  width: 450px;
+  float: left;
+  overflow: hidden;}
+
+  .product_name{
+     font-size: 30px;
+     font-weight: 300px;
+
+   }
+  dt{
+  float:left;
+  display: inline-block;
+  width: 130px;
+  } 
+
+
+}
+
+
+
+@media (max-width: 992px) {
+
+	/* 이미지 */
+
+.img_box{
+ 
+  width: 600px;
+  height: 500px;
+  padding: 30px;
+  }
+
+  .main_img{
+	width: 600px;
+	height: 500px; 
+	float:left; 
+	display : inline-block;
+    margin-left: 30px;
+}
+.img{
+	width: 100%;
+	height: 100%;
+}
+
+     /* 텍스트 */
+
+ .txt_box{
+  padding-left:30px;
+  margin-left: 30px;
+  width: 600px;
+  float:left;
+  overflow: hidden;}
+
+  .product_name{
+     font-size: 30px;
+     font-weight: 300px;
+
+   }
+   
+   dt{
+   float:left; 
+   display: inline-block; 
+   width: 130px; 
+   }  
+
+}
+
+@media (max-width: 768px) {
+
+/* 이미지 */
+
+.img_box{
+width: 400px;
+height: 400px;
+padding: 30px;
+}
+
+.main_img{
+	width: 400px;
+	height: 400px; 
+	float:left; 
+	display : inline-block;
+    margin-left: 40px;
+}
+.img{
+width: 100%;
+height: 100%;
+}
+
+ /* 텍스트 */
+
+.txt_box{
+margin-top: 30px;
+margin-left: 40px;
+width: 400px;
+float: left;
+overflow: hidden;}
+
+.product_name{
+ font-size: 30px;
+ font-weight: 300px;
+
+}
+dt{
+float:left;
+display: inline-block;
+width: 130px;
+} 
+
+}
+
+@media (max-width: 530px) {
+
+/* 이미지 */
+
+.img_box{
+
+width: 400px;
+height: 400px;
+
+padding: 30px;
+
+}
+
+.main_img{
+	width: 400px;
+	height: 400px; 
+	float:left; 
+	display : inline-block;
+    margin-left: 30px;
+	
+
+}
+.img{
+width: 100%;
+height: 100%;
+}
+
+ /* 텍스트 */
+
+.txt_box{
+
+margin-top: 30px;
+margin-left: 40px;
+width: 400px;
+float: left;
+overflow: hidden;}
+
+.product_name{
+ font-size: 30px;
+ font-weight: 300px;
+
+}
+dt{
+float:left;
+display: inline-block;
+width: 130px;
+} 
+
+}
+
+@media (max-width: 474px) {
+
+/* 이미지 */
+
+.img_box{
+
+width: 300px;
+height: 400px;
+padding: 30px;
+
+}
+
+.main_img{
+width: 300px; 
+height: 400px; 
+display : inline-block;
+
+}
+.img{
+width: 100%;
+height: 100%;
+}
+
+ /* 텍스트 */
+
+.txt_box{
+
+margin-top: 30px;
+margin-left: 20px;
+width: 300px;
+float: left;
+overflow: hidden;}
+
+.product_name{
+ font-size: 30px;
+ font-weight: 300px;
+
+}
+dt{
+float:left;
+display: inline-block;
+width: 130px;
+} 
+
+}
+
+
+/* header부분 */
+header {
+	font-family: 'Hahmlet', serif;
+	font-size: larger;
+	font-weight: 700;
+}
+
+ul {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#login {
+	margin-right: 1px;
+}
+
+#search_input {
+	width: 100%;
+}
+
+/* footer 부분 */
+.site-footer {
+	background-color: #ffffff;
+	padding: 10px 0 20px;
+	font-size: 15px;
+	line-height: 24px;
+	color: #737373;
+	font-family: 'Hahmlet', serif;
+}
+
+.site-footer hr {
+	border-top-color: #bbb;
+	opacity: 0.5
+}
+
+.site-footer hr.small {
+	margin: 20px 0
+}
+
+.site-footer h6 {
+	color: #fff;
+	font-size: 16px;
+	text-transform: uppercase;
+	margin-top: 5px;
+	letter-spacing: 2px
+}
+
+.site-footer a {
+	color: #737373;
+}
+
+.site-footer a:hover {
+	color: #3366cc;
+	text-decoration: none;
+}
+
+.footer-links {
+	padding-left: 0;
+	list-style: none
+}
+
+.footer-links li {
+	display: block
+}
+
+.footer-links a {
+	color: #737373
+}
+
+.footer-links a:active, .footer-links a:focus, .footer-links a:hover {
+	color: #3366cc;
+	text-decoration: none;
+}
+
+.footer-links.inline li {
+	display: inline-block
+}
+
+.site-footer .social-icons {
+	text-align: right
+}
+
+.site-footer .social-icons a {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	margin-left: 6px;
+	margin-right: 0;
+	border-radius: 100%;
+	background-color: #33353d
+}
+
+.copyright-text {
+	margin: 0
+}
+
+@media ( max-width :991px) {
+	.site-footer [class^=col-] {
+		margin-bottom: 30px
+	}
+}
+
+@media ( max-width :767px) {
+	.site-footer {
+		padding-bottom: 0
+	}
+	.site-footer .copyright-text, .site-footer .social-icons {
+		text-align: center
+	}
+}
+
+.social-icons {
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none
+}
+
+.social-icons li {
+	display: inline-block;
+	margin-bottom: 4px
+}
+
+.social-icons li.title {
+	margin-right: 15px;
+	text-transform: uppercase;
+	color: #96a2b2;
+	font-weight: 700;
+	font-size: 13px
+}
+
+.social-icons a {
+	background-color: #eceeef;
+	color: #818a91;
+	font-size: 16px;
+	display: inline-block;
+	line-height: 44px;
+	width: 44px;
+	height: 44px;
+	text-align: center;
+	margin-right: 8px;
+	border-radius: 100%;
+	-webkit-transition: all .2s linear;
+	-o-transition: all .2s linear;
+	transition: all .2s linear
+}
+
+.social-icons a:active, .social-icons a:focus, .social-icons a:hover {
+	color: #fff;
+	background-color: #29aafe
+}
+
+.social-icons.size-sm a {
+	line-height: 34px;
+	height: 34px;
+	width: 34px;
+	font-size: 14px
+}
+
+.social-icons a.facebook:hover {
+	background-color: #3b5998
+}
+
+.social-icons a.twitter:hover {
+	background-color: #00aced
+}
+
+.social-icons a.linkedin:hover {
+	background-color: #007bb6
+}
+
+.social-icons a.dribbble:hover {
+	background-color: #ea4c89
+}
+
+@media ( max-width :767px) {
+	.social-icons li.title {
+		display: block;
+		margin-right: 0;
+		font-weight: 600
+	}
+}
+
+
+.Result_grade{
+	font-family: 'Hahmlet', serif;
+	font-size: 14px;
+	color: #f8bc3b;
+}
+</style>
 
 </head>
 
@@ -220,21 +799,27 @@
 					
 			
 					<div class="txt_box">
-
+                        <dd>${dto.smry }</dd>
 						<div class="product_name">${dto.product_name }</div>
                         
 						<hr style="border: 1px solid black; margin-top: 30px; margin-bottom: 60px;">
 					<dl>
-					<dt class="smry">짧은 설명</dt> <dd>${dto.smry }</dd>
+					
 					<dt class="price">가격</dt> 	<dd>${dto.price }</dd>
-					<dt class="product_code">상품 코드</dt> <dd>${dto.product_code }</dd>
+					
 					<dt class="kind">유형</dt> <dd>${dto.kind }</dd>
 					<dt class="abv">도수(%)</dt> <dd>${dto.abv }</dd>
 					<dt class="capacity">용량(ml)</dt> <dd>${dto.capacity }</dd>
 					<dt class="brewery">양조장</dt> <dd>${dto.brewery }</dd>
 					<dt class="adress1">판매처</dt> <dd>${dto.adress1 } ${dto.adress2 }</dd>
-                    <dt>유저 평가</dt> <dd><span>*</span> <span>*</span> <span>*</span> <span>*</span> <span>*</span></dd>
-
+                    <dt class="grade">평점</dt><div class="row Result_grade">	<div class="col-1 px-0">
+												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+  <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+</svg>
+											</div>
+											<div class="col-11 px-1" style="line-height: 24px;">
+												${dto.grade}
+											</div>
 					</dl>
                     </div>
                     </div>

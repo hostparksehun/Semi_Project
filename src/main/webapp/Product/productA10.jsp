@@ -826,7 +826,8 @@ ul {
 						<!-- a태그 처리해야 상세 페이지 볼 수 있음 -->
 
 						<c:forEach var="i" items="${list}">
-
+						<c:if test="${i.product_code eq 'A10' }">
+                           
 							<div class="col-12 col-lg-4 Result_box">
 								<a href="/Detail.ProductController?seq=${i.seq}">
 									<div class="Result_img">
@@ -852,7 +853,7 @@ ul {
 									</div>
 								</a>
 							</div>
-
+                          </c:if>
 						</c:forEach>
 
 					</div>

@@ -41,6 +41,7 @@
 						</a>
 					</div>
 
+
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 						aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -49,20 +50,29 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
 							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle mx-0 mx-md-0 mx-lg-3" href="#"
+							    class="nav-link dropdown-toggle mx-0 mx-md-0 mx-lg-3" href="#"
 								id="navbarDropdown" role="button" href=""
 								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
-									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
-									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
-									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
-									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
+
+									<li><a class="dropdown-item"
+										href="/productA10.ProductController?cpage=1">막걸리</a></li>
+									<li><a class="dropdown-item"
+										href="/productA20.ProductController?cpage=1">전통소주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA30.ProductController?cpage=1">약주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA40.ProductController?cpage=1">과실주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA50.ProductController?cpage=1">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
+									<li><a class="dropdown-item" href="/list.ProductController?cpage=1">전체보기</a></li>
+
+
 								</ul></li>
 
 							<li class="d-none d-lg-block nav-item"><a
@@ -181,10 +191,12 @@
 							</c:otherwise>
 						</c:choose>
 
+
 					</div>
 				</div>
 			</nav>
 		</header>
+
 
 		<div class="row" id="main">
 			<div class="col-12" id="contents">
@@ -228,10 +240,12 @@
 
 
 
+
 			<div class="row mb-3" id="popular text">
 				<div class="col-12"
 					style="text-align: center; font-family: 'Hahmlet', serif; margin-top: 100px;">
 					<h2>인기상품</h2>
+
 				</div>
 			</div>
 
@@ -341,6 +355,10 @@
 
 	</div>
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 64b320f98bc109fb788862c5bc5bca79171d7c76
 	<script>
 		$("#join").on("click", function() {
 			location.href = "/Member/joinView.jsp";
@@ -353,6 +371,7 @@
 			location.href = "/Board/boardList.jsp";
 		})
 	</script>
+
 
 
 </body>

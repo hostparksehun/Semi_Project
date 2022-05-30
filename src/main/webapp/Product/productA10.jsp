@@ -31,8 +31,11 @@
     <title>우리술 목록</title>
 
 <style>
- 
- /* div{border:1px solid black;}  */
+* {
+  box-sizing: border-box;
+}
+
+/* content 작업 내용 */
 
 #logo {
   width: 150px;
@@ -126,7 +129,45 @@ font-size: 2rem;
 	font-weight: bold;
 }
 
+/*---------best상품-----------*/
+.banner{
+  background-color: rgb(233, 229, 229);
+  border-radius: 20px;
+}
+.best{
+  margin-top: 20px;
+}
+.best_list {
+	padding-top: 30px;
+	text-align: center;
+	list-style: none;
+	overflow: hidden;
+}
 
+.best_item {
+	float: left;
+	width: 30%;
+	text-align: center;
+	margin-left: 21px;
+}
+
+.best_img {
+	width: 100%;
+}
+
+.txt_box {
+  background-color: white;
+	margin-top: 15px;
+}
+
+.bname_ellipsis {
+	font-size: 30px;
+}
+
+.best {
+	border: 4px solid #2c6246;
+	border-radius: 10px;
+}
 
 /*---------전체보기-----------*/
 .area_btn {
@@ -157,17 +198,29 @@ font-size: 2rem;
 }
 
 
-
-/*---------카테고리-----------*/
-
+/* ------카테고리------- */
 
  .categor_box{
 
+  position: relative;
   margin-top: 35px;
   padding: 60px;
   text-align: center;
-
+  z-index: 1;
 }  
+ .categor_box::after {
+ 
+  margin-top: 35px;
+  padding: 60px;
+  width:100%;
+  content: "";
+  background-image:url("img.jpg");
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.7;
+}
 
 .categor_list{
   width: 90%;
@@ -184,16 +237,49 @@ font-size: 2rem;
   border: 1px solid #000;
   font-size: 20px;
   border-radius: 30px;
+  
   font-weight:bold;
   color:black
-  
-  
 }
 
 
 @media (max-width: 992px) {
-  
+	
+/*---------best상품-----------*/
+    .best_list {
+	padding-top: 30px;
+	text-align: center;
+	list-style: none;
+	overflow: hidden;
 
+}
+.best_item {
+	float: left;
+	width: 41%;
+	text-align: center;
+	margin-left: 21px;
+}
+
+.best_img {
+	width: 100%;
+}
+
+.txt_box {
+	margin-top: 15px;
+}
+
+.bname_ellipsis {
+	font-size: 30px;
+}
+
+.best {
+	border: 4px solid black;
+	border-radius: 10px;
+}
+
+
+
+/* ------카테고리------- */
 
 .categor_box{
   padding: 60px;
@@ -221,10 +307,46 @@ font-size: 2rem;
 
 }
 
-
 @media (max-width: 767px) {
 
+/*---------best상품-----------*/
+    .best_list {
+	padding-top: 30px;
+	text-align: center;
+	list-style: none;
+	overflow: hidden;
+}
 
+.best_item {
+	float: left;
+	width: 80%;
+	text-align: center;
+	margin-left: 21px;
+}
+
+.best_img {
+	width: 100%;
+}
+
+.txt_box {
+	margin-top: 15px;
+}
+
+.bname_ellipsis {
+	font-size: 20px;
+    margin-bottom: 0px;
+}
+.exple_box{
+    margin-bottom: 0px;
+}
+
+.best {
+	border: 4px solid black;
+	border-radius: 10px;
+}
+
+  
+/* ------카테고리------- */ 
   
   .categor_box{
     padding: 60px;
@@ -249,13 +371,12 @@ font-size: 2rem;
     color:black;
     display: inline-block;
   }
-
-  
   
   }
 
 @media (max-width: 530px) {
-  
+ 
+ /* ------카테고리------- */ 
   .categor_box{
     padding: 60px;
     text-align: center;
@@ -278,10 +399,12 @@ font-size: 2rem;
     border-radius: 30px;
     color:black;
   }
- 
+  
+  }
 
   @media (max-width: 463px) {
-  
+ 
+  /* ------카테고리------- */
   .categor_box{
   
     padding: 60px;
@@ -306,10 +429,199 @@ font-size: 2rem;
     color:black;
   }
   
- 
+  }
+  .col-lg-4{
+    float: left;
+  }
   
   
   
+
+/* header부분 */
+header {
+	font-family: 'Hahmlet', serif;
+	font-size: larger;
+	font-weight: 700;
+}
+
+
+ul {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#login {
+	margin-right: 1px;
+}
+
+#search_input {
+	width: 100%;
+}
+
+/* footer 부분 */
+.site-footer {
+	background-color: #ffffff;
+	padding: 10px 0 20px;
+	font-size: 15px;
+	line-height: 24px;
+	color: #737373;
+	font-family: 'Hahmlet', serif;
+}
+
+.site-footer hr {
+	border-top-color: #bbb;
+	opacity: 0.5
+}
+
+.site-footer hr.small {
+	margin: 20px 0
+}
+
+.site-footer h6 {
+	color: #fff;
+	font-size: 16px;
+	text-transform: uppercase;
+	margin-top: 5px;
+	letter-spacing: 2px
+}
+
+.site-footer a {
+	color: #737373;
+}
+
+.site-footer a:hover {
+	color: #3366cc;
+	text-decoration: none;
+}
+
+.footer-links {
+	padding-left: 0;
+	list-style: none
+}
+
+.footer-links li {
+	display: block
+}
+
+.footer-links a {
+	color: #737373
+}
+
+.footer-links a:active, .footer-links a:focus, .footer-links a:hover {
+	color: #3366cc;
+	text-decoration: none;
+}
+
+.footer-links.inline li {
+	display: inline-block
+}
+
+.site-footer .social-icons {
+	text-align: right
+}
+
+.site-footer .social-icons a {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	margin-left: 6px;
+	margin-right: 0;
+	border-radius: 100%;
+	background-color: #33353d
+}
+
+.copyright-text {
+	margin: 0
+}
+
+@media ( max-width :991px) {
+	.site-footer [class^=col-] {
+		margin-bottom: 30px
+	}
+}
+
+@media ( max-width :767px) {
+	.site-footer {
+		padding-bottom: 0
+	}
+	.site-footer .copyright-text, .site-footer .social-icons {
+		text-align: center
+	}
+}
+
+.social-icons {
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none
+}
+
+.social-icons li {
+	display: inline-block;
+	margin-bottom: 4px
+}
+
+.social-icons li.title {
+	margin-right: 15px;
+	text-transform: uppercase;
+	color: #96a2b2;
+	font-weight: 700;
+	font-size: 13px
+}
+
+.social-icons a {
+	background-color: #eceeef;
+	color: #818a91;
+	font-size: 16px;
+	display: inline-block;
+	line-height: 44px;
+	width: 44px;
+	height: 44px;
+	text-align: center;
+	margin-right: 8px;
+	border-radius: 100%;
+	-webkit-transition: all .2s linear;
+	-o-transition: all .2s linear;
+	transition: all .2s linear
+}
+
+.social-icons a:active, .social-icons a:focus, .social-icons a:hover {
+	color: #fff;
+	background-color: #29aafe
+}
+
+.social-icons.size-sm a {
+	line-height: 34px;
+	height: 34px;
+	width: 34px;
+	font-size: 14px
+}
+
+.social-icons a.facebook:hover {
+	background-color: #3b5998
+}
+
+.social-icons a.twitter:hover {
+	background-color: #00aced
+}
+
+.social-icons a.linkedin:hover {
+	background-color: #007bb6
+}
+
+.social-icons a.dribbble:hover {
+	background-color: #ea4c89
+}
+
+@media ( max-width :767px) {
+	.social-icons li.title {
+		display: block;
+		margin-right: 0;
+		font-weight: 600
+	}
+}
+
+
+
 </style>
 
 
@@ -324,7 +636,7 @@ font-size: 2rem;
             <nav class="navbar navbar-expand-lg navbar-light bg-white">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="/index.jsp">
                             <img alt="" src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
                         </a>
                     </div>
@@ -489,19 +801,44 @@ font-size: 2rem;
 <!----------------------------------- footer ----------------------------------->
 
 
-        <footer class="py-3 my-4">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-            </ul>
-            <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
-        </footer>
-    </div>
+		<hr>
+		<footer class="site-footer">
 
-    <script>
+			<div class="container">
+				<div class="row">
+					<div class="d-none d-lg-block col-md-8 col-sm-6 col-xs-12">
+						<p class="copyright-text">
+							Copyright &copy; 2022 All Rights Reserved by <a href="#"
+								style="text-decoration: none;">아이코올</a>.
+						</p>
+					</div>
+
+					<div class="d-lg-none col-md-8 col-sm-6 col-xs-12">
+						<p class="copyright-text">Copyright &copy;</p>
+						<p class="copyright-text">
+							2022 All Rights Reserved by <a href="#"
+								style="text-decoration: none;">아이코올</a>.
+						</p>
+						</p>
+					</div>
+
+					<div class="col-md-4 col-sm-6 col-xs-12 my-3 my-lg-0">
+						<ul class="social-icons">
+							<li><a class="facebook" href="#"><i
+									class="fa fa-facebook"></i></a></li>
+							<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a class="dribbble" href="#"><i
+									class="fa fa-dribbble"></i></a></li>
+							<li><a class="linkedin" href="#"><i
+									class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+				</div>
+
+				<script>
 
         $("#search").on("submit", function () {
 

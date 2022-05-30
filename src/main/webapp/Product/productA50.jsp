@@ -320,7 +320,7 @@ font-size: 2rem;
             <nav class="navbar navbar-expand-lg navbar-light bg-white">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="/index.jsp">
                             <img alt="" src="/img/logo2.jpg" id="logo"> <!-- 경로 수정 고려 -->
                         </a>
                     </div>
@@ -473,19 +473,44 @@ font-size: 2rem;
 <!----------------------------------- footer ----------------------------------->
 
 
-        <footer class="py-3 my-4">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-            </ul>
-            <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
-        </footer>
-    </div>
+		<hr>
+		<footer class="site-footer">
 
-    <script>
+			<div class="container">
+				<div class="row">
+					<div class="d-none d-lg-block col-md-8 col-sm-6 col-xs-12">
+						<p class="copyright-text">
+							Copyright &copy; 2022 All Rights Reserved by <a href="#"
+								style="text-decoration: none;">아이코올</a>.
+						</p>
+					</div>
+
+					<div class="d-lg-none col-md-8 col-sm-6 col-xs-12">
+						<p class="copyright-text">Copyright &copy;</p>
+						<p class="copyright-text">
+							2022 All Rights Reserved by <a href="#"
+								style="text-decoration: none;">아이코올</a>.
+						</p>
+						</p>
+					</div>
+
+					<div class="col-md-4 col-sm-6 col-xs-12 my-3 my-lg-0">
+						<ul class="social-icons">
+							<li><a class="facebook" href="#"><i
+									class="fa fa-facebook"></i></a></li>
+							<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a class="dribbble" href="#"><i
+									class="fa fa-dribbble"></i></a></li>
+							<li><a class="linkedin" href="#"><i
+									class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+				</div>
+
+				<script>
 
         $("#search").on("submit", function () {
 

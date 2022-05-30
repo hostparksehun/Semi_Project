@@ -38,6 +38,600 @@
 
 <title>우리술 목록</title>
 
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* content 작업 내용 */
+
+#logo {
+  width: 150px;
+  height: auto;
+}
+
+/* 검색바 */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+body, a, p, input, button, span {
+	font-size: 14px;
+	text-decoration: none;
+	color: #36384f;
+}
+
+button {
+	cursor: pointer;
+	border: 0;
+}
+
+.main_con_form {
+	text-align: left;
+}
+
+.main_con_form span {
+	color: #000000;
+}
+
+.form_inner {
+	width: 100%;
+	height: 100%;
+}
+
+.main_con_form h1 {
+	font-size: 28px;
+}
+
+.form_list_input input {
+	width: 90%;
+	padding: 0 1em;
+	border: 0;
+	height: 60px;
+	border-radius: 30px;
+	box-shadow: 0 0 0 3px #000000;
+}
+
+.form_list_input input:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px #e96c7c;
+}
+
+.form_list_input input::placeholder {
+	font-weight: 300;
+	color: #aaa;
+}
+
+.form_list_input label {
+	float: left;
+	display: none;
+
+}
+
+/*---------검색-----------*/
+.banner_top {
+font-size: 2rem;
+	}
+.banner_bot {
+	font-size: 1.5rem;
+}
+
+#search_icon {
+	background-color: white;
+}
+
+#detail_box {
+	width: 100%;
+	height: 300px;
+	border: 4px solid black;
+	border-radius: 10px;
+}
+
+.title {
+	font-size: larger;
+	font-weight: bold;
+}
+
+/*---------best상품-----------*/
+.banner{
+  background-color: rgb(233, 229, 229);
+  border-radius: 20px;
+}
+.best{
+  margin-top: 20px;
+}
+.best_list {
+	padding-top: 30px;
+	text-align: center;
+	list-style: none;
+	overflow: hidden;
+}
+
+.best_item {
+	float: left;
+	width: 30%;
+	text-align: center;
+	margin-left: 21px;
+}
+
+.best_img {
+	width: 100%;
+}
+
+.txt_box {
+  background-color: white;
+	margin-top: 15px;
+}
+
+.bname_ellipsis {
+	font-size: 30px;
+}
+
+.best {
+	border: 4px solid #2c6246;
+	border-radius: 10px;
+}
+
+/*---------전체보기-----------*/
+.area_btn {
+	overflow: hidden;
+	margin-top: 60px;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 50px;
+	margin-top: 30px;
+}
+
+.h_btn {
+	padding-top: 18px;
+	padding-right: 50px;
+	padding-bottom: 18px;
+	padding-left: 50px;
+	font-size: 18px;
+	border: 1px solid #000;
+	border-radius: 30px;
+	box-sizing: border-box;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.list_box{
+  border: 2px solid #2c6246;
+  border-radius: 20px;
+}
+
+
+/* ------카테고리------- */
+
+ .categor_box{
+
+  position: relative;
+  margin-top: 35px;
+  padding: 60px;
+  text-align: center;
+  z-index: 1;
+}  
+ .categor_box::after {
+ 
+  margin-top: 35px;
+  padding: 60px;
+  width:100%;
+  content: "";
+  background-image:url("img.jpg");
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+.categor_list{
+  width: 90%;
+  display: inline-block;
+}
+.categor_list_btn{
+  float: left;
+  list-style: none;
+  width: 15.1%;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  border: 1px solid #000;
+  font-size: 20px;
+  border-radius: 30px;
+  
+  font-weight:bold;
+  color:black
+}
+
+
+@media (max-width: 992px) {
+	
+/*---------best상품-----------*/
+    .best_list {
+	padding-top: 30px;
+	text-align: center;
+	list-style: none;
+	overflow: hidden;
+
+}
+.best_item {
+	float: left;
+	width: 41%;
+	text-align: center;
+	margin-left: 21px;
+}
+
+.best_img {
+	width: 100%;
+}
+
+.txt_box {
+	margin-top: 15px;
+}
+
+.bname_ellipsis {
+	font-size: 30px;
+}
+
+.best {
+	border: 4px solid black;
+	border-radius: 10px;
+}
+
+
+
+/* ------카테고리------- */
+
+.categor_box{
+  padding: 60px;
+  text-align: center;
+  
+} 
+.categor_list{
+  width: 90%;
+  display: inline-block;
+}
+.categor_list_btn{
+  float: left;
+  list-style: none;
+  width: 30%;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  border: 1px solid #000;
+  font-size: 20px;
+  border-radius: 30px;
+  color:black;
+  display: inline-block;
+}
+
+}
+
+@media (max-width: 767px) {
+
+/*---------best상품-----------*/
+    .best_list {
+	padding-top: 30px;
+	text-align: center;
+	list-style: none;
+	overflow: hidden;
+}
+
+.best_item {
+	float: left;
+	width: 80%;
+	text-align: center;
+	margin-left: 21px;
+}
+
+.best_img {
+	width: 100%;
+}
+
+.txt_box {
+	margin-top: 15px;
+}
+
+.bname_ellipsis {
+	font-size: 20px;
+    margin-bottom: 0px;
+}
+.exple_box{
+    margin-bottom: 0px;
+}
+
+.best {
+	border: 4px solid black;
+	border-radius: 10px;
+}
+
+  
+/* ------카테고리------- */ 
+  
+  .categor_box{
+    padding: 60px;
+    text-align: center;
+    
+  } 
+  .categor_list{
+    width: 90%;
+    display: inline-block;
+  }
+  .categor_list_btn{
+    float: left;
+    list-style: none;
+    width: 45%;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    border: 1px solid #000;
+    font-size: 20px;
+    border-radius: 30px;
+    color:black;
+    display: inline-block;
+  }
+  
+  }
+
+@media (max-width: 530px) {
+ 
+ /* ------카테고리------- */ 
+  .categor_box{
+    padding: 60px;
+    text-align: center;
+    
+  } 
+  .categor_list{
+    width: 90%;
+    display: inline-block;
+  }
+  .categor_list_btn{
+    float: left;
+    list-style: none;
+    width: 45%;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    border: 1px solid #000;
+    font-size: 20px;
+    border-radius: 30px;
+    color:black;
+  }
+  
+  }
+
+  @media (max-width: 463px) {
+ 
+  /* ------카테고리------- */
+  .categor_box{
+  
+    padding: 60px;
+    text-align: center;
+    
+  } 
+  .categor_list{
+    width: 90%;
+    display: inline-block;
+  }
+  .categor_list_btn{
+    float: left;
+    list-style: none;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    border: 1px solid #000;
+    font-size: 20px;
+    border-radius: 30px;
+    color:black;
+  }
+  
+  }
+  .col-lg-4{
+    float: left;
+  }
+  
+  
+  
+
+/* header부분 */
+header {
+	font-family: 'Hahmlet', serif;
+	font-size: larger;
+	font-weight: 700;
+}
+
+
+ul {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#login {
+	margin-right: 1px;
+}
+
+#search_input {
+	width: 100%;
+}
+
+/* footer 부분 */
+.site-footer {
+	background-color: #ffffff;
+	padding: 10px 0 20px;
+	font-size: 15px;
+	line-height: 24px;
+	color: #737373;
+	font-family: 'Hahmlet', serif;
+}
+
+.site-footer hr {
+	border-top-color: #bbb;
+	opacity: 0.5
+}
+
+.site-footer hr.small {
+	margin: 20px 0
+}
+
+.site-footer h6 {
+	color: #fff;
+	font-size: 16px;
+	text-transform: uppercase;
+	margin-top: 5px;
+	letter-spacing: 2px
+}
+
+.site-footer a {
+	color: #737373;
+}
+
+.site-footer a:hover {
+	color: #3366cc;
+	text-decoration: none;
+}
+
+.footer-links {
+	padding-left: 0;
+	list-style: none
+}
+
+.footer-links li {
+	display: block
+}
+
+.footer-links a {
+	color: #737373
+}
+
+.footer-links a:active, .footer-links a:focus, .footer-links a:hover {
+	color: #3366cc;
+	text-decoration: none;
+}
+
+.footer-links.inline li {
+	display: inline-block
+}
+
+.site-footer .social-icons {
+	text-align: right
+}
+
+.site-footer .social-icons a {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	margin-left: 6px;
+	margin-right: 0;
+	border-radius: 100%;
+	background-color: #33353d
+}
+
+.copyright-text {
+	margin: 0
+}
+
+@media ( max-width :991px) {
+	.site-footer [class^=col-] {
+		margin-bottom: 30px
+	}
+}
+
+@media ( max-width :767px) {
+	.site-footer {
+		padding-bottom: 0
+	}
+	.site-footer .copyright-text, .site-footer .social-icons {
+		text-align: center
+	}
+}
+
+.social-icons {
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none
+}
+
+.social-icons li {
+	display: inline-block;
+	margin-bottom: 4px
+}
+
+.social-icons li.title {
+	margin-right: 15px;
+	text-transform: uppercase;
+	color: #96a2b2;
+	font-weight: 700;
+	font-size: 13px
+}
+
+.social-icons a {
+	background-color: #eceeef;
+	color: #818a91;
+	font-size: 16px;
+	display: inline-block;
+	line-height: 44px;
+	width: 44px;
+	height: 44px;
+	text-align: center;
+	margin-right: 8px;
+	border-radius: 100%;
+	-webkit-transition: all .2s linear;
+	-o-transition: all .2s linear;
+	transition: all .2s linear
+}
+
+.social-icons a:active, .social-icons a:focus, .social-icons a:hover {
+	color: #fff;
+	background-color: #29aafe
+}
+
+.social-icons.size-sm a {
+	line-height: 34px;
+	height: 34px;
+	width: 34px;
+	font-size: 14px
+}
+
+.social-icons a.facebook:hover {
+	background-color: #3b5998
+}
+
+.social-icons a.twitter:hover {
+	background-color: #00aced
+}
+
+.social-icons a.linkedin:hover {
+	background-color: #007bb6
+}
+
+.social-icons a.dribbble:hover {
+	background-color: #ea4c89
+}
+
+@media ( max-width :767px) {
+	.social-icons li.title {
+		display: block;
+		margin-right: 0;
+		font-weight: 600
+	}
+}
+
+
+
+</style>
+
 
 
 
@@ -56,9 +650,7 @@
 						</a>
 					</div>
 
-					<!-- <a class="navbar-brand" href="#">
-          <img src="/img/logo2.jpg" id="logo">
-        </a> -->
+		
 
 					<button class="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -66,24 +658,28 @@
 						aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					
+					 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle mx-0 mx-md-0 mx-lg-3" href="#"
-								id="navbarDropdown" role="button" href=""
-								data-bs-toggle="dropdown" aria-expanded="false"> 우리술 정보 </a>
+								class="nav-link dropdown-toggle mx-0 mx-md-2 mx-xl-5" href="#"
+								id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false"> 우리술 정보 </a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-									<li><a class="dropdown-item" href="/productA10.ProductController">막걸리</a></li>
-									<li><a class="dropdown-item" href="/productA20.ProductController">전통 소주</a></li>
-									<li><a class="dropdown-item" href="/productA30.ProductController">약주</a></li>
-									<li><a class="dropdown-item" href="/productA40.ProductController">과실주</a></li>
-									<li><a class="dropdown-item" href="/productA50.ProductController">리큐르</a></li>
+									<li><a class="dropdown-item"
+										href="/productA10.ProductController?cpage=1">막걸리</a></li>
+									<li><a class="dropdown-item"
+										href="/productA20.ProductController?cpage=1">전통소주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA30.ProductController?cpage=1">약주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA40.ProductController?cpage=1">과실주</a></li>
+									<li><a class="dropdown-item"
+										href="/productA50.ProductController?cpage=1">리큐르</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="/list.ProductController">전체보기</a></li>
-
+									<li><a class="dropdown-item" href="/list.ProductController?cpage=1">전체보기</a></li>
 								</ul></li>
 
 							<li class="d-none d-lg-block nav-item"><a href="/Search/search.jsp"
@@ -261,47 +857,6 @@
 
 
 
-				<div class="best">
-
-
-					<ul class="best_list">
-						<li class="best_item"><a href="#">
-								<div>
-									<img src="https://picsum.photos/id/1020/150/150"
-										class="best_img">
-								</div>
-								<div class="txt_box">
-									<div class="review"></div>
-									<p class="bname_ellipsis" style="color: black;">녹파주</p>
-									<p class="exple_box" style="color: black;">선비의 기품이 느껴지는 깔끔한
-										맛</p>
-								</div>
-						</a></li>
-						<li class="best_item"><a href="#">
-								<div>
-									<img src="https://picsum.photos/id/1020/150/150"
-										class="best_img">
-								</div>
-								<div class="txt_box">
-									<div class="review"></div>
-									<p class="bname_ellipsis" style="color: black;">녹파주</p>
-									<p class="exple_box" style="color: black;">선비의 기품이 느껴지는 깔끔한
-										맛</p>
-								</div>
-						</a></li>
-						<li class="best_item"><a href="#"><div>
-									<img src="https://picsum.photos/id/1020/150/150"
-										class="best_img">
-								</div>
-								<div class="txt_box">
-									<div class="review"></div>
-									<p class="bname_ellipsis" style="color: black;">녹파주</p>
-									<p class="exple_box" style="color: black;">선비의 기품이 느껴지는 깔끔한
-										맛</p>
-								</div> </a></li>
-					</ul>
-
-				</div>
 
 
 

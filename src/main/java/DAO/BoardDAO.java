@@ -160,14 +160,13 @@ public class BoardDAO {
 	public int insert(BoardDTO dto) throws Exception{	
 		String sql = "insert into board values(?, ?, ?, ?, ?, ?, 0, sysdate, 0, 0)";
 		try(Connection con = this.getConnection();
-				PreparedStatement pstat = con.prepareStatement(sql);){
+			PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setInt(1, dto.getBoardNum());
 			pstat.setInt(2, dto.getProductNum());
 			pstat.setInt(3, dto.getScore());
 			pstat.setString(4, dto.getWriter());;
 			pstat.setString(5, dto.getTitle());
 			pstat.setString(6, dto.getBoardExp());
-
 			int result = pstat.executeUpdate();
 			con.commit();
 			return result;
@@ -238,6 +237,7 @@ public class BoardDAO {
 			pstat.setInt(1, stat);
 			pstat.setInt(2, num);
 			try(ResultSet rs = pstat.executeQuery();){
+				con.commit();
 				return 1;
 			}
 		}

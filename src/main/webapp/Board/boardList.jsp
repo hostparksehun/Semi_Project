@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +14,23 @@
 	<jsp:include page="common/header.jsp" />
 	<div class='boardBody'>
 		<div class='boardDiv'>
-			<div class='btn_layer'>
-				<button class='top_board'
-					onclick="location.href='boardList.board?type=3&cpage=1'">인기글모아보기</button>
+			<div class='btn_under'>
+				
+				<button class='down_board' onclick="location.href='boardList.board?type=3&cpage=1'">인기글모아보기</button>
+				<button class='down_board'
+					onclick="location.href='boardList.board?type=0&cpage=1'">전체
+					보기</button>
+				<button class='down_board'
+					onclick="location.href='boardList.board?type=1&cpage=1'">조회
+					순</button>
+				<button class='down_board'
+					onclick="location.href='boardList.board?type=2&cpage=1'">최근
+					작성 순</button>
+				<!-- <button class='down_board'>태그별 보기</button> -->
+				<div class='btn_write'>
+					<button class='down_write'
+						onclick="if(${loginID != null}) {location.href='/boardAddPage.board'}else{alert('로그인 후 작성할 수 있습니다')};">글쓰기</button>
+				</div>
 			</div>
 			<div class='boardTable'>
 				<div class="boardlist2 row col-12 listoff">
@@ -38,28 +53,21 @@
 										<div class="boardTitleTd col-lg-2 col-sm-3">${list.title}</div>
 										<div class="listoff col-lg-2">${list.boardCount}</div>
 										<div class="listoff col-lg-2">${list.boardLike}</div>
-										<div class="col-lg-2 col-sm-3">${list.writeDate}</div>
+										<div class="col-lg-2 col-sm-3"><fmt:formatDate pattern="yyyy-MM-dd" value="${list.writeDate}"/></div>
 								</div>
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
 			</div>
-			<div class='btn_under'>
-				<button class='down_board'
-					onclick="location.href='boardList.board?type=0&cpage=1'">전체
-					보기</button>
-				<button class='down_board'
-					onclick="location.href='boardList.board?type=1&cpage=1'">조회
-					순</button>
-				<button class='down_board'
-					onclick="location.href='boardList.board?type=2&cpage=1'">최근
-					작성 순</button>
-				<!-- <button class='down_board'>태그별 보기</button> -->
-				<div class='btn_write'>
-					<button class='down_write'
-						onclick="if(${loginID != null}) {location.href='/boardAddPage.board'}else{alert('로그인 후 작성할 수 있습니다')};">글쓰기</button>
-				</div>
-			</div>
+			
+			<%-- <div class="row bd nav">
+				<div class="col">${navi}</div>
+			</div> --%>
+			
+			<nav aria-label="Page navigation example">
+									<ul class="pagination justify-content-center">${navi}</ul>
+								</nav>
+			
 			<form action=/boardList.board align="center">
 				<select name="selectType">
 					<option value="1">제목</option>
@@ -70,9 +78,6 @@
 				<button class='boardSearchBtn'>검색하기</button>
 				
 			</form>
-			<div class="row bd nav">
-				<div class="col">${navi}</div>
-			</div>
 		</div>
 	</div>
 	<script>

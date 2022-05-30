@@ -64,7 +64,7 @@
 			<div class='boardSet'>
 				<div class='boardUser'>제목</div>
 				<input id='boardTitle' name='title' type="text" maxlength="20"
-					value="${board.title}" placeholder="제목을 입력하세요.">
+					value="${board.title}" placeholder="제목을 입력하세요." required="required">
 			</div>
 			<hr>
 

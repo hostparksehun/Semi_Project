@@ -1,100 +1,57 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@page import="java.io.FileOutputStream"%>
-<%@page import="java.io.OutputStream"%>
-<%@page import="java.io.InputStream"%>
-<%@page import="java.util.UUID"%>
-<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.io.File"%>
-<%@page import="org.apache.commons.fileupload.FileItem"%>
-<%@page import="java.util.List"%>
-<%@page import="org.apache.commons.fileupload.disk.DiskFileItemFactory"%>
-<%@page import="org.apache.commons.fileupload.servlet.ServletFileUpload"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-</head>
-<body>
-	<script>
-	String return1="";
-	String return2="";
-	String return3="";
-	//변경 title 태그에는 원본 파일명을 넣어주어야 하므로
-	String name = "";
-	if (ServletFileUpload.isMultipartContent(request)){
-		ServletFileUpload uploadHandler = new ServletFileUpload(new DiskFileItemFactory());
-		uploadHandler.setHeaderEncoding("UTF-8");
-		List<FileItem> items = uploadHandler.parseRequest(request);
-		for (FileItem item : items) {
-			if(item.getFieldName().equals("callback")) {
-				return1 = item.getString("UTF-8");
-			} else if(item.getFieldName().equals("callback_func")) {
-				return2 = "?callback_func="+item.getString("UTF-8");
-			} else if(item.getFieldName().equals("Filedata")) {
-				if(item.getSize() > 0) {
-					//String name = item.getName().substring(item.getName().lastIndexOf(File.separator)+1);
-	                // 기존 상단 코드를 막고 하단코드를 이용
-	                name = item.getName().substring(item.getName().lastIndexOf(File.separator)+1);
-					String filename_ext = name.substring(name.lastIndexOf(".")+1);
-					filename_ext = filename_ext.toLowerCase();
-				   	String[] allow_file = {"jpg","png","bmp","gif"};
-				   	int cnt = 0;
-				   	for(int i=0; i<allow_file.length; i++) {
-				   		if(filename_ext.equals(allow_file[i])){
-				   			cnt++;
-				   		}
-				   	}
-				   	if(cnt == 0) {
-				   		return3 = "&errstr="+name;
-				   	} else {
-				   		
-				   		//파일 기본경로
-			    		String dftFilePath = request.getServletContext().getRealPath("/");
-			    		//파일 기본경로 _ 상세경로
-			    		String filePath = dftFilePath + "editor" + File.separator +"upload" + File.separator;
-			    		
-			    		File file = null;
-			    		file = new File(filePath);
-			    		if(!file.exists()) {
-			    			file.mkdirs();
-			    		}
-			    		
-			    		String realFileNm = "";
-			    		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
-						String today= formatter.format(new java.util.Date());
-						realFileNm = today+UUID.randomUUID().toString() + name.substring(name.lastIndexOf("."));
-						
-						String rlFileNm = filePath + realFileNm;
-						///////////////// 서버에 파일쓰기 ///////////////// 
-						InputStream is = item.getInputStream();
-						OutputStream os=new FileOutputStream(rlFileNm);
-						int numRead;
-						byte b[] = new byte[(int)item.getSize()];
-						while((numRead = is.read(b,0,b.length)) != -1){
-							os.write(b,0,numRead);
-						}
-						if(is != null) {
-							is.close();
-						}
-						os.flush();
-						os.close();
-						///////////////// 서버에 파일쓰기 /////////////////
-			    		
-			    		return3 += "&bNewLine=true";
-	                                // img 태그의 title 옵션에 들어갈 원본파일명
-			    		return3 += "&sFileName="+ name;
-			    		return3 += "&sFileURL=/editor/upload/"+realFileNm;
-				   	}
-				}else {
-					  return3 += "&errstr=error";
-				}
-			}
-		}
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%
+String uploadPath = "/uploadfile/smartEditor/";
+StringBuffer buffer = new StringBuffer();
+String filename = "";
+
+if(request.getContentLength() > 10*1024*1024 ){
+%>
+	<script>alert("업로드 용량(총 10Mytes)을 초과하였습니다.");history.back();</script>
+<%
+	return;
+	} else {
+	MultipartRequest multi=new MultipartRequest(request, request.getRealPath(uploadPath), 10*1024*1024, "UTF-8", new DefaultFileRenamePolicy());
+
+	java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat ("yyyy_MM_dd_HHmmss", java.util.Locale.KOREA);
+	int cnt = 1;
+	String upfile = multi.getFilesystemName("Filedata");
+	if (!upfile.equals("")) {
+		String dateString = formatter.format(new java.util.Date());
+		String moveFileName = dateString + upfile.substring(upfile.lastIndexOf(".") );
+		String fileExt = upfile.substring(upfile.lastIndexOf(".") + 1);
+		File sourceFile = new File(request.getRealPath(uploadPath) + File.separator + upfile);
+		File targetFile = new File(request.getRealPath(uploadPath) + File.separator + moveFileName);
+		sourceFile.renameTo(targetFile);
+		filename = moveFileName;
+		%>
+		<form id="fileform" name="fileform" method="post">
+			<input type="hidden" name="filename" value="<%=filename%>">
+			<input type="hidden" name="uploadPath" value="<%=uploadPath%>">
+		</form>
+		<%
 	}
-	response.sendRedirect(return1+return2+return3);
-	</script>
-</body>
-</html>
+}
+%>
+
+<script type="text/javascript">
+	function fileAttach(){ 
+		
+		f = document.fileform;
+		fpath = f.uploadPath.value;
+	    fname = f.filename.value; 
+	    fcode = fpath + fname;
+	    
+	    window.close(); 
+	     
+	    try{
+            opener.parent.pasteHTML(fcode); 
+	    }catch(e){ 
+            alert(e); 
+	    } 
+	} 
+	fileAttach();
+	this.window.close();
+</script>

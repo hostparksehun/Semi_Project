@@ -24,7 +24,7 @@ public class SearchDAO {
 
 	private Connection getConnection() throws Exception{
 		Context ctx = new InitialContext();
-		DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/oracle");
+		DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/orcl");
 
 		return ds.getConnection();
 	}

@@ -348,7 +348,7 @@
 									action="modify.board?pseq=${board.boardNum}&seq=${i.replySeq}"
 									method="post" id="modifyFrm" enctype="multipart/form-data">
 									
-									<div class="reply_view">${i.writer}|<fmt:formatDate pattern="yy년MM월dd일 HH시mm분" value="${i.wirteDate}"/></div>
+									<div class="reply_view">${i.writer}|${i.wirteDate}></div>
 									
 									<div class="head6">
 									

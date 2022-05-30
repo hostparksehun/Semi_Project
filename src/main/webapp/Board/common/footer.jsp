@@ -27,7 +27,6 @@
 							2022 All Rights Reserved by <a href="#"
 								style="text-decoration: none;">아이코올</a>.
 						</p>
-						</p>
 					</div>
 
 					<div class="col-md-4 col-sm-6 col-xs-12 my-3 my-lg-0">

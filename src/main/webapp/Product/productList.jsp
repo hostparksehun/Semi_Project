@@ -29,8 +29,6 @@
   <script src="https://kit.fontawesome.com/7f0130da7d.js" crossorigin="anonymous"></script>
 
 
-
-
   <title>전체 목록</title>
 
 </head>

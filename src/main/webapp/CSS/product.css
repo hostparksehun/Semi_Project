@@ -1,197 +1,23 @@
-@charset "utf-8";
+@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@700&family=Song+Myung&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
+/* content 작업 내용 */
+
 #logo {
-    width: 150px;
-    height: auto;
+  width: 150px;
+  height: auto;
 }
 
-#content2 {
-    width: 100%;
-    height: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+/* 검색바 */
 
-div>*{
-	font-family: 'Hahmlet', serif;
-}
-
-/* Reply */
-
-#container {
-    width: 100%;
-    height: auto;
-    border: none;
-}
-
-#top_line{
-    margin-top: 3px;
-    margin-bottom: 3px;
-    border-top: 2px solid gray;
-}
-
-#reply_box{
-    background-color:#278f59;
-    border-radius: 5px;
-    height: 100%;
-    width:100%;
-    padding: 1%;
-    margin-left: 0.1%;
-    margin-bottom: 1%;
-    position: relative;
-}
-
-.textarea {
-margin: 3%;
-padding-left: 3%;
-padding: 1%;
-line-height: 150%;
-width: 95%;
-border: 1px solid gray;
-border-radius: 5px;
-resize: none;
-text-align: left;
-}
-
-.rebt{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 5vh;
-}
-
-.reply_btn{
-    text-align: center;
-    width: 50%;
-    height: 65px;
-    line-height: 50%;
-    border: 1px solid gray;
-    border-radius: 5px;
-    background-color: white;
-    
-}
-
-.title_num{
-    float:left;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    width: 50%;
-    height:100%;
-    text-align: left;
-}
-
-.board_like{
-    float:left;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    width:50%;
-    height:100%;
-    text-align: right;
-}
-
-.board_title{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    width:20%;
-    height:100%;
-}
-
-.board_writer{
-    float:left;
-    width: 50%;
-    height:100%;
-    text-align: left;
-}
-
-.board_date{
-    float:left;
-    width:50%;
-    height:100%;
-}
-
-#head3{
-    width: 100%;
-    height: 100%;
-}
-
-.board_contents{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    width: 100%;
-    min-height: 300px;
-}
-
-#head4{
-    margin-bottom: 3%;
-    width:100%;
-    height:100%;
-    
-}
-
-#head4>.hd4{
-    float: left;
-    width:13%;
-    height:100%;
-}
-
-.board_select{
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-
-#head5{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    width:100%;
-    height:100%;
-}
-
-.reply_cont{
-    float: left;
-    width: 20%;
-    height: 100%;
-}
-
-.like_cont{
-    float: left;
-    width: 10%;
-    height: 100%;
-}
-
-.reply_view{
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-
-#head6{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    width:100%;
-    height:100%;
-}
-
-.head6_btn{
-    margin-top: 1%;
-    margin-right: 1%;
-    background-color: white;
-    border: 1px solid gray;
-    border-radius: 5px;
-    width: auto;
-    height: auto;
-}
-
-.like_btn{
-    background-color: white;
-    border: 1px solid gray;
-    border-radius: 5px;
-}
-
-@media (max-width :992px) {
-    .disnone{
-        display: none;
-    }
-    
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 
@@ -375,4 +201,79 @@ ul {
 		margin-right: 0;
 		font-weight: 600
 	}
+}
+
+.categor_list_btn{
+     border: 2px solid #2c6246;
+     border-radius: 5px;
+}
+
+/*반응형 처리*/
+#navmenu nav a{
+    background-color: white;
+    color:#198754;
+    border: 2px solid #2c6246;
+    border-radius: 20px;
+    font-family: 'Hahmlet', serif;
+}
+#navmenu nav a:hover{
+   background-color: #2c6246;
+    color:white;
+}
+
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display:none;
+}
+
+
+/*----------출력 결과----------*/
+.Result_box a {
+	font-size: 14px;
+	text-decoration: none;
+	color: #36384f;
+}
+
+.Result_banner1 {
+	padding-left : 12px;
+	font-size: 1.5rem;
+	font-family: 'Hahmlet', serif;
+	color: #278f59;
+}
+
+.Result_banner2 {
+	font-size: 1rem;
+	font-family: 'Hahmlet', serif;
+	text-align: center;
+}
+
+.Result_grade{
+	font-family: 'Hahmlet', serif;
+	font-size: 14px;
+	color: #f8bc3b;
+}
+
+.Result_txt {
+	margin-top: 15px;
+}
+
+.Result_name {
+	font-size: 17px;
+	text-align: center;
+	color: black;
+	font-family: 'Hahmlet', serif;
+}
+
+.Result_price {
+	margin-top: 5px;
+	font-size: 13px;
+	font-family: 'Hahmlet', serif;
+}
+
+.Result_decs {
+	font-size: 14px;
+	font-family: 'Hahmlet', serif;
 }

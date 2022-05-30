@@ -67,8 +67,8 @@
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<li><a class="dropdown-item"
 										href="/productA10.ProductController?cpage=1">막걸리</a></li>
-									<li><a class="dropdown-item"
-										href="/productA20.ProductController?cpage=1">전통소주</a></li>
+									<li><a class="dropdown-item"						
+										href="/productA20.ProductController?cpage=1">전통 소주</a></li>
 									<li><a class="dropdown-item"
 										href="/productA30.ProductController?cpage=1">약주</a></li>
 									<li><a class="dropdown-item"
@@ -78,7 +78,10 @@
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="/list.ProductController?cpage=1">전체보기</a></li>
+
+									<li><a class="dropdown-item"
+										href="/list.ProductController?cpage=1">전체보기</a></li>
+
 								</ul></li>
 
 							<li class="d-none d-lg-block nav-item"><a
@@ -391,7 +394,7 @@
 							<div class="col-12 col-lg-4 Result_box">
 								<a href="/Detail.ProductController?seq=${i.seq}">
 									<div class="Result_img">
-										<img src="../thumbnail/${i.sysName}" class="w-100" style="border-radius: 5px; border: border: 0.5px solid rgba(128, 128, 128);">
+										<img src="../thumbnail/${i.sysName}" class="w-100" style="border-radius: 5px; border: 0.5px solid rgba(128, 128, 128);">
 									</div>
 									<div class="Result_txt" style="text-align: center;">
 										<div class="row Result_grade">

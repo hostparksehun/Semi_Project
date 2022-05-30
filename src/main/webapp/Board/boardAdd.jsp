@@ -127,6 +127,7 @@
 				fCreator : "createSEditor2"
 			})
 		}
+		
 		$(document).ready(function() {
 			smartEditor()
 		})
@@ -157,7 +158,13 @@
 			$("body").addClass("active");
 		});
 		
+		function pasteHTML(filepath){
+			var sHTML = '&lt;span style="color:#FF0000;"&gt;&lt;img src="'+filepath+'"&gt;&lt;/span&gt;';
+			alert(sHTML);
+			oEditors.getById["editorTxt"].exec("PASTE_HTML", [sHTML]);
+		}
 	</script>
+	<!-- <script type="text/javascript" src="./quick_photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script> -->
 	<jsp:include page="common/footer.jsp" />
 </body>
 </html>
